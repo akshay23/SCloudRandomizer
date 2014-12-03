@@ -11,7 +11,6 @@
 		19CDED291A2FB92100DD97CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED281A2FB92100DD97CC /* main.m */; };
 		19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2B1A2FB92100DD97CC /* AppDelegate.m */; };
 		19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */; };
-		19CDED321A2FB92100DD97CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED311A2FB92100DD97CC /* ViewController.m */; };
 		19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED331A2FB92100DD97CC /* Main.storyboard */; };
 		19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED361A2FB92100DD97CC /* Images.xcassets */; };
 		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
@@ -38,8 +37,6 @@
 		19CDED2A1A2FB92100DD97CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19CDED2B1A2FB92100DD97CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		19CDED2E1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SCloudRandomizer.xcdatamodel; sourceTree = "<group>"; };
-		19CDED301A2FB92100DD97CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		19CDED311A2FB92100DD97CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		19CDED341A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19CDED361A2FB92100DD97CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		19CDED391A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -104,8 +101,6 @@
 			children = (
 				19CDED2A1A2FB92100DD97CC /* AppDelegate.h */,
 				19CDED2B1A2FB92100DD97CC /* AppDelegate.m */,
-				19CDED301A2FB92100DD97CC /* ViewController.h */,
-				19CDED311A2FB92100DD97CC /* ViewController.m */,
 				19CDED331A2FB92100DD97CC /* Main.storyboard */,
 				19CDED361A2FB92100DD97CC /* Images.xcassets */,
 				19CDED381A2FB92100DD97CC /* LaunchScreen.xib */,
@@ -290,7 +285,6 @@
 				19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */,
 				19C18F031A2FBB2800281221 /* SoundCloudLoginVC.m in Sources */,
 				19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */,
-				19CDED321A2FB92100DD97CC /* ViewController.m in Sources */,
 				19CDED291A2FB92100DD97CC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
