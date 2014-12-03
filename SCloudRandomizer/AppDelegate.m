@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // SoundCloud client auth
+    [SCSoundCloud  setClientID:@"96002082c5bda6dc3b4301258f819c2b"
+                        secret:@"1656c693b8bbe5727bc5fd2263514fd3"
+                   redirectURL:[NSURL URLWithString:@"scloudrandomizer://oauth"]];
+    
     return YES;
 }
 
