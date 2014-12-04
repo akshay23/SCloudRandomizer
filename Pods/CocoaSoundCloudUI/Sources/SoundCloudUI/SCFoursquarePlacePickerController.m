@@ -72,7 +72,7 @@
         [locationManager startUpdatingLocation];
         
         self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:SCLocalizedString(@"place_picker_reset", @"Reset")
-                                                                                   style:UIBarButtonItemStyleBordered
+                                                                                   style:UIBarButtonItemStylePlain
                                                                                   target:self
                                                                                   action:@selector(finishWithReset)] autorelease];
     }

@@ -67,19 +67,19 @@
 	NSMutableString *string = [NSMutableString string];
 	
 	if (hours > 0) {
-		[string appendFormat:@"%u.", hours];
+		[string appendFormat:@"%ld.", (long)hours];
 	}
 	
 	if (minutes >= 10 || hours == 0) {
-		[string appendFormat:@"%u.", minutes];
+		[string appendFormat:@"%ld.", (long)minutes];
 	} else {
-		[string appendFormat:@"0%u.", minutes];
+		[string appendFormat:@"0%ld.", (long)minutes];
 	}
 	
 	if (seconds >= 10) {
-		[string appendFormat:@"%u", seconds];
+		[string appendFormat:@"%ld", (long)seconds];
 	} else {
-		[string appendFormat:@"0%u", seconds];
+		[string appendFormat:@"0%ld", (long)seconds];
 	}
 	
 	return string;
@@ -88,9 +88,9 @@
 + (NSString *)stringWithInteger:(NSInteger)integer upperRange:(NSInteger)upperRange;
 {
 	if (integer <= upperRange) {
-		return [[self class] stringWithFormat:@"%d", integer];
+		return [[self class] stringWithFormat:@"%ld", (long)integer];
 	} else {
-		return [[self class] stringWithFormat:@"%d+", upperRange];
+		return [[self class] stringWithFormat:@"%ld+", (long)upperRange];
 	}
 }
 
