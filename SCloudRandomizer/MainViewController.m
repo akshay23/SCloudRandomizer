@@ -10,8 +10,6 @@
 
 @interface MainViewController ()
 
-@property (strong, nonatomic) SCAccount *account;
-
 @end
 
 @implementation MainViewController
@@ -28,12 +26,11 @@
     [super viewWillAppear:animated];
     
     // Disable/enable SC buttons if user is currently logged in
-    if (self.account != nil)
+    if ([SCSoundCloud account] != nil)
     {
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
         [self.btnGetTracks setHidden:NO];
-        [self.btnPlay setHidden:NO];
     }
     else
     {
@@ -41,6 +38,7 @@
         [self.btnSCDisconnect setHidden:YES];
         [self.btnGetTracks setHidden:YES];
         [self.btnPlay setHidden:YES];
+        [self.btnNext setHidden:YES];
     }
 }
 
@@ -52,11 +50,12 @@
 
 - (IBAction)logout:(id)sender
 {
-    self.account = nil;
+    [SCSoundCloud removeAccess];
     [self.btnSCConnect setHidden:NO];
     [self.btnSCDisconnect setHidden:YES];
     [self.btnGetTracks setHidden:YES];
     [self.btnPlay setHidden:YES];
+    [self.btnNext setHidden:YES];
     NSLog(@"Logged out.");
 }
 
@@ -71,14 +70,12 @@
                                                                           } else if (error) {
                                                                               NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
                                                                           } else {
-                                                                              self.account = [SCSoundCloud account];
                                                                               NSLog(@"Logged in.");
                                                                           }
                                                                       }];
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }];
-
 }
 
 - (IBAction)getTracks:(id)sender
@@ -94,7 +91,15 @@
             self.tracks = (NSArray *)jsonResponse;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tracks" message:@"Tracks acquired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [alert show];
+            [self.btnPlay setHidden:NO];
+            [self.btnNext setHidden:NO];
+            [self.btnNext setEnabled:NO];
             NSLog(@"Tracks acquired.");
+            
+            if ([self.player isPlaying])
+            {
+                [self.btnNext setEnabled:YES];
+            }
         }
         else
         {
@@ -108,13 +113,70 @@
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:resourceURL]
              usingParameters:nil
-                 withAccount:self.account
+                 withAccount:[SCSoundCloud account]
       sendingProgressHandler:nil
              responseHandler:handler];
 }
 
 - (IBAction)playSong:(id)sender
 {
+    if (![self.player isPlaying])
+    {
+        if (self.player.data == nil)
+        {
+            NSDictionary *track = [self.tracks objectAtIndex:0];
+            NSString *streamURL = [track objectForKey:@"stream_url"];
+            
+            SCAccount *account = [SCSoundCloud account];
+            
+            [SCRequest performMethod:SCRequestMethodGET
+                          onResource:[NSURL URLWithString:streamURL]
+                     usingParameters:nil
+                         withAccount:account
+              sendingProgressHandler:nil
+                     responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                         NSError *playerError;
+                         player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
+                         [player prepareToPlay];
+                         [player play];
+                         [self.btnNext setEnabled:YES];
+                         [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+            }];
+        }
+        else
+        {
+            [self.player play];
+            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+        }
+    }
+    else
+    {
+        [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+        [self.player pause];
+    }
+}
+
+- (IBAction)playNext:(id)sender
+{
+    NSInteger randomNumber = 2 + arc4random() % self.tracks.count - 2;
+    NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
+    NSString *streamURL = [track objectForKey:@"stream_url"];
+    
+    SCAccount *account = [SCSoundCloud account];
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:streamURL]
+             usingParameters:nil
+                 withAccount:account
+      sendingProgressHandler:nil
+             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 NSError *playerError;
+                 player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
+                 [player prepareToPlay];
+                 [player play];
+                 [self.btnNext setEnabled:YES];
+                 [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+    }];
 }
 
 @end

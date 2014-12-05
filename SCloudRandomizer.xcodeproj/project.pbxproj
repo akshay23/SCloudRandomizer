@@ -12,6 +12,8 @@
 		19C18F0D1A30CF2E00281221 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C18F0C1A30CF2E00281221 /* MainViewController.m */; };
 		19C18F0F1A30E31200281221 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C18F0E1A30E31200281221 /* AVFoundation.framework */; };
 		19C18F131A30E86A00281221 /* play_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F121A30E86A00281221 /* play_btn.png */; };
+		19C18F171A30FD1500281221 /* play_next_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F151A30FD1500281221 /* play_next_btn.png */; };
+		19C18F191A31068D00281221 /* pause_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F181A31068D00281221 /* pause_btn.png */; };
 		19CDED291A2FB92100DD97CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED281A2FB92100DD97CC /* main.m */; };
 		19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2B1A2FB92100DD97CC /* AppDelegate.m */; };
 		19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */; };
@@ -39,6 +41,8 @@
 		19C18F0C1A30CF2E00281221 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		19C18F0E1A30E31200281221 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19C18F121A30E86A00281221 /* play_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_btn.png; sourceTree = "<group>"; };
+		19C18F151A30FD1500281221 /* play_next_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_next_btn.png; sourceTree = "<group>"; };
+		19C18F181A31068D00281221 /* pause_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_btn.png; sourceTree = "<group>"; };
 		19CDED231A2FB92100DD97CC /* SCloudRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCloudRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CDED271A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19CDED281A2FB92100DD97CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19C18F181A31068D00281221 /* pause_btn.png */,
+				19C18F151A30FD1500281221 /* play_next_btn.png */,
 				19C18F121A30E86A00281221 /* play_btn.png */,
 				19C18F091A30CDB300281221 /* btn-disconnect-m.png */,
 				19C18F071A2FC98B00281221 /* btn-connect-m.png */,
@@ -251,7 +257,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */,
+				19C18F191A31068D00281221 /* pause_btn.png in Resources */,
 				19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */,
+				19C18F171A30FD1500281221 /* play_next_btn.png in Resources */,
 				19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */,
 				19C18F131A30E86A00281221 /* play_btn.png in Resources */,
 				19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */,

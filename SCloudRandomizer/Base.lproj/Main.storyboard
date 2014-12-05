@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX9-Qc-5vB">
-                                <rect key="frame" x="215" y="215" width="170" height="170"/>
+                                <rect key="frame" x="172" y="215" width="170" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="P00-SF-wxd"/>
                                     <constraint firstAttribute="width" constant="170" id="u27-Bm-dm3"/>
@@ -58,11 +58,26 @@
                                     <action selector="playSong:" destination="AGx-bt-YRN" eventType="touchUpInside" id="mh6-7v-y9X"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lq-FV-sWT">
+                                <rect key="frame" x="326" y="283" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="rbE-0i-YDf"/>
+                                    <constraint firstAttribute="height" constant="80" id="u2h-rK-Xie"/>
+                                </constraints>
+                                <state key="normal" image="play_next_btn.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playNext:" destination="AGx-bt-YRN" eventType="touchUpInside" id="Tox-Kq-b1G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78431379795074463" green="0.89019614458084106" blue="0.94117653369903564" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="10" id="07K-in-AZw"/>
-                            <constraint firstItem="oX9-Qc-5vB" firstAttribute="centerX" secondItem="edR-Zq-yrB" secondAttribute="centerX" id="5lZ-PT-bOB"/>
+                            <constraint firstItem="0Lq-FV-sWT" firstAttribute="leading" secondItem="oX9-Qc-5vB" secondAttribute="trailing" constant="-16" id="0bH-JN-8bI"/>
+                            <constraint firstItem="oX9-Qc-5vB" firstAttribute="centerX" secondItem="edR-Zq-yrB" secondAttribute="centerX" constant="-43.5" id="5lZ-PT-bOB"/>
+                            <constraint firstItem="0Lq-FV-sWT" firstAttribute="bottom" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="-22" id="8ai-8z-9Me"/>
                             <constraint firstAttribute="centerY" secondItem="edR-Zq-yrB" secondAttribute="centerY" constant="180" id="9Z7-Hq-hBd"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="40" id="aLf-XW-9M2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vyo-RJ-qAm" secondAttribute="trailing" constant="10" id="dEB-Is-zix"/>
@@ -73,6 +88,7 @@
                     </view>
                     <connections>
                         <outlet property="btnGetTracks" destination="edR-Zq-yrB" id="P9W-HC-Enk"/>
+                        <outlet property="btnNext" destination="0Lq-FV-sWT" id="dv3-7r-ARd"/>
                         <outlet property="btnPlay" destination="oX9-Qc-5vB" id="09w-YQ-MJj"/>
                         <outlet property="btnSCConnect" destination="c5h-O2-fzL" id="Y5x-eg-cwG"/>
                         <outlet property="btnSCDisconnect" destination="vyo-RJ-qAm" id="CBX-36-42z"/>
@@ -105,5 +121,6 @@
         <image name="btn-connect-m.png" width="105" height="25"/>
         <image name="btn-disconnect-m.png" width="119" height="25"/>
         <image name="play_btn.png" width="300" height="300"/>
+        <image name="play_next_btn.png" width="600" height="600"/>
     </resources>
 </document>

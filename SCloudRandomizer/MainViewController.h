@@ -12,17 +12,26 @@
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *tracks;
-@property (nonatomic, strong) AVAudioPlayer *player;
+enum {
+    Playing = 1,
+    Paused = 2,
+    Stopped = 3
+};
+typedef NSUInteger PlayerState;
+
+@property (strong, nonatomic) NSArray *tracks;
+@property (strong, nonatomic) AVAudioPlayer *player;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSCConnect;
 @property (strong, nonatomic) IBOutlet UIButton *btnSCDisconnect;
 @property (strong, nonatomic) IBOutlet UIButton *btnGetTracks;
 @property (strong, nonatomic) IBOutlet UIButton *btnPlay;
+@property (strong, nonatomic) IBOutlet UIButton *btnNext;
 
 - (IBAction)logout:(id)sender;
 - (IBAction)login:(id)sender;
 - (IBAction)getTracks:(id)sender;
 - (IBAction)playSong:(id)sender;
+- (IBAction)playNext:(id)sender;
 
 @end
