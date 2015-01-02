@@ -62,7 +62,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-QH-x40">
-                                <rect key="frame" x="51" y="77" width="54" height="29"/>
+                                <rect key="frame" x="50" y="77" width="54" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="WD3-au-cnH"/>
                                 </constraints>
@@ -181,21 +181,29 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-5w-1ww">
-                                <rect key="frame" x="92" y="535" width="189" height="30"/>
+                                <rect key="frame" x="92" y="516" width="189" height="30"/>
                                 <state key="normal" title="Change Search Parameters">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NPP-mf-mhe">
+                                <rect key="frame" x="87" y="578" width="194" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="2xb-AT-XRd"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.78431379795074463" green="0.89019614458084106" blue="0.94117653369903564" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="10" id="07K-in-AZw"/>
+                            <constraint firstAttribute="bottom" secondItem="NPP-mf-mhe" secondAttribute="bottom" constant="20" symbolic="YES" id="1cb-ky-lO0"/>
                             <constraint firstItem="Jwn-Gq-AVr" firstAttribute="leading" secondItem="dD3-QH-x40" secondAttribute="leading" constant="-11" id="1nO-47-H26"/>
                             <constraint firstItem="ZDc-Wu-OC4" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="4" id="1uW-uF-8mI"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="trailing" secondItem="Gco-6T-81m" secondAttribute="trailing" id="35o-at-bVr"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="107" id="3WX-Zd-49y"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="120" id="5k7-Jy-ztp"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="79R-my-hRC"/>
+                            <constraint firstItem="NPP-mf-mhe" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="71" id="7Ir-Wc-hSR"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="centerY" secondItem="dD3-QH-x40" secondAttribute="centerY" id="7p7-4i-jma"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="7rr-g5-8VG"/>
                             <constraint firstItem="ZDc-Wu-OC4" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="5" id="8SC-1o-dye"/>
@@ -216,6 +224,7 @@
                             <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="ZDc-Wu-OC4" secondAttribute="bottom" constant="407" id="JPW-gd-sOP"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="top" secondItem="skF-YA-oCH" secondAttribute="bottom" constant="17" id="JQA-Ce-n1h"/>
                             <constraint firstItem="p4S-YQ-aRk" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="170" id="JXR-ao-Dir"/>
+                            <constraint firstItem="YBr-5w-1ww" firstAttribute="trailing" secondItem="NPP-mf-mhe" secondAttribute="trailing" id="Kxg-6l-rov"/>
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="220" id="MO7-Cc-4mZ"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="top" secondItem="skF-YA-oCH" secondAttribute="bottom" constant="17" id="NFx-U5-7Rt"/>
                             <constraint firstAttribute="centerX" secondItem="skF-YA-oCH" secondAttribute="centerX" constant="101" id="NvY-Jo-DOg"/>
@@ -226,11 +235,11 @@
                             <constraint firstItem="Jwn-Gq-AVr" firstAttribute="trailing" secondItem="dD3-QH-x40" secondAttribute="trailing" id="XIN-by-zW2"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="centerY" secondItem="dD3-QH-x40" secondAttribute="centerY" id="XMy-OC-tyZ"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="dD3-QH-x40" secondAttribute="trailing" constant="4" id="XOw-VO-hJG"/>
+                            <constraint firstItem="YBr-5w-1ww" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="76" id="XX0-bl-Hr9"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="trailing" secondItem="skF-YA-oCH" secondAttribute="trailing" id="XYu-c9-TZp"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="p4S-YQ-aRk" secondAttribute="leading" id="Xdb-13-vgU"/>
                             <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="102" id="Xy8-Hj-riG"/>
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="top" secondItem="p4S-YQ-aRk" secondAttribute="bottom" constant="40" id="YMh-JC-c9t"/>
-                            <constraint firstItem="YBr-5w-1ww" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="76" id="YYk-sx-ela"/>
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="top" secondItem="p4S-YQ-aRk" secondAttribute="bottom" constant="40" id="YZQ-aQ-SpS"/>
                             <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="Jwn-Gq-AVr" secondAttribute="bottom" constant="368" id="YbW-f5-y3h"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="leading" secondItem="skF-YA-oCH" secondAttribute="leading" id="a0s-pd-GBF"/>
@@ -238,7 +247,6 @@
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="p4S-YQ-aRk" secondAttribute="leading" id="aK9-6w-QJP"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="40" id="aLf-XW-9M2"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="apc-Gr-MRD"/>
-                            <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="YBr-5w-1ww" secondAttribute="bottom" constant="35" id="avi-4h-bSV"/>
                             <constraint firstItem="1tV-ew-NVm" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="41" id="awE-xy-kc7"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="top" secondItem="c5h-O2-fzL" secondAttribute="bottom" constant="35" id="bFt-9Z-eex"/>
                             <constraint firstItem="Jwn-Gq-AVr" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="23" id="bTA-Zn-RsZ"/>
@@ -251,6 +259,7 @@
                             <constraint firstItem="p4S-YQ-aRk" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="108" id="exb-tF-LBb"/>
                             <constraint firstItem="ZDc-Wu-OC4" firstAttribute="top" secondItem="Jwn-Gq-AVr" secondAttribute="bottom" constant="2" id="gBP-iQ-0wf"/>
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="top" secondItem="p4S-YQ-aRk" secondAttribute="bottom" constant="42" id="hgw-p6-Dfz"/>
+                            <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="18" id="hxc-UA-qJa"/>
                             <constraint firstItem="p4S-YQ-aRk" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="j1V-ds-IC5"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="dD3-QH-x40" secondAttribute="trailing" constant="3" id="j3D-DG-FdT"/>
                             <constraint firstItem="ZDc-Wu-OC4" firstAttribute="trailing" secondItem="Jwn-Gq-AVr" secondAttribute="trailing" id="jAc-pP-0PH"/>
@@ -375,11 +384,12 @@
                         <outlet property="lblArtist" destination="Gco-6T-81m" id="boJ-Sk-4n9"/>
                         <outlet property="lblLength" destination="p4S-YQ-aRk" id="cRQ-8L-wJx"/>
                         <outlet property="lblSongTitle" destination="skF-YA-oCH" id="T6B-Zx-VQ1"/>
+                        <outlet property="progressView" destination="NPP-mf-mhe" id="YOm-Zu-HNE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZh-3O-qGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690" y="345"/>
+            <point key="canvasLocation" x="1661" y="345"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MHR-sP-Q3u">

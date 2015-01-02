@@ -52,6 +52,7 @@
     }
     
     [self getTracks];
+    [self.progressView setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -149,15 +150,18 @@
         {
             NSDictionary *track = [self.tracks objectAtIndex:0];
             NSString *streamURL = [track objectForKey:@"stream_url"];
-
             SCAccount *account = [SCSoundCloud account];
+            [self.progressView setHidden:NO];
 
             [SCRequest performMethod:SCRequestMethodGET
                           onResource:[NSURL URLWithString:streamURL]
                      usingParameters:nil
                          withAccount:account
-              sendingProgressHandler:nil
+              sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+                        [self.progressView setProgress:((float)bytesSent / bytesTotal) animated:YES];
+              }
                      responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                         [self.progressView setHidden:YES];
                          NSError *playerError;
                          self.currentSongData = data;
                          self.currentSongNumber = 0;
@@ -211,8 +215,8 @@
     NSInteger randomNumber = 2 + arc4random() % self.tracks.count - 2;
     NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
     NSString *streamURL = [track objectForKey:@"stream_url"];
-    
     SCAccount *account = [SCSoundCloud account];
+    [self.progressView setHidden:NO];
     
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:streamURL]
@@ -220,6 +224,7 @@
                  withAccount:account
       sendingProgressHandler:nil
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 [self.progressView setHidden:YES];
                  NSError *playerError;
                  player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
                  [player prepareToPlay];
@@ -309,7 +314,11 @@
                      });
                  });
              }];
+}
 
+- (void)makeMyProgressBarMoving
+{
+    
 }
 
 @end

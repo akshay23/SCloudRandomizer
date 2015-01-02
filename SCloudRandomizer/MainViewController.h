@@ -30,6 +30,7 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UILabel *lblArtist;
 @property (strong, nonatomic) IBOutlet UILabel *lblLength;
 @property (strong, nonatomic) IBOutlet UIImageView *imgArtwork;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 - (IBAction)logout:(id)sender;
 - (IBAction)login:(id)sender;
