@@ -10,6 +10,9 @@
 
 @interface MainViewController ()
 
+@property (strong, nonatomic) NSData *currentSongData;
+@property NSUInteger currentSongNumber;
+
 @end
 
 @implementation MainViewController
@@ -19,6 +22,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Clear the labels
+    [self.lblArtist setText:@""];
+    [self.lblLength setText:@""];
+    [self.lblSongTitle setText:@""];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -30,15 +38,29 @@
     {
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
-        [self.btnGetTracks setHidden:NO];
+        [self.imgArtwork setHidden:NO];
+        [self.lblArtist setHidden:NO];
+        [self.lblLength setHidden:NO];
+        [self.lblSongTitle setHidden:NO];
     }
     else
     {
         [self.btnSCConnect setHidden:NO];
         [self.btnSCDisconnect setHidden:YES];
-        [self.btnGetTracks setHidden:YES];
         [self.btnPlay setHidden:YES];
         [self.btnNext setHidden:YES];
+    }
+    
+    [self getTracks];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([SCSoundCloud account] != nil)
+    {
+        //[self showTrackInfo];
     }
 }
 
@@ -53,9 +75,12 @@
     [SCSoundCloud removeAccess];
     [self.btnSCConnect setHidden:NO];
     [self.btnSCDisconnect setHidden:YES];
-    [self.btnGetTracks setHidden:YES];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
+    [self.imgArtwork setHidden:YES];
+    [self.lblArtist setHidden:YES];
+    [self.lblLength setHidden:YES];
+    [self.lblSongTitle setHidden:YES];
     NSLog(@"Logged out.");
 }
 
@@ -78,7 +103,7 @@
     }];
 }
 
-- (IBAction)getTracks:(id)sender
+- (void)getTracks
 {
     SCRequestResponseHandler handler;
     handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -89,8 +114,6 @@
                                              error:&jsonError];
         if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
             self.tracks = (NSArray *)jsonResponse;
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tracks" message:@"Tracks acquired" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
             [self.btnPlay setHidden:NO];
             [self.btnNext setHidden:NO];
             [self.btnNext setEnabled:NO];
@@ -109,7 +132,7 @@
         }
     };
     
-    NSString *resourceURL = @"https://api.soundcloud.com/me/tracks.json";
+    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:resourceURL]
              usingParameters:nil
@@ -126,9 +149,9 @@
         {
             NSDictionary *track = [self.tracks objectAtIndex:0];
             NSString *streamURL = [track objectForKey:@"stream_url"];
-            
+
             SCAccount *account = [SCSoundCloud account];
-            
+
             [SCRequest performMethod:SCRequestMethodGET
                           onResource:[NSURL URLWithString:streamURL]
                      usingParameters:nil
@@ -136,11 +159,38 @@
               sendingProgressHandler:nil
                      responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                          NSError *playerError;
+                         self.currentSongData = data;
+                         self.currentSongNumber = 0;
                          player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
                          [player prepareToPlay];
                          [player play];
                          [self.btnNext setEnabled:YES];
                          [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+                         [self.lblSongTitle setText:[track objectForKey:@"title"]];
+                         long duration = [[track objectForKey:@"duration"] longValue];
+                         [self.lblLength setText:[self convertFromMilliseconds:duration]];
+                         NSDictionary *userInfo = [track objectForKey:@"user"];
+                         [self.lblArtist setText:[userInfo objectForKey:@"username"]];
+                         
+                         NSURL *imgUrl = nil;
+                         id albumArt = [track objectForKey:@"artwork_url"];
+                         if (albumArt == [NSNull null])
+                         {
+                             imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
+                         }
+                         else
+                         {
+                             imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+                         }
+                         
+                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                             NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
+                             
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 // Update the UI
+                                 self.imgArtwork.image = [UIImage imageWithData:imageData];
+                             });
+                         });
             }];
         }
         else
@@ -176,7 +226,90 @@
                  [player play];
                  [self.btnNext setEnabled:YES];
                  [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-    }];
+                 [self.lblSongTitle setText:[track objectForKey:@"title"]];
+                 long duration = [[track objectForKey:@"duration"] longValue];
+                 [self.lblLength setText:[self convertFromMilliseconds:duration]];
+                 NSDictionary *userInfo = [track objectForKey:@"user"];
+                 [self.lblArtist setText:[userInfo objectForKey:@"username"]];
+
+                 NSURL *imgUrl = nil;
+                 id albumArt = [track objectForKey:@"artwork_url"];
+                 if (albumArt == [NSNull null])
+                 {
+                     imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
+                 }
+                 else
+                 {
+                     imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+                 }
+                 
+                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                     NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         // Update the UI
+                         self.imgArtwork.image = [UIImage imageWithData:imageData];
+                     });
+                 });
+             }];
+}
+
+- (NSString *)convertFromMilliseconds:(long)duration
+{
+    NSInteger minutes = floor(duration / 60000);
+    NSInteger seconds = ((duration % 60000) / 1000);
+    NSString *formatted = nil;
+    if (seconds < 10)
+    {
+        formatted = [NSString stringWithFormat:@"%ld:0%ld", (long)minutes, (long)seconds];
+    }
+    else
+    {
+        formatted = [NSString stringWithFormat:@"%ld:%ld", (long)minutes, (long)seconds];
+    }
+    return  formatted;
+}
+
+- (void)showTrackInfo
+{
+    NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
+    NSString *streamURL = [track objectForKey:@"stream_url"];
+    SCAccount *account = [SCSoundCloud account];
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:streamURL]
+             usingParameters:nil
+                 withAccount:account
+      sendingProgressHandler:nil
+             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 [self.btnNext setEnabled:YES];
+                 [self.lblSongTitle setText:[track objectForKey:@"title"]];
+                 long duration = [[track objectForKey:@"duration"] longValue];
+                 [self.lblLength setText:[self convertFromMilliseconds:duration]];
+                 NSDictionary *userInfo = [track objectForKey:@"user"];
+                 [self.lblArtist setText:[userInfo objectForKey:@"username"]];
+                 
+                 NSURL *imgUrl = nil;
+                 id albumArt = [track objectForKey:@"artwork_url"];
+                 if (albumArt == [NSNull null])
+                 {
+                     imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
+                 }
+                 else
+                 {
+                     imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+                 }
+                 
+                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                     NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         // Update the UI
+                         self.imgArtwork.image = [UIImage imageWithData:imageData];
+                     });
+                 });
+             }];
+
 }
 
 @end

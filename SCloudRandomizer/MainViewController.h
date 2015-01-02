@@ -24,13 +24,15 @@ typedef NSUInteger PlayerState;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSCConnect;
 @property (strong, nonatomic) IBOutlet UIButton *btnSCDisconnect;
-@property (strong, nonatomic) IBOutlet UIButton *btnGetTracks;
 @property (strong, nonatomic) IBOutlet UIButton *btnPlay;
 @property (strong, nonatomic) IBOutlet UIButton *btnNext;
+@property (strong, nonatomic) IBOutlet UILabel *lblSongTitle;
+@property (strong, nonatomic) IBOutlet UILabel *lblArtist;
+@property (strong, nonatomic) IBOutlet UILabel *lblLength;
+@property (strong, nonatomic) IBOutlet UIImageView *imgArtwork;
 
 - (IBAction)logout:(id)sender;
 - (IBAction)login:(id)sender;
-- (IBAction)getTracks:(id)sender;
 - (IBAction)playSong:(id)sender;
 - (IBAction)playNext:(id)sender;
 

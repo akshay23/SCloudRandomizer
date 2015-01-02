@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20330A483D05D0C287CFDF1B"
+               BlueprintIdentifier = "96B882CBA047C10232581778"
                BuildableName = "libPods-SCloudRandomizer-CocoaSoundCloudAPI.a"
                BlueprintName = "Pods-SCloudRandomizer-CocoaSoundCloudAPI"
                ReferencedContainer = "container:Pods.xcodeproj">
