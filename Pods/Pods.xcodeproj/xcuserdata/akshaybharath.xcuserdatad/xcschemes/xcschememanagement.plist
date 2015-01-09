@@ -8,217 +8,181 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-CocoaSoundCloudUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-JSONKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-NXOAuth2Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-OHAttributedLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Pods-SCloudRandomizer-CocoaSoundCloudAPI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>Pods-SCloudRandomizer-CocoaSoundCloudUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>Pods-SCloudRandomizer-JSONKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>Pods-SCloudRandomizer-NXOAuth2Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 		<key>Pods-SCloudRandomizer-OHAttributedLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>12</integer>
 		</dict>
 		<key>Pods-SCloudRandomizer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-SCloudRandomizerTests-CocoaSoundCloudAPI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
 		</dict>
 		<key>Pods-SCloudRandomizerTests-CocoaSoundCloudUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
 		</dict>
 		<key>Pods-SCloudRandomizerTests-JSONKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
 		</dict>
 		<key>Pods-SCloudRandomizerTests-NXOAuth2Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
 		</dict>
 		<key>Pods-SCloudRandomizerTests-OHAttributedLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
 		</dict>
 		<key>Pods-SCloudRandomizerTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0438AD151890B3D11CF68DF5</key>
+		<key>09DA7D91CA67207F552EEE8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>05425DE3D44ED925BF86362C</key>
+		<key>0B06E5309538117072B1CC49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0B7A93195DFE89347C537A75</key>
+		<key>1A3E6082BAD5F616BFFD0F89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1AE8F1E8D7F54D1D9B1115BF</key>
+		<key>2F4AF451F267487A391394CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>259B6C4B79218196813FB6F2</key>
+		<key>37A0065FA0D48545D8406A59</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35DA61B28E43AF7AE027C6AF</key>
+		<key>3CCDF03D7501A5B98C392806</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4699C3D8B78EE62D6C3572E5</key>
+		<key>417D78BC64A10E57B18031BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54B37D062914224D95AF7B77</key>
+		<key>4393EAA01517AC223F4277F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>72AD42FC53C1673B9A3A39B7</key>
+		<key>72CF0BCF47D7CCDD9BA03806</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F53F39C164A5301CBE2613D</key>
+		<key>7DE71476B7DD2A94D29AE97D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96B882CBA047C10232581778</key>
+		<key>927704554C1705B335421989</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9BD16AF8B4DF939EF1E5BC49</key>
+		<key>AA4C28335B40CA3F82C4538B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A77C1B311BC54FBE55044747</key>
+		<key>DA6A783AC2A0CF495B9ED08A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA040141CE0AD7C13A65BEFD</key>
+		<key>DDA51FDFB9632C4F055057A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AFDF6C4F4A774D7BAA3964E2</key>
+		<key>E418C2DAE6D16439A02BC8CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3C52716AF3204D173ACE07B</key>
+		<key>EFCFFC4E8948BD1B895699D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B43FA696E992B176156D4B4F</key>
+		<key>F34C1E77D3F7AECD4AE7A207</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9F58478A90C740F18A77291</key>
+		<key>FE4376D218CBA7160B65435E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

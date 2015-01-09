@@ -27,6 +27,7 @@
     [self.lblArtist setText:@""];
     [self.lblLength setText:@""];
     [self.lblSongTitle setText:@""];
+    self.currentSongNumber = 3;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,16 +54,6 @@
     
     [self getTracks];
     [self.progressView setHidden:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if ([SCSoundCloud account] != nil)
-    {
-        //[self showTrackInfo];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,6 +87,7 @@
                                                                           } else if (error) {
                                                                               NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
                                                                           } else {
+                                                                              self.player = [[AVAudioPlayer alloc] init];
                                                                               NSLog(@"Logged in.");
                                                                           }
                                                                       }];
@@ -124,6 +116,10 @@
             {
                 [self.btnNext setEnabled:YES];
             }
+            
+            self.currentSongNumber = 2 + arc4random() % self.tracks.count - 2;
+            
+            [self showTrackInfo];
         }
         else
         {
@@ -146,9 +142,9 @@
 {
     if (![self.player isPlaying])
     {
-        if (self.player.data == nil)
+        if (self.player.data == nil && self.currentSongData == nil)
         {
-            NSDictionary *track = [self.tracks objectAtIndex:0];
+            NSDictionary *track = [self.tracks objectAtIndex:1];
             NSString *streamURL = [track objectForKey:@"stream_url"];
             SCAccount *account = [SCSoundCloud account];
             [self.progressView setHidden:NO];
@@ -196,17 +192,28 @@
                              });
                          });
             }];
+            NSLog(@"Playing song for first time");
+        }
+        else if (self.player.data == nil && self.currentSongData != nil)
+        {
+            player = [[AVAudioPlayer alloc] initWithData:self.currentSongData error:nil];
+            [player prepareToPlay];
+            [player play];
+            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+            NSLog(@"Playing song for first time; no load");
         }
         else
         {
             [self.player play];
             [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+            NSLog(@"Resuming song");
         }
     }
     else
     {
         [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
         [self.player pause];
+        NSLog(@"Paused");
     }
 }
 
@@ -257,6 +264,8 @@
                      });
                  });
              }];
+
+    NSLog(@"Playing next song");
 }
 
 - (NSString *)convertFromMilliseconds:(long)duration
@@ -287,6 +296,7 @@
                  withAccount:account
       sendingProgressHandler:nil
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 self.currentSongData = data;
                  [self.btnNext setEnabled:YES];
                  [self.lblSongTitle setText:[track objectForKey:@"title"]];
                  long duration = [[track objectForKey:@"duration"] longValue];
@@ -314,11 +324,6 @@
                      });
                  });
              }];
-}
-
-- (void)makeMyProgressBarMoving
-{
-    
 }
 
 @end
