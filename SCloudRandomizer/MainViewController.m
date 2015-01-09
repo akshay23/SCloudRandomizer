@@ -53,7 +53,6 @@
     }
     
     [self getTracks];
-    [self.progressView setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,17 +146,20 @@
             NSDictionary *track = [self.tracks objectAtIndex:1];
             NSString *streamURL = [track objectForKey:@"stream_url"];
             SCAccount *account = [SCSoundCloud account];
-            [self.progressView setHidden:NO];
+            
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"Loading Track";
+            hud.detailsLabelText = @"Please wait..";
 
             [SCRequest performMethod:SCRequestMethodGET
                           onResource:[NSURL URLWithString:streamURL]
                      usingParameters:nil
                          withAccount:account
               sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-                        [self.progressView setProgress:((float)bytesSent / bytesTotal) animated:YES];
-              }
+                                        hud.progress = ((float)bytesSent / bytesTotal);
+                                    }
                      responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                         [self.progressView setHidden:YES];
                          NSError *playerError;
                          self.currentSongData = data;
                          self.currentSongNumber = 0;
@@ -191,6 +193,8 @@
                                  self.imgArtwork.image = [UIImage imageWithData:imageData];
                              });
                          });
+                         
+                         [hud hide:YES];
             }];
             NSLog(@"Playing song for first time");
         }
@@ -223,15 +227,20 @@
     NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
     NSString *streamURL = [track objectForKey:@"stream_url"];
     SCAccount *account = [SCSoundCloud account];
-    [self.progressView setHidden:NO];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"Loading Track";
+    hud.detailsLabelText = @"Please wait..";
     
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:streamURL]
              usingParameters:nil
                  withAccount:account
-      sendingProgressHandler:nil
+      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+                            hud.progress = ((float)bytesSent / bytesTotal);
+                        }
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                 [self.progressView setHidden:YES];
                  NSError *playerError;
                  player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
                  [player prepareToPlay];
@@ -263,6 +272,8 @@
                          self.imgArtwork.image = [UIImage imageWithData:imageData];
                      });
                  });
+                 
+                 [hud hide:YES];
              }];
 
     NSLog(@"Playing next song");
@@ -290,11 +301,18 @@
     NSString *streamURL = [track objectForKey:@"stream_url"];
     SCAccount *account = [SCSoundCloud account];
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"Loading Track";
+    hud.detailsLabelText = @"Please wait..";
+    
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:streamURL]
              usingParameters:nil
                  withAccount:account
-      sendingProgressHandler:nil
+      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+                                hud.progress = ((float)bytesSent / bytesTotal);
+                            }
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                  self.currentSongData = data;
                  [self.btnNext setEnabled:YES];
@@ -323,6 +341,8 @@
                          self.imgArtwork.image = [UIImage imageWithData:imageData];
                      });
                  });
+
+                 [hud hide:YES];
              }];
 }
 
