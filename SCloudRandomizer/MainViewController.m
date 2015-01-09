@@ -109,6 +109,7 @@
             [self.btnPlay setHidden:NO];
             [self.btnNext setHidden:NO];
             [self.btnNext setEnabled:NO];
+            [self.btnPlay setEnabled:NO];
             NSLog(@"Tracks acquired.");
             
             if ([self.player isPlaying])
@@ -117,8 +118,8 @@
             }
             
             self.currentSongNumber = 2 + arc4random() % self.tracks.count - 2;
-            
-            [self showTrackInfo];
+            NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
+            [self getTrackInfo:track shouldPlay:NO];
         }
         else
         {
@@ -144,67 +145,9 @@
         if (self.player.data == nil && self.currentSongData == nil)
         {
             NSDictionary *track = [self.tracks objectAtIndex:1];
-            NSString *streamURL = [track objectForKey:@"stream_url"];
-            SCAccount *account = [SCSoundCloud account];
-            
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = @"Loading Track";
-            hud.detailsLabelText = @"Please wait..";
-
-            [SCRequest performMethod:SCRequestMethodGET
-                          onResource:[NSURL URLWithString:streamURL]
-                     usingParameters:nil
-                         withAccount:account
-              sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-                                        hud.progress = ((float)bytesSent / bytesTotal);
-                                    }
-                     responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                         NSError *playerError;
-                         self.currentSongData = data;
-                         self.currentSongNumber = 0;
-                         player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
-                         [player prepareToPlay];
-                         [player play];
-                         [self.btnNext setEnabled:YES];
-                         [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-                         [self.lblSongTitle setText:[track objectForKey:@"title"]];
-                         long duration = [[track objectForKey:@"duration"] longValue];
-                         [self.lblLength setText:[self convertFromMilliseconds:duration]];
-                         NSDictionary *userInfo = [track objectForKey:@"user"];
-                         [self.lblArtist setText:[userInfo objectForKey:@"username"]];
-                         
-                         NSURL *imgUrl = nil;
-                         id albumArt = [track objectForKey:@"artwork_url"];
-                         if (albumArt == [NSNull null])
-                         {
-                             imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
-                         }
-                         else
-                         {
-                             imgUrl = [NSURL URLWithString:(NSString *)albumArt];
-                         }
-                         
-                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                             NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
-                             
-                             dispatch_async(dispatch_get_main_queue(), ^{
-                                 // Update the UI
-                                 self.imgArtwork.image = [UIImage imageWithData:imageData];
-                             });
-                         });
-                         
-                         [hud hide:YES];
-            }];
+            self.currentSongNumber = 1;
+            [self getTrackInfo:track shouldPlay:YES];
             NSLog(@"Playing song for first time");
-        }
-        else if (self.player.data == nil && self.currentSongData != nil)
-        {
-            player = [[AVAudioPlayer alloc] initWithData:self.currentSongData error:nil];
-            [player prepareToPlay];
-            [player play];
-            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-            NSLog(@"Playing song for first time; no load");
         }
         else
         {
@@ -217,64 +160,18 @@
     {
         [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
         [self.player pause];
-        NSLog(@"Paused");
+        NSLog(@"Pausing song");
     }
 }
 
 - (IBAction)playNext:(id)sender
 {
     NSInteger randomNumber = 2 + arc4random() % self.tracks.count - 2;
+    self.currentSongNumber = randomNumber;
     NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
-    NSString *streamURL = [track objectForKey:@"stream_url"];
-    SCAccount *account = [SCSoundCloud account];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = @"Loading Track";
-    hud.detailsLabelText = @"Please wait..";
-    
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:streamURL]
-             usingParameters:nil
-                 withAccount:account
-      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-                            hud.progress = ((float)bytesSent / bytesTotal);
-                        }
-             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                 NSError *playerError;
-                 player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
-                 [player prepareToPlay];
-                 [player play];
-                 [self.btnNext setEnabled:YES];
-                 [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-                 [self.lblSongTitle setText:[track objectForKey:@"title"]];
-                 long duration = [[track objectForKey:@"duration"] longValue];
-                 [self.lblLength setText:[self convertFromMilliseconds:duration]];
-                 NSDictionary *userInfo = [track objectForKey:@"user"];
-                 [self.lblArtist setText:[userInfo objectForKey:@"username"]];
-
-                 NSURL *imgUrl = nil;
-                 id albumArt = [track objectForKey:@"artwork_url"];
-                 if (albumArt == [NSNull null])
-                 {
-                     imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
-                 }
-                 else
-                 {
-                     imgUrl = [NSURL URLWithString:(NSString *)albumArt];
-                 }
-                 
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                     NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
-                     
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         // Update the UI
-                         self.imgArtwork.image = [UIImage imageWithData:imageData];
-                     });
-                 });
-                 
-                 [hud hide:YES];
-             }];
+    [self.btnNext setEnabled:NO];
+    [self.btnPlay setEnabled:NO];
+    [self getTrackInfo:track shouldPlay:YES];
 
     NSLog(@"Playing next song");
 }
@@ -315,6 +212,8 @@
                             }
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                  self.currentSongData = data;
+                 player = [[AVAudioPlayer alloc] initWithData:data error:nil];
+                 [player prepareToPlay];
                  [self.btnNext setEnabled:YES];
                  [self.lblSongTitle setText:[track objectForKey:@"title"]];
                  long duration = [[track objectForKey:@"duration"] longValue];
@@ -344,6 +243,66 @@
 
                  [hud hide:YES];
              }];
+}
+
+- (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play
+{
+    NSString *streamURL = [track objectForKey:@"stream_url"];
+    SCAccount *account = [SCSoundCloud account];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"Loading Track";
+    hud.detailsLabelText = @"Please wait..";
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:streamURL]
+             usingParameters:nil
+                 withAccount:account
+      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+                                hud.progress = ((float)bytesSent / bytesTotal);
+                        }
+             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 self.currentSongData = data;
+                 self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
+                 [self.player prepareToPlay];
+                 
+                 if (play)
+                 {
+                     [self.player play];
+                     [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+                 }
+                 
+                 [self.btnNext setEnabled:YES];
+                 [self.btnPlay setEnabled:YES];
+                 [self.lblSongTitle setText:[track objectForKey:@"title"]];
+                 long duration = [[track objectForKey:@"duration"] longValue];
+                 [self.lblLength setText:[self convertFromMilliseconds:duration]];
+                 NSDictionary *userInfo = [track objectForKey:@"user"];
+                 [self.lblArtist setText:[userInfo objectForKey:@"username"]];
+                 
+                 NSURL *imgUrl = nil;
+                 id albumArt = [track objectForKey:@"artwork_url"];
+                 if (albumArt == [NSNull null])
+                 {
+                     imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
+                 }
+                 else
+                 {
+                     imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+                 }
+                 
+                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                     NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         // Update the UI
+                         self.imgArtwork.image = [UIImage imageWithData:imageData];
+                     });
+                 });
+                 
+                 [hud hide:YES];
+             }];
+
 }
 
 @end
