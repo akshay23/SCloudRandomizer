@@ -55,6 +55,7 @@
         [self.btnSCDisconnect setHidden:YES];
         [self.btnPlay setHidden:YES];
         [self.btnNext setHidden:YES];
+        [self.imgArtwork setHidden:YES];
     }
     
     [self getTracks];
@@ -229,7 +230,10 @@
                  
                  [self.btnNext setEnabled:YES];
                  [self.btnPlay setEnabled:YES];
+                 [self.imgArtwork setHidden:NO];
                  [self.btnChangeParams setEnabled:YES];
+                 self.imgArtwork.layer.borderWidth = 1;
+                 self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
                  [self.lblSongTitle setText:[track objectForKey:@"title"]];
                  long duration = [[track objectForKey:@"duration"] longValue];
                  [self.lblLength setText:[self convertFromMilliseconds:duration]];

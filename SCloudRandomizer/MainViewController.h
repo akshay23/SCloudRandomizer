@@ -32,6 +32,7 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UILabel *lblLength;
 @property (strong, nonatomic) IBOutlet UIImageView *imgArtwork;
 @property (strong, nonatomic) IBOutlet UIButton *btnChangeParams;
+@property (strong, nonatomic) IBOutlet UIView *btnLike;
 
 - (IBAction)logout:(id)sender;
 - (IBAction)login:(id)sender;
