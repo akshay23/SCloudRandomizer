@@ -116,6 +116,7 @@
             [self.btnNext setHidden:NO];
             [self.btnNext setEnabled:NO];
             [self.btnPlay setEnabled:NO];
+            [self.btnChangeParams setEnabled:NO];
             NSLog(@"Tracks acquired.");
             
             if ([self.player isPlaying])
@@ -177,6 +178,7 @@
     NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
     [self.btnNext setEnabled:NO];
     [self.btnPlay setEnabled:NO];
+    [self.btnChangeParams setEnabled:NO];
     [self getTrackInfo:track shouldPlay:YES];
 
     NSLog(@"Playing next song");
@@ -227,6 +229,7 @@
                  
                  [self.btnNext setEnabled:YES];
                  [self.btnPlay setEnabled:YES];
+                 [self.btnChangeParams setEnabled:YES];
                  [self.lblSongTitle setText:[track objectForKey:@"title"]];
                  long duration = [[track objectForKey:@"duration"] longValue];
                  [self.lblLength setText:[self convertFromMilliseconds:duration]];
