@@ -28,6 +28,11 @@
     [self.lblLength setText:@""];
     [self.lblSongTitle setText:@""];
     self.currentSongNumber = 3;
+    
+    // Draw border around parameters button
+    self.btnChangeParams.layer.cornerRadius = 4;
+    self.btnChangeParams.layer.borderWidth = 1;
+    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,6 +77,7 @@
     [self.lblArtist setHidden:YES];
     [self.lblLength setHidden:YES];
     [self.lblSongTitle setHidden:YES];
+    [self.player stop];
     NSLog(@"Logged out.");
 }
 
@@ -80,16 +86,16 @@
     [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
         SCLoginViewController *loginViewController;
         loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
-                                                                      completionHandler:^(NSError *error) {
-                                                                          if (SC_CANCELED(error)) {
-                                                                              NSLog(@"Canceled!");
-                                                                          } else if (error) {
-                                                                              NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
-                                                                          } else {
-                                                                              self.player = [[AVAudioPlayer alloc] init];
-                                                                              NSLog(@"Logged in.");
-                                                                          }
-                                                                      }];
+                                  completionHandler:^(NSError *error) {
+                                      if (SC_CANCELED(error)) {
+                                          NSLog(@"Canceled!");
+                                      } else if (error) {
+                                          NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
+                                      } else {
+                                          self.player = [[AVAudioPlayer alloc] init];
+                                          NSLog(@"Logged in.");
+                                      }
+                                  }];
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }];
@@ -190,59 +196,6 @@
         formatted = [NSString stringWithFormat:@"%ld:%ld", (long)minutes, (long)seconds];
     }
     return  formatted;
-}
-
-- (void)showTrackInfo
-{
-    NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
-    NSString *streamURL = [track objectForKey:@"stream_url"];
-    SCAccount *account = [SCSoundCloud account];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = @"Loading Track";
-    hud.detailsLabelText = @"Please wait..";
-    
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:streamURL]
-             usingParameters:nil
-                 withAccount:account
-      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-                                hud.progress = ((float)bytesSent / bytesTotal);
-                            }
-             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                 self.currentSongData = data;
-                 player = [[AVAudioPlayer alloc] initWithData:data error:nil];
-                 [player prepareToPlay];
-                 [self.btnNext setEnabled:YES];
-                 [self.lblSongTitle setText:[track objectForKey:@"title"]];
-                 long duration = [[track objectForKey:@"duration"] longValue];
-                 [self.lblLength setText:[self convertFromMilliseconds:duration]];
-                 NSDictionary *userInfo = [track objectForKey:@"user"];
-                 [self.lblArtist setText:[userInfo objectForKey:@"username"]];
-                 
-                 NSURL *imgUrl = nil;
-                 id albumArt = [track objectForKey:@"artwork_url"];
-                 if (albumArt == [NSNull null])
-                 {
-                     imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
-                 }
-                 else
-                 {
-                     imgUrl = [NSURL URLWithString:(NSString *)albumArt];
-                 }
-                 
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                     NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
-                     
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         // Update the UI
-                         self.imgArtwork.image = [UIImage imageWithData:imageData];
-                     });
-                 });
-
-                 [hud hide:YES];
-             }];
 }
 
 - (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play

@@ -181,7 +181,13 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-5w-1ww">
-                                <rect key="frame" x="92" y="524" width="189" height="30"/>
+                                <rect key="frame" x="69" y="524" width="232" height="37"/>
+                                <color key="backgroundColor" red="0.7137255072593689" green="0.92941182851791382" blue="0.7725490927696228" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="lFJ-rT-Ywq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                                 <state key="normal" title="Change Search Parameters">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -195,6 +201,7 @@
                             <constraint firstItem="skF-YA-oCH" firstAttribute="trailing" secondItem="Gco-6T-81m" secondAttribute="trailing" id="35o-at-bVr"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="107" id="3WX-Zd-49y"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="120" id="5k7-Jy-ztp"/>
+                            <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="YBr-5w-1ww" secondAttribute="bottom" constant="39" id="77w-9C-kTz"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="79R-my-hRC"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="centerY" secondItem="dD3-QH-x40" secondAttribute="centerY" id="7p7-4i-jma"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="7rr-g5-8VG"/>
@@ -226,7 +233,6 @@
                             <constraint firstItem="Jwn-Gq-AVr" firstAttribute="trailing" secondItem="dD3-QH-x40" secondAttribute="trailing" id="XIN-by-zW2"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="centerY" secondItem="dD3-QH-x40" secondAttribute="centerY" id="XMy-OC-tyZ"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="dD3-QH-x40" secondAttribute="trailing" constant="4" id="XOw-VO-hJG"/>
-                            <constraint firstItem="YBr-5w-1ww" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="76" id="XX0-bl-Hr9"/>
                             <constraint firstItem="Gco-6T-81m" firstAttribute="trailing" secondItem="skF-YA-oCH" secondAttribute="trailing" id="XYu-c9-TZp"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="p4S-YQ-aRk" secondAttribute="leading" id="Xdb-13-vgU"/>
                             <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="102" id="Xy8-Hj-riG"/>
@@ -248,9 +254,10 @@
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="top" secondItem="1tV-ew-NVm" secondAttribute="bottom" constant="15" id="daK-GB-BhO"/>
                             <constraint firstItem="o9p-ox-ZYb" firstAttribute="top" secondItem="0Lq-FV-sWT" secondAttribute="bottom" constant="124" id="eAI-FA-Mdi"/>
                             <constraint firstItem="p4S-YQ-aRk" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="108" id="exb-tF-LBb"/>
+                            <constraint firstItem="YBr-5w-1ww" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="53" id="fBN-kR-iLl"/>
                             <constraint firstItem="ZDc-Wu-OC4" firstAttribute="top" secondItem="Jwn-Gq-AVr" secondAttribute="bottom" constant="2" id="gBP-iQ-0wf"/>
+                            <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="26" id="haV-6Z-UUW"/>
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="top" secondItem="p4S-YQ-aRk" secondAttribute="bottom" constant="42" id="hgw-p6-Dfz"/>
-                            <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="26" id="hxc-UA-qJa"/>
                             <constraint firstItem="p4S-YQ-aRk" firstAttribute="leading" secondItem="Gco-6T-81m" secondAttribute="leading" id="j1V-ds-IC5"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="leading" secondItem="dD3-QH-x40" secondAttribute="trailing" constant="3" id="j3D-DG-FdT"/>
                             <constraint firstItem="ZDc-Wu-OC4" firstAttribute="trailing" secondItem="Jwn-Gq-AVr" secondAttribute="trailing" id="jAc-pP-0PH"/>
@@ -367,6 +374,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="btnChangeParams" destination="YBr-5w-1ww" id="vTz-Oo-o3T"/>
                         <outlet property="btnNext" destination="0Lq-FV-sWT" id="dv3-7r-ARd"/>
                         <outlet property="btnPlay" destination="oX9-Qc-5vB" id="09w-YQ-MJj"/>
                         <outlet property="btnSCConnect" destination="c5h-O2-fzL" id="Y5x-eg-cwG"/>
