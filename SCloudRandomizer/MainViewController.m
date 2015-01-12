@@ -23,6 +23,17 @@
 {
     [super viewDidLoad];
     
+    // Storyboard
+    if (![GlobalData getInstance].mainStoryboard)
+    {
+        // Instantiate new main storyboard instance
+        [GlobalData getInstance].mainStoryboard = self.storyboard;
+        NSLog(@"mainStoryboard instantiated");
+    }
+    
+    // New search params view instance
+    self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
+    
     // Clear the labels
     [self.lblArtist setText:@""];
     [self.lblLength setText:@""];
@@ -33,6 +44,7 @@
     self.btnChangeParams.layer.cornerRadius = 4;
     self.btnChangeParams.layer.borderWidth = 1;
     self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
+    self.paramsChanged = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,7 +70,11 @@
         [self.imgArtwork setHidden:YES];
     }
     
-    [self getTracks];
+    if (self.paramsChanged)
+    {
+        [self getTracks];
+        self.paramsChanged = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,6 +199,11 @@
     [self getTrackInfo:track shouldPlay:YES];
 
     NSLog(@"Playing next song");
+}
+
+- (IBAction)changeParams:(id)sender
+{
+    [self presentViewController:self.searchParamsVC animated:YES completion:nil];
 }
 
 - (NSString *)convertFromMilliseconds:(long)duration

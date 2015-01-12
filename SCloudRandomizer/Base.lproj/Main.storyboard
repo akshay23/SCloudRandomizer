@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AGx-bt-YRN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -191,6 +193,9 @@
                                 <state key="normal" title="Change Search Parameters">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeParams:" destination="AGx-bt-YRN" eventType="touchUpInside" id="kRq-pN-pNI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-Bc-bQ3">
                                 <rect key="frame" x="275" y="265" width="50" height="50"/>
@@ -396,10 +401,10 @@
             </objects>
             <point key="canvasLocation" x="1661" y="345"/>
         </scene>
-        <!--View Controller-->
+        <!--Search ParamsVC-->
         <scene sceneID="MHR-sP-Q3u">
             <objects>
-                <viewController storyboardIdentifier="searchCriteriaVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e9Y-XI-SDn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchParamsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e9Y-XI-SDn" customClass="SearchParamsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2dL-xQ-mhq"/>
                         <viewControllerLayoutGuide type="bottom" id="kI1-UD-iad"/>
@@ -407,8 +412,81 @@
                     <view key="view" contentMode="scaleToFill" id="P9C-HT-tBa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2B-IZ-6Qs">
+                                <rect key="frame" x="24" y="23" width="85" height="27"/>
+                                <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="PhN-Ml-mVN"/>
+                                    <constraint firstAttribute="width" constant="85" id="SYc-R6-6yC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PhN-Ml-mVN"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="cancel:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="9mJ-Bi-AXR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-RG-yQL">
+                                <rect key="frame" x="278" y="23" width="71" height="27"/>
+                                <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="A6h-gQ-9fC"/>
+                                    <constraint firstAttribute="width" constant="71" id="FvL-gT-Ftx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FvL-gT-Ftx"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="done:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="ZBK-ef-SMx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.70196080207824707" green="0.92941182851791382" blue="0.84705889225006104" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="S2B-IZ-6Qs" firstAttribute="top" secondItem="2dL-xQ-mhq" secondAttribute="bottom" constant="3" id="3Pt-2z-kte"/>
+                            <constraint firstItem="7jH-RG-yQL" firstAttribute="firstBaseline" secondItem="S2B-IZ-6Qs" secondAttribute="baseline" id="3Tt-z9-xf9"/>
+                            <constraint firstItem="7jH-RG-yQL" firstAttribute="baseline" secondItem="S2B-IZ-6Qs" secondAttribute="firstBaseline" id="Bge-Wp-N7j"/>
+                            <constraint firstItem="kI1-UD-iad" firstAttribute="top" secondItem="7jH-RG-yQL" secondAttribute="bottom" constant="550" id="Iuy-Dg-NTS"/>
+                            <constraint firstItem="7jH-RG-yQL" firstAttribute="leading" secondItem="P9C-HT-tBa" secondAttribute="leading" constant="270" id="JhK-hI-HQS"/>
+                            <constraint firstItem="kI1-UD-iad" firstAttribute="top" secondItem="7jH-RG-yQL" secondAttribute="bottom" constant="550" id="M4u-G6-JaX"/>
+                            <constraint firstItem="S2B-IZ-6Qs" firstAttribute="firstBaseline" secondItem="7jH-RG-yQL" secondAttribute="baseline" id="Rdb-mW-8Ir"/>
+                            <constraint firstItem="S2B-IZ-6Qs" firstAttribute="baseline" secondItem="7jH-RG-yQL" secondAttribute="firstBaseline" id="Ri2-y9-kP8"/>
+                            <constraint firstItem="S2B-IZ-6Qs" firstAttribute="leading" secondItem="P9C-HT-tBa" secondAttribute="leadingMargin" constant="8" id="RyS-Zh-jlS"/>
+                            <constraint firstItem="S2B-IZ-6Qs" firstAttribute="top" secondItem="7jH-RG-yQL" secondAttribute="top" id="Ssb-Wk-v2k"/>
+                            <constraint firstItem="7jH-RG-yQL" firstAttribute="top" secondItem="S2B-IZ-6Qs" secondAttribute="top" id="VhF-Io-1Li"/>
+                            <constraint firstItem="7jH-RG-yQL" firstAttribute="top" secondItem="2dL-xQ-mhq" secondAttribute="bottom" constant="3" id="bny-lg-EjQ"/>
+                            <constraint firstItem="S2B-IZ-6Qs" firstAttribute="leading" secondItem="P9C-HT-tBa" secondAttribute="leadingMargin" constant="8" id="ueD-AY-efo"/>
+                            <constraint firstItem="7jH-RG-yQL" firstAttribute="leading" secondItem="P9C-HT-tBa" secondAttribute="leading" constant="278" id="vaR-DR-Zxx"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3Pt-2z-kte"/>
+                                <exclude reference="Rdb-mW-8Ir"/>
+                                <exclude reference="Ri2-y9-kP8"/>
+                                <exclude reference="RyS-Zh-jlS"/>
+                                <exclude reference="Ssb-Wk-v2k"/>
+                                <exclude reference="JhK-hI-HQS"/>
+                                <exclude reference="Iuy-Dg-NTS"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="btnCancel" destination="S2B-IZ-6Qs" id="7JJ-lf-aat"/>
+                        <outlet property="btnSave" destination="7jH-RG-yQL" id="dQ3-8k-2bV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgv-Vs-x0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

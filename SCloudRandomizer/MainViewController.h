@@ -10,6 +10,9 @@
 #import <SCUI.h>
 #import <AVFoundation/AVFoundation.h>
 #import "MBProgressHUD.h"
+#import "SearchParamsVC.h"
+#import "GlobalData.h"
+#import "SearchParams.h"
 
 @interface MainViewController : UIViewController
 
@@ -20,8 +23,10 @@ enum {
 };
 typedef NSUInteger PlayerState;
 
+@property BOOL paramsChanged;
 @property (strong, nonatomic) NSArray *tracks;
 @property (strong, nonatomic) AVAudioPlayer *player;
+@property (strong, nonatomic) SearchParamsVC *searchParamsVC;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSCConnect;
 @property (strong, nonatomic) IBOutlet UIButton *btnSCDisconnect;
@@ -38,5 +43,6 @@ typedef NSUInteger PlayerState;
 - (IBAction)login:(id)sender;
 - (IBAction)playSong:(id)sender;
 - (IBAction)playNext:(id)sender;
+- (IBAction)changeParams:(id)sender;
 
 @end
