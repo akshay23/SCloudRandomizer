@@ -249,6 +249,8 @@
                      [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
                  }
                  
+                 [self.btnInfo setHidden:NO];
+                 [self.btnLike setHidden:NO];
                  [self.btnNext setEnabled:YES];
                  [self.btnPlay setEnabled:YES];
                  [self.imgArtwork setHidden:NO];
