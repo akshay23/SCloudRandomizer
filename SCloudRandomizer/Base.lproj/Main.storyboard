@@ -197,14 +197,20 @@
                                     <action selector="changeParams:" destination="AGx-bt-YRN" eventType="touchUpInside" id="kRq-pN-pNI"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-Bc-bQ3">
+                            <button hidden="YES" opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-Bc-bQ3">
                                 <rect key="frame" x="275" y="276" width="50" height="50"/>
                                 <state key="normal" image="Heart-white-transparent.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="favThisSong:" destination="AGx-bt-YRN" eventType="touchUpInside" id="XGL-PI-AUp"/>
+                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ1-zg-oUh">
                                 <rect key="frame" x="289" y="217" width="22" height="22"/>
+                                <connections>
+                                    <action selector="showTrackInfo:" destination="AGx-bt-YRN" eventType="touchUpInside" id="bmy-Xq-Vpt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78431379795074463" green="0.89019614458084106" blue="0.94117653369903564" alpha="1" colorSpace="deviceRGB"/>

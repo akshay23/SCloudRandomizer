@@ -27,6 +27,7 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) NSArray *tracks;
 @property (strong, nonatomic) AVAudioPlayer *player;
 @property (strong, nonatomic) SearchParamsVC *searchParamsVC;
+@property (strong, nonatomic) SearchParams *mySearchParams;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSCConnect;
 @property (strong, nonatomic) IBOutlet UIButton *btnSCDisconnect;
@@ -45,5 +46,7 @@ typedef NSUInteger PlayerState;
 - (IBAction)playSong:(id)sender;
 - (IBAction)playNext:(id)sender;
 - (IBAction)changeParams:(id)sender;
+- (IBAction)favThisSong:(id)sender;
+- (IBAction)showTrackInfo:(id)sender;
 
 @end

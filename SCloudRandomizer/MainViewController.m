@@ -11,6 +11,8 @@
 @interface MainViewController ()
 
 @property (strong, nonatomic) NSData *currentSongData;
+@property (strong, nonatomic) NSDictionary *currentTrack;
+@property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
 
 @end
@@ -118,6 +120,7 @@
     }];
 }
 
+// TODO: Change logic to get tracks based on SearchParams object
 - (void)getTracks
 {
     SCRequestResponseHandler handler;
@@ -206,6 +209,27 @@
     [self presentViewController:self.searchParamsVC animated:YES completion:nil];
 }
 
+- (IBAction)favThisSong:(id)sender
+{
+    if (self.isCurrentSongLiked)
+    {
+        // TODO: Remove from favs list
+        NSLog(@"Removed from favs list");
+    }
+    else
+    {
+        // TODO: Add to favs list
+        NSLog(@"Added to favs list");
+    }
+    
+    self.isCurrentSongLiked = !self.isCurrentSongLiked;
+}
+
+- (IBAction)showTrackInfo:(id)sender
+{
+}
+
+// Convert to ms
 - (NSString *)convertFromMilliseconds:(long)duration
 {
     NSInteger minutes = floor(duration / 60000);
@@ -222,6 +246,7 @@
     return  formatted;
 }
 
+// Display the track info
 - (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play
 {
     NSString *streamURL = [track objectForKey:@"stream_url"];
@@ -237,7 +262,7 @@
                  withAccount:account
       sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
                                 hud.progress = ((float)bytesSent / bytesTotal);
-                        }
+                            }
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                  self.currentSongData = data;
                  self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
@@ -262,6 +287,7 @@
                  [self.lblLength setText:[self convertFromMilliseconds:duration]];
                  NSDictionary *userInfo = [track objectForKey:@"user"];
                  [self.lblArtist setText:[userInfo objectForKey:@"username"]];
+                 self.currentTrack = track;
                  
                  NSURL *imgUrl = nil;
                  id albumArt = [track objectForKey:@"artwork_url"];
@@ -284,8 +310,24 @@
                  });
                  
                  [hud hide:YES];
+                 [self checkFavouritesList];
              }];
 
+}
+
+// Set the like button accordingly
+- (void)checkFavouritesList
+{
+    if ([self.currentTrack objectForKey:@"user_favorite"])
+    {
+        self.isCurrentSongLiked = YES;
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.isCurrentSongLiked = NO;
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
+    }
 }
 
 @end
