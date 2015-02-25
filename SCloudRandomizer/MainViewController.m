@@ -211,14 +211,19 @@
 
 - (IBAction)favThisSong:(id)sender
 {
+    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
+    NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: [[self.currentTrack objectForKey:@"id"] stringValue]]];
+    
     if (self.isCurrentSongLiked)
     {
-        // TODO: Remove from favs list
+        [SCRequest performMethod:SCRequestMethodDELETE onResource:postURL usingParameters:nil withAccount:[SCSoundCloud account] sendingProgressHandler:nil responseHandler:nil];
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
         NSLog(@"Removed from favs list");
     }
     else
     {
-        // TODO: Add to favs list
+        [SCRequest performMethod:SCRequestMethodPUT onResource:postURL usingParameters:nil withAccount:[SCSoundCloud account] sendingProgressHandler:nil responseHandler:nil];
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
         NSLog(@"Added to favs list");
     }
     
