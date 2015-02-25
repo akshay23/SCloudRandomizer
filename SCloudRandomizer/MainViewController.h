@@ -14,7 +14,7 @@
 #import "GlobalData.h"
 #import "SearchParams.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<AVAudioPlayerDelegate>
 
 enum {
     Playing = 1,

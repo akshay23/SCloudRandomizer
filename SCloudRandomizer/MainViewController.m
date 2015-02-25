@@ -144,7 +144,7 @@
                 [self.btnNext setEnabled:YES];
             }
             
-            self.currentSongNumber = 2 + arc4random() % self.tracks.count - 2;
+            self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
             NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
             [self getTrackInfo:track shouldPlay:NO];
         }
@@ -193,15 +193,7 @@
 
 - (IBAction)playNext:(id)sender
 {
-    NSInteger randomNumber = 2 + arc4random() % self.tracks.count - 2;
-    self.currentSongNumber = randomNumber;
-    NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
-    [self.btnNext setEnabled:NO];
-    [self.btnPlay setEnabled:NO];
-    [self.btnChangeParams setEnabled:NO];
-    [self getTrackInfo:track shouldPlay:YES];
-
-    NSLog(@"Playing next song");
+    [self doPlayNextSong];
 }
 
 - (IBAction)changeParams:(id)sender
@@ -232,6 +224,19 @@
 
 - (IBAction)showTrackInfo:(id)sender
 {
+}
+
+- (void)doPlayNextSong
+{
+    NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
+    self.currentSongNumber = randomNumber;
+    NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
+    [self.btnNext setEnabled:NO];
+    [self.btnPlay setEnabled:NO];
+    [self.btnChangeParams setEnabled:NO];
+    [self getTrackInfo:track shouldPlay:YES];
+    
+    NSLog(@"Playing next song");
 }
 
 // Convert to ms
@@ -272,6 +277,7 @@
                  self.currentSongData = data;
                  self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
                  [self.player prepareToPlay];
+                 self.player.delegate = self;
                  
                  if (play)
                  {
@@ -333,6 +339,11 @@
         self.isCurrentSongLiked = NO;
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
     }
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [self doPlayNextSong];
 }
 
 @end
