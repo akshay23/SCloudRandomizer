@@ -19,6 +19,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnClose;
 @property (strong, nonatomic) IBOutlet UITextView *txtTitle;
 @property (strong, nonatomic) IBOutlet UITextView *txtArtist;
+@property (strong, nonatomic) IBOutlet UITextView *txtDuration;
+@property (strong, nonatomic) IBOutlet UITextView *txtLikes;
+@property (strong, nonatomic) IBOutlet UITextView *txtDesc;
+@property (strong, nonatomic) IBOutlet UITextView *txtPlays;
+@property (strong, nonatomic) IBOutlet UITextView *txtUploaded;
+@property (strong, nonatomic) IBOutlet UITextView *txtTags;
 
 - (IBAction)close:(id)sender;
 
