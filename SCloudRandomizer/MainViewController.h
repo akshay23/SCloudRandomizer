@@ -13,8 +13,9 @@
 #import "SearchParamsVC.h"
 #import "GlobalData.h"
 #import "SearchParams.h"
+#import "TrackInfoVC.h"
 
-@interface MainViewController : UIViewController<AVAudioPlayerDelegate>
+@interface MainViewController : UIViewController<AVAudioPlayerDelegate,MainVCDelegate>
 
 enum {
     Playing = 1,
@@ -28,6 +29,7 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) AVAudioPlayer *player;
 @property (strong, nonatomic) SearchParamsVC *searchParamsVC;
 @property (strong, nonatomic) SearchParams *mySearchParams;
+@property (strong, nonatomic) TrackInfoVC *trackInfoVC;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSCConnect;
 @property (strong, nonatomic) IBOutlet UIButton *btnSCDisconnect;

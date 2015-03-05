@@ -11,9 +11,9 @@
 @interface MainViewController ()
 
 @property (strong, nonatomic) NSData *currentSongData;
-@property (strong, nonatomic) NSDictionary *currentTrack;
 @property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
+@property (strong, nonatomic) NSDictionary *currentTrack;
 
 @end
 
@@ -33,8 +33,10 @@
         NSLog(@"mainStoryboard instantiated");
     }
     
-    // New search params view instance
+    // New search params view instance and track info VC
     self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
+    self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
+    self.trackInfoVC.delegate = self;
     
     // Clear the labels
     [self.lblArtist setText:@""];
@@ -224,6 +226,7 @@
 
 - (IBAction)showTrackInfo:(id)sender
 {
+    [self presentViewController:self.trackInfoVC animated:YES completion:nil];
 }
 
 - (void)doPlayNextSong
@@ -344,6 +347,11 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     [self doPlayNextSong];
+}
+
+- (NSDictionary *)getCurrentTrack
+{
+    return self.currentTrack;
 }
 
 @end

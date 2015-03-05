@@ -26,6 +26,7 @@
 		19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED361A2FB92100DD97CC /* Images.xcassets */; };
 		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
 		19CDED461A2FB92100DD97CC /* SCloudRandomizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED451A2FB92100DD97CC /* SCloudRandomizerTests.m */; };
+		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
 		C14EEDFE7A11E93DCFB9D4D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7B3A8D657E6F7F5BDB2255 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,8 @@
 		19CDED3F1A2FB92100DD97CC /* SCloudRandomizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCloudRandomizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CDED441A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19CDED451A2FB92100DD97CC /* SCloudRandomizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCloudRandomizerTests.m; sourceTree = "<group>"; };
+		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
+		19F38A631A9F811C002361E6 /* TrackInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoVC.m; sourceTree = "<group>"; };
 		276CF3AB99530D51BD666B04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E232F970F295066B5DBC30F0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B3A8D657E6F7F5BDB2255 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +172,8 @@
 				1997F7351A6421C700109F76 /* GlobalData.m */,
 				1997F7371A6454DC00109F76 /* SearchParams.h */,
 				1997F7381A6454DC00109F76 /* SearchParams.m */,
+				19F38A621A9F811C002361E6 /* TrackInfoVC.h */,
+				19F38A631A9F811C002361E6 /* TrackInfoVC.m */,
 			);
 			path = SCloudRandomizer;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 			files = (
 				1997F7361A6421C700109F76 /* GlobalData.m in Sources */,
 				1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */,
+				19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */,
 				1997F7391A6454DC00109F76 /* SearchParams.m in Sources */,
 				19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */,
 				19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */,
