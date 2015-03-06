@@ -11,6 +11,9 @@
 @interface SearchParamsVC : UIViewController
 @property (strong, nonatomic) IBOutlet UIButton *btnCancel;
 @property (strong, nonatomic) IBOutlet UIButton *btnSave;
+@property (strong, nonatomic) IBOutlet UITextView *txtKeywords;
+@property (strong, nonatomic) IBOutlet UITextView *txtBpmFrom;
+@property (strong, nonatomic) IBOutlet UITextView *txtBpmTo;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

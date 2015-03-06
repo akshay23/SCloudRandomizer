@@ -227,7 +227,14 @@
 
 - (IBAction)showTrackInfo:(id)sender
 {
-    [self presentViewController:self.trackInfoVC animated:YES completion:nil];
+    // Custom animation
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.3;
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionFromRight;
+
+    [self.view.window.layer addAnimation:animation forKey:kCATransition];
+    [self presentViewController:self.trackInfoVC animated:NO completion:nil];
 }
 
 - (void)doPlayNextSong

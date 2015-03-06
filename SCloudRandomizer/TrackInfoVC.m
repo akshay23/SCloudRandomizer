@@ -64,7 +64,14 @@
 
 - (IBAction)close:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // Custom animation
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.3;
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionFromLeft;
+    
+    [self.view.window.layer addAnimation:animation forKey:kCATransition];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 // Convert to ms
