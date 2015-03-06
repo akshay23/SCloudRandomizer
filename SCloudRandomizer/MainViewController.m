@@ -289,7 +289,7 @@
     
     SCAccount *account = [SCSoundCloud account];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
+    hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"Loading Track";
     hud.detailsLabelText = @"Please wait..";
     
