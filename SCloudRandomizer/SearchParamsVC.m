@@ -24,6 +24,10 @@
     self.btnSave.layer.cornerRadius = 2;
     self.btnSave.layer.borderWidth = 1;
     self.btnSave.layer.borderColor = [UIColor blueColor].CGColor;
+    
+    // Used to hide keyboard when user taps view
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,10 +37,20 @@
 
 - (IBAction)done:(id)sender
 {
+    [self dismissKeyboard];
 }
 
 - (IBAction)cancel:(id)sender
 {
+    [self dismissKeyboard];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)dismissKeyboard
+{
+    [self.txtKeywords resignFirstResponder];
+    [self.txtBpmTo resignFirstResponder];
+    [self.txtBpmFrom resignFirstResponder];
+}
+
 @end

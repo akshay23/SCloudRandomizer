@@ -122,51 +122,6 @@
     }];
 }
 
-// TODO: Change logic to get tracks based on SearchParams object
-- (void)getTracks
-{
-    SCRequestResponseHandler handler;
-    handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
-        NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization
-                                             JSONObjectWithData:data
-                                             options:0
-                                             error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
-            self.tracks = (NSArray *)jsonResponse;
-            [self.btnPlay setHidden:NO];
-            [self.btnNext setHidden:NO];
-            [self.btnNext setEnabled:NO];
-            [self.btnPlay setEnabled:NO];
-            [self.btnChangeParams setEnabled:NO];
-            NSLog(@"Tracks acquired.");
-            
-            if ([self.player isPlaying])
-            {
-                [self.btnNext setEnabled:YES];
-            }
-            
-            self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
-            NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
-            [self getTrackInfo:track shouldPlay:NO];
-        }
-        else
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get your tracks! Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
-            NSLog(@"Could not get tracks.");
-        }
-    };
-    
-    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:resourceURL]
-             usingParameters:nil
-                 withAccount:[SCSoundCloud account]
-      sendingProgressHandler:nil
-             responseHandler:handler];
-}
-
 - (IBAction)playSong:(id)sender
 {
     if (![self.player isPlaying])
@@ -237,6 +192,52 @@
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
 }
 
+// TODO: Change logic to get tracks based on SearchParams object
+- (void)getTracks
+{
+    SCRequestResponseHandler handler;
+    handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSError *jsonError = nil;
+        NSJSONSerialization *jsonResponse = [NSJSONSerialization
+                                             JSONObjectWithData:data
+                                             options:0
+                                             error:&jsonError];
+        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
+            self.tracks = (NSArray *)jsonResponse;
+            [self.btnPlay setHidden:NO];
+            [self.btnNext setHidden:NO];
+            [self.btnNext setEnabled:NO];
+            [self.btnPlay setEnabled:NO];
+            [self.btnChangeParams setEnabled:NO];
+            NSLog(@"Tracks acquired.");
+            
+            if ([self.player isPlaying])
+            {
+                [self.btnNext setEnabled:YES];
+            }
+            
+            self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
+            NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
+            [self getTrackInfo:track shouldPlay:NO];
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get your tracks! Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            NSLog(@"Could not get tracks.");
+        }
+    };
+    
+    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:resourceURL]
+             usingParameters:nil
+                 withAccount:[SCSoundCloud account]
+      sendingProgressHandler:nil
+             responseHandler:handler];
+}
+
+// Actually play the next sont
 - (void)doPlayNextSong
 {
     [self refreshTrackList];
@@ -401,6 +402,8 @@
     [self doPlayNextSong];
 }
 
+// MainVCDelegate method
+// Return current track
 - (NSDictionary *)getCurrentTrack
 {
     return self.currentTrack;
