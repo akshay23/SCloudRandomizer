@@ -195,6 +195,7 @@
 
 - (IBAction)playNext:(id)sender
 {
+    [self.player stop];
     [self doPlayNextSong];
 }
 
@@ -231,15 +232,19 @@
 
 - (void)doPlayNextSong
 {
+    [self refreshTrackList];
     NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
     self.currentSongNumber = randomNumber;
     NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
     [self.btnNext setEnabled:NO];
     [self.btnPlay setEnabled:NO];
     [self.btnChangeParams setEnabled:NO];
+    [self.btnInfo setEnabled:NO];
+    [self.btnLike setEnabled:NO];
+    self.imgArtwork.alpha = 0.5;
     [self getTrackInfo:track shouldPlay:YES];
     
-    NSLog(@"Playing next song");
+    NSLog(@"Will play next song");
 }
 
 // Convert to ms
@@ -259,10 +264,22 @@
     return  formatted;
 }
 
-// Display the track info
+// Display the track info and play song if needed
 - (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play
 {
     NSString *streamURL = [track objectForKey:@"stream_url"];
+    NSLog(@"The streamURL is: %@", streamURL);
+    
+    while ([GlobalData stringIsNilOrEmpty:streamURL])
+    {
+        NSLog(@"streamURL is null");
+        [self refreshTrackList];
+        NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
+        self.currentSongNumber = randomNumber;
+        NSDictionary *track2 = [self.tracks objectAtIndex:randomNumber];
+        streamURL = [track2 objectForKey:@"stream_url"];
+    }
+    
     SCAccount *account = [SCSoundCloud account];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
@@ -292,9 +309,12 @@
                  [self.btnLike setHidden:NO];
                  [self.btnNext setEnabled:YES];
                  [self.btnPlay setEnabled:YES];
+                 [self.btnInfo setEnabled:YES];
+                 [self.btnLike setEnabled:YES];
                  [self.imgArtwork setHidden:NO];
                  [self.btnChangeParams setEnabled:YES];
                  self.imgArtwork.layer.borderWidth = 1;
+                 self.imgArtwork.alpha = 1.0;
                  self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
                  [self.lblSongTitle setText:[track objectForKey:@"title"]];
                  long duration = [[track objectForKey:@"duration"] longValue];
@@ -329,6 +349,29 @@
 
 }
 
+// Refresh/reload track list
+- (void)refreshTrackList
+{
+    SCRequestResponseHandler handler = ^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        NSError *jsonError = nil;
+        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]])
+        {
+            self.tracks = (NSArray *)jsonResponse;
+            NSLog(@"Tracks list refreshed.");
+        }
+    };
+    
+    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:resourceURL]
+             usingParameters:nil
+                 withAccount:[SCSoundCloud account]
+      sendingProgressHandler:nil
+             responseHandler:handler];
+}
+
 // Set the like button accordingly
 - (void)checkFavouritesList
 {
@@ -344,6 +387,7 @@
     }
 }
 
+// Play next song as the current song is finishing
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     [self doPlayNextSong];

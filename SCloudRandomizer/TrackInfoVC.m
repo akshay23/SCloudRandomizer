@@ -39,10 +39,7 @@
     long likes = [[track objectForKey:@"favoritings_count"] longValue];
     long plays = [[track objectForKey:@"playback_count"] longValue];
     NSString *desc = [track objectForKey:@"description"];
-    NSDate *uploaded = [track objectForKey:@"created_at"];
-    NSString *dFormat = [NSDateFormatter localizedStringFromDate:uploaded
-                                                              dateStyle:NSDateFormatterShortStyle
-                                                              timeStyle:NSDateFormatterFullStyle];
+    NSString *uploaded = [track objectForKey:@"created_at"];
     
     if ([desc isEqualToString:@""])
     {
@@ -57,7 +54,7 @@
     [self.txtPlays setText:[[NSNumber numberWithLong:plays] stringValue]];
     [self.txtDesc scrollRangeToVisible:NSMakeRange(0, 0)];
     [self.txtDesc setText:desc];
-    [self.txtUploaded setText:uploaded];
+    [self.txtUploaded setText:[uploaded substringToIndex:10]];
     [self.txtTags scrollRangeToVisible:NSMakeRange(0, 0)];
     [self.txtTags setText:[track objectForKey:@"tag_list"]];
     
