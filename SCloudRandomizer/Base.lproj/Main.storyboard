@@ -463,6 +463,48 @@
                                     <action selector="done:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="ZBK-ef-SMx"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter as many keywords as you want in the following textbox, separating each with a comma." translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
+                                <rect key="frame" x="24" y="151" width="323" height="80"/>
+                                <color key="backgroundColor" red="0.90196084976196289" green="0.96862751245498657" blue="0.89019614458084106" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Biggie, rap" translatesAutoresizingMaskIntoConstraints="NO" id="rvt-yK-Nw3">
+                                <rect key="frame" x="24" y="235" width="323" height="151"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter your desired BPM range." translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
+                                <rect key="frame" x="24" y="415" width="323" height="38"/>
+                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="10" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo">
+                                <rect key="frame" x="99" y="457" width="68" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="200" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8">
+                                <rect key="frame" x="244" y="457" width="68" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-80-vbR">
+                                <rect key="frame" x="55" y="460" width="44" height="29"/>
+                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-HR-kKY">
+                                <rect key="frame" x="217" y="459" width="27" height="31"/>
+                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.70196080207824707" green="0.92941182851791382" blue="0.84705889225006104" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -496,6 +538,9 @@
                     <connections>
                         <outlet property="btnCancel" destination="S2B-IZ-6Qs" id="7JJ-lf-aat"/>
                         <outlet property="btnSave" destination="7jH-RG-yQL" id="dQ3-8k-2bV"/>
+                        <outlet property="txtBpmFrom" destination="g7d-jH-9Lo" id="2vO-6k-fiW"/>
+                        <outlet property="txtBpmTo" destination="HpR-4j-NU8" id="V2S-lW-ymp"/>
+                        <outlet property="txtKeywords" destination="rvt-yK-Nw3" id="JCD-rc-Wud"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgv-Vs-x0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -523,6 +568,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="76" id="WpK-yT-59s"/>
                                 </constraints>
+                                <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Close">
                                     <color key="titleColor" red="0.20000001788139343" green="0.14117647707462311" blue="0.87843143939971924" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -534,7 +580,7 @@
                                     <action selector="close:" destination="3iv-H6-eKA" eventType="touchUpInside" id="app-T2-0Hr"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-SU-Zzn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-SU-Zzn">
                                 <rect key="frame" x="0.0" y="82" width="600" height="528"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLP-8f-LEZ">

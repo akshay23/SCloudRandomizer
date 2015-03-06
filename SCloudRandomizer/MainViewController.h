@@ -15,7 +15,7 @@
 #import "SearchParams.h"
 #import "TrackInfoVC.h"
 
-@interface MainViewController : UIViewController<AVAudioPlayerDelegate,MainVCDelegate>
+@interface MainViewController : UIViewController<AVAudioPlayerDelegate, MainVCDelegate>
 
 enum {
     Playing = 1,
