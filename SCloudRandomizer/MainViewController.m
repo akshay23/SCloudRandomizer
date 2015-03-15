@@ -39,9 +39,9 @@
     self.trackInfoVC.delegate = self;
     
     // Clear the labels
-    [self.lblArtist setText:@""];
-    [self.lblLength setText:@""];
-    [self.lblSongTitle setText:@""];
+    [self.lblArtistValue setText:@""];
+    [self.lblLengthValue setText:@""];
+    [self.lblTitleValue setText:@""];
     self.currentSongNumber = 3;
     
     // Draw border around parameters button
@@ -56,14 +56,17 @@
     [super viewWillAppear:animated];
     
     // Disable/enable SC buttons if user is currently logged in
-    if ([SCSoundCloud account] != nil)
+    if ([self isPlayerLoggedIn])
     {
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
         [self.imgArtwork setHidden:NO];
-        [self.lblArtist setHidden:NO];
-        [self.lblLength setHidden:NO];
-        [self.lblSongTitle setHidden:NO];
+        
+        if (self.paramsChanged)
+        {
+            [self getTracks];
+            self.paramsChanged = NO;
+        }
     }
     else
     {
@@ -72,12 +75,6 @@
         [self.btnPlay setHidden:YES];
         [self.btnNext setHidden:YES];
         [self.imgArtwork setHidden:YES];
-    }
-    
-    if (self.paramsChanged)
-    {
-        [self getTracks];
-        self.paramsChanged = NO;
     }
 }
 
@@ -97,7 +94,10 @@
     [self.imgArtwork setHidden:YES];
     [self.lblArtist setHidden:YES];
     [self.lblLength setHidden:YES];
-    [self.lblSongTitle setHidden:YES];
+    [self.lblTitle setHidden:YES];
+    [self.lblTitleValue setHidden:YES];
+    [self.lblArtistValue setHidden:YES];
+    [self.lblLengthValue setHidden:YES];
     [self.player stop];
     NSLog(@"Logged out.");
 }
@@ -120,6 +120,13 @@
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }];
+}
+
+- (BOOL) isPlayerLoggedIn {
+    
+    SCAccount *account = [SCSoundCloud account];
+    
+    return (account != nil);
 }
 
 - (IBAction)playSong:(id)sender
@@ -320,15 +327,23 @@
                  [self.btnInfo setEnabled:YES];
                  [self.btnLike setEnabled:YES];
                  [self.imgArtwork setHidden:NO];
+                 
+                 [self.lblArtistValue setHidden:NO];
+                 [self.lblLengthValue setHidden:NO];
+                 [self.lblTitleValue setHidden:NO];
+                 [self.lblTitle setHidden:NO];
+                 [self.lblArtist setHidden:NO];
+                 [self.lblLength setHidden:NO];
+                 
                  [self.btnChangeParams setEnabled:YES];
                  self.imgArtwork.layer.borderWidth = 1;
                  self.imgArtwork.alpha = 1.0;
                  self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
-                 [self.lblSongTitle setText:[track objectForKey:@"title"]];
+                 [self.lblTitleValue setText:[track objectForKey:@"title"]];
                  long duration = [[track objectForKey:@"duration"] longValue];
-                 [self.lblLength setText:[self convertFromMilliseconds:duration]];
+                 [self.lblLengthValue setText:[self convertFromMilliseconds:duration]];
                  NSDictionary *userInfo = [track objectForKey:@"user"];
-                 [self.lblArtist setText:[userInfo objectForKey:@"username"]];
+                 [self.lblArtistValue setText:[userInfo objectForKey:@"username"]];
                  self.currentTrack = track;
                  
                  NSURL *imgUrl = nil;

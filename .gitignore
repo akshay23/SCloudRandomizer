@@ -1,2 +1,12 @@
 
 *.xcbkptlist
+
+*.xcuserstate
+
+*.xcscheme
+
+Pods/Pods.xcodeproj/xcuserdata/ashab.xcuserdatad/xcschemes/xcschememanagement.plist
+
+SCloudRandomizer.xcodeproj/xcuserdata/ashab.xcuserdatad/xcschemes/xcschememanagement.plist
+
+SCloudRandomizer.xcworkspace/xcuserdata/ashab.xcuserdatad/xcdebugger/Expressions.xcexplist
