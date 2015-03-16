@@ -91,6 +91,8 @@
     [self.btnSCDisconnect setHidden:YES];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
+    [self.btnInfo setHidden:YES];
+    [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
     [self.lblArtist setHidden:YES];
     [self.lblLength setHidden:YES];
@@ -98,6 +100,7 @@
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
+    [self.btnChangeParams setHidden:YES];
     [self.player stop];
     NSLog(@"Logged out.");
 }
@@ -335,6 +338,7 @@
                  [self.lblArtist setHidden:NO];
                  [self.lblLength setHidden:NO];
                  
+                 [self.btnChangeParams setHidden:NO];
                  [self.btnChangeParams setEnabled:YES];
                  self.imgArtwork.layer.borderWidth = 1;
                  self.imgArtwork.alpha = 1.0;
