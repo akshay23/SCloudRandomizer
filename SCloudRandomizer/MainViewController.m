@@ -44,6 +44,8 @@
     [self.lblTitleValue setText:@""];
     self.currentSongNumber = 3;
     
+    [self initializePlayer];
+    
     // Draw border around parameters button
     self.btnChangeParams.layer.cornerRadius = 4;
     self.btnChangeParams.layer.borderWidth = 1;
@@ -62,11 +64,7 @@
         [self.btnSCDisconnect setHidden:NO];
         [self.imgArtwork setHidden:NO];
         
-        if (self.paramsChanged)
-        {
-            [self getTracks];
-            self.paramsChanged = NO;
-        }
+        [self getTracks];
     }
     else
     {
@@ -105,18 +103,23 @@
     NSLog(@"Logged out.");
 }
 
+- (void)initializePlayer
+{
+    if (self.player == nil) {
+        self.player = [[AVAudioPlayer alloc] init];
+    }
+}
+
 - (IBAction)login:(id)sender
 {
     [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
-        SCLoginViewController *loginViewController;
-        loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
+        SCLoginViewController *loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
                                   completionHandler:^(NSError *error) {
                                       if (SC_CANCELED(error)) {
                                           NSLog(@"Canceled!");
                                       } else if (error) {
                                           NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
                                       } else {
-                                          self.player = [[AVAudioPlayer alloc] init];
                                           NSLog(@"Logged in.");
                                       }
                                   }];
@@ -212,7 +215,8 @@
                                              JSONObjectWithData:data
                                              options:0
                                              error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
+        if (!jsonError &&
+            [jsonResponse isKindOfClass:[NSArray class]]) {
             self.tracks = (NSArray *)jsonResponse;
             [self.btnPlay setHidden:NO];
             [self.btnNext setHidden:NO];
@@ -220,11 +224,6 @@
             [self.btnPlay setEnabled:NO];
             [self.btnChangeParams setEnabled:NO];
             NSLog(@"Tracks acquired.");
-            
-            if ([self.player isPlaying])
-            {
-                [self.btnNext setEnabled:YES];
-            }
             
             self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
             NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
