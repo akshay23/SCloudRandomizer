@@ -193,6 +193,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="2l3-9a-EXk" id="UNi-sv-xWl"/>
                         <outlet property="btnChangeParams" destination="YBr-5w-1ww" id="vTz-Oo-o3T"/>
                         <outlet property="btnInfo" destination="VQ1-zg-oUh" id="Dtj-yK-Pnl"/>
                         <outlet property="btnLike" destination="GBf-Bc-bQ3" id="lpQ-6m-9RL"/>

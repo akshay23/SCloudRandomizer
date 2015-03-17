@@ -37,6 +37,8 @@
     self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
+
+    self.backgroundImage.alpha = 0.8;
     
     // Clear the labels
     [self.lblArtistValue setText:@""];

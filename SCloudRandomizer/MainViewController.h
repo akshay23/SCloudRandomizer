@@ -47,6 +47,8 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UILabel *lblArtist;
 @property (strong, nonatomic) IBOutlet UILabel *lblLength;
 
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
+
 
 - (IBAction)logout:(id)sender;
 - (IBAction)login:(id)sender;
