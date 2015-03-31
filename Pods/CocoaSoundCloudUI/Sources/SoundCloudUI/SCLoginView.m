@@ -127,7 +127,8 @@
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.titleLabel.numberOfLines = 2;
     self.titleLabel.textAlignment = UITextAlignmentLeft;
-    self.titleLabel.text = @"Please login to your SoundCloud account.";
+    self.titleLabel.text = [NSString stringWithFormat:SCLocalizedString(@"credential_title", @"Title"),
+                            [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
     self.titleLabel.textColor = [UIColor soundCloudGrey];
     self.titleLabel.font = [UIFont systemFontOfSize:15.0];
     self.titleLabel.backgroundColor = [UIColor clearColor];

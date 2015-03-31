@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AGx-bt-YRN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AGx-bt-YRN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -23,8 +23,8 @@
                                     <constraint firstAttribute="height" constant="568" id="kf2-Ws-20n"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5h-O2-fzL">
-                                <rect key="frame" x="20" y="39" width="100" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5h-O2-fzL">
+                                <rect key="frame" x="20" y="39" width="105" height="25"/>
                                 <state key="normal" image="btn-connect-m.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -56,22 +56,15 @@
                                 <color key="textColor" red="0.79215693470000004" green="0.19215688110000001" blue="0.1215686351" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-5w-1ww">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-5w-1ww">
                                 <rect key="frame" x="40" y="506" width="232" height="37"/>
                                 <color key="backgroundColor" red="0.7137255072593689" green="0.92941182851791382" blue="0.7725490927696228" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="rDU-0c-fzD"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Change Search Parameters">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                                <state key="normal" title="Change Search Parameters"/>
                                 <connections>
                                     <action selector="changeParams:" destination="AGx-bt-YRN" eventType="touchUpInside" id="kRq-pN-pNI"/>
                                 </connections>
@@ -145,9 +138,9 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyo-RJ-qAm">
-                                <rect key="frame" x="210" y="39" width="105" height="25"/>
+                                <rect key="frame" x="205" y="39" width="110" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="xeq-Is-S31"/>
+                                    <constraint firstAttribute="width" constant="110" id="xeq-Is-S31"/>
                                 </constraints>
                                 <state key="normal" image="btn-disconnect-m.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -160,7 +153,7 @@
                                 <rect key="frame" x="56" y="193" width="182" height="182"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.78431379795074463" green="0.89019614458084106" blue="0.94117653369903564" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="A6Y-cj-GSa" firstAttribute="top" secondItem="YBr-5w-1ww" secondAttribute="bottom" constant="25" id="0YC-dq-7rf"/>
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="bottom" secondItem="oX9-Qc-5vB" secondAttribute="bottom" id="0a9-n7-odg"/>
