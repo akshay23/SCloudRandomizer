@@ -126,7 +126,6 @@
 {
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.titleLabel.numberOfLines = 2;
-    self.titleLabel.textAlignment = UITextAlignmentLeft;
     self.titleLabel.text = [NSString stringWithFormat:SCLocalizedString(@"credential_title", @"Title"),
                             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
     self.titleLabel.textColor = [UIColor soundCloudGrey];
@@ -221,8 +220,6 @@
     self.tosLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
     self.tosLabel.attributedText = text;
     self.tosLabel.centerVertically = NO;
-    self.tosLabel.lineBreakMode = UILineBreakModeWordWrap;
-    self.tosLabel.textAlignment = UITextAlignmentCenter;
     self.tosLabel.textColor = [UIColor soundCloudLightGrey];
     self.tosLabel.backgroundColor = [UIColor clearColor];
     self.tosLabel.delegate = self;
@@ -230,13 +227,9 @@
 
     NSRange touLinkRange = [text.string rangeOfString:SCLocalizedString(@"terms_of_use_substring", nil)];
     NSAssert((touLinkRange.location != NSNotFound), @"Localisation of sign_in_tos_pp_body needs to contain substring");
-    [self.tosLabel addCustomLink:[NSURL URLWithString:kTermsOfServiceURL]
-                         inRange:touLinkRange];
 
     NSRange ppLinkRange = [text.string rangeOfString:SCLocalizedString(@"privatcy_policy_substring", nil)];
     NSAssert((ppLinkRange.location != NSNotFound), @"Localisation of sign_in_tos_pp_body needs to contain substring");
-    [self.tosLabel addCustomLink:[NSURL URLWithString:kPrivacyPolicyURL]
-                         inRange:ppLinkRange];
 
     [self addSubview:self.tosLabel];
 }
@@ -363,7 +356,7 @@
 
 - (void)cancel:(id)sender
 {
-    [(UIViewController *)self.loginDelegate dismissModalViewControllerAnimated:YES];
+    [(UIViewController *)self.loginDelegate dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
