@@ -37,6 +37,7 @@
     self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
+    self.mySearchParams = [[SearchParams alloc] initWithBool:YES];
 
     self.backgroundImage.alpha = 0.2;
     
@@ -66,7 +67,11 @@
         [self.btnSCDisconnect setHidden:NO];
         [self.imgArtwork setHidden:NO];
         
-        [self getTracks];
+        if (self.mySearchParams.hasParamsChanged)
+        {
+            [self getTracks];
+            self.mySearchParams.hasParamsChanged = NO;
+        }
     }
     else
     {

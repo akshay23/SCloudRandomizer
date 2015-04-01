@@ -10,4 +10,11 @@
 
 @implementation SearchParams
 
+- (id)initWithBool:(BOOL)changed
+{
+    self.hasParamsChanged = changed;
+    
+    return self;
+}
+
 @end

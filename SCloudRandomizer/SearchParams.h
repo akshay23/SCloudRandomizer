@@ -10,4 +10,8 @@
 
 @interface SearchParams : NSObject
 
+@property BOOL hasParamsChanged;
+
+- (id)initWithBool:(BOOL)changed;
+
 @end
