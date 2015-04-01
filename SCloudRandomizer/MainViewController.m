@@ -413,18 +413,20 @@
 {
     NSString *trackTitle = [track objectForKey:@"title"];
     NSString *trackArtist = [[track objectForKey:@"user"] objectForKey:@"username"];
-    NSURL *imgUrl = nil;
-    
+    NSString *urlString = nil;
+
     id albumArt = [track objectForKey:@"artwork_url"];
     if (albumArt == [NSNull null])
     {
-        imgUrl = [NSURL URLWithString:[[track objectForKey:@"user"] objectForKey:@"avatar_url"]];
+        urlString = [[[track objectForKey:@"user"] objectForKey:@"avatar_url"] stringByReplacingOccurrencesOfString:@"-large"
+                                                                                                        withString:@"-t300x300"];
     }
     else
     {
-        imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+        urlString = [(NSString *)albumArt stringByReplacingOccurrencesOfString:@"-large" withString:@"-t300x300"];
     }
     
+    NSURL *imgUrl = [NSURL URLWithString:urlString];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
         MPMediaItemArtwork *albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
@@ -465,17 +467,19 @@
     [self.lblArtistValue setText:[[track objectForKey:@"user"] objectForKey:@"username"]];
     self.currentTrack = track;
     
-    NSURL *imgUrl = nil;
+    NSString *urlString = nil;
     id albumArt = [track objectForKey:@"artwork_url"];
     if (albumArt == [NSNull null])
     {
-        imgUrl = [NSURL URLWithString:[[track objectForKey:@"user"] objectForKey:@"avatar_url"]];
+        urlString = [[[track objectForKey:@"user"] objectForKey:@"avatar_url"] stringByReplacingOccurrencesOfString:@"-large"
+                                                                                                        withString:@"-t300x300"];
     }
     else
     {
-        imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+        urlString = [(NSString *)albumArt stringByReplacingOccurrencesOfString:@"-large" withString:@"-t300x300"];
     }
     
+    NSURL *imgUrl = [NSURL URLWithString:urlString];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
         
@@ -488,7 +492,8 @@
 }
 
 // Lock screen control actions
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
     //if it is a remote control event handle it correctly
     if (event.type == UIEventTypeRemoteControl)
     {
