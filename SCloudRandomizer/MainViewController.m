@@ -38,8 +38,6 @@
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
     self.mySearchParams = [[SearchParams alloc] initWithBool:YES];
-
-    self.backgroundImage.alpha = 0.2;
     
     // Clear the labels
     [self.lblArtistValue setText:@""];
@@ -63,7 +61,7 @@
     {
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
-        [self.imgArtwork setHidden:NO];
+        self.backgroundImage.alpha = 0.2;
         
         if (self.mySearchParams.hasParamsChanged)
         {
@@ -73,11 +71,7 @@
     }
     else
     {
-        [self.btnSCConnect setHidden:NO];
-        [self.btnSCDisconnect setHidden:YES];
-        [self.btnPlay setHidden:YES];
-        [self.btnNext setHidden:YES];
-        [self.imgArtwork setHidden:YES];
+        self.backgroundImage.alpha = 0.7;
     }
 }
 
@@ -112,9 +106,11 @@
 
 - (IBAction)logout:(id)sender
 {
+    [self.player stop];
     [SCSoundCloud removeAccess];
     [self.btnSCConnect setHidden:NO];
     [self.btnSCDisconnect setHidden:YES];
+    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
     [self.btnInfo setHidden:YES];
@@ -127,7 +123,8 @@
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
     [self.btnChangeParams setHidden:YES];
-    [self.player stop];
+    self.backgroundImage.alpha = 0.7;
+    self.mySearchParams.hasParamsChanged = YES;
     NSLog(@"Logged out.");
 }
 
@@ -216,6 +213,7 @@
         }
         else
         {
+            [self.player prepareToPlay];
             [self.player play];
             [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
             NSLog(@"Resuming song");
@@ -339,7 +337,6 @@
                  self.currentSongData = data;
                  self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
                  self.player.delegate = self;
-                 [self.player prepareToPlay];
                  
                  [self setupLockScreenInfo:track];
                  [self setupUI:track];
@@ -347,6 +344,7 @@
                  
                  if (play)
                  {
+                     [self.player prepareToPlay];
                      [self.player play];
                      [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
                  }
