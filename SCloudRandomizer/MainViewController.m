@@ -47,8 +47,6 @@
     [self.lblTitleValue setText:@""];
     self.currentSongNumber = 3;
     
-    [self initializePlayer];
-    
     // Draw border around parameters button
     self.btnChangeParams.layer.cornerRadius = 4;
     self.btnChangeParams.layer.borderWidth = 1;
@@ -108,13 +106,6 @@
     [self.btnChangeParams setHidden:YES];
     [self.player stop];
     NSLog(@"Logged out.");
-}
-
-- (void)initializePlayer
-{
-    if (self.player == nil) {
-        self.player = [[AVAudioPlayer alloc] init];
-    }
 }
 
 - (IBAction)login:(id)sender
@@ -320,11 +311,11 @@
              responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                  self.currentSongData = data;
                  self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
-                 [self.player prepareToPlay];
                  self.player.delegate = self;
                  
                  if (play)
                  {
+                     [self.player prepareToPlay];
                      [self.player play];
                      [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
                  }

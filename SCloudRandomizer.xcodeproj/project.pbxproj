@@ -270,6 +270,11 @@
 					19CDED221A2FB92100DD97CC = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = VRYW4TD62Q;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					19CDED3E1A2FB92100DD97CC = {
 						CreatedOnToolsVersion = 6.1;

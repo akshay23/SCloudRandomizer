@@ -23,6 +23,11 @@
                         secret:@"1656c693b8bbe5727bc5fd2263514fd3"
                    redirectURL:[NSURL URLWithString:@"scloudrandomizer://oauth"]];
     
+    // Play audio in the background
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+
     return YES;
 }
 
