@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SCUI.h>
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "MBProgressHUD.h"
 #import "SearchParamsVC.h"
 #import "GlobalData.h"

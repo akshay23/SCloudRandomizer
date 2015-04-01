@@ -81,10 +81,33 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //End recieving events
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //Once the view has loaded then we can register to begin recieving controls and we can become the first responder
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
 }
 
 - (IBAction)logout:(id)sender
@@ -126,42 +149,19 @@
     }];
 }
 
-- (BOOL) isPlayerLoggedIn {
-    
+- (BOOL) isPlayerLoggedIn
+{
     SCAccount *account = [SCSoundCloud account];
-    
     return (account != nil);
 }
 
 - (IBAction)playSong:(id)sender
 {
-    if (![self.player isPlaying])
-    {
-        if (self.player.data == nil && self.currentSongData == nil)
-        {
-            NSDictionary *track = [self.tracks objectAtIndex:1];
-            self.currentSongNumber = 1;
-            [self getTrackInfo:track shouldPlay:YES];
-            NSLog(@"Playing song for first time");
-        }
-        else
-        {
-            [self.player play];
-            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-            NSLog(@"Resuming song");
-        }
-    }
-    else
-    {
-        [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
-        [self.player pause];
-        NSLog(@"Pausing song");
-    }
+    [self playPauseSong];
 }
 
 - (IBAction)playNext:(id)sender
 {
-    [self.player stop];
     [self doPlayNextSong];
 }
 
@@ -201,6 +201,32 @@
 
     [self.view.window.layer addAnimation:animation forKey:kCATransition];
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
+}
+
+- (void)playPauseSong
+{
+    if (![self.player isPlaying])
+    {
+        if (self.player.data == nil && self.currentSongData == nil)
+        {
+            NSDictionary *track = [self.tracks objectAtIndex:1];
+            self.currentSongNumber = 1;
+            [self getTrackInfo:track shouldPlay:YES];
+            NSLog(@"Playing song for first time");
+        }
+        else
+        {
+            [self.player play];
+            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+            NSLog(@"Resuming song");
+        }
+    }
+    else
+    {
+        [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+        [self.player pause];
+        NSLog(@"Pausing song");
+    }
 }
 
 // TODO: Change logic to get tracks based on SearchParams object
@@ -247,6 +273,7 @@
 // Actually play the next sont
 - (void)doPlayNextSong
 {
+    [self.player stop];
     [self refreshTrackList];
     NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
     self.currentSongNumber = randomNumber;
@@ -312,63 +339,19 @@
                  self.currentSongData = data;
                  self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
                  self.player.delegate = self;
+                 [self.player prepareToPlay];
+                 
+                 [self setupLockScreenInfo:track];
+                 [self setupUI:track];
+                 [self checkFavouritesList];
                  
                  if (play)
                  {
-                     [self.player prepareToPlay];
                      [self.player play];
                      [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
                  }
-                 
-                 [self.btnInfo setHidden:NO];
-                 [self.btnLike setHidden:NO];
-                 [self.btnNext setEnabled:YES];
-                 [self.btnPlay setEnabled:YES];
-                 [self.btnInfo setEnabled:YES];
-                 [self.btnLike setEnabled:YES];
-                 [self.imgArtwork setHidden:NO];
-                 
-                 [self.lblArtistValue setHidden:NO];
-                 [self.lblLengthValue setHidden:NO];
-                 [self.lblTitleValue setHidden:NO];
-                 [self.lblTitle setHidden:NO];
-                 [self.lblArtist setHidden:NO];
-                 [self.lblLength setHidden:NO];
-                 
-                 [self.btnChangeParams setHidden:NO];
-                 [self.btnChangeParams setEnabled:YES];
-                 self.imgArtwork.layer.borderWidth = 1;
-                 self.imgArtwork.alpha = 1.0;
-                 self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
-                 [self.lblTitleValue setText:[track objectForKey:@"title"]];
-                 long duration = [[track objectForKey:@"duration"] longValue];
-                 [self.lblLengthValue setText:[self convertFromMilliseconds:duration]];
-                 NSDictionary *userInfo = [track objectForKey:@"user"];
-                 [self.lblArtistValue setText:[userInfo objectForKey:@"username"]];
-                 self.currentTrack = track;
-                 
-                 NSURL *imgUrl = nil;
-                 id albumArt = [track objectForKey:@"artwork_url"];
-                 if (albumArt == [NSNull null])
-                 {
-                     imgUrl = [NSURL URLWithString:[userInfo objectForKey:@"avatar_url"]];
-                 }
-                 else
-                 {
-                     imgUrl = [NSURL URLWithString:(NSString *)albumArt];
-                 }
-                 
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                     NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
-                     
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         // Update the UI
-                         self.imgArtwork.image = [UIImage imageWithData:imageData];
-                     });
-                 });
-                 
+
                  [hud hide:YES];
-                 [self checkFavouritesList];
              }];
 
 }
@@ -423,6 +406,102 @@
 - (NSDictionary *)getCurrentTrack
 {
     return self.currentTrack;
+}
+
+// Set up the lock screen
+- (void)setupLockScreenInfo:(NSDictionary *)track
+{
+    NSString *trackTitle = [track objectForKey:@"title"];
+    NSString *trackArtist = [[track objectForKey:@"user"] objectForKey:@"username"];
+    NSURL *imgUrl = nil;
+    
+    id albumArt = [track objectForKey:@"artwork_url"];
+    if (albumArt == [NSNull null])
+    {
+        imgUrl = [NSURL URLWithString:[[track objectForKey:@"user"] objectForKey:@"avatar_url"]];
+    }
+    else
+    {
+        imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
+        MPMediaItemArtwork *albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
+        
+        NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyAlbumTitle, MPMediaItemPropertyArtist, MPMediaItemPropertyArtwork, nil];
+        NSArray *values = [NSArray arrayWithObjects:trackArtist, trackTitle, albumArtwork, nil];
+        NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
+    });
+}
+
+// Set the UI after getting track info
+- (void)setupUI:(NSDictionary *)track
+{
+    [self.btnInfo setHidden:NO];
+    [self.btnLike setHidden:NO];
+    [self.btnNext setEnabled:YES];
+    [self.btnPlay setEnabled:YES];
+    [self.btnInfo setEnabled:YES];
+    [self.btnLike setEnabled:YES];
+    [self.imgArtwork setHidden:NO];
+    
+    [self.lblArtistValue setHidden:NO];
+    [self.lblLengthValue setHidden:NO];
+    [self.lblTitleValue setHidden:NO];
+    [self.lblTitle setHidden:NO];
+    [self.lblArtist setHidden:NO];
+    [self.lblLength setHidden:NO];
+    
+    [self.btnChangeParams setHidden:NO];
+    [self.btnChangeParams setEnabled:YES];
+    self.imgArtwork.layer.borderWidth = 1;
+    self.imgArtwork.alpha = 1.0;
+    self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
+    [self.lblTitleValue setText:[track objectForKey:@"title"]];
+    long duration = [[track objectForKey:@"duration"] longValue];
+    [self.lblLengthValue setText:[self convertFromMilliseconds:duration]];
+    [self.lblArtistValue setText:[[track objectForKey:@"user"] objectForKey:@"username"]];
+    self.currentTrack = track;
+    
+    NSURL *imgUrl = nil;
+    id albumArt = [track objectForKey:@"artwork_url"];
+    if (albumArt == [NSNull null])
+    {
+        imgUrl = [NSURL URLWithString:[[track objectForKey:@"user"] objectForKey:@"avatar_url"]];
+    }
+    else
+    {
+        imgUrl = [NSURL URLWithString:(NSString *)albumArt];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            self.imgArtwork.image = [UIImage imageWithData:imageData];
+        });
+    });
+
+}
+
+// Lock screen control actions
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    //if it is a remote control event handle it correctly
+    if (event.type == UIEventTypeRemoteControl)
+    {
+        if (event.subtype == UIEventSubtypeRemoteControlPlay ||
+            event.subtype == UIEventSubtypeRemoteControlPause)
+        {
+            [self playPauseSong];
+        }
+        else if (event.subtype == UIEventSubtypeRemoteControlNextTrack)
+        {
+            [self doPlayNextSong];
+        }
+    }
 }
 
 @end
