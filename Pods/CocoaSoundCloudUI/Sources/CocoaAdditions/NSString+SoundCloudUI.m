@@ -204,7 +204,7 @@
 	//from http://www.tomdalling.com/cocoa/md5-hashes-in-cocoa
 	NSData* inputData = [self dataUsingEncoding:NSUTF8StringEncoding];
 	unsigned char outputData[CC_MD5_DIGEST_LENGTH];
-	CC_MD5([inputData bytes], [inputData length], outputData);
+	CC_MD5([inputData bytes], (unsigned)[inputData length], outputData);
 	
 	NSMutableString* hashStr = [NSMutableString string];
 	int i = 0;

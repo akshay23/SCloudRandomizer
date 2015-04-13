@@ -411,13 +411,14 @@
 {
     NSString *trackTitle = [track objectForKey:@"title"];
     NSString *trackArtist = [[track objectForKey:@"user"] objectForKey:@"username"];
+    long duration = [[track objectForKey:@"duration"] longValue];
+    NSNumber *actualDuration = [NSNumber numberWithInt:(int)(duration/1000)];
     NSString *urlString = nil;
 
     id albumArt = [track objectForKey:@"artwork_url"];
     if (albumArt == [NSNull null])
     {
-        urlString = [[[track objectForKey:@"user"] objectForKey:@"avatar_url"] stringByReplacingOccurrencesOfString:@"-large"
-                                                                                                        withString:@"-t300x300"];
+        urlString = [[[track objectForKey:@"user"] objectForKey:@"avatar_url"] stringByReplacingOccurrencesOfString:@"-large" withString:@"-t300x300"];
     }
     else
     {
@@ -429,10 +430,13 @@
         NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
         MPMediaItemArtwork *albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
         
-        NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyAlbumTitle, MPMediaItemPropertyArtist, MPMediaItemPropertyArtwork, nil];
-        NSArray *values = [NSArray arrayWithObjects:trackArtist, trackTitle, albumArtwork, nil];
+        NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyArtist, MPMediaItemPropertyTitle, MPMediaItemPropertyArtwork, MPMediaItemPropertyPlaybackDuration, MPNowPlayingInfoPropertyPlaybackRate, nil];
+        NSArray *values = [NSArray arrayWithObjects:trackArtist, trackTitle, albumArtwork, actualDuration, [NSNumber numberWithInt:1], nil];
         NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
-        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
+        });
     });
 }
 
@@ -446,6 +450,8 @@
     [self.btnInfo setEnabled:YES];
     [self.btnLike setEnabled:YES];
     [self.imgArtwork setHidden:NO];
+    [self.btnChangeParams setHidden:NO];
+    [self.btnChangeParams setEnabled:YES];
     
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
@@ -454,23 +460,20 @@
     [self.lblArtist setHidden:NO];
     [self.lblLength setHidden:NO];
     
-    [self.btnChangeParams setHidden:NO];
-    [self.btnChangeParams setEnabled:YES];
-    self.imgArtwork.layer.borderWidth = 1;
-    self.imgArtwork.alpha = 1.0;
-    self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
-    [self.lblTitleValue setText:[track objectForKey:@"title"]];
     long duration = [[track objectForKey:@"duration"] longValue];
     [self.lblLengthValue setText:[self convertFromMilliseconds:duration]];
     [self.lblArtistValue setText:[[track objectForKey:@"user"] objectForKey:@"username"]];
+    [self.lblTitleValue setText:[track objectForKey:@"title"]];
     self.currentTrack = track;
+    self.imgArtwork.layer.borderWidth = 1;
+    self.imgArtwork.alpha = 1.0;
+    self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
     
     NSString *urlString = nil;
     id albumArt = [track objectForKey:@"artwork_url"];
     if (albumArt == [NSNull null])
     {
-        urlString = [[[track objectForKey:@"user"] objectForKey:@"avatar_url"] stringByReplacingOccurrencesOfString:@"-large"
-                                                                                                        withString:@"-t300x300"];
+        urlString = [[[track objectForKey:@"user"] objectForKey:@"avatar_url"] stringByReplacingOccurrencesOfString:@"-large" withString:@"-t300x300"];
     }
     else
     {
@@ -496,7 +499,8 @@
     if (event.type == UIEventTypeRemoteControl)
     {
         if (event.subtype == UIEventSubtypeRemoteControlPlay ||
-            event.subtype == UIEventSubtypeRemoteControlPause)
+            event.subtype == UIEventSubtypeRemoteControlPause ||
+            event.subtype == UIEventSubtypeRemoteControlTogglePlayPause)
         {
             [self playPauseSong];
         }
