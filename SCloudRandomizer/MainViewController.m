@@ -14,6 +14,7 @@
 @property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
 @property (strong, nonatomic) NSDictionary *currentTrack;
+@property (strong, nonatomic) SearchParams *mySearchParams;
 
 @end
 
@@ -35,9 +36,10 @@
     
     // New search params view instance and track info VC
     self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
+    self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.mySearchParams = [[SearchParams alloc] initWithBool:YES];
+    self.mySearchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix" lowBpm:[NSNumber numberWithInt:80] highBpm:[NSNumber numberWithInt:150]];
     
     // Clear the labels
     [self.lblArtistValue setText:@""];
@@ -65,7 +67,17 @@
         
         if (self.mySearchParams.hasParamsChanged)
         {
-            [self getTracks];
+            
+            if ([self.player isPlaying])
+            {
+                [self refreshTrackList];
+                [self doPlayNextSong];
+            }
+            else
+            {
+                [self getTracks];
+            }
+            
             self.mySearchParams.hasParamsChanged = NO;
         }
     }
@@ -146,7 +158,7 @@
     }];
 }
 
-- (BOOL) isPlayerLoggedIn
+- (BOOL)isPlayerLoggedIn
 {
     SCAccount *account = [SCSoundCloud account];
     return (account != nil);
@@ -227,7 +239,7 @@
     }
 }
 
-// TODO: Change logic to get tracks based on SearchParams object
+// Get tracks based on SearchParams
 - (void)getTracks
 {
     SCRequestResponseHandler handler;
@@ -259,7 +271,10 @@
         }
     };
     
-    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
+    // Replace spaces with '%20' and then replace commas with '%2C'
+    NSString *cleanedKeywords = [[self.mySearchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
+    NSLog(@"The resourceURL is %@", resourceURL);
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:resourceURL]
              usingParameters:nil
@@ -354,7 +369,7 @@
 
 }
 
-// TODO: Load songs based on SearchParams
+// Load songs based on SearchParams
 // Refresh/reload track list
 - (void)refreshTrackList
 {
@@ -369,7 +384,10 @@
         }
     };
     
-    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
+    // Replace spaces with '%20' and then replace commas with '%2C'
+    NSString *cleanedKeywords = [[self.mySearchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
+    NSLog(@"The resourceURL is %@", resourceURL);
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:resourceURL]
              usingParameters:nil
@@ -381,7 +399,7 @@
 // Set the like button accordingly
 - (void)checkFavouritesList
 {
-    if ([self.currentTrack objectForKey:@"user_favorite"])
+    if ([[self.currentTrack objectForKey:@"user_favorite"]  isEqual: @"0"])
     {
         self.isCurrentSongLiked = YES;
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
@@ -397,13 +415,6 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     [self doPlayNextSong];
-}
-
-// MainVCDelegate method
-// Return current track
-- (NSDictionary *)getCurrentTrack
-{
-    return self.currentTrack;
 }
 
 // Set up the lock screen
@@ -509,6 +520,20 @@
             [self doPlayNextSong];
         }
     }
+}
+
+// MainVCDelegate method
+// Return current track
+- (NSDictionary *)getCurrentTrack
+{
+    return self.currentTrack;
+}
+
+// MainVCDelegate method
+// Return current search params
+- (SearchParams *)getCurrentSearchParams
+{
+    return self.mySearchParams;
 }
 
 @end

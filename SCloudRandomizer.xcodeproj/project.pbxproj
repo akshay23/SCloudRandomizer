@@ -55,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
 		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
 		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
 		1997F7311A64211700109F76 /* SearchParamsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParamsVC.h; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 				1997F7381A6454DC00109F76 /* SearchParams.m */,
 				19F38A621A9F811C002361E6 /* TrackInfoVC.h */,
 				19F38A631A9F811C002361E6 /* TrackInfoVC.m */,
+				1913B8661AE0027F007D2C0E /* MainVCDelegate.h */,
 			);
 			path = SCloudRandomizer;
 			sourceTree = "<group>";

@@ -10,9 +10,12 @@
 
 @implementation SearchParams
 
-- (id)initWithBool:(BOOL)changed
+- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords lowBpm:(NSNumber *)lBpm highBpm:(NSNumber *)hBpm
 {
     self.hasParamsChanged = changed;
+    self.keywords = theKeywords;
+    self.lowBpm = lBpm;
+    self.highBpm = hBpm;
     
     return self;
 }
