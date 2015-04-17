@@ -151,7 +151,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-ew-NVm">
-                                <rect key="frame" x="56" y="193" width="182" height="182"/>
+                                <rect key="frame" x="50" y="193" width="195" height="182"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="2l3-9a-EXk" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" id="7hU-0x-hvX"/>
                             <constraint firstItem="1tV-ew-NVm" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="193" id="AFK-oQ-2XU"/>
                             <constraint firstAttribute="trailing" secondItem="VQ1-zg-oUh" secondAttribute="trailing" constant="32" id="AXQ-lZ-wvq"/>
-                            <constraint firstAttribute="trailing" secondItem="1tV-ew-NVm" secondAttribute="trailing" constant="82" id="AcY-dk-BLh"/>
+                            <constraint firstAttribute="trailing" secondItem="1tV-ew-NVm" secondAttribute="trailing" constant="75" id="AcY-dk-BLh"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="20" id="F5X-qf-RPz"/>
                             <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="28" id="Fz1-vp-rzc"/>
                             <constraint firstAttribute="trailing" secondItem="vyo-RJ-qAm" secondAttribute="trailing" constant="5" id="IKE-e7-a0Z"/>
@@ -183,7 +183,7 @@
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="top" id="mr3-CJ-Ell"/>
                             <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="0Lq-FV-sWT" secondAttribute="bottom" constant="28" id="p1k-i1-Ses"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="vyo-RJ-qAm" secondAttribute="top" id="qJ7-pG-bDP"/>
-                            <constraint firstItem="1tV-ew-NVm" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="56" id="yD6-ev-RdR"/>
+                            <constraint firstItem="1tV-ew-NVm" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="50" id="yD6-ev-RdR"/>
                         </constraints>
                     </view>
                     <connections>

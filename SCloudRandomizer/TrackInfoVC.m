@@ -31,7 +31,6 @@
     id<MainVCDelegate> strongDelegate = self.delegate;
     NSDictionary *track = [strongDelegate getCurrentTrack];
     
-    long duration = [[track objectForKey:@"duration"] longValue];
     long likes = [[track objectForKey:@"favoritings_count"] longValue];
     long plays = [[track objectForKey:@"playback_count"] longValue];
     NSString *desc = [track objectForKey:@"description"];
