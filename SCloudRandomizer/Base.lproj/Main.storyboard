@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AGx-bt-YRN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -323,7 +324,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJ6-CR-OAE">
-                                <rect key="frame" x="65" y="21" width="109" height="32"/>
+                                <rect key="frame" x="60" y="21" width="114" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Bsh-8e-RJN"/>
                                 </constraints>
@@ -407,7 +408,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Song Name" translatesAutoresizingMaskIntoConstraints="NO" id="C6F-5R-2jY" userLabel="SongName">
-                                <rect key="frame" x="57" y="59" width="211" height="50"/>
+                                <rect key="frame" x="52" y="59" width="216" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0ib-sU-yWu"/>
                                 </constraints>
@@ -419,7 +420,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hxV-KF-UxY" firstAttribute="leading" secondItem="Lwx-ud-Xlf" secondAttribute="leading" id="4Vd-78-qoz"/>
-                            <constraint firstItem="hdM-3V-DvI" firstAttribute="leading" secondItem="C6F-5R-2jY" secondAttribute="leading" constant="3" id="6Xe-SB-yEE"/>
+                            <constraint firstItem="hdM-3V-DvI" firstAttribute="leading" secondItem="C6F-5R-2jY" secondAttribute="leadingMargin" id="6Xe-SB-yEE"/>
                             <constraint firstItem="WKS-84-pEg" firstAttribute="leading" secondItem="bbT-8q-Tan" secondAttribute="leadingMargin" constant="121" id="7M7-b7-IIg"/>
                             <constraint firstItem="tx9-SS-tgQ" firstAttribute="leading" secondItem="tjg-Ro-tah" secondAttribute="trailing" constant="3" id="D25-pf-fav"/>
                             <constraint firstItem="oaO-Io-j0Z" firstAttribute="top" secondItem="Lwx-ud-Xlf" secondAttribute="top" id="DUZ-ji-E4f"/>
@@ -441,7 +442,7 @@
                             <constraint firstAttribute="trailing" secondItem="4eX-rn-1Zx" secondAttribute="trailing" constant="60" id="cNk-3r-HYG"/>
                             <constraint firstItem="y8D-7H-Gyn" firstAttribute="leading" secondItem="bbT-8q-Tan" secondAttribute="leading" id="d2u-Ye-gPm"/>
                             <constraint firstItem="hxV-KF-UxY" firstAttribute="top" secondItem="jqr-NK-dzY" secondAttribute="bottom" constant="28" id="e4b-bb-mAB"/>
-                            <constraint firstItem="xJ6-CR-OAE" firstAttribute="leading" secondItem="C6F-5R-2jY" secondAttribute="leading" constant="8" id="gva-v8-18c"/>
+                            <constraint firstItem="xJ6-CR-OAE" firstAttribute="leading" secondItem="C6F-5R-2jY" secondAttribute="leadingMargin" id="gva-v8-18c"/>
                             <constraint firstItem="4eX-rn-1Zx" firstAttribute="leading" secondItem="bbT-8q-Tan" secondAttribute="leading" constant="60" id="nf8-pM-Sp0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WKS-84-pEg" secondAttribute="trailing" constant="121" id="pOZ-Oc-BxF"/>
                             <constraint firstItem="hdM-3V-DvI" firstAttribute="top" secondItem="tjg-Ro-tah" secondAttribute="top" constant="4" id="qIT-pr-4xq"/>
