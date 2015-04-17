@@ -27,6 +27,8 @@
 		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
 		19CDED461A2FB92100DD97CC /* SCloudRandomizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED451A2FB92100DD97CC /* SCloudRandomizerTests.m */; };
 		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
+		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
+		4E3A92791AE0604800640EFB /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92781AE0604800640EFB /* tag.png */; };
 		4ED3F5A31AB272A200259C84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3F5A21AB272A200259C84 /* background.png */; };
 		C14EEDFE7A11E93DCFB9D4D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7B3A8D657E6F7F5BDB2255 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
 		19F38A631A9F811C002361E6 /* TrackInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoVC.m; sourceTree = "<group>"; };
 		276CF3AB99530D51BD666B04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4E3A92761AE0602C00640EFB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		4E3A92781AE0604800640EFB /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		4ED3F5A21AB272A200259C84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		E232F970F295066B5DBC30F0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B3A8D657E6F7F5BDB2255 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,8 @@
 				19C18F181A31068D00281221 /* pause_btn.png */,
 				19C18F151A30FD1500281221 /* play_next_btn.png */,
 				19C18F121A30E86A00281221 /* play_btn.png */,
+				4E3A92761AE0602C00640EFB /* play.png */,
+				4E3A92781AE0604800640EFB /* tag.png */,
 				19C18F091A30CDB300281221 /* btn-disconnect-m.png */,
 				19C18F071A2FC98B00281221 /* btn-connect-m.png */,
 			);
@@ -311,9 +317,11 @@
 				19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */,
 				1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */,
 				19C18F171A30FD1500281221 /* play_next_btn.png in Resources */,
+				4E3A92771AE0602C00640EFB /* play.png in Resources */,
 				1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */,
 				19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */,
 				19C18F131A30E86A00281221 /* play_btn.png in Resources */,
+				4E3A92791AE0604800640EFB /* tag.png in Resources */,
 				19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */,
 				4ED3F5A31AB272A200259C84 /* background.png in Resources */,
 				19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */,
