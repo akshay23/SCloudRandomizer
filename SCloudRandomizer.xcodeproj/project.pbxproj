@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		192F2FC21AE6ADF100130CC2 /* Music-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 192F2FC11AE6ADF100130CC2 /* Music-icon.png */; };
 		1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72D1A607F4400109F76 /* Heart-red-transparent.png */; };
 		1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72E1A607F4400109F76 /* Heart-white-transparent.png */; };
 		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
+		192F2FC11AE6ADF100130CC2 /* Music-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Music-icon.png"; sourceTree = "<group>"; };
 		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
 		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
 		1997F7311A64211700109F76 /* SearchParamsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParamsVC.h; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				192F2FC11AE6ADF100130CC2 /* Music-icon.png */,
 				4ED3F5A21AB272A200259C84 /* background.png */,
 				1997F72D1A607F4400109F76 /* Heart-red-transparent.png */,
 				1997F72E1A607F4400109F76 /* Heart-white-transparent.png */,
@@ -316,6 +319,7 @@
 				1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */,
 				19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */,
 				19C18F131A30E86A00281221 /* play_btn.png in Resources */,
+				192F2FC21AE6ADF100130CC2 /* Music-icon.png in Resources */,
 				19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */,
 				4ED3F5A31AB272A200259C84 /* background.png in Resources */,
 				19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */,

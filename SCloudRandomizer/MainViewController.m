@@ -432,7 +432,15 @@
     NSURL *imgUrl = [NSURL URLWithString:urlString];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
-        MPMediaItemArtwork *albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
+        MPMediaItemArtwork *albumArtwork;
+        if (!imageData)
+        {
+            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
+        }
+        else
+        {
+            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"Music-icon.png"]];
+        }
         
         NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyArtist, MPMediaItemPropertyTitle, MPMediaItemPropertyArtwork, MPMediaItemPropertyPlaybackDuration, MPNowPlayingInfoPropertyPlaybackRate, nil];
         NSArray *values = [NSArray arrayWithObjects:trackArtist, trackTitle, albumArtwork, actualDuration, [NSNumber numberWithInt:1], nil];
