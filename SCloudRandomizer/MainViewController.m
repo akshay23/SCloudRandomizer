@@ -70,12 +70,11 @@
             
             if ([self.player isPlaying])
             {
-                [self refreshTrackList];
                 [self doPlayNextSong];
             }
             else
             {
-                [self getTracks];
+                [self getTracks:YES shouldPlay:NO];
             }
             
             self.mySearchParams.hasParamsChanged = NO;
@@ -109,11 +108,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)canBecomeFirstResponder
-{
-    return YES;
 }
 
 - (IBAction)logout:(id)sender
@@ -156,12 +150,6 @@
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }];
-}
-
-- (BOOL)isPlayerLoggedIn
-{
-    SCAccount *account = [SCSoundCloud account];
-    return (account != nil);
 }
 
 - (IBAction)playSong:(id)sender
@@ -212,6 +200,17 @@
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)isPlayerLoggedIn
+{
+    SCAccount *account = [SCSoundCloud account];
+    return (account != nil);
+}
+
 - (void)playPauseSong
 {
     if (![self.player isPlaying])
@@ -239,29 +238,31 @@
     }
 }
 
-// Get tracks based on SearchParams
-- (void)getTracks
+// Get/refresh tracks based on SearchParams
+- (void)getTracks:(BOOL)shouldGetTrackInfo shouldPlay:(BOOL)playBool
 {
     SCRequestResponseHandler handler;
     handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
         NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization
-                                             JSONObjectWithData:data
-                                             options:0
-                                             error:&jsonError];
-        if (!jsonError &&
-            [jsonResponse isKindOfClass:[NSArray class]]) {
+        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
             self.tracks = (NSArray *)jsonResponse;
+            self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
             [self.btnPlay setHidden:NO];
             [self.btnNext setHidden:NO];
             [self.btnNext setEnabled:NO];
             [self.btnPlay setEnabled:NO];
+            [self.btnInfo setEnabled:NO];
+            [self.btnLike setEnabled:NO];
             [self.btnChangeParams setEnabled:NO];
-            NSLog(@"Tracks acquired.");
             
-            self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
-            NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
-            [self getTrackInfo:track shouldPlay:NO];
+            if (shouldGetTrackInfo)
+            {
+                NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
+                [self getTrackInfo:track shouldPlay:playBool];
+            }
+            
+            NSLog(@"Tracks acquired.");
         }
         else
         {
@@ -287,17 +288,8 @@
 - (void)doPlayNextSong
 {
     [self.player stop];
-    [self refreshTrackList];
-    NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
-    self.currentSongNumber = randomNumber;
-    NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
-    [self.btnNext setEnabled:NO];
-    [self.btnPlay setEnabled:NO];
-    [self.btnChangeParams setEnabled:NO];
-    [self.btnInfo setEnabled:NO];
-    [self.btnLike setEnabled:NO];
+    [self getTracks:YES shouldPlay:YES];
     self.imgArtwork.alpha = 0.5;
-    [self getTrackInfo:track shouldPlay:YES];
     
     NSLog(@"Will play next song");
 }
@@ -328,10 +320,8 @@
     while ([GlobalData stringIsNilOrEmpty:streamURL])
     {
         NSLog(@"streamURL is null");
-        [self refreshTrackList];
-        NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
-        self.currentSongNumber = randomNumber;
-        NSDictionary *track2 = [self.tracks objectAtIndex:randomNumber];
+        [self getTracks:NO shouldPlay:NO];
+        NSDictionary *track2 = [self.tracks objectAtIndex:self.currentSongNumber];
         streamURL = [track2 objectForKey:@"stream_url"];
     }
     
@@ -367,33 +357,6 @@
                  [hud hide:YES];
              }];
 
-}
-
-// Load songs based on SearchParams
-// Refresh/reload track list
-- (void)refreshTrackList
-{
-    SCRequestResponseHandler handler = ^(NSURLResponse *response, NSData *data, NSError *error)
-    {
-        NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]])
-        {
-            self.tracks = (NSArray *)jsonResponse;
-            NSLog(@"Tracks list refreshed.");
-        }
-    };
-    
-    // Replace spaces with '%20' and then replace commas with '%2C'
-    NSString *cleanedKeywords = [[self.mySearchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
-    NSLog(@"The resourceURL is %@", resourceURL);
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:resourceURL]
-             usingParameters:nil
-                 withAccount:[SCSoundCloud account]
-      sendingProgressHandler:nil
-             responseHandler:handler];
 }
 
 // Set the like button accordingly
