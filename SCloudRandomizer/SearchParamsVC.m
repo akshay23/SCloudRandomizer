@@ -16,7 +16,8 @@
 
 @implementation SearchParamsVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Draw border around both buttons
@@ -57,11 +58,11 @@
     
     if (![GlobalData stringIsNilOrEmpty:self.txtKeywords.text])
     {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         self.searchParams.hasParamsChanged = YES;
         self.searchParams.keywords = self.txtKeywords.text;
-        self.searchParams.lowBpm = [f numberFromString:self.txtBpmFrom.text];
-        self.searchParams.highBpm = [f numberFromString:self.txtBpmTo.text];
+        self.searchParams.lowBpm = [formatter numberFromString:self.txtBpmFrom.text];
+        self.searchParams.highBpm = [formatter numberFromString:self.txtBpmTo.text];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
