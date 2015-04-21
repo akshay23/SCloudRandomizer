@@ -17,14 +17,13 @@
 // See http://stackoverflow.com/a/4796131/263871 for the rationale
 @property (weak, nonatomic) id<MainVCDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIButton *btnClose;
-@property (strong, nonatomic) IBOutlet UITextView *txtTitle;
-@property (strong, nonatomic) IBOutlet UITextView *txtArtist;
-@property (strong, nonatomic) IBOutlet UITextView *txtDuration;
-@property (strong, nonatomic) IBOutlet UITextView *txtLikes;
-@property (strong, nonatomic) IBOutlet UITextView *txtDesc;
-@property (strong, nonatomic) IBOutlet UITextView *txtPlays;
-@property (strong, nonatomic) IBOutlet UITextView *txtUploaded;
-@property (strong, nonatomic) IBOutlet UITextView *txtTags;
+@property (strong, nonatomic) IBOutlet UITextView *songTitle;
+@property (strong, nonatomic) IBOutlet UILabel *artist;
+@property (strong, nonatomic) IBOutlet UILabel *likes;
+@property (strong, nonatomic) IBOutlet UITextView *songDescription;
+@property (strong, nonatomic) IBOutlet UILabel *numOfPlays;
+@property (strong, nonatomic) IBOutlet UILabel *uploadedTime;
+@property (strong, nonatomic) IBOutlet UITextView *tags;
 
 - (IBAction)close:(id)sender;
 
