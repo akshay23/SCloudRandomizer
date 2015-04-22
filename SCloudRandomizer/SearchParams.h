@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GlobalData.h"
 
 @interface SearchParams : NSObject
 
 @property BOOL hasParamsChanged;
+@property (strong, nonatomic) NSNumber *lowBpm;
+@property (strong, nonatomic) NSNumber *highBpm;
+@property (strong, nonatomic) NSString *keywords;
 
-- (id)initWithBool:(BOOL)changed;
+- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords lowBpm:(NSNumber *)lBpm highBpm:(NSNumber *)hBpm;
 
 @end

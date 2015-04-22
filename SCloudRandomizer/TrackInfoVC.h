@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-// Forward declaration of MainVCDelegate
-@protocol MainVCDelegate;
+#import "MainVCDelegate.h"
 
 @interface TrackInfoVC : UIViewController
 
@@ -28,11 +26,3 @@
 - (IBAction)close:(id)sender;
 
 @end
-
-// Protocol definition
-@protocol MainVCDelegate<NSObject>
-
-- (NSDictionary *)getCurrentTrack;
-
-@end
-

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainVCDelegate.h"
 
 @interface SearchParamsVC : UIViewController
+
+// Delegate properties should always be weak references
+// See http://stackoverflow.com/a/4796131/263871 for the rationale
+@property (weak, nonatomic) id<MainVCDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIButton *btnCancel;
 @property (strong, nonatomic) IBOutlet UIButton *btnSave;
 @property (strong, nonatomic) IBOutlet UITextView *txtKeywords;

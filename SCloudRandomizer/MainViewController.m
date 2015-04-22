@@ -14,6 +14,7 @@
 @property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
 @property (strong, nonatomic) NSDictionary *currentTrack;
+@property (strong, nonatomic) SearchParams *mySearchParams;
 
 @end
 
@@ -35,9 +36,10 @@
     
     // New search params view instance and track info VC
     self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
+    self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.mySearchParams = [[SearchParams alloc] initWithBool:YES];
+    self.mySearchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix" lowBpm:[NSNumber numberWithInt:80] highBpm:[NSNumber numberWithInt:150]];
     
     // Clear the labels
     [self.lblArtistValue setText:@""];
@@ -65,7 +67,16 @@
         
         if (self.mySearchParams.hasParamsChanged)
         {
-            [self getTracks];
+            
+            if ([self.player isPlaying])
+            {
+                [self doPlayNextSong];
+            }
+            else
+            {
+                [self getTracks:YES shouldPlay:NO];
+            }
+            
             self.mySearchParams.hasParamsChanged = NO;
         }
     }
@@ -97,11 +108,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)canBecomeFirstResponder
-{
-    return YES;
 }
 
 - (IBAction)logout:(id)sender
@@ -144,12 +150,6 @@
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }];
-}
-
-- (BOOL) isPlayerLoggedIn
-{
-    SCAccount *account = [SCSoundCloud account];
-    return (account != nil);
 }
 
 - (IBAction)playSong:(id)sender
@@ -200,6 +200,17 @@
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)isPlayerLoggedIn
+{
+    SCAccount *account = [SCSoundCloud account];
+    return (account != nil);
+}
+
 - (void)playPauseSong
 {
     if (![self.player isPlaying])
@@ -227,29 +238,47 @@
     }
 }
 
-// TODO: Change logic to get tracks based on SearchParams object
-- (void)getTracks
+// Get/refresh tracks based on SearchParams
+- (void)getTracks:(BOOL)shouldGetTrackInfo shouldPlay:(BOOL)playBool
 {
-    SCRequestResponseHandler handler;
-    handler = ^(NSURLResponse *response, NSData *data, NSError *error) {
+    // Disable buttons
+    self.imgArtwork.alpha = 0.5;
+    [self.btnPlay setHidden:NO];
+    [self.btnNext setHidden:NO];
+    [self.btnNext setEnabled:NO];
+    [self.btnPlay setEnabled:NO];
+    [self.btnInfo setEnabled:NO];
+    [self.btnLike setEnabled:NO];
+    [self.btnChangeParams setEnabled:NO];
+    
+    // Progress/loading hud
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Refreshing Track List";
+    hud.detailsLabelText = @"Please wait..";
+    
+    // Progress handler
+    SCRequestSendingProgressHandler progressHandler;
+    progressHandler = ^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+        hud.progress = ((float)bytesSent / bytesTotal);
+    };
+    
+    // Response handler
+    SCRequestResponseHandler responseHandler;
+    responseHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
         NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization
-                                             JSONObjectWithData:data
-                                             options:0
-                                             error:&jsonError];
-        if (!jsonError &&
-            [jsonResponse isKindOfClass:[NSArray class]]) {
+        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
             self.tracks = (NSArray *)jsonResponse;
-            [self.btnPlay setHidden:NO];
-            [self.btnNext setHidden:NO];
-            [self.btnNext setEnabled:NO];
-            [self.btnPlay setEnabled:NO];
-            [self.btnChangeParams setEnabled:NO];
-            NSLog(@"Tracks acquired.");
-            
             self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
-            NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
-            [self getTrackInfo:track shouldPlay:NO];
+            
+            if (shouldGetTrackInfo)
+            {
+                NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
+                [self getTrackInfo:track shouldPlay:playBool];
+            }
+            
+            NSLog(@"Tracks acquired.");
         }
         else
         {
@@ -257,32 +286,85 @@
             [alert show];
             NSLog(@"Could not get tracks.");
         }
+        
+        [hud hide:YES];
     };
     
-    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
+    // Replace spaces with '%20' and then replace commas with '%2C'
+    NSString *cleanedKeywords = [[self.mySearchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
+    NSLog(@"The resourceURL is %@", resourceURL);
+
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:resourceURL]
              usingParameters:nil
                  withAccount:[SCSoundCloud account]
-      sendingProgressHandler:nil
-             responseHandler:handler];
+      sendingProgressHandler:progressHandler
+             responseHandler:responseHandler];
+}
+
+// Display the track info and play song if needed
+- (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play
+{
+    NSString *streamURL = [track objectForKey:@"stream_url"];
+    NSLog(@"The streamURL is: %@", streamURL);
+    
+    // Get new track if stream URL is nil
+    while ([GlobalData stringIsNilOrEmpty:streamURL])
+    {
+        NSLog(@"streamURL is null");
+        [self getTracks:NO shouldPlay:NO];
+        NSDictionary *track2 = [self.tracks objectAtIndex:self.currentSongNumber];
+        streamURL = [track2 objectForKey:@"stream_url"];
+    }
+    
+    // Progress/loading hud
+    SCAccount *account = [SCSoundCloud account];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading Track";
+    hud.detailsLabelText = @"Please wait..";
+    
+    // Progress handler
+    SCRequestSendingProgressHandler progressHandler;
+    progressHandler = ^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+        hud.progress = ((float)bytesSent / bytesTotal);
+    };
+    
+    // Response handler
+    SCRequestResponseHandler responseHandler;
+    responseHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
+        self.currentSongData = data;
+        self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
+        self.player.delegate = self;
+        
+        [self setupLockScreenInfo:track];
+        [self setupUI:track];
+        [self checkFavouritesList];
+        
+        if (play)
+        {
+            [self.player prepareToPlay];
+            [self.player play];
+            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+        }
+        
+        [hud hide:YES];
+    };
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:streamURL]
+             usingParameters:nil
+                 withAccount:account
+      sendingProgressHandler:progressHandler
+             responseHandler:responseHandler];
 }
 
 // Actually play the next sont
 - (void)doPlayNextSong
 {
     [self.player stop];
-    [self refreshTrackList];
-    NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
-    self.currentSongNumber = randomNumber;
-    NSDictionary *track = [self.tracks objectAtIndex:randomNumber];
-    [self.btnNext setEnabled:NO];
-    [self.btnPlay setEnabled:NO];
-    [self.btnChangeParams setEnabled:NO];
-    [self.btnInfo setEnabled:NO];
-    [self.btnLike setEnabled:NO];
-    self.imgArtwork.alpha = 0.5;
-    [self getTrackInfo:track shouldPlay:YES];
+    [self getTracks:YES shouldPlay:YES];
     
     NSLog(@"Will play next song");
 }
@@ -301,95 +383,24 @@
     {
         formatted = [NSString stringWithFormat:@"%ld:%ld", (long)minutes, (long)seconds];
     }
+
     return  formatted;
-}
-
-// Display the track info and play song if needed
-- (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play
-{
-    NSString *streamURL = [track objectForKey:@"stream_url"];
-    NSLog(@"The streamURL is: %@", streamURL);
-    
-    while ([GlobalData stringIsNilOrEmpty:streamURL])
-    {
-        NSLog(@"streamURL is null");
-        [self refreshTrackList];
-        NSInteger randomNumber = arc4random_uniform((uint32_t) self.tracks.count);
-        self.currentSongNumber = randomNumber;
-        NSDictionary *track2 = [self.tracks objectAtIndex:randomNumber];
-        streamURL = [track2 objectForKey:@"stream_url"];
-    }
-    
-    SCAccount *account = [SCSoundCloud account];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading Track";
-    hud.detailsLabelText = @"Please wait..";
-    
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:streamURL]
-             usingParameters:nil
-                 withAccount:account
-      sendingProgressHandler:^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-                                hud.progress = ((float)bytesSent / bytesTotal);
-                            }
-             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                 self.currentSongData = data;
-                 self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
-                 self.player.delegate = self;
-                 
-                 [self setupLockScreenInfo:track];
-                 [self setupUI:track];
-                 [self checkFavouritesList];
-                 
-                 if (play)
-                 {
-                     [self.player prepareToPlay];
-                     [self.player play];
-                     [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-                 }
-
-                 [hud hide:YES];
-             }];
-
-}
-
-// TODO: Load songs based on SearchParams
-// Refresh/reload track list
-- (void)refreshTrackList
-{
-    SCRequestResponseHandler handler = ^(NSURLResponse *response, NSData *data, NSError *error)
-    {
-        NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]])
-        {
-            self.tracks = (NSArray *)jsonResponse;
-            NSLog(@"Tracks list refreshed.");
-        }
-    };
-    
-    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites.json";
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:resourceURL]
-             usingParameters:nil
-                 withAccount:[SCSoundCloud account]
-      sendingProgressHandler:nil
-             responseHandler:handler];
 }
 
 // Set the like button accordingly
 - (void)checkFavouritesList
 {
-    if ([self.currentTrack objectForKey:@"user_favorite"])
-    {
-        self.isCurrentSongLiked = YES;
-        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
-    }
-    else
+    NSNumber *favValue = [self.currentTrack objectForKey:@"user_favorite"];
+    NSLog(@"Fav value: %@", favValue);
+    if ([favValue isEqual:@0])
     {
         self.isCurrentSongLiked = NO;
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.isCurrentSongLiked = YES;
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -397,13 +408,6 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     [self doPlayNextSong];
-}
-
-// MainVCDelegate method
-// Return current track
-- (NSDictionary *)getCurrentTrack
-{
-    return self.currentTrack;
 }
 
 // Set up the lock screen
@@ -428,7 +432,15 @@
     NSURL *imgUrl = [NSURL URLWithString:urlString];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imgUrl];
-        MPMediaItemArtwork *albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
+        MPMediaItemArtwork *albumArtwork;
+        if (!imageData)
+        {
+            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
+        }
+        else
+        {
+            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"Music-icon.png"]];
+        }
         
         NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyArtist, MPMediaItemPropertyTitle, MPMediaItemPropertyArtwork, MPMediaItemPropertyPlaybackDuration, MPNowPlayingInfoPropertyPlaybackRate, nil];
         NSArray *values = [NSArray arrayWithObjects:trackArtist, trackTitle, albumArtwork, actualDuration, [NSNumber numberWithInt:1], nil];
@@ -509,6 +521,20 @@
             [self doPlayNextSong];
         }
     }
+}
+
+// MainVCDelegate method
+// Return current track
+- (NSDictionary *)getCurrentTrack
+{
+    return self.currentTrack;
+}
+
+// MainVCDelegate method
+// Return current search params
+- (SearchParams *)getCurrentSearchParams
+{
+    return self.mySearchParams;
 }
 
 @end

@@ -29,7 +29,6 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) NSArray *tracks;
 @property (strong, nonatomic) AVAudioPlayer *player;
 @property (strong, nonatomic) SearchParamsVC *searchParamsVC;
-@property (strong, nonatomic) SearchParams *mySearchParams;
 @property (strong, nonatomic) TrackInfoVC *trackInfoVC;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSCConnect;
