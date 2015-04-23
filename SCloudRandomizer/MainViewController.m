@@ -20,13 +20,11 @@
 
 @implementation MainViewController
 
-@synthesize player;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Storyboard
     if (![GlobalData getInstance].mainStoryboard)
     {
         // Instantiate new main storyboard instance
@@ -34,7 +32,6 @@
         NSLog(@"mainStoryboard instantiated");
     }
     
-    // New search params view instance and track info VC
     self.searchParamsVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"searchParamsVC"];
     self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
@@ -58,7 +55,6 @@
 {
     [super viewWillAppear:animated];
     
-    // Disable/enable SC buttons if user is currently logged in
     if ([self isPlayerLoggedIn])
     {
         [self.btnSCConnect setHidden:YES];
@@ -67,7 +63,6 @@
         
         if (self.mySearchParams.hasParamsChanged)
         {
-            
             if ([self.player isPlaying])
             {
                 [self doPlayNextSong];
@@ -89,8 +84,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    //End recieving events
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
 }
@@ -167,7 +160,7 @@
     [self presentViewController:self.searchParamsVC animated:YES completion:nil];
 }
 
-- (IBAction)favThisSong:(id)sender
+- (IBAction)updateFavState:(id)sender
 {
     NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
     NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: [[self.currentTrack objectForKey:@"id"] stringValue]]];
@@ -238,6 +231,17 @@
     }
 }
 
+- (MBProgressHUD*) getProgressBar:(MBProgressHUDMode)progressHudMode
+                                progressHudLabel:(NSString*) progressHudTitle
+                                progressHudDetailsLabel:(NSString*) progressHudDetails
+{
+    MBProgressHUD* progressHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    progressHud.mode = progressHudMode;
+    progressHud.labelText =  progressHudTitle;
+    progressHud.detailsLabelText = progressHudDetails;
+    return progressHud;
+}
+
 // Get/refresh tracks based on SearchParams
 - (void)getTracks:(BOOL)shouldGetTrackInfo shouldPlay:(BOOL)playBool
 {
@@ -251,44 +255,45 @@
     [self.btnLike setEnabled:NO];
     [self.btnChangeParams setEnabled:NO];
     
-    // Progress/loading hud
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Refreshing Track List";
-    hud.detailsLabelText = @"Please wait..";
+    MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate
+          progressHudLabel:@"Refreshing Track List"
+          progressHudDetailsLabel:@"Please wait.."];
     
-    // Progress handler
-    SCRequestSendingProgressHandler progressHandler;
-    progressHandler = ^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-        hud.progress = ((float)bytesSent / bytesTotal);
-    };
+    SCRequestSendingProgressHandler progressHandler =
+        ^(unsigned long long bytesSent, unsigned long long bytesTotal) {
+                progressHud.progress = ((float)bytesSent / bytesTotal);
+        };
     
-    // Response handler
-    SCRequestResponseHandler responseHandler;
-    responseHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
-        NSError *jsonError = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
-            self.tracks = (NSArray *)jsonResponse;
-            self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
-            
-            if (shouldGetTrackInfo)
+    SCRequestResponseHandler responseHandler =
+        ^(NSURLResponse *response, NSData *data, NSError *error)
+        {
+            NSError *jsonError = nil;
+            NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
+                self.tracks = (NSArray *)jsonResponse;
+                self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
+                
+                if (shouldGetTrackInfo)
+                {
+                    NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
+                    [self getTrackInfo:track shouldPlay:playBool];
+                }
+                
+                NSLog(@"Tracks acquired.");
+            }
+            else
             {
-                NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
-                [self getTrackInfo:track shouldPlay:playBool];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:@"Could not get your tracks! Please try again."
+                                                                delegate:self
+                                                                cancelButtonTitle:@"Ok"
+                                                                otherButtonTitles:nil];
+                [alert show];
+                NSLog(@"Could not get tracks.");
             }
             
-            NSLog(@"Tracks acquired.");
-        }
-        else
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not get your tracks! Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
-            NSLog(@"Could not get tracks.");
-        }
-        
-        [hud hide:YES];
-    };
+            [progressHud hide:YES];
+        };
     
     // Replace spaces with '%20' and then replace commas with '%2C'
     NSString *cleanedKeywords = [[self.mySearchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
@@ -318,44 +323,41 @@
         streamURL = [track2 objectForKey:@"stream_url"];
     }
     
-    // Progress/loading hud
-    SCAccount *account = [SCSoundCloud account];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading Track";
-    hud.detailsLabelText = @"Please wait..";
+    MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate
+                            progressHudLabel:@"Loading Track"
+                            progressHudDetailsLabel:@"Please wait.."];
     
-    // Progress handler
-    SCRequestSendingProgressHandler progressHandler;
-    progressHandler = ^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-        hud.progress = ((float)bytesSent / bytesTotal);
-    };
+    SCRequestSendingProgressHandler progressHandler =
+        ^(unsigned long long bytesSent, unsigned long long bytesTotal)
+         {
+                progressHud.progress = ((float)bytesSent / bytesTotal);
+         };
     
-    // Response handler
-    SCRequestResponseHandler responseHandler;
-    responseHandler = ^(NSURLResponse *response, NSData *data, NSError *error) {
-        self.currentSongData = data;
-        self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
-        self.player.delegate = self;
-        
-        [self setupLockScreenInfo:track];
-        [self setupUI:track];
-        [self checkFavouritesList];
-        
-        if (play)
+    SCRequestResponseHandler responseHandler =
+        ^(NSURLResponse *response, NSData *data, NSError *error)
         {
-            [self.player prepareToPlay];
-            [self.player play];
-            [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-        }
-        
-        [hud hide:YES];
-    };
+                self.currentSongData = data;
+                self.player = [[AVAudioPlayer alloc] initWithData:data error:nil];
+                self.player.delegate = self;
+                
+                [self setupLockScreenInfo:track];
+                [self setupUI:track];
+                [self checkFavouritesList];
+                
+                if (play)
+                {
+                    [self.player prepareToPlay];
+                    [self.player play];
+                    [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+                }
+                
+                [progressHud hide:YES];
+        };
     
     [SCRequest performMethod:SCRequestMethodGET
                   onResource:[NSURL URLWithString:streamURL]
              usingParameters:nil
-                 withAccount:account
+                 withAccount:[SCSoundCloud account]
       sendingProgressHandler:progressHandler
              responseHandler:responseHandler];
 }
@@ -435,11 +437,11 @@
         MPMediaItemArtwork *albumArtwork;
         if (!imageData)
         {
-            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
+            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"Music-icon.png"]];
         }
         else
         {
-            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"Music-icon.png"]];
+            albumArtwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:imageData]];
         }
         
         NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyArtist, MPMediaItemPropertyTitle, MPMediaItemPropertyArtwork, MPMediaItemPropertyPlaybackDuration, MPNowPlayingInfoPropertyPlaybackRate, nil];
@@ -501,7 +503,6 @@
             self.imgArtwork.image = [UIImage imageWithData:imageData];
         });
     });
-
 }
 
 // Lock screen control actions
