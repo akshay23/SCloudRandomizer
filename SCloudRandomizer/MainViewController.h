@@ -55,7 +55,7 @@ typedef NSUInteger PlayerState;
 - (IBAction)playSong:(id)sender;
 - (IBAction)playNext:(id)sender;
 - (IBAction)changeParams:(id)sender;
-- (IBAction)favThisSong:(id)sender;
+- (IBAction)updateFavState:(id)sender;
 - (IBAction)showTrackInfo:(id)sender;
 - (BOOL)isPlayerLoggedIn;
 
