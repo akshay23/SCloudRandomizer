@@ -382,7 +382,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="tags" translatesAutoresizingMaskIntoConstraints="NO" id="oaO-Io-j0Z" userLabel="Tags">
-                                <rect key="frame" x="107" y="207" width="153" height="63"/>
+                                <rect key="frame" x="98" y="207" width="162" height="63"/>
                                 <color key="textColor" red="0.32883522729999998" green="0.32883522729999998" blue="0.32883522729999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -425,7 +425,7 @@
                             <constraint firstItem="xJ6-CR-OAE" firstAttribute="top" secondItem="bbT-8q-Tan" secondAttribute="top" constant="40" id="GPT-Vy-J9x"/>
                             <constraint firstItem="Lwx-ud-Xlf" firstAttribute="leading" secondItem="4eX-rn-1Zx" secondAttribute="leading" id="HgH-Ws-uon"/>
                             <constraint firstItem="hxV-KF-UxY" firstAttribute="trailing" secondItem="oaO-Io-j0Z" secondAttribute="trailing" id="Jvk-cN-a6D"/>
-                            <constraint firstItem="oaO-Io-j0Z" firstAttribute="leading" secondItem="Lwx-ud-Xlf" secondAttribute="trailing" constant="19" id="KyN-Sx-NKP"/>
+                            <constraint firstItem="oaO-Io-j0Z" firstAttribute="leading" secondItem="Lwx-ud-Xlf" secondAttribute="trailing" constant="10" id="KyN-Sx-NKP"/>
                             <constraint firstAttribute="trailing" secondItem="C6F-5R-2jY" secondAttribute="trailing" constant="52" id="PEm-yZ-6EH"/>
                             <constraint firstItem="oaO-Io-j0Z" firstAttribute="trailing" secondItem="4eX-rn-1Zx" secondAttribute="trailing" id="Pr4-Id-DUJ"/>
                             <constraint firstItem="jqr-NK-dzY" firstAttribute="top" secondItem="C6F-5R-2jY" secondAttribute="bottom" constant="14" id="PwD-Sc-8wL"/>

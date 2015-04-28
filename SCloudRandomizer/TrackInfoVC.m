@@ -33,26 +33,30 @@
     
     long likes = [[track objectForKey:@"favoritings_count"] longValue];
     long plays = [[track objectForKey:@"playback_count"] longValue];
-    NSString *desc = [track objectForKey:@"description"];
     NSString *uploaded = [track objectForKey:@"created_at"];
     
-    if ([desc isEqualToString:@""])
+    NSString *desc = [track objectForKey:@"description"];
+    if ([desc length] == 0)
     {
         desc = @"No description";
     }
+    [self.songDescription setText:desc];
 
     [self.songTitle setText:[track objectForKey:@"title"]];
-    [self.songTitle sizeToFit];
     
     [self.artist setText:[[track objectForKey:@"user"] objectForKey:@"username"]];
     [self.likes setText: [[NSNumber numberWithLong:likes] stringValue]];
     [self.numOfPlays setText: [[NSNumber numberWithLong:plays] stringValue]];
-    [self.songDescription setText:desc];
     
     [self.uploadedTime
       setText: [NSString stringWithFormat: @"Uploaded at %@", [uploaded substringToIndex:10]]];
     
-    [self.tags setText:[track objectForKey:@"tag_list"]];
+    NSString* tags = [track objectForKey:@"tag_list"];
+    if ([tags length] == 0) {
+        [self.tags setText:@"None"];
+    } else {
+        [self.tags setText:tags];
+    }
     
     NSLog(@"Track details displayed!");
 }
