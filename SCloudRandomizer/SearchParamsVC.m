@@ -59,7 +59,7 @@
     if (![GlobalData stringIsNilOrEmpty:self.txtKeywords.text])
     {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        self.searchParams.hasParamsChanged = YES;
+        self.searchParams.hasChanged = YES;
         self.searchParams.keywords = self.txtKeywords.text;
         self.searchParams.lowBpm = [formatter numberFromString:self.txtBpmFrom.text];
         self.searchParams.highBpm = [formatter numberFromString:self.txtBpmTo.text];

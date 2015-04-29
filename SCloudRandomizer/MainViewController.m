@@ -8,13 +8,17 @@
 
 #import "MainViewController.h"
 
+const double LoggedOutBackgroundImage_Opacity = 0.7;
+
 @interface MainViewController ()
 
+// Private properties
 @property (strong, nonatomic) NSData *currentSongData;
 @property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
 @property (strong, nonatomic) NSDictionary *currentTrack;
-@property (strong, nonatomic) SearchParams *mySearchParams;
+@property (strong, nonatomic) SearchParams *searchParams;
+@property MusicSource *musicSource;
 
 @end
 
@@ -24,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.musicSource = [MusicSource getInstance];
     
     if (![GlobalData getInstance].mainStoryboard)
     {
@@ -36,7 +42,7 @@
     self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.mySearchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix" lowBpm:[NSNumber numberWithInt:80] highBpm:[NSNumber numberWithInt:150]];
+    self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix" lowBpm:[NSNumber numberWithInt:80] highBpm:[NSNumber numberWithInt:150]];
     
     // Clear the labels
     [self.lblArtistValue setText:@""];
@@ -55,13 +61,13 @@
 {
     [super viewWillAppear:animated];
     
-    if ([self isPlayerLoggedIn])
+    if ([self.musicSource isUserLoggedIn])
     {
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
         self.backgroundImage.alpha = 0.2;
         
-        if (self.mySearchParams.hasParamsChanged)
+        if (self.searchParams.hasChanged)
         {
             if ([self.player isPlaying])
             {
@@ -72,12 +78,12 @@
                 [self getTracks:YES shouldPlay:NO];
             }
             
-            self.mySearchParams.hasParamsChanged = NO;
+            self.searchParams.hasChanged = NO;
         }
     }
     else
     {
-        self.backgroundImage.alpha = 0.7;
+        self.backgroundImage.alpha = LoggedOutBackgroundImage_Opacity;
     }
 }
 
@@ -88,7 +94,7 @@
     [self resignFirstResponder];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
@@ -105,8 +111,9 @@
 
 - (IBAction)logout:(id)sender
 {
+    [self.musicSource logout];
+    
     [self.player stop];
-    [SCSoundCloud removeAccess];
     [self.btnSCConnect setHidden:NO];
     [self.btnSCDisconnect setHidden:YES];
     [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
@@ -122,8 +129,8 @@
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
     [self.btnChangeParams setHidden:YES];
-    self.backgroundImage.alpha = 0.7;
-    self.mySearchParams.hasParamsChanged = YES;
+    self.backgroundImage.alpha = LoggedOutBackgroundImage_Opacity;
+    self.searchParams.hasChanged = YES;
     NSLog(@"Logged out.");
 }
 
@@ -160,25 +167,23 @@
     [self presentViewController:self.searchParamsVC animated:YES completion:nil];
 }
 
-- (IBAction)updateFavState:(id)sender
+- (IBAction)toggleFavState:(id)sender
 {
-    NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
-    NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: [[self.currentTrack objectForKey:@"id"] stringValue]]];
+    self.isCurrentSongLiked = !self.isCurrentSongLiked;
+    
+    [self.musicSource updateLikedState:self.isCurrentSongLiked
+                               trackId:[[self.currentTrack objectForKey:@"id"] stringValue]];
     
     if (self.isCurrentSongLiked)
     {
-        [SCRequest performMethod:SCRequestMethodDELETE onResource:postURL usingParameters:nil withAccount:[SCSoundCloud account] sendingProgressHandler:nil responseHandler:nil];
-        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
-        NSLog(@"Removed from favs list");
-    }
-    else
-    {
-        [SCRequest performMethod:SCRequestMethodPUT onResource:postURL usingParameters:nil withAccount:[SCSoundCloud account] sendingProgressHandler:nil responseHandler:nil];
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
         NSLog(@"Added to favs list");
     }
-    
-    self.isCurrentSongLiked = !self.isCurrentSongLiked;
+    else
+    {
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
+        NSLog(@"Removed from favs list");
+    }
 }
 
 - (IBAction)showTrackInfo:(id)sender
@@ -196,12 +201,6 @@
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
-}
-
-- (BOOL)isPlayerLoggedIn
-{
-    SCAccount *account = [SCSoundCloud account];
-    return (account != nil);
 }
 
 - (void)playPauseSong
@@ -296,7 +295,7 @@
         };
     
     // Replace spaces with '%20' and then replace commas with '%2C'
-    NSString *cleanedKeywords = [[self.mySearchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *cleanedKeywords = [[self.searchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
     NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
     NSLog(@"The resourceURL is %@", resourceURL);
 
@@ -535,7 +534,7 @@
 // Return current search params
 - (SearchParams *)getCurrentSearchParams
 {
-    return self.mySearchParams;
+    return self.searchParams;
 }
 
 @end
