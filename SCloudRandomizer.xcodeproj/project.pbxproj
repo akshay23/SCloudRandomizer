@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 190EA4291AF2D0C30003DCD6 /* Music-icon.png */; };
 		1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72D1A607F4400109F76 /* Heart-red-transparent.png */; };
 		1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72E1A607F4400109F76 /* Heart-white-transparent.png */; };
 		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		190EA4291AF2D0C30003DCD6 /* Music-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Music-icon.png"; sourceTree = "<group>"; };
 		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
 		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
 		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				190EA4291AF2D0C30003DCD6 /* Music-icon.png */,
 				4ED3F5A21AB272A200259C84 /* background.png */,
 				1997F72D1A607F4400109F76 /* Heart-red-transparent.png */,
 				1997F72E1A607F4400109F76 /* Heart-white-transparent.png */,
@@ -316,6 +319,7 @@
 			files = (
 				19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */,
 				19C18F191A31068D00281221 /* pause_btn.png in Resources */,
+				190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */,
 				19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */,
 				1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */,
 				19C18F171A30FD1500281221 /* play_next_btn.png in Resources */,
