@@ -10,11 +10,13 @@
 
 @interface MusicSource: NSObject
 
+typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
+typedef void(^singleTrackFetchedCompletionHandler)(NSDictionary* track);
+
 + (MusicSource*) getInstance;
 - (BOOL)isUserLoggedIn;
-- (void)getTracks:(BOOL)shouldGetTrackInfo shouldPlay:(BOOL)playBool;
-- (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play;
+- (void)getRandomTrack:(NSString*)searchKeywords completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
 - (void)logout;
-- (void)updateLikedState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
+- (void)updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
 
 @end

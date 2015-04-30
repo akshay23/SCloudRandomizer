@@ -15,6 +15,8 @@ static MusicSource *instance;
 
 @interface MusicSource ()
 
+- (void)getTracks:(NSString*)searchKeywords completionHandler:(tracksFetchedCompletionHandler)completionHandler;
+
 @end
 
 
@@ -34,12 +36,48 @@ static MusicSource *instance;
     return [SCSoundCloud account];
 }
 
-- (void)getTracks:(BOOL)shouldGetTrackInfo shouldPlay:(BOOL)playBool
+- (void)getRandomTrack:(NSString*)searchKeywords completionHandler:(singleTrackFetchedCompletionHandler)completionHandler
 {
-    
+    [self getTracks:searchKeywords completionHandler:^(NSArray* tracks) {
+        int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
+        completionHandler([tracks objectAtIndex:randomSongIndex]);
+    }];
 }
 
-- (void)getTrackInfo:(NSDictionary *)track shouldPlay:(BOOL)play
+- (void)getTracks:(NSString*)searchKeywords completionHandler:(tracksFetchedCompletionHandler)completionHandler
+{
+    SCRequestResponseHandler responseHandler =
+    ^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        NSError *jsonError = nil;
+        NSArray* tracks = nil;
+        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
+            tracks = (NSArray *)jsonResponse;
+            NSLog(@"Tracks acquired.");
+        }
+        else
+        {
+            NSLog(@"Could not get tracks.");
+        }
+        
+        completionHandler(tracks);
+    };
+    
+    // Replace spaces with '%20' and then replace commas with '%2C'
+    NSString *cleanedKeywords = [[searchKeywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
+    NSLog(@"The resourceURL is %@", resourceURL);
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:resourceURL]
+             usingParameters:nil
+                 withAccount:[SCSoundCloud account]
+      sendingProgressHandler:nil
+             responseHandler:responseHandler];
+}
+
+- (void)getTrackInfo:(NSDictionary *)track
 {
     
 }
@@ -49,7 +87,7 @@ static MusicSource *instance;
     [SCSoundCloud removeAccess];
 }
 
-- (void) updateLikedState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate
+- (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate
 {
     NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
     NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: trackIdToUpdate]];

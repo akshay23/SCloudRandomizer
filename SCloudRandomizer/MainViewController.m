@@ -134,6 +134,7 @@ const double LoggedOutBackgroundImage_Opacity = 0.7;
     NSLog(@"Logged out.");
 }
 
+// ToDo - Move this into a login view
 - (IBAction)login:(id)sender
 {
     [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
@@ -171,18 +172,16 @@ const double LoggedOutBackgroundImage_Opacity = 0.7;
 {
     self.isCurrentSongLiked = !self.isCurrentSongLiked;
     
-    [self.musicSource updateLikedState:self.isCurrentSongLiked
+    [self.musicSource updateLikeState:self.isCurrentSongLiked
                                trackId:[[self.currentTrack objectForKey:@"id"] stringValue]];
     
     if (self.isCurrentSongLiked)
     {
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
-        NSLog(@"Added to favs list");
     }
     else
     {
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
-        NSLog(@"Removed from favs list");
     }
 }
 
@@ -241,7 +240,6 @@ const double LoggedOutBackgroundImage_Opacity = 0.7;
     return progressHud;
 }
 
-// Get/refresh tracks based on SearchParams
 - (void)getTracks:(BOOL)shouldGetTrackInfo shouldPlay:(BOOL)playBool
 {
     // Disable buttons
@@ -258,53 +256,10 @@ const double LoggedOutBackgroundImage_Opacity = 0.7;
           progressHudLabel:@"Refreshing Track List"
           progressHudDetailsLabel:@"Please wait.."];
     
-    SCRequestSendingProgressHandler progressHandler =
-        ^(unsigned long long bytesSent, unsigned long long bytesTotal) {
-                progressHud.progress = ((float)bytesSent / bytesTotal);
-        };
-    
-    SCRequestResponseHandler responseHandler =
-        ^(NSURLResponse *response, NSData *data, NSError *error)
-        {
-            NSError *jsonError = nil;
-            NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-            if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
-                self.tracks = (NSArray *)jsonResponse;
-                self.currentSongNumber = arc4random_uniform((uint32_t) self.tracks.count);
-                
-                if (shouldGetTrackInfo)
-                {
-                    NSDictionary *track = [self.tracks objectAtIndex:self.currentSongNumber];
-                    [self getTrackInfo:track shouldPlay:playBool];
-                }
-                
-                NSLog(@"Tracks acquired.");
-            }
-            else
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:@"Could not get your tracks! Please try again."
-                                                                delegate:self
-                                                                cancelButtonTitle:@"Ok"
-                                                                otherButtonTitles:nil];
-                [alert show];
-                NSLog(@"Could not get tracks.");
-            }
-            
-            [progressHud hide:YES];
-        };
-    
-    // Replace spaces with '%20' and then replace commas with '%2C'
-    NSString *cleanedKeywords = [[self.searchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
-    NSLog(@"The resourceURL is %@", resourceURL);
-
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:resourceURL]
-             usingParameters:nil
-                 withAccount:[SCSoundCloud account]
-      sendingProgressHandler:progressHandler
-             responseHandler:responseHandler];
+    [self.musicSource getRandomTrack:self.searchParams.keywords completionHandler:^(NSDictionary* track) {
+        [self getTrackInfo:track shouldPlay:playBool];
+        [progressHud hide:YES];
+    }];
 }
 
 // Display the track info and play song if needed
