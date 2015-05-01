@@ -10,20 +10,18 @@
 #import <SCSoundCloud.h>
 #import <SCRequest.h>
 #import "MusicSource.h"
+#import "Track.h"
 
 static MusicSource *instance;
 
 @interface MusicSource ()
-
 - (void)getTracks:(NSString*)searchKeywords completionHandler:(tracksFetchedCompletionHandler)completionHandler;
-
 @end
 
 
 @implementation MusicSource : NSObject
 
-+ (MusicSource*) getInstance
-{
++ (MusicSource*) getInstance {
     if (instance == nil) {
         instance = [[MusicSource alloc] init];
     }
@@ -31,21 +29,19 @@ static MusicSource *instance;
     return instance;
 }
 
-- (BOOL) isUserLoggedIn
-{
+- (BOOL) isUserLoggedIn {
     return [SCSoundCloud account];
 }
 
-- (void)getRandomTrack:(NSString*)searchKeywords completionHandler:(singleTrackFetchedCompletionHandler)completionHandler
-{
+- (void)getRandomTrack:(NSString*)searchKeywords completionHandler:(singleTrackFetchedCompletionHandler)completionHandler {
     [self getTracks:searchKeywords completionHandler:^(NSArray* tracks) {
         int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
-        completionHandler([tracks objectAtIndex:randomSongIndex]);
+        Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[SCSoundCloud account]];
+        completionHandler(track);
     }];
 }
 
-- (void)getTracks:(NSString*)searchKeywords completionHandler:(tracksFetchedCompletionHandler)completionHandler
-{
+- (void)getTracks:(NSString*)searchKeywords completionHandler:(tracksFetchedCompletionHandler)completionHandler {
     SCRequestResponseHandler responseHandler =
     ^(NSURLResponse *response, NSData *data, NSError *error)
     {
@@ -77,18 +73,11 @@ static MusicSource *instance;
              responseHandler:responseHandler];
 }
 
-- (void)getTrackInfo:(NSDictionary *)track
-{
-    
-}
-
-- (void)logout
-{
+- (void)logout {
     [SCSoundCloud removeAccess];
 }
 
-- (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate
-{
+- (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate {
     NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
     NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: trackIdToUpdate]];
     

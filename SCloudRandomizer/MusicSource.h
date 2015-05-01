@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Track;
 
 @interface MusicSource: NSObject
 
+
 typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
-typedef void(^singleTrackFetchedCompletionHandler)(NSDictionary* track);
+typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
 
 + (MusicSource*) getInstance;
 - (BOOL)isUserLoggedIn;
