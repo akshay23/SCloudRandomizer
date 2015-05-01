@@ -16,12 +16,10 @@
     NSInteger minutes = floor(duration / 60000);
     NSInteger seconds = ((duration % 60000) / 1000);
     NSString *formatted = nil;
-    if (seconds < 10)
-    {
+    if (seconds < 10) {
         formatted = [NSString stringWithFormat:@"%ld:0%ld", (long)minutes, (long)seconds];
     }
-    else
-    {
+    else {
         formatted = [NSString stringWithFormat:@"%ld:%ld", (long)minutes, (long)seconds];
     }
     

@@ -10,7 +10,7 @@
 
 @interface Track : NSObject
 
-@property (nonatomic) NSString *Id;
+@property (nonatomic) NSNumber *Id;
 @property (nonatomic) NSString *streamUrl;
 @property (nonatomic) NSNumber *isLiked;
 @property (nonatomic) NSString *title;

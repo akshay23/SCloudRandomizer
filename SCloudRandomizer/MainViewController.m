@@ -166,17 +166,10 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self presentViewController:self.searchParamsVC animated:YES completion:nil];
 }
 
-- (IBAction)updateFavState:(id)sender {
+- (IBAction)setFavState:(id)sender {
     self.isCurrentSongLiked = !self.isCurrentSongLiked;
-    
-    [self.musicSource updateLikeState:self.isCurrentSongLiked trackId:self.currentTrack.Id];
-    
-    if (self.isCurrentSongLiked) {
-        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
-    }
-    else {
-        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
-    }
+    [self.musicSource updateLikeState:self.isCurrentSongLiked trackId:[self.currentTrack.Id stringValue]];
+    [self updateFavIcon:self.isCurrentSongLiked];
 }
 
 - (IBAction)showTrackInfo:(id)sender {
@@ -192,6 +185,20 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 
 - (BOOL)canBecomeFirstResponder {
     return YES;
+}
+
+- (void)getFavState: (Track*) track {
+    NSLog(@"Fav value: %@", track.isLiked);
+    self.isCurrentSongLiked = track.isLiked;
+    [self updateFavIcon:track.isLiked];
+}
+
+- (void)updateFavIcon:(BOOL)isLiked {
+    if (isLiked) {
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
+    } else {
+        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)playPauseSong {
@@ -243,7 +250,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
                             self.currentTrack = track;
                             [self setupLockScreenInfo:track];
                             [self setupUI:track];
-                            [self setFavState:track];
+                            [self getFavState:track];
                             [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
     }];
 }
@@ -269,6 +276,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     }];
 }
 
+// Todo - Should this always play by default?
 - (void)playNextTrack
 {
     [self stopPlayingTrack];
@@ -277,21 +285,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         [self playTrack];
         NSLog(@"Will play next song");
     }];
-}
-
-- (void)setFavState: (Track*) track
-{
-    NSLog(@"Fav value: %@", track.isLiked);
-    if (!track.isLiked)
-    {
-        self.isCurrentSongLiked = NO;
-        [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        self.isCurrentSongLiked = YES;
-        [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
-    }
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
@@ -303,6 +296,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         
         NSNumber *songDurationInSeconds = [NSNumber numberWithInt:(int)(track.duration / 1000)];
         
+        // ToDo - Replace dataWithContentsOfURL with async call
         NSData *albumArtData = [NSData dataWithContentsOfURL:track.albumArtUrl];
         MPMediaItemArtwork *albumArtwork = nil;
         if (!albumArtData) {
