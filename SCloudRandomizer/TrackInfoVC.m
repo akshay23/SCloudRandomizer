@@ -7,6 +7,7 @@
 //
 
 #import "TrackInfoVC.h"
+#import "Track.h"
 
 @interface TrackInfoVC ()
 
@@ -29,29 +30,24 @@
     [super viewWillAppear:animated];
     
     id<MainVCDelegate> strongDelegate = self.delegate;
-    NSDictionary *track = [strongDelegate getCurrentTrack];
+    Track *track = [strongDelegate getCurrentTrack];
     
-    long likes = [[track objectForKey:@"favoritings_count"] longValue];
-    long plays = [[track objectForKey:@"playback_count"] longValue];
-    NSString *uploaded = [track objectForKey:@"created_at"];
-    
-    NSString *desc = [track objectForKey:@"description"];
-    if ([desc length] == 0)
-    {
-        desc = @"No description";
-    }
-    [self.songDescription setText:desc];
 
-    [self.songTitle setText:[track objectForKey:@"title"]];
+    NSString* songDescription = track.songDescription;
+    if ([songDescription length] == 0) {
+        songDescription = @"No description";
+    }
     
-    [self.artist setText:[[track objectForKey:@"user"] objectForKey:@"username"]];
-    [self.likes setText: [[NSNumber numberWithLong:likes] stringValue]];
-    [self.numOfPlays setText: [[NSNumber numberWithLong:plays] stringValue]];
+    [self.songDescription setText:songDescription];
+    [self.songTitle setText:track.title];
+    [self.artist setText:track.artist];
+    [self.likes setText: [[NSNumber numberWithLong:track.likes] stringValue]];
+    [self.numOfPlays setText: [[NSNumber numberWithLong:track.plays] stringValue]];
     
     [self.uploadedTime
-      setText: [NSString stringWithFormat: @"Uploaded at %@", [uploaded substringToIndex:10]]];
+      setText: [NSString stringWithFormat: @"Uploaded on %@", [track.uploadedOn substringToIndex:10]]];
     
-    NSString* tags = [track objectForKey:@"tag_list"];
+    NSString* tags = track.tags;
     if ([tags length] == 0) {
         [self.tags setText:@"None"];
     } else {

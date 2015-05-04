@@ -15,6 +15,7 @@
 #import "GlobalData.h"
 #import "SearchParams.h"
 #import "TrackInfoVC.h"
+#import "MusicSource.h"
 
 @interface MainViewController : UIViewController<AVAudioPlayerDelegate, MainVCDelegate>
 
@@ -55,8 +56,7 @@ typedef NSUInteger PlayerState;
 - (IBAction)playSong:(id)sender;
 - (IBAction)playNext:(id)sender;
 - (IBAction)changeParams:(id)sender;
-- (IBAction)updateFavState:(id)sender;
+- (IBAction)setFavState:(id)sender;
 - (IBAction)showTrackInfo:(id)sender;
-- (BOOL)isPlayerLoggedIn;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SearchParams.h"
+@class Track;
 
 #ifndef SCloudRandomizer_MainVCDelegate_h
 #define SCloudRandomizer_MainVCDelegate_h
@@ -14,7 +15,7 @@
 // Protocol definition
 @protocol MainVCDelegate<NSObject>
 
-- (NSDictionary *)getCurrentTrack;
+- (Track *)getCurrentTrack;
 - (SearchParams *)getCurrentSearchParams;
 
 @end

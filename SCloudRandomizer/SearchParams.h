@@ -11,7 +11,7 @@
 
 @interface SearchParams : NSObject
 
-@property BOOL hasParamsChanged;
+@property BOOL hasChanged;
 @property (strong, nonatomic) NSNumber *lowBpm;
 @property (strong, nonatomic) NSNumber *highBpm;
 @property (strong, nonatomic) NSString *keywords;

@@ -30,7 +30,10 @@
 		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
 		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
 		4E3A92791AE0604800640EFB /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92781AE0604800640EFB /* tag.png */; };
+		4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8AC8DC1AF2C69900B2054B /* Utility.m */; };
 		4ED3F5A31AB272A200259C84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3F5A21AB272A200259C84 /* background.png */; };
+		4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8521AF17A9600F2D38E /* MusicSource.m */; };
+		4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8551AF1DFDA00F2D38E /* Track.m */; };
 		C14EEDFE7A11E93DCFB9D4D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7B3A8D657E6F7F5BDB2255 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -94,7 +97,13 @@
 		276CF3AB99530D51BD666B04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4E3A92761AE0602C00640EFB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4E3A92781AE0604800640EFB /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		4E8AC8DB1AF2C68A00B2054B /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		4E8AC8DC1AF2C69900B2054B /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		4ED3F5A21AB272A200259C84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4ED7E84A1AF16C4800F2D38E /* MusicSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicSource.h; sourceTree = "<group>"; };
+		4ED7E8521AF17A9600F2D38E /* MusicSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSource.m; sourceTree = "<group>"; };
+		4ED7E8541AF1DFC800F2D38E /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		4ED7E8551AF1DFDA00F2D38E /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		E232F970F295066B5DBC30F0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7B3A8D657E6F7F5BDB2255 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -188,6 +197,12 @@
 				19F38A621A9F811C002361E6 /* TrackInfoVC.h */,
 				19F38A631A9F811C002361E6 /* TrackInfoVC.m */,
 				1913B8661AE0027F007D2C0E /* MainVCDelegate.h */,
+				4ED7E84A1AF16C4800F2D38E /* MusicSource.h */,
+				4ED7E8521AF17A9600F2D38E /* MusicSource.m */,
+				4ED7E8541AF1DFC800F2D38E /* Track.h */,
+				4ED7E8551AF1DFDA00F2D38E /* Track.m */,
+				4E8AC8DB1AF2C68A00B2054B /* Utility.h */,
+				4E8AC8DC1AF2C69900B2054B /* Utility.m */,
 			);
 			path = SCloudRandomizer;
 			sourceTree = "<group>";
@@ -384,9 +399,12 @@
 				1997F7361A6421C700109F76 /* GlobalData.m in Sources */,
 				1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */,
 				19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */,
+				4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */,
 				1997F7391A6454DC00109F76 /* SearchParams.m in Sources */,
 				19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */,
 				19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */,
+				4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */,
+				4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */,
 				19C18F0D1A30CF2E00281221 /* MainViewController.m in Sources */,
 				19CDED291A2FB92100DD97CC /* main.m in Sources */,
 			);
