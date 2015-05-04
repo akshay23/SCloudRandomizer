@@ -7,6 +7,7 @@
 //
 
 #import "SearchParamsVC.h"
+#import "Utility.h"
 
 @interface SearchParamsVC ()
 
@@ -16,8 +17,7 @@
 
 @implementation SearchParamsVC
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Draw border around both buttons
@@ -33,8 +33,7 @@
     [self.view addGestureRecognizer:tap];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     // Create strong local ref to delegate
@@ -46,17 +45,15 @@
     self.txtBpmTo.text = [self.searchParams.highBpm stringValue];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)done:(id)sender
-{
+- (IBAction)done:(id)sender {
     [self dismissKeyboard];
     
-    if (![GlobalData stringIsNilOrEmpty:self.txtKeywords.text])
+    if (![Utility stringIsNilOrEmpty:self.txtKeywords.text])
     {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         self.searchParams.hasChanged = YES;
@@ -74,14 +71,12 @@
     }
 }
 
-- (IBAction)cancel:(id)sender
-{
+- (IBAction)cancel:(id)sender {
     [self dismissKeyboard];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)dismissKeyboard
-{
+- (void)dismissKeyboard {
     [self.txtKeywords resignFirstResponder];
     [self.txtBpmTo resignFirstResponder];
     [self.txtBpmFrom resignFirstResponder];

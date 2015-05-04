@@ -11,8 +11,7 @@
 
 @implementation Utility
 
-+ (NSString *)convertFromMilliseconds:(long)duration
-{
++ (NSString *)convertFromMilliseconds:(long)duration {
     NSInteger minutes = floor(duration / 60000);
     NSInteger seconds = ((duration % 60000) / 1000);
     NSString *formatted = nil;
@@ -24,6 +23,14 @@
     }
     
     return formatted;
+}
+
++ (dispatch_queue_t)getGlobalBackgroundQueue {
+    return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+}
+
++ (BOOL)stringIsNilOrEmpty:(NSString*)aString {
+    return !(aString && aString.length);
 }
 
 @end

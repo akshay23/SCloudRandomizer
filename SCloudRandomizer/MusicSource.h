@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class Track;
 
 @interface MusicSource: NSObject
-
 
 typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
 typedef void(^singleTrackFetchedCompletionHandler)(Track* track);

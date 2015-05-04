@@ -10,8 +10,8 @@
 #import "Utility.h"
 #import "Track.h"
 
-const double LoggedOutBackgroundImage_Opacity = 0.7;
-const double LoggedInBackgroundImage_Opacity = 0.2;
+static const double LoggedOutBackgroundImageOpacity = 0.7;
+static const double LoggedInBackgroundImageOpacity = 0.2;
 
 // Private declarations
 @interface MainViewController ()
@@ -23,8 +23,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
 @property MusicSource *musicSource;
-
-- (void)getNextTrack:(singleTrackDownloaded)completionHandler;
 
 @end
 
@@ -72,7 +70,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     if ([self.musicSource isUserLoggedIn]) {
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
-        self.backgroundImage.alpha = LoggedInBackgroundImage_Opacity;
+        self.backgroundImage.alpha = LoggedInBackgroundImageOpacity;
         
         if (self.searchParams.hasChanged) {
             if ([self.player isPlaying]) {
@@ -89,7 +87,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     }
     else
     {
-        self.backgroundImage.alpha = LoggedOutBackgroundImage_Opacity;
+        self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     }
 }
 
@@ -131,7 +129,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
     [self.btnChangeParams setHidden:YES];
-    self.backgroundImage.alpha = LoggedOutBackgroundImage_Opacity;
+    self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     self.searchParams.hasChanged = YES;
     NSLog(@"Logged out.");
 }
@@ -292,7 +290,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 }
 
 - (void)setupLockScreenInfo:(Track*)track {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async([Utility getGlobalBackgroundQueue], ^{
         
         NSNumber *songDurationInSeconds = [NSNumber numberWithInt:(int)(track.duration / 1000)];
         
@@ -343,7 +341,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     self.imgArtwork.alpha = 1.0;
     self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async([Utility getGlobalBackgroundQueue], ^{
         NSData *albumArtData = [NSData dataWithContentsOfURL:track.albumArtUrl];
         
         dispatch_async(dispatch_get_main_queue(), ^{

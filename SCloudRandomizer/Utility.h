@@ -9,5 +9,7 @@
 @interface Utility : NSObject
 
 + (NSString *)convertFromMilliseconds:(long)duration;
++ (dispatch_queue_t)getGlobalBackgroundQueue;
++ (BOOL)stringIsNilOrEmpty:(NSString*)aString;
 
 @end
