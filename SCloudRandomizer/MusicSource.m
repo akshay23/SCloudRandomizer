@@ -101,5 +101,4 @@ static MusicSource *instance;
             responseHandler:nil];
 }
 
-
 @end

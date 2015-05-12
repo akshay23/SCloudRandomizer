@@ -11,10 +11,12 @@
 @interface SearchParams : NSObject
 
 @property BOOL hasChanged;
-@property (strong, nonatomic) NSNumber *lowBpm;
-@property (strong, nonatomic) NSNumber *highBpm;
+@property NSInteger lowBpm;
+@property NSInteger highBpm;
+@property NSInteger likes;
+@property NSInteger plays;
 @property (strong, nonatomic) NSString *keywords;
 
-- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords lowBpm:(NSNumber *)lBpm highBpm:(NSNumber *)hBpm;
+- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords;
 
 @end

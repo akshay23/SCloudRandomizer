@@ -44,7 +44,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix" lowBpm:[NSNumber numberWithInt:0] highBpm:[NSNumber numberWithInt:200]];
+    self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
     
     // Clear the labels
     [self.lblArtistValue setText:@""];

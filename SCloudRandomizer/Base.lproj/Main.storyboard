@@ -255,31 +255,31 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter your desired BPM range." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
-                                <rect key="frame" x="24" y="458" width="323" height="38"/>
+                                <rect key="frame" x="24" y="459" width="323" height="38"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo">
-                                <rect key="frame" x="98" y="499" width="68" height="36"/>
+                                <rect key="frame" x="98" y="500" width="68" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8">
-                                <rect key="frame" x="243" y="499" width="68" height="36"/>
+                                <rect key="frame" x="243" y="500" width="68" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-80-vbR">
-                                <rect key="frame" x="54" y="503" width="44" height="29"/>
+                                <rect key="frame" x="54" y="504" width="44" height="29"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-HR-kKY">
-                                <rect key="frame" x="216" y="502" width="27" height="31"/>
+                                <rect key="frame" x="216" y="503" width="27" height="31"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

@@ -11,12 +11,14 @@
 
 @implementation SearchParams
 
-- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords lowBpm:(NSNumber *)lBpm highBpm:(NSNumber *)hBpm
+- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords
 {
     self.hasChanged = changed;
     self.keywords = theKeywords;
-    self.lowBpm = lBpm;
-    self.highBpm = hBpm;
+    self.lowBpm = -1;
+    self.highBpm = -1;
+    self.plays = -1;
+    self.likes = -1;
     
     return self;
 }

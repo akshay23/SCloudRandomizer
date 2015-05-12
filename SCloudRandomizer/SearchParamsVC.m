@@ -41,8 +41,10 @@
     self.searchParams = [strongDelegate getCurrentSearchParams];
     
     self.txtKeywords.text = self.searchParams.keywords;
-    self.txtBpmFrom.text = [self.searchParams.lowBpm stringValue];
-    self.txtBpmTo.text = [self.searchParams.highBpm stringValue];
+    self.txtLikes.text = (self.searchParams.likes == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.likes];
+    self.txtPlays.text = (self.searchParams.plays == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.plays];
+    self.txtBpmFrom.text = (self.searchParams.lowBpm == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.lowBpm];
+    self.txtBpmTo.text = (self.searchParams.highBpm == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.highBpm];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,11 +57,12 @@
     
     if (![Utility stringIsNilOrEmpty:self.txtKeywords.text])
     {
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         self.searchParams.hasChanged = YES;
         self.searchParams.keywords = self.txtKeywords.text;
-        self.searchParams.lowBpm = [formatter numberFromString:self.txtBpmFrom.text];
-        self.searchParams.highBpm = [formatter numberFromString:self.txtBpmTo.text];
+        self.searchParams.lowBpm = ([self.txtBpmFrom.text isEqualToString:@""]) ? -1 : [self.txtBpmFrom.text intValue];
+        self.searchParams.highBpm = ([self.txtBpmTo.text isEqualToString:@""]) ? -1 : [self.txtBpmTo.text intValue];
+        self.searchParams.plays = ([self.txtPlays.text isEqualToString:@""]) ? -1 : [self.txtPlays.text intValue];
+        self.searchParams.likes = ([self.txtLikes.text isEqualToString:@""]) ? -1 : [self.txtLikes.text intValue];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
