@@ -22,8 +22,11 @@ static MusicSource *instance;
 @implementation MusicSource : NSObject
 
 + (MusicSource*) getInstance {
-    if (instance == nil) {
-        instance = [[MusicSource alloc] init];
+    @synchronized(self)
+    {
+        if (instance == nil) {
+            instance = [[MusicSource alloc] init];
+        }
     }
     
     return instance;
