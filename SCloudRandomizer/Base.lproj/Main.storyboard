@@ -255,70 +255,81 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter your desired BPM range." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
-                                <rect key="frame" x="24" y="459" width="323" height="38"/>
+                                <rect key="frame" x="24" y="437" width="323" height="40"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo">
-                                <rect key="frame" x="98" y="500" width="68" height="36"/>
+                                <rect key="frame" x="98" y="480" width="68" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8">
-                                <rect key="frame" x="243" y="500" width="68" height="36"/>
+                                <rect key="frame" x="243" y="480" width="68" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-80-vbR">
-                                <rect key="frame" x="54" y="504" width="44" height="29"/>
+                                <rect key="frame" x="54" y="484" width="44" height="29"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-HR-kKY">
-                                <rect key="frame" x="216" y="503" width="27" height="31"/>
+                                <rect key="frame" x="216" y="483" width="27" height="31"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter the minimum number of likes and/or play counts." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
-                                <rect key="frame" x="24" y="334" width="323" height="59"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter track duration range (in minutes)." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
+                                <rect key="frame" x="24" y="334" width="323" height="40"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-yh-4We">
-                                <rect key="frame" x="242" y="396" width="105" height="36"/>
+                                <rect key="frame" x="243" y="377" width="68" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Fc-0fY">
-                                <rect key="frame" x="69" y="396" width="105" height="36"/>
+                                <rect key="frame" x="98" y="377" width="68" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Likes:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDI-3f-joe">
-                                <rect key="frame" x="24" y="399" width="45" height="31"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Plays:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdY-7h-nh9">
-                                <rect key="frame" x="197" y="399" width="45" height="31"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="*** Required field" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-T4-U2t">
-                                <rect key="frame" x="24" y="602" width="151" height="36"/>
+                                <rect key="frame" x="24" y="607" width="151" height="36"/>
                                 <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="textColor" red="1" green="0.14689324595983622" blue="0.19726245480736038" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHl-TM-aJg">
+                                <rect key="frame" x="133" y="543" width="110" height="36"/>
+                                <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Clear Fields">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearFields:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="MT5-cx-6EW"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nL-q7-hmL">
+                                <rect key="frame" x="54" y="380" width="44" height="29"/>
+                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euG-y3-gOU">
+                                <rect key="frame" x="216" y="379" width="27" height="31"/>
+                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -328,12 +339,13 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="btnCancel" destination="S2B-IZ-6Qs" id="7JJ-lf-aat"/>
+                        <outlet property="btnClear" destination="PHl-TM-aJg" id="bYZ-Cp-DkS"/>
                         <outlet property="btnSave" destination="7jH-RG-yQL" id="dQ3-8k-2bV"/>
                         <outlet property="txtBpmFrom" destination="g7d-jH-9Lo" id="2vO-6k-fiW"/>
                         <outlet property="txtBpmTo" destination="HpR-4j-NU8" id="V2S-lW-ymp"/>
+                        <outlet property="txtDurationFrom" destination="6i9-Fc-0fY" id="7Tx-Ln-Onb"/>
+                        <outlet property="txtDurationTo" destination="wiv-yh-4We" id="zTL-N8-TfC"/>
                         <outlet property="txtKeywords" destination="rvt-yK-Nw3" id="JCD-rc-Wud"/>
-                        <outlet property="txtLikes" destination="6i9-Fc-0fY" id="9R1-cU-ZHD"/>
-                        <outlet property="txtPlays" destination="wiv-yh-4We" id="Jj0-bz-2wc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgv-Vs-x0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

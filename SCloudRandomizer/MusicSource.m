@@ -19,7 +19,6 @@ static MusicSource *instance;
 
 @end
 
-
 @implementation MusicSource : NSObject
 
 + (MusicSource*)getInstance {
@@ -64,17 +63,43 @@ static MusicSource *instance;
         completionHandler(tracks);
     };
     
-    // Replace spaces with '%20' and then replace commas with '%2C'
-    NSString *cleanedKeywords = [[searchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
-    NSLog(@"The resourceURL is %@", resourceURL);
-    
     [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:resourceURL]
+                  onResource:[self generateResourceURL:searchParams]
              usingParameters:nil
                  withAccount:[SCSoundCloud account]
       sendingProgressHandler:nil
              responseHandler:responseHandler];
+}
+
+- (NSURL *)generateResourceURL:(SearchParams *)params
+{
+    NSString *fromBpm = @"";
+    if (params.lowBpm > -1) {
+        fromBpm = [NSString stringWithFormat:@"&bpm[from]=%ld", (long)params.lowBpm];
+    }
+    
+    NSString *toBpm = @"";
+    if (params.highBpm > -1) {
+        toBpm = [NSString stringWithFormat:@"&bpm[to]=%ld", (long)params.highBpm];
+    }
+    
+    NSString *durationFrom = @"";
+    if (params.durationFrom > -1) {
+        durationFrom = [NSString stringWithFormat:@"&duration[from]=%ld", (long)(params.durationFrom * 60000)];
+    }
+    
+    NSString *durationTo = @"";
+    if (params.durationTo > -1) {
+        durationTo = [NSString stringWithFormat:@"&duration[to]=%ld", (long)(params.durationTo * 60000)];
+    }
+    
+    // Replace spaces with '%20' and then replace commas with '%2C' in the keywords
+    // then create the resourceURL using the keywords and bpm
+    NSString *cleanedKeywords = [[params.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@%@%@%@%@", cleanedKeywords, fromBpm, toBpm, durationFrom, durationTo];
+    NSLog(@"The resourceURL is %@", resourceURL);
+    
+    return [NSURL URLWithString:resourceURL];
 }
 
 - (void)logout {

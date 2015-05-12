@@ -17,8 +17,8 @@
     self.keywords = theKeywords;
     self.lowBpm = -1;
     self.highBpm = -1;
-    self.plays = -1;
-    self.likes = -1;
+    self.durationFrom = -1;
+    self.durationTo = -1;
     
     return self;
 }

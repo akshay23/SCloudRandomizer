@@ -187,8 +187,8 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 
 - (void)getFavState: (Track*) track {
     NSLog(@"Fav value: %@", track.isLiked);
-    self.isCurrentSongLiked = track.isLiked;
-    [self updateFavIcon:track.isLiked];
+    self.isCurrentSongLiked = ([track.isLiked isEqual:@0]) ? NO : YES;
+    [self updateFavIcon:self.isCurrentSongLiked];
 }
 
 - (void)updateFavIcon:(BOOL)isLiked {

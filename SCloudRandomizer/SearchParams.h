@@ -13,8 +13,8 @@
 @property BOOL hasChanged;
 @property NSInteger lowBpm;
 @property NSInteger highBpm;
-@property NSInteger likes;
-@property NSInteger plays;
+@property NSInteger durationFrom;
+@property NSInteger durationTo;
 @property (strong, nonatomic) NSString *keywords;
 
 - (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords;
