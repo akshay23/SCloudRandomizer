@@ -10,6 +10,7 @@
 
 + (NSString *)convertFromMilliseconds:(long)duration;
 + (dispatch_queue_t)getGlobalBackgroundQueue;
++ (dispatch_queue_t)getMainQueue;
 + (BOOL)stringIsNilOrEmpty:(NSString*)aString;
 
 @end

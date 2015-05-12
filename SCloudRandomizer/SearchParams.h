@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GlobalData.h"
 
 @interface SearchParams : NSObject
 

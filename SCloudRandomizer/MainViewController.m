@@ -243,7 +243,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
           progressHudLabel:@"Loading next track"
           progressHudDetailsLabel:@"Please wait.."];
     
-    [self.musicSource getRandomTrack:self.searchParams.keywords
+    [self.musicSource getRandomTrack:self.searchParams
                         completionHandler:^(Track *track) {
                             self.currentTrack = track;
                             [self setupLockScreenInfo:track];
@@ -308,7 +308,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         NSArray *values = [NSArray arrayWithObjects:track.artist, track.title, albumArtwork, songDurationInSeconds, [NSNumber numberWithInt:1], nil];
         NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async([Utility getMainQueue], ^{
             [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
         });
     });
@@ -344,7 +344,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     dispatch_async([Utility getGlobalBackgroundQueue], ^{
         NSData *albumArtData = [NSData dataWithContentsOfURL:track.albumArtUrl];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async([Utility getMainQueue], ^{
             self.imgArtwork.image = [UIImage imageWithData:albumArtData];
         });
     });

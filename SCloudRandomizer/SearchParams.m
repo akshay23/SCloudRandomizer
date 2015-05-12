@@ -7,6 +7,7 @@
 //
 
 #import "SearchParams.h"
+#import "GlobalData.h"
 
 @implementation SearchParams
 

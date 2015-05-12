@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class Track;
+@class SearchParams;
 
 @interface MusicSource: NSObject
 
 typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
 typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
 
-+ (MusicSource*) getInstance;
++ (MusicSource *) getInstance;
 - (BOOL)isUserLoggedIn;
-- (void)getRandomTrack:(NSString*)searchKeywords completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
+- (void)getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
 - (void)logout;
 - (void)updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
 
