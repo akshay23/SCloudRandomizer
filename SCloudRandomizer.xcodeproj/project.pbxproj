@@ -137,6 +137,50 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		19B759D91B027660005F6D1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1997F7371A6454DC00109F76 /* SearchParams.h */,
+				1997F7381A6454DC00109F76 /* SearchParams.m */,
+				4ED7E84A1AF16C4800F2D38E /* MusicSource.h */,
+				4ED7E8521AF17A9600F2D38E /* MusicSource.m */,
+				4ED7E8541AF1DFC800F2D38E /* Track.h */,
+				4ED7E8551AF1DFDA00F2D38E /* Track.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		19B759DA1B027678005F6D1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19F38A621A9F811C002361E6 /* TrackInfoVC.h */,
+				19F38A631A9F811C002361E6 /* TrackInfoVC.m */,
+				1997F7311A64211700109F76 /* SearchParamsVC.h */,
+				1997F7321A64211700109F76 /* SearchParamsVC.m */,
+				19C18F0B1A30CF2E00281221 /* MainViewController.h */,
+				19C18F0C1A30CF2E00281221 /* MainViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19B759DB1B0276A9005F6D1E /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				19CDED331A2FB92100DD97CC /* Main.storyboard */,
+				19CDED361A2FB92100DD97CC /* Images.xcassets */,
+				19CDED381A2FB92100DD97CC /* LaunchScreen.xib */,
+				19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */,
+				19CDED2A1A2FB92100DD97CC /* AppDelegate.h */,
+				19CDED2B1A2FB92100DD97CC /* AppDelegate.m */,
+				1913B8661AE0027F007D2C0E /* MainVCDelegate.h */,
+				4E8AC8DB1AF2C68A00B2054B /* Utility.h */,
+				4E8AC8DC1AF2C69900B2054B /* Utility.m */,
+				1997F7341A6421C700109F76 /* GlobalData.h */,
+				1997F7351A6421C700109F76 /* GlobalData.m */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,31 +222,11 @@
 		19CDED251A2FB92100DD97CC /* SCloudRandomizer */ = {
 			isa = PBXGroup;
 			children = (
+				19B759DB1B0276A9005F6D1E /* Misc */,
+				19B759DA1B027678005F6D1E /* Controllers */,
+				19B759D91B027660005F6D1E /* Models */,
 				19C18F041A2FC87400281221 /* Images */,
-				19CDED2A1A2FB92100DD97CC /* AppDelegate.h */,
-				19CDED2B1A2FB92100DD97CC /* AppDelegate.m */,
-				19CDED331A2FB92100DD97CC /* Main.storyboard */,
-				19CDED361A2FB92100DD97CC /* Images.xcassets */,
-				19CDED381A2FB92100DD97CC /* LaunchScreen.xib */,
-				19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */,
 				19CDED261A2FB92100DD97CC /* Supporting Files */,
-				19C18F0B1A30CF2E00281221 /* MainViewController.h */,
-				19C18F0C1A30CF2E00281221 /* MainViewController.m */,
-				1997F7311A64211700109F76 /* SearchParamsVC.h */,
-				1997F7321A64211700109F76 /* SearchParamsVC.m */,
-				1997F7341A6421C700109F76 /* GlobalData.h */,
-				1997F7351A6421C700109F76 /* GlobalData.m */,
-				1997F7371A6454DC00109F76 /* SearchParams.h */,
-				1997F7381A6454DC00109F76 /* SearchParams.m */,
-				19F38A621A9F811C002361E6 /* TrackInfoVC.h */,
-				19F38A631A9F811C002361E6 /* TrackInfoVC.m */,
-				1913B8661AE0027F007D2C0E /* MainVCDelegate.h */,
-				4ED7E84A1AF16C4800F2D38E /* MusicSource.h */,
-				4ED7E8521AF17A9600F2D38E /* MusicSource.m */,
-				4ED7E8541AF1DFC800F2D38E /* Track.h */,
-				4ED7E8551AF1DFDA00F2D38E /* Track.m */,
-				4E8AC8DB1AF2C68A00B2054B /* Utility.h */,
-				4E8AC8DC1AF2C69900B2054B /* Utility.m */,
 			);
 			path = SCloudRandomizer;
 			sourceTree = "<group>";
