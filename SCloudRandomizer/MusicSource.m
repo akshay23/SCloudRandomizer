@@ -22,7 +22,7 @@ static MusicSource *instance;
 
 @implementation MusicSource : NSObject
 
-+ (MusicSource*) getInstance {
++ (MusicSource*)getInstance {
     @synchronized(self)
     {
         if (instance == nil) {
@@ -33,7 +33,7 @@ static MusicSource *instance;
     return instance;
 }
 
-- (BOOL) isUserLoggedIn {
+- (BOOL)isUserLoggedIn {
     return [SCSoundCloud account];
 }
 
@@ -81,7 +81,7 @@ static MusicSource *instance;
     [SCSoundCloud removeAccess];
 }
 
-- (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate {
+- (void)updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate {
     NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
     NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: trackIdToUpdate]];
     

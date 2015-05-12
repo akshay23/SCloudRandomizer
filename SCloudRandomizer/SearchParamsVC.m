@@ -80,6 +80,8 @@
     [self.txtKeywords resignFirstResponder];
     [self.txtBpmTo resignFirstResponder];
     [self.txtBpmFrom resignFirstResponder];
+    [self.txtLikes resignFirstResponder];
+    [self.txtPlays resignFirstResponder];
 }
 
 @end

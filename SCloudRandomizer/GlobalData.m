@@ -26,5 +26,4 @@ static GlobalData *instance;
     return instance;
 }
 
-
 @end

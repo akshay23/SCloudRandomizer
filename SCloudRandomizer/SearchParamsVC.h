@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *txtKeywords;
 @property (strong, nonatomic) IBOutlet UITextView *txtBpmFrom;
 @property (strong, nonatomic) IBOutlet UITextView *txtBpmTo;
+@property (strong, nonatomic) IBOutlet UITextView *txtLikes;
+@property (strong, nonatomic) IBOutlet UITextView *txtPlays;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
