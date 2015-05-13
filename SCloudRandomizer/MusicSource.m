@@ -71,8 +71,7 @@ static MusicSource *instance;
              responseHandler:responseHandler];
 }
 
-- (NSURL *)generateResourceURL:(SearchParams *)params
-{
+- (NSURL *)generateResourceURL:(SearchParams *)params {
     NSString *fromBpm = @"";
     if (params.lowBpm > -1) {
         fromBpm = [NSString stringWithFormat:@"&bpm[from]=%ld", (long)params.lowBpm];
