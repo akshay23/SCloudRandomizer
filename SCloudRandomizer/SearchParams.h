@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SearchParams : NSObject
+@interface SearchParams : NSObject<NSCoding>
 
 @property BOOL hasChanged;
 @property NSInteger lowBpm;

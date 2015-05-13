@@ -44,7 +44,10 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
+    self.searchParams = [Utility loadSaveParamsWithKey:@"MySearchParams"];
+    if (self.searchParams == nil) {
+        self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
+    }
     
     // Clear the labels
     [self.lblArtistValue setText:@""];
@@ -82,6 +85,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
                 }];
             }
             
+            [Utility saveSearchParams:self.searchParams key:@"MySearchParams"];
             self.searchParams.hasChanged = NO;
         }
     }

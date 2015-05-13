@@ -32,7 +32,7 @@ static MusicSource *instance;
     return instance;
 }
 
-- (BOOL)isUserLoggedIn {
+- (SCAccount *)isUserLoggedIn {
     return [SCSoundCloud account];
 }
 
