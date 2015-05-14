@@ -333,7 +333,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblArtist setHidden:NO];
     [self.lblLength setHidden:NO];
     
-    [self.lblLengthValue setText:[Utility convertFromMilliseconds:track.duration]];
+    [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
     

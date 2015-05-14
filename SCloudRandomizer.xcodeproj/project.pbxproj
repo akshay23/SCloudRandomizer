@@ -26,11 +26,11 @@
 		19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED331A2FB92100DD97CC /* Main.storyboard */; };
 		19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED361A2FB92100DD97CC /* Images.xcassets */; };
 		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
-		19CDED461A2FB92100DD97CC /* SCloudRandomizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED451A2FB92100DD97CC /* SCloudRandomizerTests.m */; };
 		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
 		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
 		4E3A92791AE0604800640EFB /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92781AE0604800640EFB /* tag.png */; };
 		4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8AC8DC1AF2C69900B2054B /* Utility.m */; };
+		4E9DA56A1B05217D00B324B1 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA5691B05217D00B324B1 /* UtilityTests.m */; };
 		4ED3F5A31AB272A200259C84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3F5A21AB272A200259C84 /* background.png */; };
 		4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8521AF17A9600F2D38E /* MusicSource.m */; };
 		4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8551AF1DFDA00F2D38E /* Track.m */; };
@@ -91,7 +91,6 @@
 		19CDED391A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		19CDED3F1A2FB92100DD97CC /* SCloudRandomizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCloudRandomizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CDED441A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19CDED451A2FB92100DD97CC /* SCloudRandomizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCloudRandomizerTests.m; sourceTree = "<group>"; };
 		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
 		19F38A631A9F811C002361E6 /* TrackInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoVC.m; sourceTree = "<group>"; };
 		276CF3AB99530D51BD666B04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		4E3A92781AE0604800640EFB /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		4E8AC8DB1AF2C68A00B2054B /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		4E8AC8DC1AF2C69900B2054B /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		4E9DA5691B05217D00B324B1 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTests.m; sourceTree = "<group>"; };
 		4ED3F5A21AB272A200259C84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		4ED7E84A1AF16C4800F2D38E /* MusicSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicSource.h; sourceTree = "<group>"; };
 		4ED7E8521AF17A9600F2D38E /* MusicSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSource.m; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		19CDED421A2FB92100DD97CC /* SCloudRandomizerTests */ = {
 			isa = PBXGroup;
 			children = (
-				19CDED451A2FB92100DD97CC /* SCloudRandomizerTests.m */,
+				4E9DA5691B05217D00B324B1 /* UtilityTests.m */,
 				19CDED431A2FB92100DD97CC /* Supporting Files */,
 			);
 			path = SCloudRandomizerTests;
@@ -438,7 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19CDED461A2FB92100DD97CC /* SCloudRandomizerTests.m in Sources */,
+				4E9DA56A1B05217D00B324B1 /* UtilityTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
