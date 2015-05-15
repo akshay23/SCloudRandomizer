@@ -10,3 +10,6 @@ Pods/Pods.xcodeproj/xcuserdata/ashab.xcuserdatad/xcschemes/xcschememanagement.pl
 SCloudRandomizer.xcodeproj/xcuserdata/ashab.xcuserdatad/xcschemes/xcschememanagement.plist
 
 SCloudRandomizer.xcworkspace/xcuserdata/ashab.xcuserdatad/xcdebugger/Expressions.xcexplist
+
+*.xcconfig
+

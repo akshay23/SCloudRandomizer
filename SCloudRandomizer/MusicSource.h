@@ -10,6 +10,7 @@
 
 @class Track;
 @class SearchParams;
+@class SCRequest;
 
 @interface MusicSource: NSObject
 
@@ -17,9 +18,21 @@ typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
 typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
 
 + (MusicSource *) getInstance;
-- (BOOL)isUserLoggedIn;
-- (void)getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
-- (void)logout;
-- (void)updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
+- (BOOL) isUserLoggedIn;
+- (void) getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
+- (void) logout;
+- (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
+
++ (SCAccount*) account;
+
++ (void) fetchTracks:(SCRequestMethod)aMethod
+                        onResource:(NSURL *)aResource
+                        usingParameters:(NSDictionary *)someParameters
+                        withAccount:(SCAccount *)anAccount
+                        sendingProgressHandler:(SCRequestSendingProgressHandler)aProgressHandler
+                        responseHandler:(SCRequestResponseHandler)aResponseHandler;
+
+
+
 
 @end
