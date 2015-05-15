@@ -43,7 +43,12 @@
         NSString *mockedResponse = @"[{ \"id\": 13158665, \"stream_url\": \"http://foo.com\" }]";
         NSData *jsonData = [mockedResponse dataUsingEncoding:NSUTF8StringEncoding];
         
-        void (^responseHandler)(NSURLResponse *response, NSData *responseData, NSError *error);
+        // NOTE: Reason being [invocation getArgument] expects
+        // a (void*) pointer and so ARC does not retain the reference for
+        // responseHandler. Since we don't want a corresponding
+        // release, adding __unsafe_unretained to avoid a over release
+        // Source: http://stackoverflow.com/questions/13268502/exc-bad-access-when-accessing-parameters-in-anddo-of-ocmock
+        __unsafe_unretained SCRequestResponseHandler responseHandler;
         
         [invocation getArgument:&responseHandler atIndex:7];
         
