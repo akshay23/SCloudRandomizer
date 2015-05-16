@@ -73,22 +73,22 @@ static MusicSource *instance;
 
 - (NSURL *)generateResourceURL:(SearchParams *)params {
     NSString *fromBpm = @"";
-    if (params.lowBpm > -1) {
+    if (params.lowBpm > 0) {
         fromBpm = [NSString stringWithFormat:@"&bpm[from]=%ld", (long)params.lowBpm];
     }
     
     NSString *toBpm = @"";
-    if (params.highBpm > -1) {
+    if (params.highBpm > 0) {
         toBpm = [NSString stringWithFormat:@"&bpm[to]=%ld", (long)params.highBpm];
     }
     
     NSString *durationFrom = @"";
-    if (params.durationFrom > -1) {
+    if (params.durationFrom > 0) {
         durationFrom = [NSString stringWithFormat:@"&duration[from]=%ld", (long)(params.durationFrom * 60000)];
     }
     
     NSString *durationTo = @"";
-    if (params.durationTo > -1) {
+    if (params.durationTo > 0) {
         durationTo = [NSString stringWithFormat:@"&duration[to]=%ld", (long)(params.durationTo * 60000)];
     }
     

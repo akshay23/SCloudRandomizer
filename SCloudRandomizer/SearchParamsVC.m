@@ -44,10 +44,10 @@
     self.searchParams = [strongDelegate getCurrentSearchParams];
     
     self.txtKeywords.text = self.searchParams.keywords;
-    self.txtDurationFrom.text = (self.searchParams.durationFrom == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.durationFrom];
-    self.txtDurationTo.text = (self.searchParams.durationTo == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.durationTo];
-    self.txtBpmFrom.text = (self.searchParams.lowBpm == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.lowBpm];
-    self.txtBpmTo.text = (self.searchParams.highBpm == -1) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.highBpm];
+    self.txtDurationFrom.text = (self.searchParams.durationFrom == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.durationFrom];
+    self.txtDurationTo.text = (self.searchParams.durationTo == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.durationTo];
+    self.txtBpmFrom.text = (self.searchParams.lowBpm == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.lowBpm];
+    self.txtBpmTo.text = (self.searchParams.highBpm == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.highBpm];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,34 +58,29 @@
 - (IBAction)done:(id)sender {
     [self dismissKeyboard];
     
-    if(!([self.txtBpmTo.text isEqualToString:@""]) && ([self.txtBpmTo.text intValue] < [self.txtBpmFrom.text intValue]))
+    if(!([self.txtBpmTo.text isEqualToString:@""]) &&
+       ([self.txtBpmTo.text intValue] < [self.txtBpmFrom.text intValue]))
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bad BPM Range" message:@"Please make sure the BPM range is valid!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-        self.txtBpmTo.text = @"";
-        [self.txtBpmTo becomeFirstResponder];
+        [self showAlertAndFocusOnTextView:self.txtBpmTo title:@"Bad BPM Range" message:@"Please make sure the BPM range is valid!"];
     }
-    else if(!([self.txtDurationTo.text isEqualToString:@""]) && ([self.txtDurationTo.text intValue] < [self.txtDurationFrom.text intValue]))
+    else if(!([self.txtDurationTo.text isEqualToString:@""]) &&
+            ([self.txtDurationTo.text intValue] < [self.txtDurationFrom.text intValue]))
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bad Duration Range" message:@"Please make sure the duration range is valid!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-        self.txtDurationTo.text = @"";
-        [self.txtDurationTo becomeFirstResponder];
+        [self showAlertAndFocusOnTextView:self.txtDurationTo title:@"Bad Duration Range"
+                                  message:@"Please make sure the duration range is valid!"];
     }
     else if ([Utility stringIsNilOrEmpty:self.txtKeywords.text])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Need Keyword(s)" message:@"Please enter some keywords!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-        [self.txtKeywords becomeFirstResponder];
+        [self showAlertAndFocusOnTextView:self.txtKeywords title:@"Need Keyword(s)" message:@"Please enter some keywords!"];
     }
     else if (![Utility stringIsNilOrEmpty:self.txtKeywords.text])
     {
         self.searchParams.hasChanged = YES;
         self.searchParams.keywords = self.txtKeywords.text;
-        self.searchParams.lowBpm = ([self.txtBpmFrom.text isEqualToString:@""]) ? -1 : [self.txtBpmFrom.text intValue];
-        self.searchParams.highBpm = ([self.txtBpmTo.text isEqualToString:@""]) ? -1 : [self.txtBpmTo.text intValue];
-        self.searchParams.durationFrom = ([self.txtDurationFrom.text isEqualToString:@""]) ? -1 : [self.txtDurationFrom.text intValue];
-        self.searchParams.durationTo = ([self.txtDurationTo.text isEqualToString:@""]) ? -1 : [self.txtDurationTo.text intValue];
+        self.searchParams.lowBpm = ([self.txtBpmFrom.text isEqualToString:@""]) ? 0 : [self.txtBpmFrom.text intValue];
+        self.searchParams.highBpm = ([self.txtBpmTo.text isEqualToString:@""]) ? 0 : [self.txtBpmTo.text intValue];
+        self.searchParams.durationFrom = ([self.txtDurationFrom.text isEqualToString:@""]) ? 0 : [self.txtDurationFrom.text intValue];
+        self.searchParams.durationTo = ([self.txtDurationTo.text isEqualToString:@""]) ? 0 : [self.txtDurationTo.text intValue];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -110,6 +105,17 @@
     [self.txtBpmFrom resignFirstResponder];
     [self.txtDurationFrom resignFirstResponder];
     [self.txtDurationTo resignFirstResponder];
+}
+
+- (void)showAlertAndFocusOnTextView:(UITextView *)textView title:(NSString *)alertTitle message:(NSString *)alertMessage {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                    message:alertMessage
+                                                   delegate:self
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+    textView.text = @"";
+    [textView becomeFirstResponder];
 }
 
 @end

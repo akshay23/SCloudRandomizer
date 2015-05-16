@@ -44,7 +44,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.searchParams = [Utility loadSaveParamsWithKey:@"MySearchParams"];
+    self.searchParams = [Utility loadSearchParamsWithKey:@"SearchParams"];
     if (self.searchParams == nil) {
         self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
     }

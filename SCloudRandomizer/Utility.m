@@ -44,7 +44,7 @@
     [defaults synchronize];
 }
 
-+ (SearchParams *)loadSaveParamsWithKey:(NSString *)key {
++ (SearchParams *)loadSearchParamsWithKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *encodedObject = [defaults objectForKey:key];
     SearchParams *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];

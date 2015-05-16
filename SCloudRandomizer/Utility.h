@@ -15,6 +15,6 @@
 + (dispatch_queue_t)getMainQueue;
 + (BOOL)stringIsNilOrEmpty:(NSString*)aString;
 + (void)saveSearchParams:(SearchParams *)object key:(NSString *)key;
-+ (SearchParams *)loadSaveParamsWithKey:(NSString *)key;
++ (SearchParams *)loadSearchParamsWithKey:(NSString *)key;
 
 @end

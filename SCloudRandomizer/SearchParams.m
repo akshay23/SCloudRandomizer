@@ -15,10 +15,10 @@
     if (self = [super init]) {
         self.hasChanged = changed;
         self.keywords = theKeywords;
-        self.lowBpm = -1;
-        self.highBpm = -1;
-        self.durationFrom = -1;
-        self.durationTo = -1;
+        self.lowBpm = 0;
+        self.highBpm = 0;
+        self.durationFrom = 0;
+        self.durationTo = 0;
     }
     
     return self;
