@@ -85,7 +85,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
                 }];
             }
             
-            [Utility saveSearchParams:self.searchParams key:@"MySearchParams"];
+            [Utility saveSearchParams:self.searchParams key:@"SearchParams"];
             self.searchParams.hasChanged = NO;
         }
     }

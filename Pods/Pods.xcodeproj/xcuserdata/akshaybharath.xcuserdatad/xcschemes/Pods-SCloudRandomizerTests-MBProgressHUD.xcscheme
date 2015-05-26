@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB12C9E5C0153B0907CC1269"
+               BlueprintIdentifier = "500C777D270060AE37AC2ACF"
                BuildableName = "libPods-SCloudRandomizerTests-MBProgressHUD.a"
                BlueprintName = "Pods-SCloudRandomizerTests-MBProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj">
