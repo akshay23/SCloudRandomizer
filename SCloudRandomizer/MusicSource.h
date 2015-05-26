@@ -18,7 +18,8 @@ typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
 typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
 
 + (MusicSource *) getInstance;
-- (BOOL) isUserLoggedIn;
+
+- (SCAccount*) isUserLoggedIn;
 - (void) getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
 - (void) logout;
 - (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
@@ -31,8 +32,5 @@ typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
                         withAccount:(SCAccount *)anAccount
                         sendingProgressHandler:(SCRequestSendingProgressHandler)aProgressHandler
                         responseHandler:(SCRequestResponseHandler)aResponseHandler;
-
-
-
 
 @end

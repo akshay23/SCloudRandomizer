@@ -42,9 +42,7 @@
     NSString *keyword = @"test";
     SearchParams *searchParams = [[SearchParams alloc]
                                   initWithBool:YES
-                                  keywords:keyword
-                                  lowBpm:[NSNumber numberWithInt:10]
-                                  highBpm:[NSNumber numberWithInt:30]];
+                                  keywords:keyword];
     
     // Since getRandomTrack is an async method that invokes a completion handler,
     // create a stubbed block that will be invoked using OCMock's andDo method

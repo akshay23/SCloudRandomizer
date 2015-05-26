@@ -14,8 +14,7 @@
 
 static GlobalData *instance;
 
-+ (GlobalData *)getInstance
-{
++ (GlobalData *)getInstance {
     @synchronized(self)
     {
         if(instance==nil)
@@ -25,6 +24,5 @@ static GlobalData *instance;
     }
     return instance;
 }
-
 
 @end

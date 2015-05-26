@@ -19,8 +19,13 @@
 @property (strong, nonatomic) IBOutlet UITextView *txtKeywords;
 @property (strong, nonatomic) IBOutlet UITextView *txtBpmFrom;
 @property (strong, nonatomic) IBOutlet UITextView *txtBpmTo;
+@property (strong, nonatomic) IBOutlet UITextView *txtDurationFrom;
+@property (strong, nonatomic) IBOutlet UITextView *txtDurationTo;
+@property (strong, nonatomic) IBOutlet UIButton *btnClear;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
+- (IBAction)clearFields:(id)sender;
+
 
 @end

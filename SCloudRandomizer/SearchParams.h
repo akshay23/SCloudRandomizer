@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SearchParams : NSObject
+@interface SearchParams : NSObject<NSCoding>
 
 @property BOOL hasChanged;
-@property (strong, nonatomic) NSNumber *lowBpm;
-@property (strong, nonatomic) NSNumber *highBpm;
+@property NSInteger lowBpm;
+@property NSInteger highBpm;
+@property NSInteger durationFrom;
+@property NSInteger durationTo;
 @property (strong, nonatomic) NSString *keywords;
 
-- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords lowBpm:(NSNumber *)lBpm highBpm:(NSNumber *)hBpm;
+- (id)initWithBool:(BOOL)changed keywords:(NSString *)theKeywords;
 
 @end

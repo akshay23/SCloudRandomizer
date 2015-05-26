@@ -19,10 +19,9 @@ static MusicSource *instance;
 
 @end
 
-
 @implementation MusicSource : NSObject
 
-+ (MusicSource*) getInstance {
++ (MusicSource*)getInstance {
     @synchronized(self)
     {
         if (instance == nil) {
@@ -33,7 +32,7 @@ static MusicSource *instance;
     return instance;
 }
 
-- (BOOL) isUserLoggedIn {
+- (SCAccount *)isUserLoggedIn {
     return [SCSoundCloud account];
 }
 
@@ -63,24 +62,50 @@ static MusicSource *instance;
         completionHandler(tracks);
     };
     
-    // Replace spaces with '%20' and then replace commas with '%2C'
-    NSString *cleanedKeywords = [[searchParams.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", cleanedKeywords];
-    NSLog(@"The resourceURL is %@", resourceURL);
 
     [MusicSource fetchTracks:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:resourceURL]
+                  onResource:[self generateResourceURL:searchParams]
              usingParameters:nil
                  withAccount:[MusicSource account]
       sendingProgressHandler:nil
              responseHandler:responseHandler];
 }
 
+- (NSURL *)generateResourceURL:(SearchParams *)params {
+    NSString *fromBpm = @"";
+    if (params.lowBpm > 0) {
+        fromBpm = [NSString stringWithFormat:@"&bpm[from]=%ld", (long)params.lowBpm];
+    }
+    
+    NSString *toBpm = @"";
+    if (params.highBpm > 0) {
+        toBpm = [NSString stringWithFormat:@"&bpm[to]=%ld", (long)params.highBpm];
+    }
+    
+    NSString *durationFrom = @"";
+    if (params.durationFrom > 0) {
+        durationFrom = [NSString stringWithFormat:@"&duration[from]=%ld", (long)(params.durationFrom * 60000)];
+    }
+    
+    NSString *durationTo = @"";
+    if (params.durationTo > 0) {
+        durationTo = [NSString stringWithFormat:@"&duration[to]=%ld", (long)(params.durationTo * 60000)];
+    }
+    
+    // Replace spaces with '%20' and then replace commas with '%2C' in the keywords
+    // then create the resourceURL using the keywords and bpm
+    NSString *cleanedKeywords = [[params.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@%@%@%@%@", cleanedKeywords, fromBpm, toBpm, durationFrom, durationTo];
+    NSLog(@"The resourceURL is %@", resourceURL);
+    
+    return [NSURL URLWithString:resourceURL];
+}
+
 - (void)logout {
     [SCSoundCloud removeAccess];
 }
 
-- (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate {
+- (void)updateLikeState:(BOOL)isSongLiked trackId:(NSString *)trackIdToUpdate {
     NSString *resourceURL = @"https://api.soundcloud.com/me/favorites/";
     NSURL *postURL = [NSURL URLWithString:[resourceURL stringByAppendingString: trackIdToUpdate]];
     
@@ -119,6 +144,5 @@ static MusicSource *instance;
 + (SCAccount*) account {
     return [SCSoundCloud account];
 }
-
 
 @end
