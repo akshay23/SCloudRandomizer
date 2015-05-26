@@ -13,3 +13,5 @@ target 'SCloudRandomizerTests' do
 
 end
 
+link_with 'SCloudRandomizer', 'SCloudRandomizerTests'
+

@@ -11,9 +11,9 @@
 
 @implementation Utility
 
-+ (NSString *)convertFromMilliseconds:(long)duration {
-    NSInteger minutes = floor(duration / 60000);
-    NSInteger seconds = ((duration % 60000) / 1000);
++ (NSString *)formatDuration:(long)durationInMilliseconds {
+    NSInteger minutes = floor(durationInMilliseconds / 60000);
+    NSInteger seconds = ((durationInMilliseconds % 60000) / 1000);
     NSString *formatted = nil;
     if (seconds < 10) {
         formatted = [NSString stringWithFormat:@"%ld:0%ld", (long)minutes, (long)seconds];

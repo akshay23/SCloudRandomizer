@@ -39,15 +39,14 @@ static MusicSource *instance;
 - (void)getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler {
     [self getTracks:searchParams completionHandler:^(NSArray* tracks) {
         int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
-        Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[SCSoundCloud account]];
+        Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
         completionHandler(track);
     }];
 }
 
 - (void)getTracks:(SearchParams *)searchParams completionHandler:(tracksFetchedCompletionHandler)completionHandler {
     SCRequestResponseHandler responseHandler =
-    ^(NSURLResponse *response, NSData *data, NSError *error)
-    {
+    ^(NSURLResponse *response, NSData *data, NSError *error) {
         NSError *jsonError = nil;
         NSArray* tracks = nil;
         NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
@@ -63,10 +62,11 @@ static MusicSource *instance;
         completionHandler(tracks);
     };
     
-    [SCRequest performMethod:SCRequestMethodGET
+
+    [MusicSource fetchTracks:SCRequestMethodGET
                   onResource:[self generateResourceURL:searchParams]
              usingParameters:nil
-                 withAccount:[SCSoundCloud account]
+                 withAccount:[MusicSource account]
       sendingProgressHandler:nil
              responseHandler:responseHandler];
 }
@@ -123,6 +123,26 @@ static MusicSource *instance;
             withAccount:[SCSoundCloud account]
             sendingProgressHandler:nil
             responseHandler:nil];
+}
+
++ (void) fetchTracks:(SCRequestMethod)aMethod
+                        onResource:(NSURL *)aResource
+                        usingParameters:(NSDictionary *)someParameters
+                        withAccount:(SCAccount *)anAccount
+                        sendingProgressHandler:(SCRequestSendingProgressHandler)aProgressHandler
+     responseHandler:(SCRequestResponseHandler)aResponseHandler {
+    
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:aResource
+             usingParameters:someParameters
+                 withAccount:anAccount
+      sendingProgressHandler:aProgressHandler
+             responseHandler:aResponseHandler];
+}
+
++ (SCAccount*) account {
+    return [SCSoundCloud account];
 }
 
 @end
