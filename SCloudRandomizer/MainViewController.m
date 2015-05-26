@@ -44,7 +44,10 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     self.searchParamsVC.delegate = self;
     self.trackInfoVC = [[GlobalData getInstance].mainStoryboard instantiateViewControllerWithIdentifier:@"trackInfoVC"];
     self.trackInfoVC.delegate = self;
-    self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix" lowBpm:[NSNumber numberWithInt:80] highBpm:[NSNumber numberWithInt:150]];
+    self.searchParams = [Utility loadSearchParamsWithKey:@"SearchParams"];
+    if (self.searchParams == nil) {
+        self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
+    }
     
     // Clear the labels
     [self.lblArtistValue setText:@""];
@@ -82,6 +85,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
                 }];
             }
             
+            [Utility saveSearchParams:self.searchParams key:@"MySearchParams"];
             self.searchParams.hasChanged = NO;
         }
     }
@@ -187,8 +191,8 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 
 - (void)getFavState: (Track*) track {
     NSLog(@"Fav value: %@", track.isLiked);
-    self.isCurrentSongLiked = track.isLiked;
-    [self updateFavIcon:track.isLiked];
+    self.isCurrentSongLiked = ([track.isLiked isEqual:@0]) ? NO : YES;
+    [self updateFavIcon:self.isCurrentSongLiked];
 }
 
 - (void)updateFavIcon:(BOOL)isLiked {

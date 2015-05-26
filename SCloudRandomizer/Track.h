@@ -23,6 +23,7 @@
 @property (nonatomic) NSString *uploadedOn;
 @property (nonatomic) NSString *songDescription;
 @property (nonatomic) NSString *tags;
+@property (nonatomic) NSInteger bpm;
 
 typedef void(^trackDownloaded)(NSData* trackData);
 

@@ -52,6 +52,8 @@
     
     self.songDescription = [data objectForKey:@"description"];
     
+    self.bpm = ([data objectForKey:@"bpm"] == [NSNull null]) ? 0 : [[data objectForKey:@"bpm"] integerValue];
+    
     return self;
 }
 

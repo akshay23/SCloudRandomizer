@@ -15,8 +15,7 @@
 
 @implementation TrackInfoVC
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 }
 
@@ -25,8 +24,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     id<MainVCDelegate> strongDelegate = self.delegate;
@@ -57,8 +55,7 @@
     NSLog(@"Track details displayed!");
 }
 
-- (IBAction)close:(id)sender
-{
+- (IBAction)close:(id)sender {
     // Custom animation
     CATransition *animation = [CATransition animation];
     animation.duration = 0.3;
