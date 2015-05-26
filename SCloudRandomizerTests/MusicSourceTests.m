@@ -23,13 +23,20 @@
 
 @implementation MusicSourceTests
 
+// This tests the MusicSource::getRandomTrack by mocking
+// out the Soundcloud data using OCMock
 - (void) testgettingRandomTracks {
     
+    // Partially mock out MusicSource since we want to test
+    // one of its methods but mock out the ones that use Soundcloud
+    // API's
     MusicSource *musicSource = [MusicSource getInstance];
     id partialMusicSourceMock = OCMPartialMock(musicSource);
     
+    // Mock out the SCAccount class
     id mockedSCAccount = OCMClassMock([SCAccount class]);
     
+    // Stub out the account method on the partially mocked MusicSource instance
     OCMStub([partialMusicSourceMock account]).andReturn(mockedSCAccount);
     
     NSString *keyword = @"test";
@@ -39,6 +46,8 @@
                                   lowBpm:[NSNumber numberWithInt:10]
                                   highBpm:[NSNumber numberWithInt:30]];
     
+    // Since getRandomTrack is an async method that invokes a completion handler,
+    // create a stubbed block that will be invoked using OCMock's andDo method
     void (^stubbedResponseHandler)(NSInvocation *) = ^(NSInvocation *invocation) {
         NSString *mockedResponse = @"[{ \"id\": 13158665, \"stream_url\": \"http://foo.com\" }]";
         NSData *jsonData = [mockedResponse dataUsingEncoding:NSUTF8StringEncoding];
@@ -55,6 +64,8 @@
         responseHandler(nil, jsonData, nil);
     };
     
+    // Stub out fetchTracks and invoke the stubbed response
+    // block when the test eventually gets to this stubbed method
     NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", keyword];
     OCMStub([partialMusicSourceMock fetchTracks:SCRequestMethodGET
                                 onResource:[NSURL URLWithString:resourceURL]
