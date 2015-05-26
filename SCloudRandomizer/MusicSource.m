@@ -95,7 +95,7 @@ static MusicSource *instance;
     // Replace spaces with '%20' and then replace commas with '%2C' in the keywords
     // then create the resourceURL using the keywords and bpm
     NSString *cleanedKeywords = [[params.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@%@%@%@%@", cleanedKeywords, fromBpm, toBpm, durationFrom, durationTo];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&limit=200&q=%@%@%@%@%@", cleanedKeywords, fromBpm, toBpm, durationFrom, durationTo];
     NSLog(@"The resourceURL is %@", resourceURL);
     
     return [NSURL URLWithString:resourceURL];
