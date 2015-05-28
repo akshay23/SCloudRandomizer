@@ -23,6 +23,7 @@ typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
 - (void) getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
 - (void) logout;
 - (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
+- (NSURL *)generateResourceURL:(SearchParams *)params;
 
 + (SCAccount*) account;
 

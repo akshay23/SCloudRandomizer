@@ -249,11 +249,24 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     
     [self.musicSource getRandomTrack:self.searchParams
                         completionHandler:^(Track *track) {
-                            self.currentTrack = track;
-                            [self setupLockScreenInfo:track];
-                            [self setupUI:track];
-                            [self getFavState:track];
-                            [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
+                            if (track != nil) {
+                                self.currentTrack = track;
+                                [self setupLockScreenInfo:track];
+                                [self setupUI:track];
+                                [self getFavState:track];
+                                [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
+                            } else {
+                                [progressHud hide:YES];
+                                
+                                UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                                                message:@"Could not find any tracks. Try a different search!"
+                                                                               delegate:self
+                                                                      cancelButtonTitle:@"Ok"
+                                                                          otherButtonTitles:nil];
+                                [errorView show];
+                                
+                                [self presentViewController:self.searchParamsVC animated:YES completion:nil];
+                            }
     }];
 }
 
@@ -278,7 +291,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     }];
 }
 
-// Todo - Should this always play by default?
 - (void)playNextTrack
 {
     [self stopPlayingTrack];
