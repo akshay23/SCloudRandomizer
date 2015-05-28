@@ -27,6 +27,7 @@
 		19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED361A2FB92100DD97CC /* Images.xcassets */; };
 		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
 		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
+		4E254FB51B17A65900A70F26 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E254FB41B17A65900A70F26 /* refresh.png */; };
 		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
 		4E3A92791AE0604800640EFB /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92781AE0604800640EFB /* tag.png */; };
 		4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8AC8DC1AF2C69900B2054B /* Utility.m */; };
@@ -98,6 +99,7 @@
 		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
 		19F38A631A9F811C002361E6 /* TrackInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoVC.m; sourceTree = "<group>"; };
 		276CF3AB99530D51BD666B04 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4E254FB41B17A65900A70F26 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		4E3A92761AE0602C00640EFB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4E3A92781AE0604800640EFB /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		4E8AC8DB1AF2C68A00B2054B /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4E254FB41B17A65900A70F26 /* refresh.png */,
 				190EA4291AF2D0C30003DCD6 /* Music-icon.png */,
 				4ED3F5A21AB272A200259C84 /* background.png */,
 				1997F72D1A607F4400109F76 /* Heart-red-transparent.png */,
@@ -385,6 +388,7 @@
 				19C18F131A30E86A00281221 /* play_btn.png in Resources */,
 				4E3A92791AE0604800640EFB /* tag.png in Resources */,
 				19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */,
+				4E254FB51B17A65900A70F26 /* refresh.png in Resources */,
 				4ED3F5A31AB272A200259C84 /* background.png in Resources */,
 				19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */,
 			);

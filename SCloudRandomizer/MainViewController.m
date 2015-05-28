@@ -49,17 +49,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
     }
     
-    // Clear the labels
-    [self.lblArtistValue setText:@""];
-    [self.lblLengthValue setText:@""];
-    [self.lblTitleValue setText:@""];
-    self.currentSongNumber = 3;
-    
-    // Draw border around parameters button
-    self.btnChangeParams.layer.cornerRadius = 4;
-    self.btnChangeParams.layer.borderWidth = 1;
-    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
-    self.paramsChanged = YES;
+    [self hideAllDataAndControls];
 }
 
 - (void) initPlayer:(NSData*) trackData {
@@ -136,6 +126,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self hidePlayerControls];
     [self hideSongMetaData];
     [self.btnChangeParams setHidden:YES];
+    [self.refreshImage setHidden: YES];
 }
 
 - (IBAction)logout:(id)sender {
@@ -248,14 +239,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 }
 
 - (void)getNextTrack:(singleTrackDownloaded)completionHandler {
-    self.imgArtwork.alpha = 0.5;
-    [self.btnPlay setHidden:NO];
-    [self.btnNext setHidden:NO];
-    [self.btnNext setEnabled:NO];
-    [self.btnPlay setEnabled:NO];
-    [self.btnInfo setEnabled:NO];
-    [self.btnLike setEnabled:NO];
-    [self.btnChangeParams setEnabled:NO];
     
     MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate
           progressHudLabel:@"Loading next track"
@@ -299,7 +282,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
                                                                           otherButtonTitles:nil];
                                 [errorView show];
                                 
-                                // ToDo - Show a refresh view
+                                [self.refreshImage setHidden:NO];
                             }
     }];
 }
@@ -366,15 +349,22 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 
 // Set the UI after getting track info
 - (void)setupUI:(Track *)track {
+    
+    [self.btnPlay setHidden: NO];
+    [self.btnNext setHidden: NO];
+    
     [self.btnInfo setHidden:NO];
     [self.btnLike setHidden:NO];
-    [self.btnNext setEnabled:YES];
-    [self.btnPlay setEnabled:YES];
     [self.btnInfo setEnabled:YES];
     [self.btnLike setEnabled:YES];
     [self.imgArtwork setHidden:NO];
+    
     [self.btnChangeParams setHidden:NO];
     [self.btnChangeParams setEnabled:YES];
+    self.btnChangeParams.layer.cornerRadius = 4;
+    self.btnChangeParams.layer.borderWidth = 1;
+    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
+
     
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
@@ -386,6 +376,8 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
+    
+    [self.refreshImage setHidden:YES];
     
     self.imgArtwork.layer.borderWidth = 1;
     self.imgArtwork.alpha = 1.0;
@@ -431,6 +423,22 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 - (SearchParams *)getCurrentSearchParams
 {
     return self.searchParams;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    
+    if ([touch view] == self.refreshImage)
+    {
+        NSLog(@"Refresh icon clicked");
+        [self.refreshImage setHidden: YES];
+        [self getNextTrack: ^(NSData* trackData) {
+            [self initPlayer:trackData];
+            NSLog(@"Fetch next track");
+        }];
+    }
+    
 }
 
 @end
