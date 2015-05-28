@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F0AE43DE0B1D2BC21627DF3"
+               BlueprintIdentifier = "BBA70F3C1923623B8F8A433A"
                BuildableName = "libPods-SCloudRandomizerTests-NXOAuth2Client.a"
                BlueprintName = "Pods-SCloudRandomizerTests-NXOAuth2Client"
                ReferencedContainer = "container:Pods.xcodeproj">

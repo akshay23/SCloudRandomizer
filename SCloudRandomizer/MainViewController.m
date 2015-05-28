@@ -208,7 +208,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         if (self.player.data == nil) {
             [self getNextTrack:^(NSData* trackData) {
                 [self initPlayer:trackData];
-                [self playNextTrack];
+                [self playTrack];
                 NSLog(@"Playing song for first time");
             }];
         } else {

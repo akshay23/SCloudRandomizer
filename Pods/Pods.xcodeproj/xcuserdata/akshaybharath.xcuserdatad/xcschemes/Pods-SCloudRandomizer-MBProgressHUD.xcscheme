@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "32DBB62E22518D1E5372C300"
+               BlueprintIdentifier = "B853C690FF871C2C39A477EF"
                BuildableName = "libPods-SCloudRandomizer-MBProgressHUD.a"
                BlueprintName = "Pods-SCloudRandomizer-MBProgressHUD"
                ReferencedContainer = "container:Pods.xcodeproj">

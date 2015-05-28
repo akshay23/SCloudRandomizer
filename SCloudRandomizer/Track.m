@@ -61,7 +61,6 @@
 
     SCRequestResponseHandler responseHandler =
     ^(NSURLResponse *response, NSData *data, NSError *error) {
-        // ToDo: Correct way of invoking a callback?
         completionHandler(data);
     };
     
