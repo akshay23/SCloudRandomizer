@@ -14,8 +14,15 @@
 
 @interface MusicSource: NSObject
 
-typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
-typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
+enum MusicSourceError {
+    None,
+    ZeroData,
+    NoData,
+    DeserializationError
+};
+
+typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks, enum MusicSourceError error);
+typedef void(^singleTrackFetchedCompletionHandler)(Track* track, enum MusicSourceError error);
 
 + (MusicSource *) getInstance;
 

@@ -114,15 +114,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logout:(id)sender {
-    [self.musicSource logout];
-    
-    [self.player stop];
-    [self.btnSCConnect setHidden:NO];
-    [self.btnSCDisconnect setHidden:YES];
-    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
-    [self.btnPlay setHidden:YES];
-    [self.btnNext setHidden:YES];
+- (void) hideSongMetaData {
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
@@ -132,7 +124,29 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
+}
+
+- (void) hidePlayerControls {
+    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setHidden:YES];
+    [self.btnNext setHidden:YES];
+}
+
+- (void) hideAllDataAndControls {
+    [self hidePlayerControls];
+    [self hideSongMetaData];
     [self.btnChangeParams setHidden:YES];
+}
+
+- (IBAction)logout:(id)sender {
+    [self.musicSource logout];
+    
+    [self.player stop];
+    [self.btnSCConnect setHidden:NO];
+    [self.btnSCDisconnect setHidden:YES];
+
+    [self hideAllDataAndControls];
+   
     self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     self.searchParams.hasChanged = YES;
     NSLog(@"Logged out.");
@@ -248,15 +262,20 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
           progressHudDetailsLabel:@"Please wait.."];
     
     [self.musicSource getRandomTrack:self.searchParams
-                        completionHandler:^(Track *track) {
-                            if (track != nil) {
+                        completionHandler:^(Track *track, enum MusicSourceError error) {
+                            if (error == None) {
+                                
                                 self.currentTrack = track;
                                 [self setupLockScreenInfo:track];
                                 [self setupUI:track];
                                 [self getFavState:track];
                                 [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
-                            } else {
+                                
+                            } else if (error == ZeroData){
+                                
                                 [progressHud hide:YES];
+                                
+                                [self hideAllDataAndControls];
                                 
                                 UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
                                                                                 message:@"Could not find any tracks. Try a different search!"
@@ -266,6 +285,21 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
                                 [errorView show];
                                 
                                 [self presentViewController:self.searchParamsVC animated:YES completion:nil];
+                                
+                            } else if (error == NoData) {
+                                
+                                [progressHud hide:YES];
+                                
+                                [self hideAllDataAndControls];
+                                
+                                UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                                                    message:@"We are not able to connect to Soundcloud right now"
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"Ok"
+                                                                          otherButtonTitles:nil];
+                                [errorView show];
+                                
+                                // ToDo - Show a refresh view
                             }
     }];
 }

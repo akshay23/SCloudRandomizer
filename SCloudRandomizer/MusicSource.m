@@ -37,13 +37,13 @@ static MusicSource *instance;
 }
 
 - (void)getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler {
-    [self getTracks:searchParams completionHandler:^(NSArray* tracks) {
-        if (tracks.count > 0) {
+    [self getTracks:searchParams completionHandler:^(NSArray* tracks, enum MusicSourceError error) {
+        if (error != None) {
+            completionHandler(nil, error);
+        } else {
             int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
             Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
-            completionHandler(track);
-        } else {
-            completionHandler(nil);
+            completionHandler(track, None);
         }
     }];
 }
@@ -53,17 +53,27 @@ static MusicSource *instance;
     ^(NSURLResponse *response, NSData *data, NSError *error) {
         NSError *jsonError = nil;
         NSArray* tracks = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
-            tracks = (NSArray *)jsonResponse;
-            NSLog(@"Tracks acquired.");
+        if (data != nil) {
+            NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
+                tracks = (NSArray *)jsonResponse;
+                
+                if (tracks.count > 0) {
+                    NSLog(@"Tracks acquired.");
+                    completionHandler(tracks, None);
+                } else {
+                    NSLog(@"No tracks acquired");
+                    completionHandler(tracks, ZeroData);
+                }
+            }
+            else {
+                NSLog(@"Error deserializing tracks");
+                completionHandler(tracks, DeserializationError);
+            }
+        } else {
+            NSLog(@"Error fetching tracks");
+            completionHandler(tracks, NoData);
         }
-        else
-        {
-            NSLog(@"Could not get tracks.");
-        }
-        
-        completionHandler(tracks);
     };
     
 
