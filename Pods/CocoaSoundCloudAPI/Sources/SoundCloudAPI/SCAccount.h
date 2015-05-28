@@ -25,6 +25,7 @@
 extern NSString * const SCAccountDidFailToGetAccessToken;
 
 @class NXOAuth2Account;
+@class NXOAuth2Client;
 
 @interface SCAccount : NSObject {
 @private
@@ -34,5 +35,7 @@ extern NSString * const SCAccountDidFailToGetAccessToken;
 #pragma mark Accessors
 
 @property (nonatomic, readonly) NSString *identifier;
+
+- (NXOAuth2Client *)getOAuthClient;
 
 @end

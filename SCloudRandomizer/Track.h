@@ -7,6 +7,7 @@
 //
 
 @class SCAccount;
+@class SCAudioStream;
 
 @interface Track : NSObject
 
@@ -25,7 +26,7 @@
 @property (nonatomic) NSString *tags;
 @property (nonatomic) NSInteger bpm;
 
-typedef void(^trackDownloaded)(NSData* trackData);
+typedef void(^trackDownloaded)(SCAudioStream *scAudio);
 
 - (id)initWithData:(NSDictionary*)data account:(SCAccount *) account;
 - (void) download:(trackDownloaded)completionHandler;

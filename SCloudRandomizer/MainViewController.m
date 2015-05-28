@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "Utility.h"
 #import "Track.h"
+#import "SCAudioStream.h"
 
 static const double LoggedOutBackgroundImageOpacity = 0.7;
 static const double LoggedInBackgroundImageOpacity = 0.2;
@@ -16,13 +17,14 @@ static const double LoggedInBackgroundImageOpacity = 0.2;
 // Private declarations
 @interface MainViewController ()
 
-typedef void(^singleTrackDownloaded)(NSData* trackData);
+typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
 
 @property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
 @property MusicSource *musicSource;
+@property (strong, nonatomic) SCAudioStream *scAudioStream;
 
 @end
 
@@ -62,11 +64,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     self.paramsChanged = YES;
 }
 
-- (void) initPlayer:(NSData*) trackData {
-    self.player = [[AVAudioPlayer alloc] initWithData:trackData error:nil];
-    self.player.delegate = self;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -76,12 +73,12 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         self.backgroundImage.alpha = LoggedInBackgroundImageOpacity;
         
         if (self.searchParams.hasChanged) {
-            if ([self.player isPlaying]) {
+            if (self.scAudioStream.playState == Playing) {
                 [self playNextTrack];
             }
             else {
-                [self getNextTrack:^(NSData* trackData) {
-                    [self initPlayer:trackData];
+                [self getNextTrack:^(SCAudioStream *scAudio) {
+                    self.scAudioStream = scAudio;
                 }];
             }
             
@@ -116,8 +113,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 
 - (IBAction)logout:(id)sender {
     [self.musicSource logout];
-    
-    [self.player stop];
     [self.btnSCConnect setHidden:NO];
     [self.btnSCDisconnect setHidden:YES];
     [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
@@ -138,7 +133,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     NSLog(@"Logged out.");
 }
 
-// ToDo - Move this into a login view
 - (IBAction)login:(id)sender {
     [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
         SCLoginViewController *loginViewController = [SCLoginViewController loginViewControllerWithPreparedURL:preparedURL
@@ -204,21 +198,19 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 }
 
 - (void)playPauseSong {
-    if (![self.player isPlaying]) {
-        if (self.player.data == nil) {
-            [self getNextTrack:^(NSData* trackData) {
-                [self initPlayer:trackData];
+    if (self.scAudioStream.playState == Paused) {
+        if (self.scAudioStream == nil) {
+            [self getNextTrack:^(SCAudioStream *scAudio) {
+                self.scAudioStream = scAudio;
                 [self playTrack];
-                NSLog(@"Playing song for first time");
             }];
-        } else {
-            [self playTrack];
-            NSLog(@"Resuming song");
         }
+        [self playTrack];
+        NSLog(@"Playing song");
     }
     else {
         [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
-        [self.player pause];
+        [self.scAudioStream pause];
         NSLog(@"Pausing song");
     }
 }
@@ -258,13 +250,13 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 }
 
 - (void)playTrack {
-    [self.player prepareToPlay];
-    [self.player play];
+    [self.scAudioStream play];
     [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
 }
 
 - (void)stopPlayingTrack {
-    [self.player stop];
+    [self.scAudioStream pause];
+    self.scAudioStream = nil;
 }
 
 - (void)downloadTrack:(Track *)track
@@ -272,18 +264,17 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         completionHandler:(singleTrackDownloaded)completionHandler {
     NSLog(@"The streamURL is: %@", track.streamUrl);
     
-    [track download:^(NSData* trackData) {
+    [track download:^(SCAudioStream *scAudio) {
         [progressHud hide:YES];
-        completionHandler(trackData);
+        completionHandler(scAudio);
     }];
 }
 
-// Todo - Should this always play by default?
 - (void)playNextTrack
 {
-    [self stopPlayingTrack];
-    [self getNextTrack: ^(NSData* trackData) {
-        [self initPlayer:trackData];
+    //[self stopPlayingTrack];
+    [self getNextTrack: ^(SCAudioStream *scAudio) {
+        self.scAudioStream = scAudio;
         [self playTrack];
         NSLog(@"Will play next song");
     }];
