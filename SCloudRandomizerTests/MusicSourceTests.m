@@ -70,7 +70,7 @@
     XCTestExpectation *randomTrack1FetchExpectation = [self expectationWithDescription:@"Random track 1 fetched"];
    [musicSource getRandomTrack:searchParams
              completionHandler:^(Track *track, enum MusicSourceError error) {
-                 XCTAssert(error = None);
+                 XCTAssert(error == None);
                  XCTAssert(track != nil);
                  XCTAssertEqual(13158665, [track.Id intValue]);
                  [randomTrack1FetchExpectation fulfill];
