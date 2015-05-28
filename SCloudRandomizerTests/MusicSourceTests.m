@@ -64,7 +64,7 @@
     
     // Stub out fetchTracks and invoke the stubbed response
     // block when the test eventually gets to this stubbed method
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&q=%@", keyword];
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&limit=200&q=%@", keyword];
     OCMStub([partialMusicSourceMock fetchTracks:SCRequestMethodGET
                                 onResource:[NSURL URLWithString:resourceURL]
                            usingParameters:nil
