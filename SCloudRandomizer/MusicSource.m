@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 Akshay Bharath. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import <SCSoundCloud.h>
 #import <SCRequest.h>
+#import <Reachability.h>
+
 #import "MusicSource.h"
 #import "Track.h"
 #import "SearchParams.h"
@@ -37,15 +40,23 @@ static MusicSource *instance;
 }
 
 - (void)getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler {
-    [self getTracks:searchParams completionHandler:^(NSArray* tracks, enum MusicSourceError error) {
-        if (error != None) {
-            completionHandler(nil, error);
-        } else {
-            int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
-            Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
-            completionHandler(track, None);
-        }
-    }];
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There is no internet connection");
+        completionHandler(nil, NoData);
+    } else {
+        [self getTracks:searchParams completionHandler:^(NSArray* tracks, enum MusicSourceError error) {
+            if (error != None) {
+                completionHandler(nil, error);
+            } else {
+                int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
+                Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
+                completionHandler(track, None);
+            }
+        }];
+    }
 }
 
 - (void)getTracks:(SearchParams *)searchParams completionHandler:(tracksFetchedCompletionHandler)completionHandler {

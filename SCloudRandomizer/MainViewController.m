@@ -104,7 +104,13 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     // Dispose of any resources that can be recreated.
 }
 
-- (void) hideSongMetaData {
+
+- (void) hideAllDataAndControls {
+    
+    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setHidden:YES];
+    [self.btnNext setHidden:YES];
+    
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
@@ -114,17 +120,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
-}
-
-- (void) hidePlayerControls {
-    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
-    [self.btnPlay setHidden:YES];
-    [self.btnNext setHidden:YES];
-}
-
-- (void) hideAllDataAndControls {
-    [self hidePlayerControls];
-    [self hideSongMetaData];
+    
     [self.btnChangeParams setHidden:YES];
     [self.refreshImage setHidden: YES];
 }

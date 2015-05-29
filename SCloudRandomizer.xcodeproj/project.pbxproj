@@ -30,6 +30,8 @@
 		4E254FB51B17A65900A70F26 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E254FB41B17A65900A70F26 /* refresh.png */; };
 		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
 		4E3A92791AE0604800640EFB /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92781AE0604800640EFB /* tag.png */; };
+		4E83637B1B18B69500687FB7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E83637A1B18B69500687FB7 /* SystemConfiguration.framework */; };
+		4E8363811B18F17600687FB7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E83637F1B18F17600687FB7 /* Reachability.m */; };
 		4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8AC8DC1AF2C69900B2054B /* Utility.m */; };
 		4E9DA56A1B05217D00B324B1 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA5691B05217D00B324B1 /* UtilityTests.m */; };
 		4E9DA57E1B055B1800B324B1 /* MusicSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA57D1B055B1800B324B1 /* MusicSourceTests.m */; };
@@ -102,6 +104,9 @@
 		4E254FB41B17A65900A70F26 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		4E3A92761AE0602C00640EFB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4E3A92781AE0604800640EFB /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		4E83637A1B18B69500687FB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4E83637F1B18F17600687FB7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4E8363801B18F17600687FB7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4E8AC8DB1AF2C68A00B2054B /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		4E8AC8DC1AF2C69900B2054B /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		4E9DA5691B05217D00B324B1 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTests.m; sourceTree = "<group>"; };
@@ -123,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E83637B1B18B69500687FB7 /* SystemConfiguration.framework in Frameworks */,
 				19C18F0F1A30E31200281221 /* AVFoundation.framework in Frameworks */,
 				C14EEDFE7A11E93DCFB9D4D8 /* libPods.a in Frameworks */,
 			);
@@ -152,6 +158,8 @@
 		19B759D91B027660005F6D1E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4E83637F1B18F17600687FB7 /* Reachability.m */,
+				4E8363801B18F17600687FB7 /* Reachability.h */,
 				1997F7371A6454DC00109F76 /* SearchParams.h */,
 				1997F7381A6454DC00109F76 /* SearchParams.m */,
 				4ED7E84A1AF16C4800F2D38E /* MusicSource.h */,
@@ -275,6 +283,7 @@
 		75D048F3754150AAC3837DD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E83637A1B18B69500687FB7 /* SystemConfiguration.framework */,
 				4E9DA5811B05629600B324B1 /* libOCMock.a */,
 				4E9DA5791B0559E300B324B1 /* libOCMock.a */,
 				19C18F0E1A30E31200281221 /* AVFoundation.framework */,
@@ -481,6 +490,7 @@
 				4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */,
 				4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */,
 				19C18F0D1A30CF2E00281221 /* MainViewController.m in Sources */,
+				4E8363811B18F17600687FB7 /* Reachability.m in Sources */,
 				19CDED291A2FB92100DD97CC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,10 +620,38 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudUI\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/NXOAuth2Client\"",
+					"\"${PODS_ROOT}/Headers/Public/OHAttributedLabel\"",
+				);
 				INFOPLIST_FILE = SCloudRandomizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-CocoaSoundCloudAPI\"",
+					"-l\"Pods-CocoaSoundCloudUI\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-NXOAuth2Client\"",
+					"-l\"Pods-OHAttributedLabel\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Security\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -627,10 +665,38 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudUI\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/NXOAuth2Client\"",
+					"\"${PODS_ROOT}/Headers/Public/OHAttributedLabel\"",
+				);
 				INFOPLIST_FILE = SCloudRandomizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-CocoaSoundCloudAPI\"",
+					"-l\"Pods-CocoaSoundCloudUI\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-NXOAuth2Client\"",
+					"-l\"Pods-OHAttributedLabel\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Security\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
