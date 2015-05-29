@@ -86,7 +86,7 @@ void SCFileStreamFoundPacketsProc(void *clientData,
                                            kAudioFileMP3Type, // we're quite sure soundcloud gives us MP3 atm
                                            &audioFileStream);
         if (err)
-            NSLog(@"AudioFileStreamOpen failed: %d", err);
+            NSLog(@"AudioFileStreamOpen failed: %d", (int)err);
         
     }
     return self;
@@ -117,7 +117,7 @@ void SCFileStreamFoundPacketsProc(void *clientData,
                                               &asBasicDescriptionSize,
                                               &asBasicDescription);
     if (err)
-        NSLog(@"get kAudioFileStreamProperty_DataFormat failed: %d", err);
+        NSLog(@"get kAudioFileStreamProperty_DataFormat failed: %d", (int)err);
     return asBasicDescription;
 }
 
@@ -133,7 +133,7 @@ void SCFileStreamFoundPacketsProc(void *clientData,
                                                   nil);
     if (err != kAudioFileStreamError_ValueUnknown) {
         if (err) {
-            NSLog(@"AudioFileStreamGetPropertyInfo kAudioFileStreamProperty_MagicCookieData failed: %d", err);
+            NSLog(@"AudioFileStreamGetPropertyInfo kAudioFileStreamProperty_MagicCookieData failed: %d", (int)err);
         } else if (cookieDataSize > 0) {
             char *cookie;
             cookie = malloc(sizeof(char) * cookieDataSize);
@@ -142,7 +142,7 @@ void SCFileStreamFoundPacketsProc(void *clientData,
                                                       &cookieDataSize,
                                                       cookie);
             if (err) {
-                NSLog(@"AudioFileStreamGetProperty kAudioFileStreamProperty_MagicCookieData failed: %d", err);
+                NSLog(@"AudioFileStreamGetProperty kAudioFileStreamProperty_MagicCookieData failed: %d", (int)err);
             } else {
                 ret = [NSData dataWithBytes:cookie length:cookieDataSize];
             }
@@ -170,7 +170,7 @@ void SCFileStreamFoundPacketsProc(void *clientData,
                                              discontinuous ? kAudioFileStreamParseFlag_Discontinuity : 0);
     isParsing = NO;
     if (err)
-        NSLog(@"AudioFileStreamParseBytes failed: %d", err);
+        NSLog(@"AudioFileStreamParseBytes failed: %d", (int)err);
 }
 
 - (SInt64)offsetForPacket:(SInt64)packet;
@@ -228,7 +228,7 @@ void SCFileStreamFoundPacketsProc(void *clientData,
             }
             
             if (err)
-                NSLog(@"get kAudioFileStreamProperty_DataOffset failed: %d", err);
+                NSLog(@"get kAudioFileStreamProperty_DataOffset failed: %d", (int)err);
             break;
         }
             

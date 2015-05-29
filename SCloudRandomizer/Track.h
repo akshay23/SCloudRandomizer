@@ -29,6 +29,6 @@
 typedef void(^trackDownloaded)(SCAudioStream *scAudio);
 
 - (id)initWithData:(NSDictionary*)data account:(SCAccount *) account;
-- (void) download:(trackDownloaded)completionHandler;
+- (SCAudioStream *)getStream;
 
 @end

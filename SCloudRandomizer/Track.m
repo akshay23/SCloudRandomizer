@@ -57,9 +57,9 @@
     return self;
 }
 
--(void)download:(trackDownloaded)completionHandler {    
+-(SCAudioStream *)getStream {
     SCAudioStream *scAudio = [[SCAudioStream alloc] initWithURL:[NSURL URLWithString:self.streamUrl] authentication:self.account];
-    completionHandler(scAudio);
+    return scAudio;
 }
 
 @end

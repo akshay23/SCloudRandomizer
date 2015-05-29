@@ -54,6 +54,7 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Core Data stack

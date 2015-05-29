@@ -17,7 +17,7 @@ static const double LoggedInBackgroundImageOpacity = 0.2;
 // Private declarations
 @interface MainViewController ()
 
-typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
+typedef void(^singleTrackDownloaded)(void);
 
 @property BOOL isCurrentSongLiked;
 @property NSUInteger currentSongNumber;
@@ -25,6 +25,7 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
 @property (strong, nonatomic) SearchParams *searchParams;
 @property MusicSource *musicSource;
 @property (strong, nonatomic) SCAudioStream *scAudioStream;
+@property (strong, nonatomic) MBProgressHUD *prepToPlayHud;
 
 @end
 
@@ -62,6 +63,16 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
     self.btnChangeParams.layer.borderWidth = 1;
     self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
     self.paramsChanged = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"StreamCompleted"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"ReadyToPlay"
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,9 +88,7 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
                 [self playNextTrack];
             }
             else {
-                [self getNextTrack:^(SCAudioStream *scAudio) {
-                    self.scAudioStream = scAudio;
-                }];
+                [self getNextTrack:nil];
             }
             
             [Utility saveSearchParams:self.searchParams key:@"SearchParams"];
@@ -198,10 +207,9 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
 }
 
 - (void)playPauseSong {
-    if (self.scAudioStream.playState == Paused) {
+    if (self.scAudioStream.playState != SCAudioStreamState_Playing) {
         if (self.scAudioStream == nil) {
-            [self getNextTrack:^(SCAudioStream *scAudio) {
-                self.scAudioStream = scAudio;
+            [self getNextTrack:^{
                 [self playTrack];
             }];
         }
@@ -239,8 +247,7 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
           progressHudLabel:@"Loading next track"
           progressHudDetailsLabel:@"Please wait.."];
     
-    [self.musicSource getRandomTrack:self.searchParams
-                        completionHandler:^(Track *track) {
+    [self.musicSource getRandomTrack:self.searchParams completionHandler:^(Track *track) {
                             self.currentTrack = track;
                             [self setupLockScreenInfo:track];
                             [self setupUI:track];
@@ -250,6 +257,10 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
 }
 
 - (void)playTrack {
+    self.prepToPlayHud = [self getProgressBar:MBProgressHUDModeIndeterminate
+                                     progressHudLabel:@"Preparing to play"
+                              progressHudDetailsLabel:@"Please wait.."];
+    [self.prepToPlayHud show:YES];
     [self.scAudioStream play];
     [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
 }
@@ -264,17 +275,15 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
         completionHandler:(singleTrackDownloaded)completionHandler {
     NSLog(@"The streamURL is: %@", track.streamUrl);
     
-    [track download:^(SCAudioStream *scAudio) {
+    dispatch_async([Utility getMainQueue], ^{
+        self.scAudioStream = [track getStream];
+        if (completionHandler) completionHandler();
         [progressHud hide:YES];
-        completionHandler(scAudio);
-    }];
+    });
 }
 
-- (void)playNextTrack
-{
-    //[self stopPlayingTrack];
-    [self getNextTrack: ^(SCAudioStream *scAudio) {
-        self.scAudioStream = scAudio;
+- (void)playNextTrack {
+    [self getNextTrack: ^{
         [self playTrack];
         NSLog(@"Will play next song");
     }];
@@ -346,8 +355,7 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
 }
 
 // Lock screen control actions
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-{
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     //if it is a remote control event handle it correctly
     if (event.type == UIEventTypeRemoteControl)
     {
@@ -364,17 +372,26 @@ typedef void(^singleTrackDownloaded)(SCAudioStream *scAudio);
     }
 }
 
+- (void)receiveNotification:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"StreamCompleted"]) {
+        NSLog (@"Recieved StreamCompleted notification!");
+        [self playNextTrack];
+    } else if ([[notification name] isEqualToString:@"ReadyToPlay"]) {
+        NSLog(@"Recieved ReadyToPlay notification!");
+        [self.prepToPlayHud hide:YES];
+        self.prepToPlayHud = nil;
+    }
+}
+
 // MainVCDelegate method
 // Return current track
-- (Track *)getCurrentTrack
-{
+- (Track *)getCurrentTrack {
     return self.currentTrack;
 }
 
 // MainVCDelegate method
 // Return current search params
-- (SearchParams *)getCurrentSearchParams
-{
+- (SearchParams *)getCurrentSearchParams {
     return self.searchParams;
 }
 

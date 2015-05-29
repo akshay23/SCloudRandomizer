@@ -91,7 +91,7 @@ NSString * const SCAudioStreamDidBecomeUnavailableNotification = @"SCAudioStream
     NSUInteger playedSamples = audioBufferQueue.playedSamples;
     if (playedSamples != NSUIntegerMax) {	// audioBufferQueue couldn't get playedSamples
         samples += playedSamples;
-        playPosition = samples / (kMP3SampleRate / 1000);
+        playPosition = (NSUInteger)(samples / (kMP3SampleRate / 1000));
     }
     
     return playPosition;
@@ -205,6 +205,7 @@ NSString * const SCAudioStreamDidBecomeUnavailableNotification = @"SCAudioStream
         self.playState = SCAudioStreamState_Paused;
         return;
     }
+    self.playState = SCAudioStreamState_Paused;
     [audioBufferQueue pause];
 }
 
