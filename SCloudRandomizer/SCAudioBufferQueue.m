@@ -409,11 +409,12 @@ void SCAudioRouteChangedCallback(void *clientData,
     if (enoughBuffersToPlay
         && self.playState == SCAudioBufferPlayState_PausedPlayWhenReady) {
         [self _doPlay];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadyToPlay" object:self];
     }
     
     if (doBufferMore) {
         [self _doRequestMoreData];
-    }	
+    }
     
 }
 
@@ -507,7 +508,6 @@ void SCAudioRouteChangedCallback(void *clientData,
     if (err != noErr)
         NSLog(@"AudioQueueStart failed: %d", (int)err);
     self.playState = SCAudioBufferPlayState_WaitingOnQueueToPlay;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadyToPlay" object:self];
 }
 
 

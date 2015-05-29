@@ -20,10 +20,11 @@ static const double LoggedInBackgroundImageOpacity = 0.2;
 typedef void(^singleTrackDownloaded)(void);
 
 @property BOOL isCurrentSongLiked;
+@property BOOL isPlayingForFirstTime;
 @property NSUInteger currentSongNumber;
+@property MusicSource *musicSource;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
-@property MusicSource *musicSource;
 @property (strong, nonatomic) SCAudioStream *scAudioStream;
 @property (strong, nonatomic) MBProgressHUD *prepToPlayHud;
 
@@ -120,6 +121,10 @@ typedef void(^singleTrackDownloaded)(void);
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
 - (IBAction)logout:(id)sender {
     [self.musicSource logout];
     [self.btnSCConnect setHidden:NO];
@@ -139,6 +144,12 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnChangeParams setHidden:YES];
     self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     self.searchParams.hasChanged = YES;
+    
+    if (self.scAudioStream != nil) {
+        [self.scAudioStream pause];
+        self.scAudioStream = nil;
+    }
+    
     NSLog(@"Logged out.");
 }
 
@@ -188,22 +199,43 @@ typedef void(^singleTrackDownloaded)(void);
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
 }
 
-- (BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
-- (void)getFavState: (Track*) track {
-    NSLog(@"Fav value: %@", track.isLiked);
-    self.isCurrentSongLiked = ([track.isLiked isEqual:@0]) ? NO : YES;
-    [self updateFavIcon:self.isCurrentSongLiked];
-}
-
 - (void)updateFavIcon:(BOOL)isLiked {
     if (isLiked) {
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-red-transparent.png"] forState:UIControlStateNormal];
     } else {
         [self.btnLike setImage:[UIImage imageNamed:@"Heart-white-transparent.png"] forState:UIControlStateNormal];
     }
+}
+
+- (void)getFavState:(Track*) track {
+    NSLog(@"Fav value: %@", track.isLiked);
+    self.isCurrentSongLiked = ([track.isLiked isEqual:@0]) ? NO : YES;
+    [self updateFavIcon:self.isCurrentSongLiked];
+}
+
+- (void)enableButtons:(BOOL)enable {
+    [self.btnNext setEnabled:enable];
+    [self.btnPlay setEnabled:enable];
+    [self.btnInfo setEnabled:enable];
+    [self.btnLike setEnabled:enable];
+    [self.btnChangeParams setEnabled:enable];
+    
+    if (enable) {
+        self.imgArtwork.alpha = 1;
+    } else {
+        self.imgArtwork.alpha = 0.5;
+        self.imgArtwork.layer.borderWidth = 1;
+    }
+}
+
+- (void)playTrack {
+    if (self.isPlayingForFirstTime) {
+        self.prepToPlayHud = [self getProgressBar:MBProgressHUDModeIndeterminate progressHudLabel:@"Preparing to play" progressHudDetailsLabel:@"Please wait.."];
+        [self.prepToPlayHud show:YES];
+        [self enableButtons:NO];
+    }
+    [self.scAudioStream play];
+    [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
 }
 
 - (void)playPauseSong {
@@ -224,8 +256,8 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (MBProgressHUD*) getProgressBar:(MBProgressHUDMode)progressHudMode
-                                progressHudLabel:(NSString*) progressHudTitle
-                                progressHudDetailsLabel:(NSString*) progressHudDetails {
+                 progressHudLabel:(NSString*) progressHudTitle
+          progressHudDetailsLabel:(NSString*) progressHudDetails {
     MBProgressHUD* progressHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     progressHud.mode = progressHudMode;
     progressHud.labelText =  progressHudTitle;
@@ -233,48 +265,10 @@ typedef void(^singleTrackDownloaded)(void);
     return progressHud;
 }
 
-- (void)getNextTrack:(singleTrackDownloaded)completionHandler {
-    self.imgArtwork.alpha = 0.5;
-    [self.btnPlay setHidden:NO];
-    [self.btnNext setHidden:NO];
-    [self.btnNext setEnabled:NO];
-    [self.btnPlay setEnabled:NO];
-    [self.btnInfo setEnabled:NO];
-    [self.btnLike setEnabled:NO];
-    [self.btnChangeParams setEnabled:NO];
-    
-    MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate
-          progressHudLabel:@"Loading next track"
-          progressHudDetailsLabel:@"Please wait.."];
-    
-    [self.musicSource getRandomTrack:self.searchParams completionHandler:^(Track *track) {
-                            self.currentTrack = track;
-                            [self setupLockScreenInfo:track];
-                            [self setupUI:track];
-                            [self getFavState:track];
-                            [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
-    }];
-}
-
-- (void)playTrack {
-    self.prepToPlayHud = [self getProgressBar:MBProgressHUDModeIndeterminate
-                                     progressHudLabel:@"Preparing to play"
-                              progressHudDetailsLabel:@"Please wait.."];
-    [self.prepToPlayHud show:YES];
-    [self.scAudioStream play];
-    [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
-}
-
-- (void)stopPlayingTrack {
-    [self.scAudioStream pause];
-    self.scAudioStream = nil;
-}
-
 - (void)downloadTrack:(Track *)track
-        progressHud: (MBProgressHUD *) progressHud
-        completionHandler:(singleTrackDownloaded)completionHandler {
+          progressHud: (MBProgressHUD *) progressHud
+    completionHandler:(singleTrackDownloaded)completionHandler {
     NSLog(@"The streamURL is: %@", track.streamUrl);
-    
     dispatch_async([Utility getMainQueue], ^{
         self.scAudioStream = [track getStream];
         if (completionHandler) completionHandler();
@@ -282,15 +276,30 @@ typedef void(^singleTrackDownloaded)(void);
     });
 }
 
+- (void)getNextTrack:(singleTrackDownloaded)completionHandler {
+    [self.btnPlay setHidden:NO];
+    [self.btnNext setHidden:NO];
+    [self enableButtons:NO];
+    self.isPlayingForFirstTime = YES;
+    
+    MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate
+                                     progressHudLabel:@"Loading next track"
+                              progressHudDetailsLabel:@"Please wait.."];
+    
+    [self.musicSource getRandomTrack:self.searchParams completionHandler:^(Track *track) {
+        self.currentTrack = track;
+        [self setupLockScreenInfo:track];
+        [self setupUI:track];
+        [self getFavState:track];
+        [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
+    }];
+}
+
 - (void)playNextTrack {
     [self getNextTrack: ^{
         [self playTrack];
         NSLog(@"Will play next song");
     }];
-}
-
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    [self playNextTrack];
 }
 
 - (void)setupLockScreenInfo:(Track*)track {
@@ -322,13 +331,9 @@ typedef void(^singleTrackDownloaded)(void);
 - (void)setupUI:(Track *)track {
     [self.btnInfo setHidden:NO];
     [self.btnLike setHidden:NO];
-    [self.btnNext setEnabled:YES];
-    [self.btnPlay setEnabled:YES];
-    [self.btnInfo setEnabled:YES];
-    [self.btnLike setEnabled:YES];
     [self.imgArtwork setHidden:NO];
     [self.btnChangeParams setHidden:NO];
-    [self.btnChangeParams setEnabled:YES];
+    [self enableButtons:YES];
     
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
@@ -340,9 +345,6 @@ typedef void(^singleTrackDownloaded)(void);
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
-    
-    self.imgArtwork.layer.borderWidth = 1;
-    self.imgArtwork.alpha = 1.0;
     self.btnChangeParams.layer.borderColor = [UIColor blackColor].CGColor;
     
     dispatch_async([Utility getGlobalBackgroundQueue], ^{
@@ -372,14 +374,19 @@ typedef void(^singleTrackDownloaded)(void);
     }
 }
 
+// Do something based on specific notifications
 - (void)receiveNotification:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"StreamCompleted"]) {
         NSLog (@"Recieved StreamCompleted notification!");
         [self playNextTrack];
     } else if ([[notification name] isEqualToString:@"ReadyToPlay"]) {
         NSLog(@"Recieved ReadyToPlay notification!");
-        [self.prepToPlayHud hide:YES];
-        self.prepToPlayHud = nil;
+        if (self.prepToPlayHud != nil) {
+            [self.prepToPlayHud hide:YES];
+            [self enableButtons:YES];
+            self.prepToPlayHud = nil;
+            self.isPlayingForFirstTime = NO;
+        }
     }
 }
 
