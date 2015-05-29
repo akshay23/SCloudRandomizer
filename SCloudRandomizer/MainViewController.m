@@ -21,6 +21,7 @@ typedef void(^singleTrackDownloaded)(void);
 
 @property BOOL isCurrentSongLiked;
 @property BOOL isPlayingForFirstTime;
+@property BOOL isTrackPlaying;
 @property NSUInteger currentSongNumber;
 @property MusicSource *musicSource;
 @property (strong, nonatomic) Track *currentTrack;
@@ -239,18 +240,20 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)playPauseSong {
-    if (self.scAudioStream.playState != SCAudioStreamState_Playing) {
+    if (!self.isTrackPlaying) {
         if (self.scAudioStream == nil) {
             [self getNextTrack:^{
                 [self playTrack];
             }];
         }
         [self playTrack];
+        self.isTrackPlaying = YES;
         NSLog(@"Playing song");
     }
     else {
         [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
         [self.scAudioStream pause];
+        self.isTrackPlaying = NO;
         NSLog(@"Pausing song");
     }
 }
@@ -298,6 +301,7 @@ typedef void(^singleTrackDownloaded)(void);
 - (void)playNextTrack {
     [self getNextTrack: ^{
         [self playTrack];
+        self.isTrackPlaying = YES;
         NSLog(@"Will play next song");
     }];
 }
