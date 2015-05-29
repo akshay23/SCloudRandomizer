@@ -26,7 +26,6 @@ enum {
 };
 typedef NSUInteger PlayerState;
 
-@property BOOL paramsChanged;
 @property (strong, nonatomic) NSArray *tracks;
 @property (strong, nonatomic) AVAudioPlayer *player;
 @property (strong, nonatomic) SearchParamsVC *searchParamsVC;
@@ -49,6 +48,8 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UILabel *lblLength;
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
+
+@property (nonatomic) IBOutlet UIImageView *refreshImage;
 
 
 - (IBAction)logout:(id)sender;

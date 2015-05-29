@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AGx-bt-YRN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AGx-bt-YRN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -153,6 +153,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-ew-NVm">
                                 <rect key="frame" x="37" y="193" width="208" height="182"/>
                             </imageView>
+                            <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh.png" translatesAutoresizingMaskIntoConstraints="NO" id="CIP-oX-vd8">
+                                <rect key="frame" x="135" y="250" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="pct-Fh-jQt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -168,8 +174,10 @@
                             <constraint firstAttribute="trailing" secondItem="1tV-ew-NVm" secondAttribute="trailing" constant="75" id="AcY-dk-BLh"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="20" id="F5X-qf-RPz"/>
                             <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="28" id="Fz1-vp-rzc"/>
+                            <constraint firstAttribute="bottom" secondItem="CIP-oX-vd8" secondAttribute="bottom" constant="268" id="HQY-Tj-Bjd"/>
                             <constraint firstAttribute="trailing" secondItem="vyo-RJ-qAm" secondAttribute="trailing" constant="5" id="IKE-e7-a0Z"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="39" id="KmE-7M-qLa"/>
+                            <constraint firstItem="CIP-oX-vd8" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="135" id="Lah-0h-dKw"/>
                             <constraint firstItem="YBr-5w-1ww" firstAttribute="centerX" secondItem="2l3-9a-EXk" secondAttribute="centerX" constant="-4" id="Mrs-En-7Fh"/>
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="leading" secondItem="oX9-Qc-5vB" secondAttribute="trailing" constant="37" id="Ozc-3r-Zro"/>
                             <constraint firstItem="vyo-RJ-qAm" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="39" id="Pg8-E4-Zsr"/>
@@ -178,11 +186,13 @@
                             <constraint firstAttribute="trailing" secondItem="2l3-9a-EXk" secondAttribute="trailing" id="W1S-xj-4an"/>
                             <constraint firstAttribute="bottom" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="90" id="a7E-kZ-r9c"/>
                             <constraint firstItem="VQ1-zg-oUh" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="300" id="bwz-i1-qsz"/>
+                            <constraint firstItem="CIP-oX-vd8" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="250" id="dAi-3h-Bm0"/>
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="85" id="dYT-EV-S3G"/>
                             <constraint firstItem="2l3-9a-EXk" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" id="frv-iZ-fj4"/>
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="top" id="mr3-CJ-Ell"/>
                             <constraint firstItem="YBr-5w-1ww" firstAttribute="top" secondItem="0Lq-FV-sWT" secondAttribute="bottom" constant="28" id="p1k-i1-Ses"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="vyo-RJ-qAm" secondAttribute="top" id="qJ7-pG-bDP"/>
+                            <constraint firstAttribute="trailing" secondItem="CIP-oX-vd8" secondAttribute="trailing" constant="135" id="wFR-aE-Up6"/>
                             <constraint firstItem="1tV-ew-NVm" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="37" id="yD6-ev-RdR"/>
                         </constraints>
                     </view>
@@ -202,6 +212,7 @@
                         <outlet property="lblLengthValue" destination="p4S-YQ-aRk" id="m0P-ii-Lbe"/>
                         <outlet property="lblTitle" destination="dD3-QH-x40" id="U9L-lT-SoO"/>
                         <outlet property="lblTitleValue" destination="skF-YA-oCH" id="zaY-Te-PUJ"/>
+                        <outlet property="refreshImage" destination="CIP-oX-vd8" id="uMK-XD-6St"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZh-3O-qGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -526,6 +537,7 @@
         <image name="play.png" width="256" height="256"/>
         <image name="play_btn.png" width="300" height="300"/>
         <image name="play_next_btn.png" width="600" height="600"/>
+        <image name="refresh.png" width="2400" height="2400"/>
         <image name="tag.png" width="128" height="128"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

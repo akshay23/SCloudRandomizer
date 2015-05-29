@@ -49,17 +49,7 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
         self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
     }
     
-    // Clear the labels
-    [self.lblArtistValue setText:@""];
-    [self.lblLengthValue setText:@""];
-    [self.lblTitleValue setText:@""];
-    self.currentSongNumber = 3;
-    
-    // Draw border around parameters button
-    self.btnChangeParams.layer.cornerRadius = 4;
-    self.btnChangeParams.layer.borderWidth = 1;
-    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
-    self.paramsChanged = YES;
+    [self hideAllDataAndControls];
 }
 
 - (void) initPlayer:(NSData*) trackData {
@@ -114,15 +104,13 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logout:(id)sender {
-    [self.musicSource logout];
+
+- (void) hideAllDataAndControls {
     
-    [self.player stop];
-    [self.btnSCConnect setHidden:NO];
-    [self.btnSCDisconnect setHidden:YES];
     [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
+    
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
@@ -132,7 +120,20 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
+    
     [self.btnChangeParams setHidden:YES];
+    [self.refreshImage setHidden: YES];
+}
+
+- (IBAction)logout:(id)sender {
+    [self.musicSource logout];
+    
+    [self.player stop];
+    [self.btnSCConnect setHidden:NO];
+    [self.btnSCDisconnect setHidden:YES];
+
+    [self hideAllDataAndControls];
+   
     self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     self.searchParams.hasChanged = YES;
     NSLog(@"Logged out.");
@@ -234,26 +235,51 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 }
 
 - (void)getNextTrack:(singleTrackDownloaded)completionHandler {
-    self.imgArtwork.alpha = 0.5;
-    [self.btnPlay setHidden:NO];
-    [self.btnNext setHidden:NO];
-    [self.btnNext setEnabled:NO];
-    [self.btnPlay setEnabled:NO];
-    [self.btnInfo setEnabled:NO];
-    [self.btnLike setEnabled:NO];
-    [self.btnChangeParams setEnabled:NO];
     
     MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate
           progressHudLabel:@"Loading next track"
           progressHudDetailsLabel:@"Please wait.."];
     
     [self.musicSource getRandomTrack:self.searchParams
-                        completionHandler:^(Track *track) {
-                            self.currentTrack = track;
-                            [self setupLockScreenInfo:track];
-                            [self setupUI:track];
-                            [self getFavState:track];
-                            [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
+                        completionHandler:^(Track *track, enum MusicSourceError error) {
+                            if (error == None) {
+                                
+                                self.currentTrack = track;
+                                [self setupLockScreenInfo:track];
+                                [self setupUI:track];
+                                [self getFavState:track];
+                                [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
+                                
+                            } else if (error == ZeroData){
+                                
+                                [progressHud hide:YES];
+                                
+                                [self hideAllDataAndControls];
+                                
+                                UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                                                message:@"Could not find any tracks. Try a different search!"
+                                                                               delegate:self
+                                                                      cancelButtonTitle:@"Ok"
+                                                                          otherButtonTitles:nil];
+                                [errorView show];
+                                
+                                [self presentViewController:self.searchParamsVC animated:YES completion:nil];
+                                
+                            } else if (error == NoData) {
+                                
+                                [progressHud hide:YES];
+                                
+                                [self hideAllDataAndControls];
+                                
+                                UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                                                    message:@"We are not able to connect to Soundcloud right now"
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"Ok"
+                                                                          otherButtonTitles:nil];
+                                [errorView show];
+                                
+                                [self.refreshImage setHidden:NO];
+                            }
     }];
 }
 
@@ -278,7 +304,6 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     }];
 }
 
-// Todo - Should this always play by default?
 - (void)playNextTrack
 {
     [self stopPlayingTrack];
@@ -320,15 +345,22 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 
 // Set the UI after getting track info
 - (void)setupUI:(Track *)track {
+    
+    [self.btnPlay setHidden: NO];
+    [self.btnNext setHidden: NO];
+    
     [self.btnInfo setHidden:NO];
     [self.btnLike setHidden:NO];
-    [self.btnNext setEnabled:YES];
-    [self.btnPlay setEnabled:YES];
     [self.btnInfo setEnabled:YES];
     [self.btnLike setEnabled:YES];
     [self.imgArtwork setHidden:NO];
+    
     [self.btnChangeParams setHidden:NO];
     [self.btnChangeParams setEnabled:YES];
+    self.btnChangeParams.layer.cornerRadius = 4;
+    self.btnChangeParams.layer.borderWidth = 1;
+    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
+
     
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
@@ -340,6 +372,8 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
+    
+    [self.refreshImage setHidden:YES];
     
     self.imgArtwork.layer.borderWidth = 1;
     self.imgArtwork.alpha = 1.0;
@@ -385,6 +419,22 @@ typedef void(^singleTrackDownloaded)(NSData* trackData);
 - (SearchParams *)getCurrentSearchParams
 {
     return self.searchParams;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    
+    if ([touch view] == self.refreshImage)
+    {
+        NSLog(@"Refresh icon clicked");
+        [self.refreshImage setHidden: YES];
+        [self getNextTrack: ^(NSData* trackData) {
+            [self initPlayer:trackData];
+            NSLog(@"Fetch next track");
+        }];
+    }
+    
 }
 
 @end

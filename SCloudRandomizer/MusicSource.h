@@ -14,8 +14,15 @@
 
 @interface MusicSource: NSObject
 
-typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks);
-typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
+enum MusicSourceError {
+    None,
+    ZeroData,
+    NoData,
+    DeserializationError
+};
+
+typedef void(^tracksFetchedCompletionHandler)(NSArray* tracks, enum MusicSourceError error);
+typedef void(^singleTrackFetchedCompletionHandler)(Track* track, enum MusicSourceError error);
 
 + (MusicSource *) getInstance;
 
@@ -23,6 +30,7 @@ typedef void(^singleTrackFetchedCompletionHandler)(Track* track);
 - (void) getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler;
 - (void) logout;
 - (void) updateLikeState:(BOOL)isSongLiked trackId:(NSString*)trackIdToUpdate;
+- (NSURL *)generateResourceURL:(SearchParams *)params;
 
 + (SCAccount*) account;
 
