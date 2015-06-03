@@ -127,24 +127,7 @@ typedef void(^singleTrackDownloaded)(void);
     return YES;
 }
 
-- (void)hideAllDataAndControls {
-    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
-    [self.btnPlay setHidden:YES];
-    [self.btnNext setHidden:YES];
-    
-    [self.btnInfo setHidden:YES];
-    [self.btnLike setHidden:YES];
-    [self.imgArtwork setHidden:YES];
-    [self.lblArtist setHidden:YES];
-    [self.lblLength setHidden:YES];
-    [self.lblTitle setHidden:YES];
-    [self.lblTitleValue setHidden:YES];
-    [self.lblArtistValue setHidden:YES];
-    [self.lblLengthValue setHidden:YES];
-    
-    [self.btnChangeParams setHidden:YES];
-    [self.refreshImage setHidden: YES];
-}
+#pragma mark - IBAction methods
 
 - (IBAction)logout:(id)sender {
     [self.musicSource logout];
@@ -208,6 +191,27 @@ typedef void(^singleTrackDownloaded)(void);
 
     [self.view.window.layer addAnimation:animation forKey:kCATransition];
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
+}
+
+#pragma mark - Public/Private methods
+
+- (void)hideAllDataAndControls {
+    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setHidden:YES];
+    [self.btnNext setHidden:YES];
+    
+    [self.btnInfo setHidden:YES];
+    [self.btnLike setHidden:YES];
+    [self.imgArtwork setHidden:YES];
+    [self.lblArtist setHidden:YES];
+    [self.lblLength setHidden:YES];
+    [self.lblTitle setHidden:YES];
+    [self.lblTitleValue setHidden:YES];
+    [self.lblArtistValue setHidden:YES];
+    [self.lblLengthValue setHidden:YES];
+    
+    [self.btnChangeParams setHidden:YES];
+    [self.refreshImage setHidden: YES];
 }
 
 - (void)updateFavIcon:(BOOL)isLiked {
@@ -396,6 +400,8 @@ typedef void(^singleTrackDownloaded)(void);
     });
 }
 
+#pragma mark - System methods
+
 // Lock screen control actions
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     //if it is a remote control event handle it correctly
@@ -447,13 +453,13 @@ typedef void(^singleTrackDownloaded)(void);
     
 }
 
-// MainVCDelegate method
+#pragma mark - MainVCDelegate methods
+
 // Return current track
 - (Track *)getCurrentTrack {
     return self.currentTrack;
 }
 
-// MainVCDelegate method
 // Return current search params
 - (SearchParams *)getCurrentSearchParams {
     return self.searchParams;
