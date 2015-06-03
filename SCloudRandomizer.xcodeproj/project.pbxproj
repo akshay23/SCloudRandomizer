@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 190EA4291AF2D0C30003DCD6 /* Music-icon.png */; };
+		197D26F71B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */; };
+		197D26F91B17B2A80061AA56 /* SCAudioFileStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */; };
+		197D26FB1B17B2A80061AA56 /* SCAudioBufferQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F41B17B2A80061AA56 /* SCAudioBufferQueue.m */; };
+		197D26FD1B17B2A80061AA56 /* SCAudioStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F61B17B2A80061AA56 /* SCAudioStream.m */; };
 		1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72D1A607F4400109F76 /* Heart-red-transparent.png */; };
 		1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72E1A607F4400109F76 /* Heart-white-transparent.png */; };
 		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
@@ -70,6 +74,14 @@
 /* Begin PBXFileReference section */
 		190EA4291AF2D0C30003DCD6 /* Music-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Music-icon.png"; sourceTree = "<group>"; };
 		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
+		197D26EF1B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioStreamPacketDescriptions.h; sourceTree = "<group>"; };
+		197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioStreamPacketDescriptions.m; sourceTree = "<group>"; };
+		197D26F11B17B2A80061AA56 /* SCAudioFileStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioFileStreamParser.h; sourceTree = "<group>"; };
+		197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioFileStreamParser.m; sourceTree = "<group>"; };
+		197D26F31B17B2A80061AA56 /* SCAudioBufferQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioBufferQueue.h; sourceTree = "<group>"; };
+		197D26F41B17B2A80061AA56 /* SCAudioBufferQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioBufferQueue.m; sourceTree = "<group>"; };
+		197D26F51B17B2A80061AA56 /* SCAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioStream.h; sourceTree = "<group>"; };
+		197D26F61B17B2A80061AA56 /* SCAudioStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioStream.m; sourceTree = "<group>"; };
 		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
 		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
 		1997F7311A64211700109F76 /* SearchParamsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParamsVC.h; sourceTree = "<group>"; };
@@ -153,6 +165,21 @@
 				276CF3AB99530D51BD666B04 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		197D26FF1B17B2CD0061AA56 /* SoundCloudAPI++ */ = {
+			isa = PBXGroup;
+			children = (
+				197D26EF1B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.h */,
+				197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */,
+				197D26F11B17B2A80061AA56 /* SCAudioFileStreamParser.h */,
+				197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */,
+				197D26F31B17B2A80061AA56 /* SCAudioBufferQueue.h */,
+				197D26F41B17B2A80061AA56 /* SCAudioBufferQueue.m */,
+				197D26F51B17B2A80061AA56 /* SCAudioStream.h */,
+				197D26F61B17B2A80061AA56 /* SCAudioStream.m */,
+			);
+			name = "SoundCloudAPI++";
 			sourceTree = "<group>";
 		};
 		19B759D91B027660005F6D1E /* Models */ = {
@@ -244,6 +271,7 @@
 		19CDED251A2FB92100DD97CC /* SCloudRandomizer */ = {
 			isa = PBXGroup;
 			children = (
+				197D26FF1B17B2CD0061AA56 /* SoundCloudAPI++ */,
 				19B759DB1B0276A9005F6D1E /* Misc */,
 				19B759DA1B027678005F6D1E /* Controllers */,
 				19B759D91B027660005F6D1E /* Models */,
@@ -480,8 +508,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				197D26F91B17B2A80061AA56 /* SCAudioFileStreamParser.m in Sources */,
 				1997F7361A6421C700109F76 /* GlobalData.m in Sources */,
+				197D26F71B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m in Sources */,
 				1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */,
+				197D26FD1B17B2A80061AA56 /* SCAudioStream.m in Sources */,
+				197D26FB1B17B2A80061AA56 /* SCAudioBufferQueue.m in Sources */,
 				19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */,
 				4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */,
 				1997F7391A6454DC00109F76 /* SearchParams.m in Sources */,

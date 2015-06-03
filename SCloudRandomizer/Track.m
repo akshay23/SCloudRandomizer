@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SCRequest.h>
-#import <SCAccount.h>
+#import <SCAPI.h>
+#import "SCAudioStream.h"
 #import "Track.h"
 
 @implementation Track : NSObject
 
--(id) initWithData:(NSDictionary *)data account:(SCAccount *)account {
+-(id)initWithData:(NSDictionary *)data account:(SCAccount *)account {
     self.Id = [data objectForKey:@"id"];
     self.title = [data objectForKey:@"title"];
     self.artist = [[data objectForKey:@"user"] objectForKey:@"username"];
@@ -57,20 +57,9 @@
     return self;
 }
 
--(void) download:(trackDownloaded)completionHandler {
-
-    SCRequestResponseHandler responseHandler =
-    ^(NSURLResponse *response, NSData *data, NSError *error) {
-        // ToDo: Correct way of invoking a callback?
-        completionHandler(data);
-    };
-    
-    [SCRequest performMethod:SCRequestMethodGET
-                  onResource:[NSURL URLWithString:self.streamUrl]
-             usingParameters:nil
-                 withAccount:self.account
-      sendingProgressHandler:nil
-             responseHandler:responseHandler];
+-(SCAudioStream *)getStream {
+    SCAudioStream *scAudio = [[SCAudioStream alloc] initWithURL:[NSURL URLWithString:self.streamUrl] authentication:self.account];
+    return scAudio;
 }
 
 @end
