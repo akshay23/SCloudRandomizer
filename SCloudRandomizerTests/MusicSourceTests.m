@@ -32,13 +32,7 @@
     // API's
     MusicSource *musicSource = [MusicSource getInstance];
     id partialMusicSourceMock = OCMPartialMock(musicSource);
-    
-    // Mock out the SCAccount class
-    id mockedSCAccount = OCMClassMock([SCAccount class]);
-    
-    // Stub out the account method on the partially mocked MusicSource instance
-    OCMStub([partialMusicSourceMock account]).andReturn(mockedSCAccount);
-    
+
     NSString *keyword = @"test";
     SearchParams *searchParams = [[SearchParams alloc]
                                   initWithBool:YES
@@ -63,19 +57,20 @@
     };
     
     // Stub out fetchTracks and invoke the stubbed response
-    // block when the test eventually gets to this stubbed method
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&limit=200&q=%@", keyword];
+    // block when the test eventually gets to this method
+    
     OCMStub([partialMusicSourceMock fetchTracks:SCRequestMethodGET
-                                onResource:[NSURL URLWithString:resourceURL]
-                           usingParameters:nil
-                               withAccount:mockedSCAccount
-                    sendingProgressHandler:nil
+                                onResource:[OCMArg any]
+                           usingParameters:[OCMArg any]
+                               withAccount:[OCMArg any]
+                    sendingProgressHandler:[OCMArg any]
                            responseHandler:[OCMArg any]]).andDo(stubbedResponseHandler);
     
 
     XCTestExpectation *randomTrack1FetchExpectation = [self expectationWithDescription:@"Random track 1 fetched"];
    [musicSource getRandomTrack:searchParams
-             completionHandler:^(Track *track) {
+             completionHandler:^(Track *track, enum MusicSourceError error) {
+                 XCTAssert(error == None);
                  XCTAssert(track != nil);
                  XCTAssertEqual(13158665, [track.Id intValue]);
                  [randomTrack1FetchExpectation fulfill];

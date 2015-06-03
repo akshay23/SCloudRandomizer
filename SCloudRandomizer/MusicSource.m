@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 Akshay Bharath. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import <SCSoundCloud.h>
 #import <SCRequest.h>
+#import <Reachability.h>
+
 #import "MusicSource.h"
 #import "Track.h"
 #import "SearchParams.h"
@@ -37,11 +40,23 @@ static MusicSource *instance;
 }
 
 - (void)getRandomTrack:(SearchParams *)searchParams completionHandler:(singleTrackFetchedCompletionHandler)completionHandler {
-    [self getTracks:searchParams completionHandler:^(NSArray* tracks) {
-        int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
-        Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
-        completionHandler(track);
-    }];
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There is no internet connection");
+        completionHandler(nil, NoData);
+    } else {
+        [self getTracks:searchParams completionHandler:^(NSArray* tracks, enum MusicSourceError error) {
+            if (error != None) {
+                completionHandler(nil, error);
+            } else {
+                int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
+                Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
+                completionHandler(track, None);
+            }
+        }];
+    }
 }
 
 - (void)getTracks:(SearchParams *)searchParams completionHandler:(tracksFetchedCompletionHandler)completionHandler {
@@ -49,17 +64,27 @@ static MusicSource *instance;
     ^(NSURLResponse *response, NSData *data, NSError *error) {
         NSError *jsonError = nil;
         NSArray* tracks = nil;
-        NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
-            tracks = (NSArray *)jsonResponse;
-            NSLog(@"Tracks acquired.");
+        if (data != nil) {
+            NSJSONSerialization *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            if (!jsonError && [jsonResponse isKindOfClass:[NSArray class]]) {
+                tracks = (NSArray *)jsonResponse;
+                
+                if (tracks.count > 0) {
+                    NSLog(@"Tracks acquired.");
+                    completionHandler(tracks, None);
+                } else {
+                    NSLog(@"No tracks acquired");
+                    completionHandler(tracks, ZeroData);
+                }
+            }
+            else {
+                NSLog(@"Error deserializing tracks");
+                completionHandler(tracks, DeserializationError);
+            }
+        } else {
+            NSLog(@"Error fetching tracks");
+            completionHandler(tracks, NoData);
         }
-        else
-        {
-            NSLog(@"Could not get tracks.");
-        }
-        
-        completionHandler(tracks);
     };
     
 
@@ -95,7 +120,8 @@ static MusicSource *instance;
     // Replace spaces with '%20' and then replace commas with '%2C' in the keywords
     // then create the resourceURL using the keywords and bpm
     NSString *cleanedKeywords = [[params.keywords stringByReplacingOccurrencesOfString:@" " withString:@"%20"] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&limit=200&q=%@%@%@%@%@", cleanedKeywords, fromBpm, toBpm, durationFrom, durationTo];
+    
+    NSString *resourceURL = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks?format=json&limit=200&filter=all&q=%@%@%@%@%@", cleanedKeywords, fromBpm, toBpm, durationFrom, durationTo];
     NSLog(@"The resourceURL is %@", resourceURL);
     
     return [NSURL URLWithString:resourceURL];
