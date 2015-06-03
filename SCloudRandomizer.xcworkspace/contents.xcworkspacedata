@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SCloudRandomizer.xcodeproj">
+      location = "group:/Users/akshaybharath/Documents/iOS/SCloudRandomizer/Scloudy.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

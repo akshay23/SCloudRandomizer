@@ -99,7 +99,7 @@
 		19C18F121A30E86A00281221 /* play_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_btn.png; sourceTree = "<group>"; };
 		19C18F151A30FD1500281221 /* play_next_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_next_btn.png; sourceTree = "<group>"; };
 		19C18F181A31068D00281221 /* pause_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_btn.png; sourceTree = "<group>"; };
-		19CDED231A2FB92100DD97CC /* SCloudRandomizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCloudRandomizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19CDED231A2FB92100DD97CC /* Scloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CDED271A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19CDED281A2FB92100DD97CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19CDED2A1A2FB92100DD97CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		19CDED341A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19CDED361A2FB92100DD97CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		19CDED391A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		19CDED3F1A2FB92100DD97CC /* SCloudRandomizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCloudRandomizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScloudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CDED441A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
 		19F38A631A9F811C002361E6 /* TrackInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoVC.m; sourceTree = "<group>"; };
@@ -262,8 +262,8 @@
 		19CDED241A2FB92100DD97CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19CDED231A2FB92100DD97CC /* SCloudRandomizer.app */,
-				19CDED3F1A2FB92100DD97CC /* SCloudRandomizerTests.xctest */,
+				19CDED231A2FB92100DD97CC /* Scloudy.app */,
+				19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,9 +324,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		19CDED221A2FB92100DD97CC /* SCloudRandomizer */ = {
+		19CDED221A2FB92100DD97CC /* Scloudy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "SCloudRandomizer" */;
+			buildConfigurationList = 19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "Scloudy" */;
 			buildPhases = (
 				024EE920ADE56F4D506EE117 /* Check Pods Manifest.lock */,
 				19CDED1F1A2FB92100DD97CC /* Sources */,
@@ -339,14 +339,14 @@
 			);
 			dependencies = (
 			);
-			name = SCloudRandomizer;
+			name = Scloudy;
 			productName = SCloudRandomizer;
-			productReference = 19CDED231A2FB92100DD97CC /* SCloudRandomizer.app */;
+			productReference = 19CDED231A2FB92100DD97CC /* Scloudy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		19CDED3E1A2FB92100DD97CC /* SCloudRandomizerTests */ = {
+		19CDED3E1A2FB92100DD97CC /* ScloudyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19CDED4C1A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "SCloudRandomizerTests" */;
+			buildConfigurationList = 19CDED4C1A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "ScloudyTests" */;
 			buildPhases = (
 				E612AFDBD576C2D46E25D9B1 /* Check Pods Manifest.lock */,
 				19CDED3B1A2FB92100DD97CC /* Sources */,
@@ -359,9 +359,9 @@
 			dependencies = (
 				19CDED411A2FB92100DD97CC /* PBXTargetDependency */,
 			);
-			name = SCloudRandomizerTests;
+			name = ScloudyTests;
 			productName = SCloudRandomizerTests;
-			productReference = 19CDED3F1A2FB92100DD97CC /* SCloudRandomizerTests.xctest */;
+			productReference = 19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -388,7 +388,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "SCloudRandomizer" */;
+			buildConfigurationList = 19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "Scloudy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -401,8 +401,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				19CDED221A2FB92100DD97CC /* SCloudRandomizer */,
-				19CDED3E1A2FB92100DD97CC /* SCloudRandomizerTests */,
+				19CDED221A2FB92100DD97CC /* Scloudy */,
+				19CDED3E1A2FB92100DD97CC /* ScloudyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -541,7 +541,7 @@
 /* Begin PBXTargetDependency section */
 		19CDED411A2FB92100DD97CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 19CDED221A2FB92100DD97CC /* SCloudRandomizer */;
+			target = 19CDED221A2FB92100DD97CC /* Scloudy */;
 			targetProxy = 19CDED401A2FB92100DD97CC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -684,7 +684,7 @@
 					"-framework",
 					"\"Security\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Scloudy;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -729,7 +729,7 @@
 					"-framework",
 					"\"Security\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Scloudy;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -765,7 +765,7 @@
 					XCTest,
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScloudyTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SCloudRandomizer.app/SCloudRandomizer";
 			};
 			name = Debug;
@@ -797,7 +797,7 @@
 					XCTest,
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScloudyTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SCloudRandomizer.app/SCloudRandomizer";
 			};
 			name = Release;
@@ -805,7 +805,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "SCloudRandomizer" */ = {
+		19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "Scloudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19CDED471A2FB92100DD97CC /* Debug */,
@@ -814,7 +814,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "SCloudRandomizer" */ = {
+		19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "Scloudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19CDED4A1A2FB92100DD97CC /* Debug */,
@@ -823,7 +823,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19CDED4C1A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "SCloudRandomizerTests" */ = {
+		19CDED4C1A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "ScloudyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				19CDED4D1A2FB92100DD97CC /* Debug */,

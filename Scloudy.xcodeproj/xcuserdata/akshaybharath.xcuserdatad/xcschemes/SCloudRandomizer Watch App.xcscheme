@@ -17,7 +17,7 @@
                BlueprintIdentifier = "19B2080E1A3504A50011C207"
                BuildableName = "SCloudRandomizer Watch App.app"
                BlueprintName = "SCloudRandomizer Watch App"
-               ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+               ReferencedContainer = "container:Scloudy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "19B207FD1A3504A40011C207"
                BuildableName = "SCloudRandomizer WatchKit Extension.appex"
                BlueprintName = "SCloudRandomizer WatchKit Extension"
-               ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+               ReferencedContainer = "container:Scloudy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "19CDED221A2FB92100DD97CC"
-               BuildableName = "SCloudRandomizer.app"
-               BlueprintName = "SCloudRandomizer"
-               ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+               BuildableName = "Scloudy.app"
+               BlueprintName = "Scloudy"
+               ReferencedContainer = "container:Scloudy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -63,7 +63,7 @@
             BlueprintIdentifier = "19B2080E1A3504A50011C207"
             BuildableName = "SCloudRandomizer Watch App.app"
             BlueprintName = "SCloudRandomizer Watch App"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "19B2080E1A3504A50011C207"
             BuildableName = "SCloudRandomizer Watch App.app"
             BlueprintName = "SCloudRandomizer Watch App"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
@@ -94,7 +94,7 @@
             BlueprintIdentifier = "19B2080E1A3504A50011C207"
             BuildableName = "SCloudRandomizer Watch App.app"
             BlueprintName = "SCloudRandomizer Watch App"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -115,7 +115,7 @@
             BlueprintIdentifier = "19B2080E1A3504A50011C207"
             BuildableName = "SCloudRandomizer Watch App.app"
             BlueprintName = "SCloudRandomizer Watch App"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
@@ -124,7 +124,7 @@
             BlueprintIdentifier = "19B2080E1A3504A50011C207"
             BuildableName = "SCloudRandomizer Watch App.app"
             BlueprintName = "SCloudRandomizer Watch App"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

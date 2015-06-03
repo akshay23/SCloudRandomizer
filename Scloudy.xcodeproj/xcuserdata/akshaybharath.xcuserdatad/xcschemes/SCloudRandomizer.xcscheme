@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "19CDED221A2FB92100DD97CC"
-               BuildableName = "SCloudRandomizer.app"
-               BlueprintName = "SCloudRandomizer"
-               ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+               BuildableName = "Scloudy.app"
+               BlueprintName = "Scloudy"
+               ReferencedContainer = "container:Scloudy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "19CDED3E1A2FB92100DD97CC"
-               BuildableName = "SCloudRandomizerTests.xctest"
-               BlueprintName = "SCloudRandomizerTests"
-               ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+               BuildableName = "ScloudyTests.xctest"
+               BlueprintName = "ScloudyTests"
+               ReferencedContainer = "container:Scloudy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "19CDED3E1A2FB92100DD97CC"
-               BuildableName = "SCloudRandomizerTests.xctest"
-               BlueprintName = "SCloudRandomizerTests"
-               ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+               BuildableName = "ScloudyTests.xctest"
+               BlueprintName = "ScloudyTests"
+               ReferencedContainer = "container:Scloudy.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "19CDED221A2FB92100DD97CC"
-            BuildableName = "SCloudRandomizer.app"
-            BlueprintName = "SCloudRandomizer"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            BuildableName = "Scloudy.app"
+            BlueprintName = "Scloudy"
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +72,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "19CDED221A2FB92100DD97CC"
-            BuildableName = "SCloudRandomizer.app"
-            BlueprintName = "SCloudRandomizer"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            BuildableName = "Scloudy.app"
+            BlueprintName = "Scloudy"
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +91,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "19CDED221A2FB92100DD97CC"
-            BuildableName = "SCloudRandomizer.app"
-            BlueprintName = "SCloudRandomizer"
-            ReferencedContainer = "container:SCloudRandomizer.xcodeproj">
+            BuildableName = "Scloudy.app"
+            BlueprintName = "Scloudy"
+            ReferencedContainer = "container:Scloudy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
