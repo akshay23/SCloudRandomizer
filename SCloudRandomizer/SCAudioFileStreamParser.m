@@ -146,6 +146,8 @@ void SCFileStreamFoundPacketsProc(void *clientData,
             } else {
                 ret = [NSData dataWithBytes:cookie length:cookieDataSize];
             }
+            
+            free(cookie);
         }
     }
     return ret;
