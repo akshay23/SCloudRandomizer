@@ -342,10 +342,7 @@ typedef void(^singleTrackDownloaded)(void);
 
 - (void)setupLockScreenInfo:(Track*)track {
     dispatch_async([Utility getGlobalBackgroundQueue], ^{
-        
         NSNumber *songDurationInSeconds = [NSNumber numberWithInt:(int)(track.duration / 1000)];
-        
-        // ToDo - Replace dataWithContentsOfURL with async call
         NSData *albumArtData = [NSData dataWithContentsOfURL:track.albumArtUrl];
         MPMediaItemArtwork *albumArtwork = nil;
         if (!albumArtData) {

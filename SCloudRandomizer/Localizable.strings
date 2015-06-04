@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  SCloudRandomizer
+
+  Created by Akshay Bharath on 6/3/15.
+  Copyright (c) 2015 Akshay Bharath. All rights reserved.
+*/
+"iRateMessageTitle" = "Rate Scloudy";
+"iRateAppMessage" = "Please take a moment to rate us in the App Store. Thanks :)";

@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "iRate.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) UIAlertView *alertView;
 
 @end
 
@@ -27,6 +30,12 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    // Set up iRate
+    [iRate sharedInstance].daysUntilPrompt = 5;
+    [iRate sharedInstance].remindPeriod = 10;
+    [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
+    [iRate sharedInstance].appStoreGenreID = 1;
 
     return YES;
 }
