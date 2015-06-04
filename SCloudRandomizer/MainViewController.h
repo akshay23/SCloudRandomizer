@@ -41,6 +41,7 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UIButton *btnChangeParams;
 @property (strong, nonatomic) IBOutlet UIButton *btnInfo;
 @property (strong, nonatomic) IBOutlet UIButton *btnLike;
+@property (strong, nonatomic) IBOutlet UISlider *scrubber;
 
 @property (strong, nonatomic) IBOutlet UILabel *lblTitle;
 @property (strong, nonatomic) IBOutlet UILabel *lblArtist;
@@ -58,5 +59,8 @@ typedef NSUInteger PlayerState;
 - (IBAction)changeParams:(id)sender;
 - (IBAction)setFavState:(id)sender;
 - (IBAction)showTrackInfo:(id)sender;
+- (IBAction)scrubbing:(id)sender;
+- (IBAction)setCurrentTime:(id)sender;
+
 
 @end

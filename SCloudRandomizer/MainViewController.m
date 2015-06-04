@@ -22,7 +22,9 @@ typedef void(^singleTrackDownloaded)(void);
 @property BOOL isCurrentSongLiked;
 @property BOOL isPlayingForFirstTime;
 @property BOOL isTrackPlaying;
+@property BOOL isScrubbing;
 @property NSUInteger currentSongNumber;
+@property NSTimer *timer;
 @property MusicSource *musicSource;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
@@ -193,12 +195,30 @@ typedef void(^singleTrackDownloaded)(void);
     [self presentViewController:self.trackInfoVC animated:NO completion:nil];
 }
 
+- (IBAction)scrubbing:(id)sender {
+    self.isScrubbing = YES;
+}
+
+- (IBAction)setCurrentTime:(id)sender {
+    [NSTimer scheduledTimerWithTimeInterval:0.01
+                                     target:self
+                                   selector:@selector(updateTime:)
+                                   userInfo:nil
+                                    repeats:NO];
+    [self.scAudioStream seekToMillisecond:self.scrubber.value startPlaying:YES];
+    self.isScrubbing = NO;
+    self.isPlayingForFirstTime = NO;
+    self.isTrackPlaying = YES;
+    [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+}
+
 #pragma mark - Public/Private methods
 
 - (void)hideAllDataAndControls {
     [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
+    [self.scrubber setHidden:YES];
     
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
@@ -234,6 +254,7 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnInfo setEnabled:enable];
     [self.btnLike setEnabled:enable];
     [self.btnChangeParams setEnabled:enable];
+    [self.scrubber setEnabled:enable];
     
     if (enable) {
         self.imgArtwork.alpha = 1;
@@ -259,15 +280,23 @@ typedef void(^singleTrackDownloaded)(void);
             [self getNextTrack:^{
                 [self playTrack];
             }];
+        } else {
+            [self playTrack];
         }
-        [self playTrack];
         self.isTrackPlaying = YES;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                      target:self
+                                                    selector:@selector(updateTime:)
+                                                    userInfo:nil
+                                                     repeats:YES];
         NSLog(@"Playing song");
     }
     else {
         [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
         [self.scAudioStream pause];
         self.isTrackPlaying = NO;
+        [self.timer invalidate];
+        self.timer = nil;
         NSLog(@"Pausing song");
     }
 }
@@ -368,6 +397,7 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnNext setHidden: NO];
     [self.btnInfo setHidden:NO];
     [self.btnLike setHidden:NO];
+    [self.scrubber setHidden:NO];
     [self.imgArtwork setHidden:NO];
     [self.btnChangeParams setHidden:NO];
     [self enableButtons:YES];
@@ -385,6 +415,9 @@ typedef void(^singleTrackDownloaded)(void);
     [self.lblLength setHidden:NO];
     
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
+    [self.scrubber setMinimumValue:0];
+    [self.scrubber setValue:0];
+    [self.scrubber setMaximumValue:track.duration];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
     
@@ -395,6 +428,13 @@ typedef void(^singleTrackDownloaded)(void);
             self.imgArtwork.image = [UIImage imageWithData:albumArtData];
         });
     });
+}
+
+- (void)updateTime:(NSTimer *)timer {
+    //to don't update every second. When scrubber is mouseDown the the slider will not set
+    if (!self.isScrubbing) {
+        self.scrubber.value = self.scAudioStream.playPosition;
+    }
 }
 
 #pragma mark - System methods
@@ -421,7 +461,12 @@ typedef void(^singleTrackDownloaded)(void);
 - (void)receiveNotification:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"StreamCompleted"]) {
         NSLog (@"Recieved StreamCompleted notification!");
-        [self playNextTrack];
+        long cValue = (long)self.scrubber.value;
+        long tValue = self.currentTrack.duration;
+        long sMax = (long)self.scrubber.maximumValue;
+        if (self.scrubber.value >= self.currentTrack.duration && !self.isPlayingForFirstTime) {
+            [self playNextTrack];
+        }
     } else if ([[notification name] isEqualToString:@"ReadyToPlay"]) {
         NSLog(@"Recieved ReadyToPlay notification!");
         if (self.prepToPlayHud != nil) {
