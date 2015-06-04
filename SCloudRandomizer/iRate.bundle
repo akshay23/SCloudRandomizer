@@ -1,0 +1,1787 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" class=" is-copy-enabled">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    
+    
+    <title>iRate/iRate/iRate.bundle at master · nicklockwood/iRate</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="nicklockwood/iRate" name="twitter:title" /><meta content="iRate - A handy class that prompts users of your iPhone or Mac App Store app to rate your application after using it for a while. Similar to Appirater, but with a simpler, cleaner interface and automa" name="twitter:description" /><meta content="https://avatars0.githubusercontent.com/u/546885?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars0.githubusercontent.com/u/546885?v=3&amp;s=400" property="og:image" /><meta content="nicklockwood/iRate" property="og:title" /><meta content="https://github.com/nicklockwood/iRate" property="og:url" /><meta content="iRate - A handy class that prompts users of your iPhone or Mac App Store app to rate your application after using it for a while. Similar to Appirater, but with a simpler, cleaner interface and automatic support for iOS fast application switching. " property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/NzI5MTY2MzpkZTEyMDc1OGE1MDlkNGU4YjdiMGZjYWFiYmQ5OTJkOTphZjlmOGRlOGY3NThkZmMzYTlmNzI2ZmY3YTI0N2QxNDFmNjAxZGY2YjQ2ZjllNzA1MDc3Y2ViMWI3NTMxODhm--436a2be304ac7986f32bb02d353e64243a1f0605">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient>
+      <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="6C1BFC22:204F:B3099D:556FC522" name="octolytics-dimension-request_id" /><meta content="7291663" name="octolytics-actor-id" /><meta content="akshay23" name="octolytics-actor-login" /><meta content="6cff6a1b438f620677e4ed3cc597fb5254c3631dd876aef9a8d0de6a1f9813c5" name="octolytics-actor-hash" />
+    
+    <meta content="Rails, view, files#disambiguate" name="analytics-event" />
+    <meta class="js-ga-set" name="dimension1" content="Logged In">
+    <meta class="js-ga-set" name="dimension2" content="Header v3">
+    <meta name="is-dotcom" content="true">
+      <meta name="hostname" content="github.com">
+    <meta name="user-login" content="akshay23">
+
+    
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="Ii9gch5LuZyQBSZyIkUwy/GrQdgcn4oz9k7N8IFC3i+94r3jLRUvTE38RFIBOmQNeYGYifpldLDItImjQYhpdA==" name="csrf-token" />
+
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github/index-6967b378b26829cc5a2ea2ad4209ff0af50f2a65057962219dc9dcf8942683f0.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2/index-73bfe123ff406f4bf8959a28667410beaac1485e71c92d4725a3d7afc45fc4c5.css" media="all" rel="stylesheet" />
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="757b6e0c99879924c3b1279e8dde640b">
+
+      
+  <meta name="description" content="iRate - A handy class that prompts users of your iPhone or Mac App Store app to rate your application after using it for a while. Similar to Appirater, but with a simpler, cleaner interface and automatic support for iOS fast application switching. ">
+  <meta name="go-import" content="github.com/nicklockwood/iRate git https://github.com/nicklockwood/iRate.git">
+
+  <meta content="546885" name="octolytics-dimension-user_id" /><meta content="nicklockwood" name="octolytics-dimension-user_login" /><meta content="1329729" name="octolytics-dimension-repository_id" /><meta content="nicklockwood/iRate" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="1329729" name="octolytics-dimension-repository_network_root_id" /><meta content="nicklockwood/iRate" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/nicklockwood/iRate/commits/master.atom" rel="alternate" title="Recent Commits to iRate:master" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_in  env-production macintosh vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+
+
+        <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+
+      <div class="site-search repo-scope js-site-search" role="search">
+          <form accept-charset="UTF-8" action="/nicklockwood/iRate/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/nicklockwood/iRate/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label class="js-chromeless-input-container form-control">
+    <div class="scope-badge">This repository</div>
+    <input type="text"
+      class="js-site-search-focus js-site-search-field is-clearable chromeless-input"
+      data-hotkey="s"
+      name="q"
+      placeholder="Search"
+      data-global-scope-placeholder="Search GitHub"
+      data-repo-scope-placeholder="Search"
+      tabindex="1"
+      autocapitalize="off">
+  </label>
+</form>
+      </div>
+
+      <ul class="header-nav left" role="navigation">
+          <li class="header-nav-item explore">
+            <a class="header-nav-link" href="/explore" data-ga-click="Header, go to explore, text:explore">Explore</a>
+          </li>
+            <li class="header-nav-item">
+              <a class="header-nav-link" href="https://gist.github.com" data-ga-click="Header, go to gist, text:gist">Gist</a>
+            </li>
+            <li class="header-nav-item">
+              <a class="header-nav-link" href="/blog" data-ga-click="Header, go to blog, text:blog">Blog</a>
+            </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a>
+          </li>
+      </ul>
+
+      
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name" href="/akshay23" data-ga-click="Header, go to profile, text:username">
+      <img alt="@akshay23" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/7291663?v=3&amp;s=40" width="20" />
+      <span class="css-truncate">
+        <span class="css-truncate-target">akshay23</span>
+      </span>
+    </a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link js-menu-target tooltipped tooltipped-s" href="/new" aria-label="Create new..." data-ga-click="Header, create new, icon:add">
+      <span class="octicon octicon-plus"></span>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu">
+        
+<li>
+  <a href="/new" data-ga-click="Header, create new repository, icon:repo"><span class="octicon octicon-repo"></span> New repository</a>
+</li>
+<li>
+  <a href="/organizations/new" data-ga-click="Header, create new organization, icon:organization"><span class="octicon octicon-organization"></span> New organization</a>
+</li>
+
+
+  <li class="dropdown-divider"></li>
+  <li class="dropdown-header">
+    <span title="nicklockwood/iRate">This repository</span>
+  </li>
+    <li>
+      <a href="/nicklockwood/iRate/issues/new" data-ga-click="Header, create new issue, icon:issue"><span class="octicon octicon-issue-opened"></span> New issue</a>
+    </li>
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item">
+      <span class="js-socket-channel js-updatable-content"
+        data-channel="notification-changed:akshay23"
+        data-url="/notifications/header">
+      <a href="/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+          <span class="mail-status unread"></span>
+          <span class="octicon octicon-inbox"></span>
+</a>  </span>
+
+  </li>
+
+  <li class="header-nav-item">
+    <a class="header-nav-link tooltipped tooltipped-s" href="/settings/profile" id="account_settings" aria-label="Settings" data-ga-click="Header, go to settings, icon:settings">
+      <span class="octicon octicon-gear"></span>
+    </a>
+  </li>
+
+  <li class="header-nav-item">
+    <form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ltqqCWTIXGa3wGnWW2+692bdLm4pkOkYy1JsdM5sV0/eM0pm4Ct941px3csgvxSlcFxgAXROrRpBHAKWQTK8xw==" /></div>
+      <button class="header-nav-link sign-out-button tooltipped tooltipped-s" aria-label="Sign out" data-ga-click="Header, sign out, icon:logout">
+        <span class="octicon octicon-sign-out"></span>
+      </button>
+</form>  </li>
+
+</ul>
+
+
+
+    
+  </div>
+</div>
+
+        
+
+        
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope itemtype="http://schema.org/WebPage">
+    <div id="js-flash-container">
+      
+    </div>
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+
+        
+<ul class="pagehead-actions">
+
+  <li>
+      <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8tjqT86wRT313LKPD7HHc1pB27tOeRqnz/ynl8SgAIku73K/n6G5muwWy5NvQgjkU+ALlu7GBCtuTULxkemm5Q==" /></div>    <input id="repository_id" name="repository_id" type="hidden" value="1329729" />
+
+      <div class="select-menu js-menu-container js-select-menu">
+        <a href="/nicklockwood/iRate/subscription"
+          class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true"
+          data-ga-click="Repository, click Watch settings, action:files#disambiguate">
+          <span class="js-select-button">
+            <span class="octicon octicon-eye"></span>
+            Watch
+          </span>
+        </a>
+        <a class="social-count js-social-count" href="/nicklockwood/iRate/watchers">
+          129
+        </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header">
+              <span class="select-menu-title">Notifications</span>
+              <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+            </div>
+
+            <div class="select-menu-list js-navigation-container" role="menu">
+
+              <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                  <span class="select-menu-item-heading">Not watching</span>
+                  <span class="description">Be notified when participating or @mentioned.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-eye"></span>
+                    Watch
+                  </span>
+                </div>
+              </div>
+
+              <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                  <span class="select-menu-item-heading">Watching</span>
+                  <span class="description">Be notified of all conversations.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-eye"></span>
+                    Unwatch
+                  </span>
+                </div>
+              </div>
+
+              <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input id="do_ignore" name="do" type="radio" value="ignore" />
+                  <span class="select-menu-item-heading">Ignoring</span>
+                  <span class="description">Never be notified.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-mute"></span>
+                    Stop ignoring
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <form accept-charset="UTF-8" action="/nicklockwood/iRate/unstar" class="js-toggler-form starred js-unstar-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="/twcLc0oUt4l5cp8HctnrG73o1OMu1sTvzCydGGYCFHrOmOnOc2/TDf8mQ3Q+Nyh61wfbGegUmdfWIB/ZhwsNw==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar nicklockwood/iRate"
+        data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">
+        <span class="octicon octicon-star"></span>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/nicklockwood/iRate/stargazers">
+          2,409
+        </a>
+</form>
+    <form accept-charset="UTF-8" action="/nicklockwood/iRate/star" class="js-toggler-form unstarred js-star-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="S/IevVuRDGC0e22+8+eu4cL7DatTmBcUV+uDh4zoDhFkuCZ1qifuqUYg8a8lqvtAj3DIA7gaRWukMtKo3h8pKA==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star nicklockwood/iRate"
+        data-ga-click="Repository, click star button, action:files#disambiguate; text:Star">
+        <span class="octicon octicon-star"></span>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/nicklockwood/iRate/stargazers">
+          2,409
+        </a>
+</form>  </div>
+
+  </li>
+
+        <li>
+          <a href="#fork-destination-box" class="btn btn-sm btn-with-count"
+              title="Fork your own copy of nicklockwood/iRate to your account"
+              aria-label="Fork your own copy of nicklockwood/iRate to your account"
+              rel="facebox"
+              data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork">
+            <span class="octicon octicon-repo-forked"></span>
+            Fork
+          </a>
+          <a href="/nicklockwood/iRate/network" class="social-count">459</a>
+
+          <div id="fork-destination-box" style="display: none;">
+            <h2 class="facebox-header">Where should we fork this repository?</h2>
+            <include-fragment src=""
+                class="js-fork-select-fragment fork-select-fragment"
+                data-url="/nicklockwood/iRate/fork?fragment=1">
+              <img alt="Loading" height="64" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-128-338974454bb5c32803e82f601beb051d373744b024fe8742a76009700fd7e033.gif" width="64" />
+            </include-fragment>
+          </div>
+        </li>
+
+</ul>
+
+        <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author"><a href="/nicklockwood" class="url fn" itemprop="url" rel="author"><span itemprop="title">nicklockwood</span></a></span><!--
+       --><span class="path-divider">/</span><!--
+       --><strong><a href="/nicklockwood/iRate" data-pjax="#js-repo-pjax-container">iRate</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline  ">
+        <div class="repository-sidebar clearfix">
+            
+<nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container"
+     data-issue-count-url="/nicklockwood/iRate/issues/counts">
+  <ul class="sunken-menu-group">
+    <li class="tooltipped tooltipped-w" aria-label="Code">
+      <a href="/nicklockwood/iRate" aria-label="Code" class="selected js-selected-navigation-item sunken-menu-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /nicklockwood/iRate">
+        <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+        <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Issues">
+        <a href="/nicklockwood/iRate/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /nicklockwood/iRate/issues">
+          <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+          <span class="js-issue-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>      </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Pull requests">
+      <a href="/nicklockwood/iRate/pulls" aria-label="Pull requests" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g p" data-selected-links="repo_pulls /nicklockwood/iRate/pulls">
+          <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull requests</span>
+          <span class="js-pull-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Wiki">
+        <a href="/nicklockwood/iRate/wiki" aria-label="Wiki" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g w" data-selected-links="repo_wiki /nicklockwood/iRate/wiki">
+          <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+          <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>      </li>
+  </ul>
+  <div class="sunken-menu-separator"></div>
+  <ul class="sunken-menu-group">
+
+    <li class="tooltipped tooltipped-w" aria-label="Pulse">
+      <a href="/nicklockwood/iRate/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-selected-links="pulse /nicklockwood/iRate/pulse">
+        <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+        <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Graphs">
+      <a href="/nicklockwood/iRate/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-selected-links="repo_graphs repo_contributors /nicklockwood/iRate/graphs">
+        <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+        <img alt="" class="mini-loader" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+</a>    </li>
+  </ul>
+
+
+</nav>
+
+              <div class="only-with-full-nav">
+                  
+<div class="js-clone-url clone-url open"
+  data-protocol-type="http">
+  <h3><span class="text-emphasized">HTTPS</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="https://github.com/nicklockwood/iRate.git" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="js-clone-url clone-url "
+  data-protocol-type="ssh">
+  <h3><span class="text-emphasized">SSH</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="git@github.com:nicklockwood/iRate.git" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="js-clone-url clone-url "
+  data-protocol-type="subversion">
+  <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="https://github.com/nicklockwood/iRate" readonly="readonly">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+
+
+<div class="clone-options">You can clone with
+  <form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="nH29BF4pBOdsy7/XoyljXtUqrYIL1SwPvITHfUrNFgoasEHo5ZNN1zXMFO8l+MEWxS0bzdxFfH3tRwwV9V9Zig==" /></div><button class="btn-link js-clone-selector" data-protocol="http" type="submit">HTTPS</button></form>, <form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="y+NqwKZG7Np6Yn95jSTMu562Rz30FD1ZMg1We5ALB99fkcBbPc60UoJGYUlEQGa3L7YzUYI1JsUmtCflMj/nMA==" /></div><button class="btn-link js-clone-selector" data-protocol="ssh" type="submit">SSH</button></form>, or <form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8S3kdqpdSC4J33q8sBXjH8ZcMUaQTNnvi2PB0gFiwz3h8cAl2l3dcj4wg66trN/HZgMedv0K+M5v5Fqwkw/faA==" /></div><button class="btn-link js-clone-selector" data-protocol="subversion" type="submit">Subversion</button></form>.
+  <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <span class="octicon octicon-question"></span>
+  </a>
+</div>
+
+  <a href="github-mac://openRepo/https://github.com/nicklockwood/iRate" class="btn btn-sm sidebar-button" title="Save nicklockwood/iRate to your computer and use it in GitHub Desktop." aria-label="Save nicklockwood/iRate to your computer and use it in GitHub Desktop.">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+
+
+                <a href="/nicklockwood/iRate/archive/master.zip"
+                   class="btn btn-sm sidebar-button"
+                   aria-label="Download the contents of nicklockwood/iRate as a zip file"
+                   title="Download the contents of nicklockwood/iRate as a zip file"
+                   rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
+
+          
+<div class="file-navigation">
+  
+<div class="select-menu js-menu-container js-select-menu left">
+  <span class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+    data-ref="master"
+    title="master"
+    role="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <span class="octicon octicon-git-branch"></span>
+    <i>branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </span>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="select-menu-title">Switch branches/tags</span>
+        <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open selected"
+               href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle"
+               data-name="master"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="master">
+                master
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.11.4/iRate/iRate.bundle"
+                 data-name="1.11.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.11.4">1.11.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.11.3/iRate/iRate.bundle"
+                 data-name="1.11.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.11.3">1.11.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.11.2/iRate/iRate.bundle"
+                 data-name="1.11.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.11.2">1.11.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.11.1/iRate/iRate.bundle"
+                 data-name="1.11.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.11.1">1.11.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.11/iRate/iRate.bundle"
+                 data-name="1.11"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.11">1.11</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.10.3/iRate/iRate.bundle"
+                 data-name="1.10.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.10.3">1.10.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.10.2/iRate/iRate.bundle"
+                 data-name="1.10.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.10.2">1.10.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.10.1/iRate/iRate.bundle"
+                 data-name="1.10.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.10.1">1.10.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.10/iRate/iRate.bundle"
+                 data-name="1.10"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.10">1.10</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.9.3/iRate/iRate.bundle"
+                 data-name="1.9.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.9.3">1.9.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.9.2/iRate/iRate.bundle"
+                 data-name="1.9.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.9.2">1.9.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.9.1/iRate/iRate.bundle"
+                 data-name="1.9.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.9.1">1.9.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.9/iRate/iRate.bundle"
+                 data-name="1.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.9">1.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.8.3/iRate/iRate.bundle"
+                 data-name="1.8.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.3">1.8.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.8.2/iRate/iRate.bundle"
+                 data-name="1.8.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.2">1.8.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.8.1/iRate/iRate.bundle"
+                 data-name="1.8.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8.1">1.8.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.8/iRate/iRate.bundle"
+                 data-name="1.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.8">1.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.7.5/iRate/iRate.bundle"
+                 data-name="1.7.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7.5">1.7.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.7.4/iRate/iRate.bundle"
+                 data-name="1.7.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7.4">1.7.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.7.3/iRate/iRate.bundle"
+                 data-name="1.7.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7.3">1.7.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.7.2/iRate/iRate.bundle"
+                 data-name="1.7.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7.2">1.7.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.7.1/iRate/iRate.bundle"
+                 data-name="1.7.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7.1">1.7.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.7/iRate/iRate.bundle"
+                 data-name="1.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.7">1.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.6.2/iRate/iRate.bundle"
+                 data-name="1.6.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.2">1.6.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.6.1/iRate/iRate.bundle"
+                 data-name="1.6.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6.1">1.6.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.6/iRate/iRate.bundle"
+                 data-name="1.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.6">1.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.5.3/iRate/iRate.bundle"
+                 data-name="1.5.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.5.3">1.5.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.5.2/iRate/iRate.bundle"
+                 data-name="1.5.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.5.2">1.5.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.5.1/iRate/iRate.bundle"
+                 data-name="1.5.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.5.1">1.5.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.5/iRate/iRate.bundle"
+                 data-name="1.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.5">1.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.9/iRate/iRate.bundle"
+                 data-name="1.4.9"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.9">1.4.9</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.8/iRate/iRate.bundle"
+                 data-name="1.4.8"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.8">1.4.8</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.7/iRate/iRate.bundle"
+                 data-name="1.4.7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.7">1.4.7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.6/iRate/iRate.bundle"
+                 data-name="1.4.6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.6">1.4.6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.5/iRate/iRate.bundle"
+                 data-name="1.4.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.5">1.4.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.4/iRate/iRate.bundle"
+                 data-name="1.4.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.4">1.4.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.3/iRate/iRate.bundle"
+                 data-name="1.4.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.3">1.4.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.2/iRate/iRate.bundle"
+                 data-name="1.4.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.2">1.4.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4.1/iRate/iRate.bundle"
+                 data-name="1.4.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4.1">1.4.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.4/iRate/iRate.bundle"
+                 data-name="1.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.4">1.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.3.5/iRate/iRate.bundle"
+                 data-name="1.3.5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.5">1.3.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.3.4/iRate/iRate.bundle"
+                 data-name="1.3.4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.4">1.3.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.3.3/iRate/iRate.bundle"
+                 data-name="1.3.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.3">1.3.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.3.2/iRate/iRate.bundle"
+                 data-name="1.3.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.2">1.3.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.3.1/iRate/iRate.bundle"
+                 data-name="1.3.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3.1">1.3.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.3/iRate/iRate.bundle"
+                 data-name="1.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.3">1.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.2.3/iRate/iRate.bundle"
+                 data-name="1.2.3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.3">1.2.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.2.2/iRate/iRate.bundle"
+                 data-name="1.2.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.2">1.2.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.2.1/iRate/iRate.bundle"
+                 data-name="1.2.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2.1">1.2.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.2/iRate/iRate.bundle"
+                 data-name="1.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.2">1.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.1/iRate/iRate.bundle"
+                 data-name="1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.1">1.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="/nicklockwood/iRate/tree/1.0/iRate/iRate.bundle"
+                 data-name="1.0"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="1.0">1.0</a>
+            </div>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <div class="btn-group right">
+    <a href="/nicklockwood/iRate/find/master" data-pjax data-hotkey="t" class="js-show-file-finder btn btn-sm empty-icon tooltipped tooltipped-s" aria-label="Quickly jump between files">
+      <span class="octicon octicon-list-unordered"></span>
+    </a>
+    <a href="/nicklockwood/iRate/commits/master/iRate/iRate.bundle" class="btn btn-sm empty-icon tooltipped tooltipped-s" aria-label="Browse commits for this branch">
+      <span class="octicon octicon-history"></span>
+    </a>
+  </div>
+
+  <div class="breadcrumb"><span class="repo-root js-repo-root"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/nicklockwood/iRate" class="" data-branch="master" data-pjax="true" itemscope="url"><span itemprop="title">iRate</span></a></span></span><span class="separator">/</span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/nicklockwood/iRate/tree/master/iRate" class="" data-branch="master" data-pjax="true" itemscope="url"><span itemprop="title">iRate</span></a></span><span class="separator">/</span><strong class="final-path">iRate.bundle</strong><span class="separator">/</span>
+    <form accept-charset="UTF-8" action="/nicklockwood/iRate/new/master/iRate/iRate.bundle" class="js-new-blob-form inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Evq7xA3stTRv3a8gpH0uwSOJvAT2LdTyyph8WveBKYLcgZLp/DWZ32NiIsX4sURPaEtqNhpzpB/AJqDPqKDGvA==" /></div>
+      <button class="btn-link tooltipped tooltipped-e" type="submit" data-disable-with="working…" aria-label="Fork this project and create a new file">
+        <span class="js-new-blob-submit octicon octicon-plus"></span>
+      </button>
+</form></div>
+
+</div>
+
+
+
+  
+  <div class="commit commit-tease js-details-container" >
+    <p class="commit-title ">
+        <a href="/nicklockwood/iRate/commit/a26b0cd1ec12d9c5529ab3265a8a94ad964089d3" class="message" data-pjax="true" title="Added Macedonian translation">Added Macedonian translation</a>
+        
+    </p>
+    <div class="commit-meta">
+      <button aria-label="Copy SHA" class="js-zeroclipboard zeroclipboard-link tooltipped tooltipped-s" data-clipboard-text="a26b0cd1ec12d9c5529ab3265a8a94ad964089d3" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+      <a href="/nicklockwood/iRate/commit/a26b0cd1ec12d9c5529ab3265a8a94ad964089d3" class="sha-block" data-pjax>latest commit <span class="sha">a26b0cd1ec</span></a>
+
+      <div class="authorship">
+        <img alt="@dangelov" class="avatar" data-user="1392779" height="20" src="https://avatars2.githubusercontent.com/u/1392779?v=3&amp;s=40" width="20" />
+        <span class="author-name"><a href="/dangelov" rel="contributor">dangelov</a></span>
+        authored <time class="updated" datetime="2015-04-05T16:40:14Z" is="relative-time">Apr 5, 2015</time>
+
+      </div>
+    </div>
+  </div>
+
+  
+<div class="file-wrap">
+  <a href="/nicklockwood/iRate/tree/f7b0c2dae10aabcac79bb12ea7f18b1a2daae0b0/iRate/iRate.bundle" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <table class="files" data-pjax>
+      <tr class="up-tree">
+        <td></td>
+        <td><a href="/nicklockwood/iRate/tree/master/iRate" rel="nofollow" title="Go to parent directory">..</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><span class="octicon octicon-alert"></span></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ar.lproj" class="js-directory-link" id="efddf6baa6b98fbd131cd0891a5deac1-03e2172c3b2e95d7c25a49702174864ed0e28fb6" title="ar.lproj">ar.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/bf0da26cefb720dd8645e700b88ce643a14d8c1e" class="message" data-pjax="true" title="Solved some type errors in Arabic Localization
+
+Solved some type errors in Arabic Localization">Solved some type errors in Arabic Localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-04-16T05:27:25Z" is="time-ago">Apr 16, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/bn.lproj" class="js-directory-link" id="d66f76ef37e9a2ccfa9692dd74ab742f-eff0afdaafb66f1e2752e4f2680d63bb43a37939" title="bn.lproj">bn.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/e472d73cec8318e2d3c5db24f8916175d7f7eee8" class="message" data-pjax="true" title="Add localizations for language codes: bn fa hi pa th vi">Add localizations for language codes: bn fa hi pa th vi</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-01-21T01:18:28Z" is="time-ago">Jan 20, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/cs.lproj" class="js-directory-link" id="8f47a2b1b41e1e3e58256170ed5cd4e2-2192f5d38dbfc830d4734daee6b7e5a62ffdb1fb" title="cs.lproj">cs.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/4778f27d1953e107938d3229d02f0ffa96b03394" class="message" data-pjax="true" title="Fix Czech and Austrian German locales for iOS 7
+
+Both locales were throwing warnings when trying to submit.
+Replaced &#39;cz&#39; with &#39;cs&#39; and &#39;at&#39; with &#39;de_AT&#39;.">Fix Czech and Austrian German locales for iOS 7</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-09-11T20:16:33Z" is="time-ago">Sep 11, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/da.lproj" class="js-directory-link" id="79baaccf206d264e8056591d18f75f26-8c3f2753cd8e57649a70f7ac7bc17a9fe7bf7fcf" title="da.lproj">da.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/3615b81a8f5a70ddac20f2c27736632f07e413a2" class="message" data-pjax="true" title="Update Localizable.strings
+
+An even better Danish translation.">Update Localizable.strings</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-09-23T12:45:21Z" is="time-ago">Sep 23, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/de-AT.lproj" class="js-directory-link" id="59929a347a5a2a4b754639c11925a8f8-96e0cc51a7fdd582c462dc739de98947e6256e77" title="de-AT.lproj">de-AT.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/63c234626f9f10763554613e815c0e923f026014" class="message" data-pjax="true" title="Updated to beta 4">Updated to beta 4</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-09-13T22:55:46Z" is="time-ago">Sep 13, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/de.lproj" class="js-directory-link" id="dc35d7a3e8494b65b30e48511eceadd9-569bd0a6c816351c9d6f0a0f6102a077385bfb58" title="de.lproj">de.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/8e6de2a0d1d5d2f0697ece961a4535320738fbff" class="message" data-pjax="true" title="Tweaked German localisation">Tweaked German localisation</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:55:48Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/el.lproj" class="js-directory-link" id="d8eabfc7f5c2c3fd59a50f7154e9dacb-4495665a7a93ca2ebd771744719a76db6ca57ef9" title="el.lproj">el.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/c05c74f304f50079bf076f0387de3d260ed91f1f" class="message" data-pjax="true" title="Added Greek localization
+
+Added Greek localization">Added Greek localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-10-18T17:22:23Z" is="time-ago">Oct 18, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/en.lproj" class="js-directory-link" id="ad8ee8282ac418571ed12f303d012725-7973dd12abdf851ff77ad50e6f3af9f6ae4a8af5" title="en.lproj">en.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/es.lproj" class="js-directory-link" id="cd81ba032f698579d04d696c8d0dbbc7-6d8c27afcf7bd06b2da2729f63312a8b2901c5ee" title="es.lproj">es.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/fa.lproj" class="js-directory-link" id="238245d3a2a67d816d582531977e657f-6cba2682cde3bff03e871e7a5fcdb967a81fe932" title="fa.lproj">fa.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/43084dd232f70ac06336e3cc4fff36c51e7830f0" class="message" data-pjax="true" title="Update Farsi Localized
+
+Farsi translation was wrong, so I fixed it.">Update Farsi Localized</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-09-06T17:03:11Z" is="time-ago">Sep 6, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/fr.lproj" class="js-directory-link" id="32d1ba6083264f4d180513a984d50626-912953c802aaeef0cb5476311eba329266113b3a" title="fr.lproj">fr.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/4081b58c8944e6e75780d95d3f24a5cc4521fc07" class="message" data-pjax="true" title="Updated the wording for the French localization
+
+Now the wording is the same as in the French App Store:
+- &quot;Rate&quot; is translated to &quot;Note&quot;
+- &quot;Review&quot; is translated to &quot;Avis&quot;
+
+Note that the wording of the title was quite strange. &quot;Votez %@&quot; is
+the wording one would use if someone is running for president.">Updated the wording for the French localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-09-24T09:43:03Z" is="time-ago">Sep 24, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/he.lproj" class="js-directory-link" id="58fda249dbce5102488e4f8c00dc1aeb-3d52fe700d663c8107c0925b39302dc9ebafda7f" title="he.lproj">he.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/hi.lproj" class="js-directory-link" id="02b46cddcb93d911ac6afb90ab75b338-4c976eb1d428d4be900716472382ca65ea702d07" title="hi.lproj">hi.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/e472d73cec8318e2d3c5db24f8916175d7f7eee8" class="message" data-pjax="true" title="Add localizations for language codes: bn fa hi pa th vi">Add localizations for language codes: bn fa hi pa th vi</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-01-21T01:18:28Z" is="time-ago">Jan 21, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/id.lproj" class="js-directory-link" id="461beb8567e3ab4e85050c735f9c0798-86af99d1c9d8eb463f657667512441617914d431" title="id.lproj">id.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/86f6fcb3db0934183665163977b8256b3b7160ef" class="message" data-pjax="true" title="add Indonesia Locale">add Indonesia Locale</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-12-02T15:26:06Z" is="time-ago">Dec 2, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/it.lproj" class="js-directory-link" id="690608b4b60f59f71ab7d085c8c0de5f-3cda7251308005758f3726b513acbf0a64fc9c15" title="it.lproj">it.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/12d26c38a3e46e64dc8f508d4432cfcd748652d2" class="message" data-pjax="true" title="improved again the italian translation">improved again the italian translation</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-06-23T18:31:14Z" is="time-ago">Jun 23, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ja.lproj" class="js-directory-link" id="1d4e8124f3e2f19b06bd4301160fe1ca-38e0ef254a578c3bed644e9d0b05d7bb74b2d9ed" title="ja.lproj">ja.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/b1ad69b24b5cadc778134f53c5ba2347603b3ea4" class="message" data-pjax="true" title="Improve Japanese translation">Improve Japanese translation</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-05-11T22:28:54Z" is="time-ago">May 12, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ko.lproj" class="js-directory-link" id="3fbe833474272a6637d5f76426204e89-9db9826ed2ea9bc58196a1bfc1810ce45febd564" title="ko.lproj">ko.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/mk.lproj" class="js-directory-link" id="65d3187edd44d78a5c1ac4338018c348-f14bb53ff63acb445ef0fd400ff192f427e44697" title="mk.lproj">mk.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/a26b0cd1ec12d9c5529ab3265a8a94ad964089d3" class="message" data-pjax="true" title="Added Macedonian translation">Added Macedonian translation</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-04-05T16:40:14Z" is="time-ago">Apr 5, 2015</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/nl.lproj" class="js-directory-link" id="fb899bc2aee5fe2addb195aa2ceb32b8-7a378592fbd4a4dbe77da13f313d4c412a982c97" title="nl.lproj">nl.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/3c1938f33783000077373de5c582422d13299e64" class="message" data-pjax="true" title="Added dutch localization">Added dutch localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-12-20T10:53:25Z" is="time-ago">Dec 20, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/no.lproj" class="js-directory-link" id="8ad787178c8f1afb3fb2eac1741b193c-5d261fbb163aa6b89381fa5f10252d1fab78aaa4" title="no.lproj">no.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/919a6fde9e6792fc64af12069e885cc833e327c6" class="message" data-pjax="true" title="Small changes to make it sound better">Small changes to make it sound better</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-11-29T10:04:33Z" is="time-ago">Nov 29, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/pa.lproj" class="js-directory-link" id="5df14a17dc63b4e3c8cb398cd736928a-fd7f84b36d9e010309cb8f9d996025e034c5f086" title="pa.lproj">pa.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/e472d73cec8318e2d3c5db24f8916175d7f7eee8" class="message" data-pjax="true" title="Add localizations for language codes: bn fa hi pa th vi">Add localizations for language codes: bn fa hi pa th vi</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-01-21T01:18:28Z" is="time-ago">Jan 21, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/pl.lproj" class="js-directory-link" id="baba498329f7dffbe9b5624d9558378b-30a74a974340c4e69e75683b68d6a4c60509a247" title="pl.lproj">pl.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/pt.lproj" class="js-directory-link" id="b6f6d0763016c43bf43dacdb7fcef1f8-18efbb12177c64bfd4ff1359e1539798e92a5066" title="pt.lproj">pt.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/d07c4126e1906e0b29374fec674d901b803bed13" class="message" data-pjax="true" title="Better PT localization">Better PT localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-12-04T16:24:32Z" is="time-ago">Dec 4, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ru.lproj" class="js-directory-link" id="85255e4cdd2ad2a5ded850d638e52417-7ef06eee3721c9abd5ed4b1444238081ed1c6f4d" title="ru.lproj">ru.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/sk.lproj" class="js-directory-link" id="03ec43811cc711dfdd008a7bbafdbf7c-7db5c8da71655fe96fe913233370ebbf7fd225b5" title="sk.lproj">sk.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/d9d78beee8c142e477868bbc6b8b62032f2064e1" class="message" data-pjax="true" title="Updated to version 1.7.3">Updated to version 1.7.3</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-02-16T20:15:59Z" is="time-ago">Feb 16, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/sl.lproj" class="js-directory-link" id="188959816eb6616faecff4539a22081e-0a1a8e88d1f08ef29ee8d92e4633b69f995d89f6" title="sl.lproj">sl.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/a4e2f27ebc44c3833a0bcfb9032a3a999bc69cec" class="message" data-pjax="true" title="Added Slovenian localization
+
+Added Slovenian localization for iRate control.">Added Slovenian localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-10-07T20:02:28Z" is="time-ago">Oct 7, 2013</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/sv.lproj" class="js-directory-link" id="2c50497bd0486d3ef839b3ffb600bde7-8afb968815f379bf3ea05b818815babeb6e68481" title="sv.lproj">sv.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/d46aed3838af5d654d909ffbbddc499470f1615b" class="message" data-pjax="true" title="Updated to version 1.7 beta">Updated to version 1.7 beta</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-11-23T14:04:22Z" is="time-ago">Nov 23, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/th.lproj" class="js-directory-link" id="ee8321865a28f78811e2634aff39754d-3c1a3736000db93c29e50ac8552c03214440c7d4" title="th.lproj">th.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/a6277554e4db35f2f62262490f19525ca023370a" class="message" data-pjax="true" title="Updated to version 1.11">Updated to version 1.11</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-10-12T21:21:15Z" is="time-ago">Oct 12, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/tr.lproj" class="js-directory-link" id="d89130226b3d916cfa83735d1f320e8d-8293cc9fa003d6316a6b4a61f64f5215216efbfb" title="tr.lproj">tr.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/6f6bd827afd6dc1a78710595b4dd4b774ee2c104" class="message" data-pjax="true" title="Fixed Turkish translations.
+
+The old title meant something like “Oi, &lt;application name&gt;!”">Fixed Turkish translations.</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-07-28T03:04:41Z" is="time-ago">Jul 27, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/uk.lproj" class="js-directory-link" id="4df0980afce18ad3b7247a351cac0ba9-073ef44cf291f38c647bc43d89715caa6cc31c75" title="uk.lproj">uk.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9c80d250c3989281d96c8098028f9fd4035a13da" class="message" data-pjax="true" title="Add Ukrainian localization">Add Ukrainian localization</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-11-28T20:26:06Z" is="time-ago">Nov 28, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ur-IN.lproj" class="js-directory-link" id="b1e4f2d94ad4fe9a058a4ea0630b3bd4-c1c1a58a204922ba3aed945c89c0b792ae3454f2" title="ur-IN.lproj">ur-IN.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/c373ed1b81e1924c2279f485fc249f9496f27c8f" class="message" data-pjax="true" title="Urdu language is now more natural
+
+Urdu language localization&#39;s tone was very artificial, almost as if it was generated by a computer. Have changed it to be more natural">Urdu language is now more natural</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-10-15T07:23:26Z" is="time-ago">Oct 15, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ur-PK.lproj" class="js-directory-link" id="85a4cff0380722dcbdef97bf218c035b-c1c1a58a204922ba3aed945c89c0b792ae3454f2" title="ur-PK.lproj">ur-PK.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/d6cc8adcbf79a034adbf80d703cace9548b54528" class="message" data-pjax="true" title="Urdu language is now more natural
+
+Urdu language localization&#39;s tone was very artificial, almost as if it was generated by a computer. Have changed it to be more natural">Urdu language is now more natural</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-10-15T07:22:38Z" is="time-ago">Oct 15, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/ur.lproj" class="js-directory-link" id="bd68f9c039bc2782e3c62b1338d53ea2-c1c1a58a204922ba3aed945c89c0b792ae3454f2" title="ur.lproj">ur.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/4491da6f90051e2f4c8db2a1c32c7db97269f242" class="message" data-pjax="true" title="Urdu language is now more natural
+
+Urdu language localization&#39;s tone was very artificial, almost as if it was generated by a computer. Have changed it to be more natural">Urdu language is now more natural</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-10-15T07:20:57Z" is="time-ago">Oct 15, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/vi.lproj" class="js-directory-link" id="52da835487720f067b13021d3adbf8f0-716cb65280b970db79ea4477f89aa92b45e4dd36" title="vi.lproj">vi.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/f1d72eff71e2227c2b09ae7c57aee0a0728fdcbb" class="message" data-pjax="true" title="minor translation fix">minor translation fix</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2014-01-30T00:46:21Z" is="time-ago">Jan 30, 2014</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/zh-Hans.lproj" class="js-directory-link" id="7550b39d371ae41df38600bf452a7e6b-755c4c867808d60dc87c6c36a73e39b3cc3fc6ad" title="zh-Hans.lproj">zh-Hans.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="https://assets-cdn.github.com/assets/spinners/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="/nicklockwood/iRate/tree/master/iRate/iRate.bundle/zh-Hant.lproj" class="js-directory-link" id="f067f38d1ef7430cee5d69f5a514a181-911574a2b6bff76b530649f25d47208730308acb" title="zh-Hant.lproj">zh-Hant.lproj</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="/nicklockwood/iRate/commit/9cd66e52b1e35cb337fedcb8689ee2cb38ba3232" class="message" data-pjax="true" title="Added new localisation system">Added new localisation system</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2012-10-06T16:03:55Z" is="time-ago">Oct 6, 2012</time></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+  
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.06114s from github-fe129-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-suggester-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder=""></textarea>
+      <div class="suggester-container">
+        <div class="suggester fullscreen-suggester js-suggester js-navigation-container"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w"
+      aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-x flash-close js-ajax-error-dismiss" aria-label="Dismiss error"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-447ce66a36506ebddc8e84b4e32a77f6062f3d3482e77dd21a77a01f0643ad98.js"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github/index-e0a0a0ac6b5b9183613ac069c059a153598eb0b54db80f16888a91b854794921.js"></script>
+      
+      
+  </body>
+</html>
+
