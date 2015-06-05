@@ -32,9 +32,7 @@
 		19CDED291A2FB92100DD97CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED281A2FB92100DD97CC /* main.m */; };
 		19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2B1A2FB92100DD97CC /* AppDelegate.m */; };
 		19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */; };
-		19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED331A2FB92100DD97CC /* Main.storyboard */; };
 		19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED361A2FB92100DD97CC /* Images.xcassets */; };
-		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
 		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
 		4E254FB51B17A65900A70F26 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E254FB41B17A65900A70F26 /* refresh.png */; };
 		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
@@ -45,7 +43,6 @@
 		4E9DA56A1B05217D00B324B1 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA5691B05217D00B324B1 /* UtilityTests.m */; };
 		4E9DA57E1B055B1800B324B1 /* MusicSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA57D1B055B1800B324B1 /* MusicSourceTests.m */; };
 		4E9DA5801B05621F00B324B1 /* usr in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DA57F1B05621F00B324B1 /* usr */; };
-		4E9DA5821B05629600B324B1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E9DA5811B05629600B324B1 /* libOCMock.a */; };
 		4ED3F5A31AB272A200259C84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3F5A21AB272A200259C84 /* background.png */; };
 		4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8521AF17A9600F2D38E /* MusicSource.m */; };
 		4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8551AF1DFDA00F2D38E /* Track.m */; };
@@ -161,7 +158,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E9DA5821B05629600B324B1 /* libOCMock.a in Frameworks */,
 				990B8C6AC5986A338599C9B8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +425,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */,
 				19C18F191A31068D00281221 /* pause_btn.png in Resources */,
 				190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */,
 				19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */,
@@ -437,7 +432,6 @@
 				19C18F171A30FD1500281221 /* play_next_btn.png in Resources */,
 				4E3A92771AE0602C00640EFB /* play.png in Resources */,
 				1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */,
-				19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */,
 				4E9DA5801B05621F00B324B1 /* usr in Resources */,
 				19C18F131A30E86A00281221 /* play_btn.png in Resources */,
 				4E3A92791AE0604800640EFB /* tag.png in Resources */,
@@ -707,7 +701,7 @@
 					"\"Security\"",
 				);
 				PRODUCT_NAME = Scloudy;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8307de69-ea8c-4b3c-accf-a32d1a01c1e0";
 			};
 			name = Debug;
 		};
@@ -752,7 +746,7 @@
 					"\"Security\"",
 				);
 				PRODUCT_NAME = Scloudy;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8307de69-ea8c-4b3c-accf-a32d1a01c1e0";
 			};
 			name = Release;
 		};
