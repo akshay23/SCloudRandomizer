@@ -48,8 +48,4 @@ NSString * const SCAccountDidFailToGetAccessToken = @"SCAccountDidFailToGetAcces
     return self.oauthAccount.identifier;
 }
 
-- (NXOAuth2Client *)getOAuthClient {
-    return oauthAccount.oauthClient;
-}
-
 @end

@@ -5,13 +5,13 @@ pod 'CocoaSoundCloudAPI', '1.0.1'
 pod 'CocoaSoundCloudUI', '1.0.5'
 pod 'MBProgressHUD', '~> 0.8'
 
-target 'SCloudRandomizer' do
+target 'Scloudy' do
 
 end
 
-target 'SCloudRandomizerTests' do
+target 'ScloudyTests' do
 
 end
 
-link_with 'SCloudRandomizer', 'SCloudRandomizerTests'
+link_with 'Scloudy', 'ScloudyTests'
 

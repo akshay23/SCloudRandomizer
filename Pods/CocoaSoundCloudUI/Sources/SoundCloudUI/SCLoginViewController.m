@@ -163,7 +163,7 @@
         self.completionHandler(nil);
     }
     
-    [[self modalPresentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    [[self modalPresentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
 - (void)failToRequestAccess:(NSNotification *)aNotification;
@@ -216,7 +216,7 @@
         self.completionHandler([NSError errorWithDomain:SCUIErrorDomain code:SCUICanceledErrorCode userInfo:userInfo]);
     }
     
-    [[self modalPresentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    [[self modalPresentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -

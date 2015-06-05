@@ -352,7 +352,7 @@
 	[controller setPeoplePickerDelegate:self];
 	[controller setDisplayedProperties:[NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]]];
 	controller.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self.navigationController presentViewController:controller animated:YES completion:nil];
+	[self.navigationController presentModalViewController:controller animated:YES];	
 }
 
 #pragma mark ViewController
@@ -390,7 +390,7 @@
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker;
 {
-	[self dismissViewControllerAnimated:YES completion:nil];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person;
@@ -562,12 +562,12 @@
 
 #pragma mark main
 
-//static int compareAutocompleteData(id dict1, id dict2, void *context)
-//{
-//	NSString *name1 = [dict1 objectForKey:context];
-//	NSString *name2 = [dict2 objectForKey:context];
-//	return [name1 caseInsensitiveCompare:name2];
-//}
+static int compareAutocompleteData(id dict1, id dict2, void *context)
+{
+	NSString *name1 = [dict1 objectForKey:context];
+	NSString *name2 = [dict2 objectForKey:context];
+	return [name1 caseInsensitiveCompare:name2];
+}
 
 - (void)main;
 {
@@ -586,7 +586,7 @@
 	}
 	
 	if (!self.isCancelled) {
-		//[autocompleteData sortUsingFunction:compareAutocompleteData context:@"name"];
+		[autocompleteData sortUsingFunction:compareAutocompleteData context:@"name"];
 		[_target performSelectorOnMainThread:_selector withObject:autocompleteData waitUntilDone:NO];
 	}
 }
@@ -626,69 +626,69 @@
 	if (self.isCancelled)
 		return;
 	
-//	[NSThread setThreadPriority:0.2];
-//	
-//	NSMutableDictionary *ret = [NSMutableDictionary dictionary];
-//	
-//	ABAddressBookRef addressBook = ABAddressBookCreate();
-//	CFArrayRef allPersons = ABAddressBookCopyArrayOfAllPeople(addressBook);
-//	CFIndex personCount = ABAddressBookGetPersonCount(addressBook);
-//	
-//	for(CFIndex personIx = 0; personIx < personCount; personIx++) {
-//		
-//		if ([self isCancelled])
-//			break;
-//		
-//		ABRecordRef record = CFArrayGetValueAtIndex(allPersons, personIx);
-//		if (ABRecordGetRecordType(record) != kABPersonType)
-//			continue;
-//		NSString *compositeName = (NSString *)ABRecordCopyCompositeName(record);
-//		
-//		ABMultiValueRef emailValue = ABRecordCopyValue(record, kABPersonEmailProperty);
-//		CFIndex valueCount = ABMultiValueGetCount(emailValue);
-//		for (CFIndex valueIx = 0; valueIx < valueCount; valueIx++) {
-//			NSString *name = compositeName;
-//			NSString *email = (NSString *)ABMultiValueCopyValueAtIndex(emailValue, valueIx);
-//			NSString *label = (NSString *)ABMultiValueCopyLabelAtIndex(emailValue, valueIx);
-//			NSString *mailType = nil;
-//			if (email) {
-//				
-//				if (label) {
-//					mailType = (NSString *)ABAddressBookCopyLocalizedLabel((CFStringRef)label);
-//				} else {
-//					mailType = @"email";
-//				}
-//				
-//				if (!name) {
-//					name = email;
-//				}
-//				
-//				NSDictionary *personDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-//											name, @"name",
-//											email, @"email",
-//											mailType, @"mailType",
-//											nil];
-//				
-//				[ret setObject:personDict forKey:[[NSString stringWithFormat:@"%@ %@", compositeName, email] lowercaseString]];
-//				[personDict release];
-//			}
-//			
-//			[label release];
-//			[email release];
-//			[mailType release];
-//		}
-//		CFRelease(emailValue);
-//		[compositeName release];
-//	}
-//	
-//	CFRelease(addressBook);
-//	CFRelease(allPersons);
-//	
-//	if (![self isCancelled]) {
-//		[_target performSelectorOnMainThread:_selector
-//								  withObject:ret
-//							   waitUntilDone:YES];
-//	}
+	[NSThread setThreadPriority:0.2];
+	
+	NSMutableDictionary *ret = [NSMutableDictionary dictionary];
+	
+	ABAddressBookRef addressBook = ABAddressBookCreate();
+	CFArrayRef allPersons = ABAddressBookCopyArrayOfAllPeople(addressBook);
+	CFIndex personCount = ABAddressBookGetPersonCount(addressBook);
+	
+	for(CFIndex personIx = 0; personIx < personCount; personIx++) {
+		
+		if ([self isCancelled])
+			break;
+		
+		ABRecordRef record = CFArrayGetValueAtIndex(allPersons, personIx);
+		if (ABRecordGetRecordType(record) != kABPersonType)
+			continue;
+		NSString *compositeName = (NSString *)ABRecordCopyCompositeName(record);
+		
+		ABMultiValueRef emailValue = ABRecordCopyValue(record, kABPersonEmailProperty);
+		CFIndex valueCount = ABMultiValueGetCount(emailValue);
+		for (CFIndex valueIx = 0; valueIx < valueCount; valueIx++) {
+			NSString *name = compositeName;
+			NSString *email = (NSString *)ABMultiValueCopyValueAtIndex(emailValue, valueIx);
+			NSString *label = (NSString *)ABMultiValueCopyLabelAtIndex(emailValue, valueIx);
+			NSString *mailType = nil;
+			if (email) {
+				
+				if (label) {
+					mailType = (NSString *)ABAddressBookCopyLocalizedLabel((CFStringRef)label);
+				} else {
+					mailType = @"email";
+				}
+				
+				if (!name) {
+					name = email;
+				}
+				
+				NSDictionary *personDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+											name, @"name",
+											email, @"email",
+											mailType, @"mailType",
+											nil];
+				
+				[ret setObject:personDict forKey:[[NSString stringWithFormat:@"%@ %@", compositeName, email] lowercaseString]];
+				[personDict release];
+			}
+			
+			[label release];
+			[email release];
+			[mailType release];
+		}
+		CFRelease(emailValue);
+		[compositeName release];
+	}
+	
+	CFRelease(addressBook);
+	CFRelease(allPersons);
+	
+	if (![self isCancelled]) {
+		[_target performSelectorOnMainThread:_selector
+								  withObject:ret
+							   waitUntilDone:YES];
+	}
 }
 
 @end

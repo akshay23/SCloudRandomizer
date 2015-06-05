@@ -1,0 +1,873 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 190EA4291AF2D0C30003DCD6 /* Music-icon.png */; };
+		196E89181B22448B008DC002 /* SCAudioStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 196E89171B22448B008DC002 /* SCAudioStream.m */; };
+		196E891A1B224496008DC002 /* SCAudioBufferQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 196E89191B224496008DC002 /* SCAudioBufferQueue.m */; };
+		197D26F71B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */; };
+		197D26F91B17B2A80061AA56 /* SCAudioFileStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */; };
+		1980A3571B221CF200608E61 /* scloud_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1980A3561B221CF200608E61 /* scloud_logo.png */; };
+		1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72D1A607F4400109F76 /* Heart-red-transparent.png */; };
+		1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72E1A607F4400109F76 /* Heart-white-transparent.png */; };
+		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
+		1997F7361A6421C700109F76 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7351A6421C700109F76 /* GlobalData.m */; };
+		1997F7391A6454DC00109F76 /* SearchParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7381A6454DC00109F76 /* SearchParams.m */; };
+		19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F071A2FC98B00281221 /* btn-connect-m.png */; };
+		19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F091A30CDB300281221 /* btn-disconnect-m.png */; };
+		19C18F0D1A30CF2E00281221 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C18F0C1A30CF2E00281221 /* MainViewController.m */; };
+		19C18F0F1A30E31200281221 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C18F0E1A30E31200281221 /* AVFoundation.framework */; };
+		19C18F131A30E86A00281221 /* play_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F121A30E86A00281221 /* play_btn.png */; };
+		19C18F171A30FD1500281221 /* play_next_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F151A30FD1500281221 /* play_next_btn.png */; };
+		19C18F191A31068D00281221 /* pause_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F181A31068D00281221 /* pause_btn.png */; };
+		19C984811B1FFB89008E9333 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C984801B1FFB89008E9333 /* iRate.m */; };
+		19C984831B1FFCE2008E9333 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19C984821B1FFCE2008E9333 /* iRate.bundle */; };
+		19C984851B200060008E9333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19C984841B200060008E9333 /* Localizable.strings */; };
+		19C984871B200B22008E9333 /* powered_by_scloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C984861B200B22008E9333 /* powered_by_scloud.png */; };
+		19CDED291A2FB92100DD97CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED281A2FB92100DD97CC /* main.m */; };
+		19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2B1A2FB92100DD97CC /* AppDelegate.m */; };
+		19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */; };
+		19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED331A2FB92100DD97CC /* Main.storyboard */; };
+		19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED361A2FB92100DD97CC /* Images.xcassets */; };
+		19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CDED381A2FB92100DD97CC /* LaunchScreen.xib */; };
+		19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F38A631A9F811C002361E6 /* TrackInfoVC.m */; };
+		4E254FB51B17A65900A70F26 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E254FB41B17A65900A70F26 /* refresh.png */; };
+		4E3A92771AE0602C00640EFB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92761AE0602C00640EFB /* play.png */; };
+		4E3A92791AE0604800640EFB /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A92781AE0604800640EFB /* tag.png */; };
+		4E83637B1B18B69500687FB7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E83637A1B18B69500687FB7 /* SystemConfiguration.framework */; };
+		4E8363811B18F17600687FB7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E83637F1B18F17600687FB7 /* Reachability.m */; };
+		4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8AC8DC1AF2C69900B2054B /* Utility.m */; };
+		4E9DA56A1B05217D00B324B1 /* UtilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA5691B05217D00B324B1 /* UtilityTests.m */; };
+		4E9DA57E1B055B1800B324B1 /* MusicSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9DA57D1B055B1800B324B1 /* MusicSourceTests.m */; };
+		4E9DA5801B05621F00B324B1 /* usr in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DA57F1B05621F00B324B1 /* usr */; };
+		4E9DA5821B05629600B324B1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E9DA5811B05629600B324B1 /* libOCMock.a */; };
+		4ED3F5A31AB272A200259C84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3F5A21AB272A200259C84 /* background.png */; };
+		4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8521AF17A9600F2D38E /* MusicSource.m */; };
+		4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7E8551AF1DFDA00F2D38E /* Track.m */; };
+		769FE716056AC43C82A9D123 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D93AEB043C389B9C95D3E1C /* libPods.a */; };
+		990B8C6AC5986A338599C9B8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D93AEB043C389B9C95D3E1C /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19CDED401A2FB92100DD97CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19CDED1B1A2FB92100DD97CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19CDED221A2FB92100DD97CC;
+			remoteInfo = SCloudRandomizer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		19B208231A3504A50011C207 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		190EA4291AF2D0C30003DCD6 /* Music-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Music-icon.png"; sourceTree = "<group>"; };
+		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
+		196E89171B22448B008DC002 /* SCAudioStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioStream.m; sourceTree = "<group>"; };
+		196E89191B224496008DC002 /* SCAudioBufferQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioBufferQueue.m; sourceTree = "<group>"; };
+		197D26EF1B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioStreamPacketDescriptions.h; sourceTree = "<group>"; };
+		197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioStreamPacketDescriptions.m; sourceTree = "<group>"; };
+		197D26F11B17B2A80061AA56 /* SCAudioFileStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioFileStreamParser.h; sourceTree = "<group>"; };
+		197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioFileStreamParser.m; sourceTree = "<group>"; };
+		197D26F31B17B2A80061AA56 /* SCAudioBufferQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioBufferQueue.h; sourceTree = "<group>"; };
+		197D26F51B17B2A80061AA56 /* SCAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioStream.h; sourceTree = "<group>"; };
+		1980A3561B221CF200608E61 /* scloud_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scloud_logo.png; sourceTree = "<group>"; };
+		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
+		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
+		1997F7311A64211700109F76 /* SearchParamsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParamsVC.h; sourceTree = "<group>"; };
+		1997F7321A64211700109F76 /* SearchParamsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchParamsVC.m; sourceTree = "<group>"; };
+		1997F7341A6421C700109F76 /* GlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalData.h; sourceTree = "<group>"; };
+		1997F7351A6421C700109F76 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
+		1997F7371A6454DC00109F76 /* SearchParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParams.h; sourceTree = "<group>"; };
+		1997F7381A6454DC00109F76 /* SearchParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchParams.m; sourceTree = "<group>"; };
+		19B207FF1A3504A40011C207 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		19C18F071A2FC98B00281221 /* btn-connect-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-connect-m.png"; sourceTree = "<group>"; };
+		19C18F091A30CDB300281221 /* btn-disconnect-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-disconnect-m.png"; sourceTree = "<group>"; };
+		19C18F0B1A30CF2E00281221 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		19C18F0C1A30CF2E00281221 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		19C18F0E1A30E31200281221 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		19C18F121A30E86A00281221 /* play_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_btn.png; sourceTree = "<group>"; };
+		19C18F151A30FD1500281221 /* play_next_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_next_btn.png; sourceTree = "<group>"; };
+		19C18F181A31068D00281221 /* pause_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_btn.png; sourceTree = "<group>"; };
+		19C9847F1B1FFB89008E9333 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		19C984801B1FFB89008E9333 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		19C984821B1FFCE2008E9333 /* iRate.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iRate.bundle; sourceTree = "<group>"; };
+		19C984841B200060008E9333 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		19C984861B200B22008E9333 /* powered_by_scloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powered_by_scloud.png; sourceTree = "<group>"; };
+		19CDED231A2FB92100DD97CC /* Scloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19CDED271A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19CDED281A2FB92100DD97CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		19CDED2A1A2FB92100DD97CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19CDED2B1A2FB92100DD97CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		19CDED2E1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SCloudRandomizer.xcdatamodel; sourceTree = "<group>"; };
+		19CDED341A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		19CDED361A2FB92100DD97CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		19CDED391A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScloudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19CDED441A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
+		19F38A631A9F811C002361E6 /* TrackInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInfoVC.m; sourceTree = "<group>"; };
+		4E254FB41B17A65900A70F26 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		4E3A92761AE0602C00640EFB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		4E3A92781AE0604800640EFB /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		4E83637A1B18B69500687FB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4E83637F1B18F17600687FB7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4E8363801B18F17600687FB7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4E8AC8DB1AF2C68A00B2054B /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		4E8AC8DC1AF2C69900B2054B /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		4E9DA5691B05217D00B324B1 /* UtilityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTests.m; sourceTree = "<group>"; };
+		4E9DA5791B0559E300B324B1 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/libOCMock.a; sourceTree = "<group>"; };
+		4E9DA57D1B055B1800B324B1 /* MusicSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSourceTests.m; sourceTree = "<group>"; };
+		4E9DA57F1B05621F00B324B1 /* usr */ = {isa = PBXFileReference; lastKnownFileType = folder; path = usr; sourceTree = "<group>"; };
+		4E9DA5811B05629600B324B1 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/include/libOCMock.a; sourceTree = "<group>"; };
+		4ED3F5A21AB272A200259C84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4ED7E84A1AF16C4800F2D38E /* MusicSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicSource.h; sourceTree = "<group>"; };
+		4ED7E8521AF17A9600F2D38E /* MusicSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSource.m; sourceTree = "<group>"; };
+		4ED7E8541AF1DFC800F2D38E /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		4ED7E8551AF1DFDA00F2D38E /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		5533FBCA28900360EA15BF70 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6D93AEB043C389B9C95D3E1C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE491210CC257787FD21C7AF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19CDED201A2FB92100DD97CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E83637B1B18B69500687FB7 /* SystemConfiguration.framework in Frameworks */,
+				19C18F0F1A30E31200281221 /* AVFoundation.framework in Frameworks */,
+				769FE716056AC43C82A9D123 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19CDED3C1A2FB92100DD97CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E9DA5821B05629600B324B1 /* libOCMock.a in Frameworks */,
+				990B8C6AC5986A338599C9B8 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		197D26FF1B17B2CD0061AA56 /* SoundCloudAPI++ */ = {
+			isa = PBXGroup;
+			children = (
+				196E89191B224496008DC002 /* SCAudioBufferQueue.m */,
+				196E89171B22448B008DC002 /* SCAudioStream.m */,
+				197D26EF1B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.h */,
+				197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */,
+				197D26F11B17B2A80061AA56 /* SCAudioFileStreamParser.h */,
+				197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */,
+				197D26F31B17B2A80061AA56 /* SCAudioBufferQueue.h */,
+				197D26F51B17B2A80061AA56 /* SCAudioStream.h */,
+			);
+			name = "SoundCloudAPI++";
+			sourceTree = "<group>";
+		};
+		19B759D91B027660005F6D1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4E83637F1B18F17600687FB7 /* Reachability.m */,
+				4E8363801B18F17600687FB7 /* Reachability.h */,
+				1997F7371A6454DC00109F76 /* SearchParams.h */,
+				1997F7381A6454DC00109F76 /* SearchParams.m */,
+				4ED7E84A1AF16C4800F2D38E /* MusicSource.h */,
+				4ED7E8521AF17A9600F2D38E /* MusicSource.m */,
+				4ED7E8541AF1DFC800F2D38E /* Track.h */,
+				4ED7E8551AF1DFDA00F2D38E /* Track.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		19B759DA1B027678005F6D1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19F38A621A9F811C002361E6 /* TrackInfoVC.h */,
+				19F38A631A9F811C002361E6 /* TrackInfoVC.m */,
+				1997F7311A64211700109F76 /* SearchParamsVC.h */,
+				1997F7321A64211700109F76 /* SearchParamsVC.m */,
+				19C18F0B1A30CF2E00281221 /* MainViewController.h */,
+				19C18F0C1A30CF2E00281221 /* MainViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19B759DB1B0276A9005F6D1E /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				19CDED331A2FB92100DD97CC /* Main.storyboard */,
+				19CDED381A2FB92100DD97CC /* LaunchScreen.xib */,
+				19CDED2A1A2FB92100DD97CC /* AppDelegate.h */,
+				19CDED2B1A2FB92100DD97CC /* AppDelegate.m */,
+				1913B8661AE0027F007D2C0E /* MainVCDelegate.h */,
+				4E8AC8DB1AF2C68A00B2054B /* Utility.h */,
+				4E8AC8DC1AF2C69900B2054B /* Utility.m */,
+				1997F7341A6421C700109F76 /* GlobalData.h */,
+				1997F7351A6421C700109F76 /* GlobalData.m */,
+				19C9847F1B1FFB89008E9333 /* iRate.h */,
+				19C984801B1FFB89008E9333 /* iRate.m */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		19C18F041A2FC87400281221 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1980A3561B221CF200608E61 /* scloud_logo.png */,
+				19C984861B200B22008E9333 /* powered_by_scloud.png */,
+				4E254FB41B17A65900A70F26 /* refresh.png */,
+				190EA4291AF2D0C30003DCD6 /* Music-icon.png */,
+				4ED3F5A21AB272A200259C84 /* background.png */,
+				1997F72D1A607F4400109F76 /* Heart-red-transparent.png */,
+				1997F72E1A607F4400109F76 /* Heart-white-transparent.png */,
+				19C18F181A31068D00281221 /* pause_btn.png */,
+				19C18F151A30FD1500281221 /* play_next_btn.png */,
+				19C18F121A30E86A00281221 /* play_btn.png */,
+				4E3A92761AE0602C00640EFB /* play.png */,
+				4E3A92781AE0604800640EFB /* tag.png */,
+				19C18F091A30CDB300281221 /* btn-disconnect-m.png */,
+				19C18F071A2FC98B00281221 /* btn-connect-m.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		19CDED1A1A2FB92100DD97CC = {
+			isa = PBXGroup;
+			children = (
+				4E9DA57F1B05621F00B324B1 /* usr */,
+				19CDED251A2FB92100DD97CC /* SCloudRandomizer */,
+				19CDED421A2FB92100DD97CC /* SCloudRandomizerTests */,
+				19CDED241A2FB92100DD97CC /* Products */,
+				75D048F3754150AAC3837DD0 /* Frameworks */,
+				A3903DC87E0CFB1E0F0E2850 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		19CDED241A2FB92100DD97CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19CDED231A2FB92100DD97CC /* Scloudy.app */,
+				19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19CDED251A2FB92100DD97CC /* SCloudRandomizer */ = {
+			isa = PBXGroup;
+			children = (
+				197D26FF1B17B2CD0061AA56 /* SoundCloudAPI++ */,
+				19B759DB1B0276A9005F6D1E /* Misc */,
+				19B759DA1B027678005F6D1E /* Controllers */,
+				19B759D91B027660005F6D1E /* Models */,
+				19C18F041A2FC87400281221 /* Images */,
+				19CDED261A2FB92100DD97CC /* Supporting Files */,
+			);
+			path = SCloudRandomizer;
+			sourceTree = "<group>";
+		};
+		19CDED261A2FB92100DD97CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19CDED361A2FB92100DD97CC /* Images.xcassets */,
+				19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */,
+				19C984821B1FFCE2008E9333 /* iRate.bundle */,
+				19CDED271A2FB92100DD97CC /* Info.plist */,
+				19CDED281A2FB92100DD97CC /* main.m */,
+				19C984841B200060008E9333 /* Localizable.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19CDED421A2FB92100DD97CC /* SCloudRandomizerTests */ = {
+			isa = PBXGroup;
+			children = (
+				4E9DA5691B05217D00B324B1 /* UtilityTests.m */,
+				19CDED431A2FB92100DD97CC /* Supporting Files */,
+				4E9DA57D1B055B1800B324B1 /* MusicSourceTests.m */,
+			);
+			path = SCloudRandomizerTests;
+			sourceTree = "<group>";
+		};
+		19CDED431A2FB92100DD97CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19CDED441A2FB92100DD97CC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75D048F3754150AAC3837DD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E83637A1B18B69500687FB7 /* SystemConfiguration.framework */,
+				4E9DA5811B05629600B324B1 /* libOCMock.a */,
+				4E9DA5791B0559E300B324B1 /* libOCMock.a */,
+				19C18F0E1A30E31200281221 /* AVFoundation.framework */,
+				19B207FF1A3504A40011C207 /* WatchKit.framework */,
+				6D93AEB043C389B9C95D3E1C /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3903DC87E0CFB1E0F0E2850 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE491210CC257787FD21C7AF /* Pods.debug.xcconfig */,
+				5533FBCA28900360EA15BF70 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19CDED221A2FB92100DD97CC /* Scloudy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "Scloudy" */;
+			buildPhases = (
+				AE1CE4B1D320D7FC12DAA033 /* Check Pods Manifest.lock */,
+				19CDED1F1A2FB92100DD97CC /* Sources */,
+				19CDED201A2FB92100DD97CC /* Frameworks */,
+				19CDED211A2FB92100DD97CC /* Resources */,
+				19B208231A3504A50011C207 /* Embed App Extensions */,
+				2E465EE85C83627DA0F21B16 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scloudy;
+			productName = SCloudRandomizer;
+			productReference = 19CDED231A2FB92100DD97CC /* Scloudy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		19CDED3E1A2FB92100DD97CC /* ScloudyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19CDED4C1A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "ScloudyTests" */;
+			buildPhases = (
+				54D7E6382D590D31AD6D9CBF /* Check Pods Manifest.lock */,
+				19CDED3B1A2FB92100DD97CC /* Sources */,
+				19CDED3C1A2FB92100DD97CC /* Frameworks */,
+				19CDED3D1A2FB92100DD97CC /* Resources */,
+				EF2ABDDCC93BFB0E32A9DB29 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19CDED411A2FB92100DD97CC /* PBXTargetDependency */,
+			);
+			name = ScloudyTests;
+			productName = SCloudRandomizerTests;
+			productReference = 19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19CDED1B1A2FB92100DD97CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Akshay Bharath";
+				TargetAttributes = {
+					19CDED221A2FB92100DD97CC = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = VRYW4TD62Q;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					19CDED3E1A2FB92100DD97CC = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 19CDED221A2FB92100DD97CC;
+					};
+				};
+			};
+			buildConfigurationList = 19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "Scloudy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19CDED1A1A2FB92100DD97CC;
+			productRefGroup = 19CDED241A2FB92100DD97CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19CDED221A2FB92100DD97CC /* Scloudy */,
+				19CDED3E1A2FB92100DD97CC /* ScloudyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19CDED211A2FB92100DD97CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19CDED351A2FB92100DD97CC /* Main.storyboard in Resources */,
+				19C18F191A31068D00281221 /* pause_btn.png in Resources */,
+				190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */,
+				19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */,
+				1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */,
+				19C18F171A30FD1500281221 /* play_next_btn.png in Resources */,
+				4E3A92771AE0602C00640EFB /* play.png in Resources */,
+				1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */,
+				19CDED3A1A2FB92100DD97CC /* LaunchScreen.xib in Resources */,
+				4E9DA5801B05621F00B324B1 /* usr in Resources */,
+				19C18F131A30E86A00281221 /* play_btn.png in Resources */,
+				4E3A92791AE0604800640EFB /* tag.png in Resources */,
+				1980A3571B221CF200608E61 /* scloud_logo.png in Resources */,
+				19C984831B1FFCE2008E9333 /* iRate.bundle in Resources */,
+				19C984851B200060008E9333 /* Localizable.strings in Resources */,
+				19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */,
+				19C984871B200B22008E9333 /* powered_by_scloud.png in Resources */,
+				4E254FB51B17A65900A70F26 /* refresh.png in Resources */,
+				4ED3F5A31AB272A200259C84 /* background.png in Resources */,
+				19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19CDED3D1A2FB92100DD97CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E465EE85C83627DA0F21B16 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54D7E6382D590D31AD6D9CBF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE1CE4B1D320D7FC12DAA033 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF2ABDDCC93BFB0E32A9DB29 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19CDED1F1A2FB92100DD97CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				197D26F91B17B2A80061AA56 /* SCAudioFileStreamParser.m in Sources */,
+				1997F7361A6421C700109F76 /* GlobalData.m in Sources */,
+				197D26F71B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m in Sources */,
+				1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */,
+				19C984811B1FFB89008E9333 /* iRate.m in Sources */,
+				19F38A641A9F811C002361E6 /* TrackInfoVC.m in Sources */,
+				4ED7E8561AF1DFDA00F2D38E /* Track.m in Sources */,
+				1997F7391A6454DC00109F76 /* SearchParams.m in Sources */,
+				196E891A1B224496008DC002 /* SCAudioBufferQueue.m in Sources */,
+				19CDED2F1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld in Sources */,
+				19CDED2C1A2FB92100DD97CC /* AppDelegate.m in Sources */,
+				4E8AC8DD1AF2C69900B2054B /* Utility.m in Sources */,
+				4ED7E8531AF17A9600F2D38E /* MusicSource.m in Sources */,
+				19C18F0D1A30CF2E00281221 /* MainViewController.m in Sources */,
+				4E8363811B18F17600687FB7 /* Reachability.m in Sources */,
+				196E89181B22448B008DC002 /* SCAudioStream.m in Sources */,
+				19CDED291A2FB92100DD97CC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19CDED3B1A2FB92100DD97CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E9DA57E1B055B1800B324B1 /* MusicSourceTests.m in Sources */,
+				4E9DA56A1B05217D00B324B1 /* UtilityTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19CDED411A2FB92100DD97CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19CDED221A2FB92100DD97CC /* Scloudy */;
+			targetProxy = 19CDED401A2FB92100DD97CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		19CDED331A2FB92100DD97CC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19CDED341A2FB92100DD97CC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		19CDED381A2FB92100DD97CC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19CDED391A2FB92100DD97CC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19CDED471A2FB92100DD97CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		19CDED481A2FB92100DD97CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		19CDED4A1A2FB92100DD97CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE491210CC257787FD21C7AF /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudUI\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/NXOAuth2Client\"",
+					"\"${PODS_ROOT}/Headers/Public/OHAttributedLabel\"",
+				);
+				INFOPLIST_FILE = SCloudRandomizer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-CocoaSoundCloudAPI\"",
+					"-l\"Pods-CocoaSoundCloudUI\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-NXOAuth2Client\"",
+					"-l\"Pods-OHAttributedLabel\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Security\"",
+				);
+				PRODUCT_NAME = Scloudy;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		19CDED4B1A2FB92100DD97CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5533FBCA28900360EA15BF70 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudUI\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/NXOAuth2Client\"",
+					"\"${PODS_ROOT}/Headers/Public/OHAttributedLabel\"",
+				);
+				INFOPLIST_FILE = SCloudRandomizer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public/CocoaSoundCloudAPI\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-CocoaSoundCloudAPI\"",
+					"-l\"Pods-CocoaSoundCloudUI\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-NXOAuth2Client\"",
+					"-l\"Pods-OHAttributedLabel\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Security\"",
+				);
+				PRODUCT_NAME = Scloudy;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		19CDED4D1A2FB92100DD97CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE491210CC257787FD21C7AF /* Pods.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/usr/include",
+				);
+				INFOPLIST_FILE = SCloudRandomizerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr",
+					"$(PROJECT_DIR)/usr/include",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = ScloudyTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SCloudRandomizer.app/SCloudRandomizer";
+			};
+			name = Debug;
+		};
+		19CDED4E1A2FB92100DD97CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5533FBCA28900360EA15BF70 /* Pods.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/usr/include",
+				);
+				INFOPLIST_FILE = SCloudRandomizerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr",
+					"$(PROJECT_DIR)/usr/include",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = ScloudyTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SCloudRandomizer.app/SCloudRandomizer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "Scloudy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19CDED471A2FB92100DD97CC /* Debug */,
+				19CDED481A2FB92100DD97CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "Scloudy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19CDED4A1A2FB92100DD97CC /* Debug */,
+				19CDED4B1A2FB92100DD97CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19CDED4C1A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "ScloudyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19CDED4D1A2FB92100DD97CC /* Debug */,
+				19CDED4E1A2FB92100DD97CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		19CDED2D1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				19CDED2E1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodel */,
+			);
+			currentVersion = 19CDED2E1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodel */;
+			path = SCloudRandomizer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 19CDED1B1A2FB92100DD97CC /* Project object */;
+}

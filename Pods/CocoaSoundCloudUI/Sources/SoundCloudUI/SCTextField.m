@@ -37,9 +37,7 @@
 - (void)drawPlaceholderInRect:(CGRect)rect;
 {
     [[UIColor listSubtitleColor] setFill];
-    NSArray *keys = [NSArray arrayWithObjects:NSFontAttributeName, nil];
-    NSArray *values = [NSArray arrayWithObjects:self.font, nil];
-    [self.placeholder drawInRect:rect withAttributes:[NSDictionary dictionaryWithObjects:values forKeys:keys]];
+    [self.placeholder drawInRect:rect withFont:self.font];
 }
 
 // Placeholder Text Bounds

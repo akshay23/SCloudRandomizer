@@ -182,7 +182,6 @@
 
 - (void)viewDidAppear:(BOOL)animated;
 {
-    [super viewDidAppear:animated];
     self.activityIndicator.center = self.view.center;
 }
 
