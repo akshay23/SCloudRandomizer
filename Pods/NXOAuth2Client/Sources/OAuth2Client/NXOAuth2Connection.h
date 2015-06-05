@@ -65,7 +65,7 @@ typedef void(^NXOAuth2ConnectionSendingProgressHandler)(unsigned long long bytes
     
     NXOAuth2Client        *client;
     
-    NSObject<NXOAuth2ConnectionDelegate>    *__unsafe_unretained delegate;    // assigned
+    NSObject<NXOAuth2ConnectionDelegate>    *__weak delegate;    // assigned
     
     NXOAuth2ConnectionResponseHandler responseHandler;
     NXOAuth2ConnectionSendingProgressHandler sendingProgressHandler;
@@ -77,7 +77,7 @@ typedef void(^NXOAuth2ConnectionSendingProgressHandler)(unsigned long long bytes
 #endif
 }
 
-@property (nonatomic, unsafe_unretained) NSObject<NXOAuth2ConnectionDelegate>    *delegate;
+@property (nonatomic, weak) NSObject<NXOAuth2ConnectionDelegate>    *delegate;
 @property (nonatomic, strong, readonly) NSData *data;
 @property (nonatomic, assign) BOOL savesData;
 @property (nonatomic, assign, readonly) long long expectedContentLength;

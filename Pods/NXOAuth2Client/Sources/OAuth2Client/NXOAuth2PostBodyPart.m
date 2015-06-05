@@ -36,8 +36,6 @@
 {
     if ([content isKindOfClass:[NSString class]]) {
         return [self initWithName:name stringContent:content];
-    } else if ([content isKindOfClass:[NSURL class]] && [content isFileURL]) {
-        return [self initWithName:name fileContent:[content path]];
     } else if ([content isKindOfClass:[NSData class]]) {
         return [self initWithName:name dataContent:content];
     } else if ([content isKindOfClass:[NXOAuth2FileStreamWrapper class]]) {
