@@ -705,7 +705,7 @@ static void _JKArrayRemoveObjectAtIndex(JKArray *array, NSUInteger objectIndex) 
   NSParameterAssert((objects != NULL) && (count <= capacity));
   if((objectsPtr     == NULL)  && (NSMaxRange(range) > 0UL))   { [NSException raise:NSRangeException format:@"*** -[%@ %@]: pointer to objects array is NULL but range length is %lu", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)NSMaxRange(range)];        }
   if((range.location >  count) || (NSMaxRange(range) > count)) { [NSException raise:NSRangeException format:@"*** -[%@ %@]: index (%lu) beyond bounds (%lu)",                          NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)NSMaxRange(range), (unsigned long)count]; }
-  if(objectsPtr) memcpy(objectsPtr, objects + range.location, range.length * sizeof(id));
+  memcpy(objectsPtr, objects + range.location, range.length * sizeof(id));
 }
 
 - (id)objectAtIndex:(NSUInteger)objectIndex
@@ -1207,25 +1207,21 @@ static void jk_error(JKParseState *parseState, NSString *format, ...) {
 #pragma mark Buffer and Object Stack management functions
 
 static void jk_managedBuffer_release(JKManagedBuffer *managedBuffer) {
-    if (managedBuffer != NULL) {
-      if((managedBuffer->flags & JKManagedBufferMustFree)) {
-        if(managedBuffer->bytes.ptr != NULL) { free(managedBuffer->bytes.ptr); managedBuffer->bytes.ptr = NULL; }
-        managedBuffer->flags &= ~JKManagedBufferMustFree;
-      }
+  if((managedBuffer->flags & JKManagedBufferMustFree)) {
+    if(managedBuffer->bytes.ptr != NULL) { free(managedBuffer->bytes.ptr); managedBuffer->bytes.ptr = NULL; }
+    managedBuffer->flags &= ~JKManagedBufferMustFree;
+  }
 
-      managedBuffer->bytes.ptr     = NULL;
-      managedBuffer->bytes.length  = 0UL;
-      managedBuffer->flags        &= ~JKManagedBufferLocationMask;
-    }
+  managedBuffer->bytes.ptr     = NULL;
+  managedBuffer->bytes.length  = 0UL;
+  managedBuffer->flags        &= ~JKManagedBufferLocationMask;
 }
 
 static void jk_managedBuffer_setToStackBuffer(JKManagedBuffer *managedBuffer, unsigned char *ptr, size_t length) {
   jk_managedBuffer_release(managedBuffer);
-    if (managedBuffer != NULL) {
-      managedBuffer->bytes.ptr     = ptr;
-      managedBuffer->bytes.length  = length;
-      managedBuffer->flags         = (managedBuffer->flags & ~JKManagedBufferLocationMask) | JKManagedBufferOnStack;
-    }
+  managedBuffer->bytes.ptr     = ptr;
+  managedBuffer->bytes.length  = length;
+  managedBuffer->flags         = (managedBuffer->flags & ~JKManagedBufferLocationMask) | JKManagedBufferOnStack;
 }
 
 static unsigned char *jk_managedBuffer_resize(JKManagedBuffer *managedBuffer, size_t newSize) {
@@ -2864,12 +2860,10 @@ static int jk_encode_add_atom_to_buffer(JKEncodeState *encodeState, void *object
 
   if((error != NULL) && (*error != NULL)) { *error = NULL; }
 
-    if (encodeState != NULL) {
-        encodeState->serializeOptionFlags                         = optionFlags;
-        encodeState->encodeOption                                 = encodeOption;
-        encodeState->stringBuffer.roundSizeUpToMultipleOf         = (1024UL * 32UL);
-        encodeState->utf8ConversionBuffer.roundSizeUpToMultipleOf = 4096UL;
-    }
+  encodeState->serializeOptionFlags                         = optionFlags;
+  encodeState->encodeOption                                 = encodeOption;
+  encodeState->stringBuffer.roundSizeUpToMultipleOf         = (1024UL * 32UL);
+  encodeState->utf8ConversionBuffer.roundSizeUpToMultipleOf = 4096UL;
 
   unsigned char stackJSONBuffer[JK_JSONBUFFER_SIZE] JK_ALIGNED(64);
   jk_managedBuffer_setToStackBuffer(&encodeState->stringBuffer,         stackJSONBuffer, sizeof(stackJSONBuffer));
@@ -2881,15 +2875,10 @@ static int jk_encode_add_atom_to_buffer(JKEncodeState *encodeState, void *object
   if(((encodeOption & JKEncodeOptionStringObj)     != 0UL) &&  ([object isKindOfClass:[NSString class]] == NO))                                                         { jk_encode_error(encodeState, @"Unable to serialize object class %@, expected a NSString.", NSStringFromClass([object class])); goto errorExit; }
 
   if(jk_encode_add_atom_to_buffer(encodeState, object) == 0) {
-      BOOL stackBuffer = NO;
-      if (encodeState != NULL) {
-           stackBuffer = ((encodeState->stringBuffer.flags & JKManagedBufferMustFree) == 0UL) ? YES : NO;
-      }
+    BOOL stackBuffer = ((encodeState->stringBuffer.flags & JKManagedBufferMustFree) == 0UL) ? YES : NO;
     
-      if (encodeState != NULL) {
     if((encodeState->atIndex < 2UL))
     if((stackBuffer == NO) && ((encodeState->stringBuffer.bytes.ptr = (unsigned char *)reallocf(encodeState->stringBuffer.bytes.ptr, encodeState->atIndex + 16UL)) == NULL)) { jk_encode_error(encodeState, @"Unable to realloc buffer"); goto errorExit; }
-
 
     switch((encodeOption & JKEncodeOptionAsTypeMask)) {
       case JKEncodeOptionAsData:
@@ -2906,7 +2895,6 @@ static int jk_encode_add_atom_to_buffer(JKEncodeState *encodeState, void *object
     }
 
     if((returnObject != NULL) && (stackBuffer == NO)) { encodeState->stringBuffer.flags &= ~JKManagedBufferMustFree; encodeState->stringBuffer.bytes.ptr = NULL; encodeState->stringBuffer.bytes.length = 0UL; }
-                }
   }
 
 errorExit:
