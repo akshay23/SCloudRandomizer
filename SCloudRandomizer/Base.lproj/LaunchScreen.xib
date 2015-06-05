@@ -17,11 +17,11 @@
                         <constraint firstAttribute="width" constant="88" id="OXg-e9-PCs"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scloudy-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="bIg-GC-8eV">
-                    <rect key="frame" x="170" y="75" width="140" height="140"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scloud_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="bIg-GC-8eV">
+                    <rect key="frame" x="172" y="101" width="136" height="109"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="140" id="1CX-uX-JeS"/>
-                        <constraint firstAttribute="width" constant="140" id="Ofd-vJ-KYQ"/>
+                        <constraint firstAttribute="height" constant="109" id="1CX-uX-JeS"/>
+                        <constraint firstAttribute="width" constant="136" id="Ofd-vJ-KYQ"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -29,7 +29,7 @@
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="bIg-GC-8eV" secondAttribute="centerX" id="66j-i2-Vs7"/>
                 <constraint firstAttribute="centerY" secondItem="bEc-kW-U3g" secondAttribute="centerY" constant="-14" id="8O9-hW-2HV"/>
-                <constraint firstAttribute="centerY" secondItem="bIg-GC-8eV" secondAttribute="centerY" constant="95" id="8RJ-Da-Vk4"/>
+                <constraint firstAttribute="centerY" secondItem="bIg-GC-8eV" secondAttribute="centerY" constant="84.5" id="8RJ-Da-Vk4"/>
                 <constraint firstAttribute="centerX" secondItem="bEc-kW-U3g" secondAttribute="centerX" constant="-7" id="OS7-b7-Oci"/>
                 <constraint firstAttribute="bottom" secondItem="bEc-kW-U3g" secondAttribute="bottom" constant="164" id="fPN-x3-mPl"/>
                 <constraint firstItem="bEc-kW-U3g" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jCy-rP-282"/>
@@ -47,6 +47,6 @@
     </objects>
     <resources>
         <image name="powered_by_scloud.png" width="64" height="64"/>
-        <image name="scloudy-logo.png" width="93" height="105"/>
+        <image name="scloud_logo.png" width="611" height="500"/>
     </resources>
 </document>
