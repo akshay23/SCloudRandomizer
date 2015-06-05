@@ -760,7 +760,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE491210CC257787FD21C7AF /* Pods.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Scloud.app/Scloudy";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -796,7 +796,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5533FBCA28900360EA15BF70 /* Pods.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Scloudy.app/Scloudy";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
