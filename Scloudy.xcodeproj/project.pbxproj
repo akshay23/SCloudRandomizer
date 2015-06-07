@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 190EA4291AF2D0C30003DCD6 /* Music-icon.png */; };
+		190EEAAF1B24C55C00A56A66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAAD1B24C55C00A56A66 /* Main.storyboard */; };
+		190EEAB21B24C5D000A56A66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAB01B24C5D000A56A66 /* LaunchScreen.xib */; };
 		196E89181B22448B008DC002 /* SCAudioStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 196E89171B22448B008DC002 /* SCAudioStream.m */; };
 		196E891A1B224496008DC002 /* SCAudioBufferQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 196E89191B224496008DC002 /* SCAudioBufferQueue.m */; };
 		197D26F71B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */; };
@@ -72,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		190EA4291AF2D0C30003DCD6 /* Music-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Music-icon.png"; sourceTree = "<group>"; };
+		190EEAAE1B24C55C00A56A66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		190EEAB11B24C5D000A56A66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
 		19174E3E1B225533001BFBBE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/include/lib/libOCMock.a; sourceTree = "<group>"; };
 		196E89171B22448B008DC002 /* SCAudioStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioStream.m; sourceTree = "<group>"; };
@@ -111,9 +115,7 @@
 		19CDED2A1A2FB92100DD97CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19CDED2B1A2FB92100DD97CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		19CDED2E1A2FB92100DD97CC /* SCloudRandomizer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SCloudRandomizer.xcdatamodel; sourceTree = "<group>"; };
-		19CDED341A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19CDED361A2FB92100DD97CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		19CDED391A2FB92100DD97CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScloudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CDED441A2FB92100DD97CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19F38A621A9F811C002361E6 /* TrackInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInfoVC.h; sourceTree = "<group>"; };
@@ -206,8 +208,8 @@
 		19B759DB1B0276A9005F6D1E /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				19CDED331A2FB92100DD97CC /* Main.storyboard */,
-				19CDED381A2FB92100DD97CC /* LaunchScreen.xib */,
+				190EEAB01B24C5D000A56A66 /* LaunchScreen.xib */,
+				190EEAAD1B24C55C00A56A66 /* Main.storyboard */,
 				19CDED2A1A2FB92100DD97CC /* AppDelegate.h */,
 				19CDED2B1A2FB92100DD97CC /* AppDelegate.m */,
 				1913B8661AE0027F007D2C0E /* MainVCDelegate.h */,
@@ -419,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190EEAB21B24C5D000A56A66 /* LaunchScreen.xib in Resources */,
 				19C18F191A31068D00281221 /* pause_btn.png in Resources */,
 				190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */,
 				19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */,
@@ -436,6 +439,7 @@
 				19C984871B200B22008E9333 /* powered_by_scloud.png in Resources */,
 				4E254FB51B17A65900A70F26 /* refresh.png in Resources */,
 				4ED3F5A31AB272A200259C84 /* background.png in Resources */,
+				190EEAAF1B24C55C00A56A66 /* Main.storyboard in Resources */,
 				19CDED371A2FB92100DD97CC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,18 +559,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		19CDED331A2FB92100DD97CC /* Main.storyboard */ = {
+		190EEAAD1B24C55C00A56A66 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				19CDED341A2FB92100DD97CC /* Base */,
+				190EEAAE1B24C55C00A56A66 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		19CDED381A2FB92100DD97CC /* LaunchScreen.xib */ = {
+		190EEAB01B24C5D000A56A66 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				19CDED391A2FB92100DD97CC /* Base */,
+				190EEAB11B24C5D000A56A66 /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
