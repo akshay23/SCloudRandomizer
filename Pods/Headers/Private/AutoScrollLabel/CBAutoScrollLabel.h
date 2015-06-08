@@ -1,1 +1,0 @@
-../../../AutoScrollLabel/CBAutoScrollLabel/CBAutoScrollLabel.h
