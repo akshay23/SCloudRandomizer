@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AutoScrollLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CocoaSoundCloudAPI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -30,6 +35,11 @@
 			<false/>
 		</dict>
 		<key>Pods-OHAttributedLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Scloudy-AutoScrollLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -65,6 +75,11 @@
 			<false/>
 		</dict>
 		<key>Pods-Scloudy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ScloudyTests-AutoScrollLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -112,107 +127,122 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00B6ED58DAAF8F9ECA5E3A42</key>
+		<key>12614C071E24DE39839FA2F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1243CA415A3452EBD67BA6AD</key>
+		<key>18A50815F648CC8E894F6B3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A2132DB86DDB0264551255</key>
+		<key>5433118AB176C66F473EB163</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40349DE42EA0FAD63DC65B4E</key>
+		<key>5587A52CD35BE283734F506A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62E54C356281D4C9AEC091DB</key>
+		<key>5A6F53D5503EA222E5223197</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6650E6E40E2B16FC5F82C917</key>
+		<key>6954F2E86483F72D850F7592</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>724B87587C9B6CCD25B37182</key>
+		<key>6D5A73BF5A2004FFA61E7A3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>864D409F73F956C38CEA6268</key>
+		<key>7D7ABC888EC1271E219525ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8869137824283F75FA752305</key>
+		<key>911E2D96B5775485A4D987DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>893CFB7218F34EB364851FFD</key>
+		<key>991768FC1133A6F0F6DF7319</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97AEE6E1DBE3EB34458F69A9</key>
+		<key>99F234B5033A40E1D30683ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E86F3A72B5A87A651066AEE</key>
+		<key>A13B79D218A2249AD3133259</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F15A310181A0D8B885D49AF</key>
+		<key>A3CE0E52431FEA80605C042B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A03ADA9579874398FDBBC6D5</key>
+		<key>A5357CBAE10F8CA13E6CF245</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3037B66EC70984E99411581</key>
+		<key>A7FAA318AF1F8883DB7653A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2EE6EA2CC57B3851A9F16D3</key>
+		<key>A851768CD32C9CEEDF036A25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C34E6CD06D0E9D7FFE7614F4</key>
+		<key>B5C0DB170DD15937423D48E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F20459DD96A1D35FC1014E39</key>
+		<key>B9903CA52E540EFCE0A51695</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F87867317AA6386D03F35B4C</key>
+		<key>D52246A509E682C01DA6D6DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE19C3617F2E8CA98AE8945C</key>
+		<key>D57CA240228A7FAC4B63D77E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE854673AD01CB3797BD67B5</key>
+		<key>D8F9816903AD711C8B93B827</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0C6362A963B561DC45B6C20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F28D0A2878D8CC9BF1629E53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3AE8480414C58D27E2608D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,4 +1,5 @@
 PODS:
+  - AutoScrollLabel (0.4.1)
   - CocoaSoundCloudAPI (1.0.1):
     - NXOAuth2Client (= 1.2.1)
   - CocoaSoundCloudUI (1.0.5):
@@ -11,11 +12,13 @@ PODS:
   - OHAttributedLabel (3.5.5)
 
 DEPENDENCIES:
+  - AutoScrollLabel
   - CocoaSoundCloudAPI (= 1.0.1)
   - CocoaSoundCloudUI (= 1.0.5)
   - MBProgressHUD (~> 0.8)
 
 SPEC CHECKSUMS:
+  AutoScrollLabel: afe272014f82c707c9203f1383f3fe4e32443fa2
   CocoaSoundCloudAPI: e8e1f2e463fa9bb9d68b2dcf361572787c7a6c3f
   CocoaSoundCloudUI: 4deb5ffe558d0b60d0aaeaf2420dda7aa31cb239
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0

@@ -6,6 +6,12 @@
 // project.
 
 
+// AutoScrollLabel
+#define COCOAPODS_POD_AVAILABLE_AutoScrollLabel
+#define COCOAPODS_VERSION_MAJOR_AutoScrollLabel 0
+#define COCOAPODS_VERSION_MINOR_AutoScrollLabel 4
+#define COCOAPODS_VERSION_PATCH_AutoScrollLabel 1
+
 // CocoaSoundCloudAPI
 #define COCOAPODS_POD_AVAILABLE_CocoaSoundCloudAPI
 #define COCOAPODS_VERSION_MAJOR_CocoaSoundCloudAPI 1
