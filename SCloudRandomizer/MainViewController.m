@@ -257,6 +257,12 @@ typedef void(^singleTrackDownloaded)(void);
     }
     [self.scAudioStream play];
     [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(updateTime:)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (void)playPauseSong {
@@ -269,11 +275,6 @@ typedef void(^singleTrackDownloaded)(void);
             [self playTrack];
         }
         self.isTrackPlaying = YES;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                      target:self
-                                                    selector:@selector(updateTime:)
-                                                    userInfo:nil
-                                                     repeats:YES];
         NSLog(@"Playing song");
     }
     else {
