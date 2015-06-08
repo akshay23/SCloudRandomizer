@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DJ GLorious" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gco-6T-81m">
-                                <rect key="frame" x="120" y="456" width="96" height="21"/>
+                                <rect key="frame" x="139" y="456" width="96" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -191,11 +191,11 @@
                             <constraint firstItem="A6Y-cj-GSa" firstAttribute="top" secondItem="C0S-sk-QO0" secondAttribute="bottom" constant="139" id="gJw-nM-XM5"/>
                             <constraint firstItem="7eA-Xp-o0g" firstAttribute="top" secondItem="Gco-6T-81m" secondAttribute="bottom" constant="26" id="hKh-fD-RRv"/>
                             <constraint firstItem="oX9-Qc-5vB" firstAttribute="top" secondItem="7eA-Xp-o0g" secondAttribute="bottom" constant="21" id="hpJ-rf-JDr"/>
-                            <constraint firstItem="7eA-Xp-o0g" firstAttribute="centerX" secondItem="Gco-6T-81m" secondAttribute="centerX" constant="19.5" id="i7e-Om-FKN"/>
+                            <constraint firstItem="7eA-Xp-o0g" firstAttribute="centerX" secondItem="Gco-6T-81m" secondAttribute="centerX" constant="0.5" id="i7e-Om-FKN"/>
                             <constraint firstItem="C0S-sk-QO0" firstAttribute="firstBaseline" secondItem="d3R-h9-evs" secondAttribute="firstBaseline" id="iLK-fX-6Lz"/>
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="top" secondItem="oX9-Qc-5vB" secondAttribute="top" constant="6" id="mr3-CJ-Ell"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="vyo-RJ-qAm" secondAttribute="top" id="qJ7-pG-bDP"/>
-                            <constraint firstItem="skF-YA-oCH" firstAttribute="centerX" secondItem="Gco-6T-81m" secondAttribute="centerX" constant="19.5" id="rYm-rw-9Ry"/>
+                            <constraint firstItem="skF-YA-oCH" firstAttribute="centerX" secondItem="Gco-6T-81m" secondAttribute="centerX" constant="0.5" id="rYm-rw-9Ry"/>
                             <constraint firstItem="skF-YA-oCH" firstAttribute="centerY" secondItem="2l3-9a-EXk" secondAttribute="centerY" constant="104" id="txQ-C6-2TV"/>
                             <constraint firstItem="7eA-Xp-o0g" firstAttribute="leading" secondItem="C0S-sk-QO0" secondAttribute="trailing" constant="8" id="v5k-cd-eaX"/>
                             <constraint firstItem="7eA-Xp-o0g" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="60" id="voV-mf-cTI"/>

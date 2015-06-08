@@ -66,6 +66,7 @@ typedef void(^singleTrackDownloaded)(void);
     self.btnChangeParams.layer.cornerRadius = 4;
     self.btnChangeParams.layer.borderWidth = 1;
     self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
+    self.imgArtwork.layer.borderWidth = 1;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveNotification:)
@@ -206,9 +207,7 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
-    [self.lblArtist setHidden:YES];
     [self.lblCurrentTime setHidden:YES];
-    [self.lblTitle setHidden:YES];
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
@@ -237,12 +236,16 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnInfo setEnabled:enable];
     [self.btnLike setEnabled:enable];
     [self.btnChangeParams setEnabled:enable];
+    [self.btnSCDisconnect setEnabled:enable];
+    [self.lblArtistValue setEnabled:enable];
+    [self.lblTitleValue setEnabled:enable];
+    [self.lblCurrentTime setEnabled:enable];
+    [self.lblLengthValue setEnabled:enable];
     
     if (enable) {
         self.imgArtwork.alpha = 1;
     } else {
-        self.imgArtwork.alpha = 0.5;
-        self.imgArtwork.layer.borderWidth = 1;
+        self.imgArtwork.alpha = 0.3;
     }
 }
 
@@ -392,8 +395,6 @@ typedef void(^singleTrackDownloaded)(void);
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
     [self.lblTitleValue setHidden:NO];
-    [self.lblTitle setHidden:NO];
-    [self.lblArtist setHidden:NO];
     [self.lblCurrentTime setHidden:NO];
     
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
