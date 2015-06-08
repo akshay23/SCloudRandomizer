@@ -24,6 +24,8 @@ typedef void(^singleTrackDownloaded)(void);
 @property BOOL isTrackPlaying;
 @property NSUInteger currentSongNumber;
 @property MusicSource *musicSource;
+@property NSTimer *timer;
+@property NSInteger currentTrackTime;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
 @property (strong, nonatomic) SCAudioStream *scAudioStream;
@@ -199,12 +201,13 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
+    [self.scrubber setHidden:YES];
     
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
     [self.lblArtist setHidden:YES];
-    [self.lblLength setHidden:YES];
+    [self.lblCurrentTime setHidden:YES];
     [self.lblTitle setHidden:YES];
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
@@ -259,15 +262,23 @@ typedef void(^singleTrackDownloaded)(void);
             [self getNextTrack:^{
                 [self playTrack];
             }];
+        } else {
+            [self playTrack];
         }
-        [self playTrack];
         self.isTrackPlaying = YES;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                      target:self
+                                                    selector:@selector(updateTime:)
+                                                    userInfo:nil
+                                                     repeats:YES];
         NSLog(@"Playing song");
     }
     else {
         [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
         [self.scAudioStream pause];
         self.isTrackPlaying = NO;
+        [self.timer invalidate];
+        self.timer = nil;
         NSLog(@"Pausing song");
     }
 }
@@ -368,6 +379,7 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnNext setHidden: NO];
     [self.btnInfo setHidden:NO];
     [self.btnLike setHidden:NO];
+    [self.scrubber setHidden:NO];
     [self.imgArtwork setHidden:NO];
     [self.btnChangeParams setHidden:NO];
     [self enableButtons:YES];
@@ -382,11 +394,15 @@ typedef void(^singleTrackDownloaded)(void);
     [self.lblTitleValue setHidden:NO];
     [self.lblTitle setHidden:NO];
     [self.lblArtist setHidden:NO];
-    [self.lblLength setHidden:NO];
+    [self.lblCurrentTime setHidden:NO];
     
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
+    [self.scrubber setValue:0];
+    [self.scrubber setMaximumValue:track.duration];
+    self.currentTrackTime = 0;
+    self.lblCurrentTime.text = @"0:00";
     
     dispatch_async([Utility getGlobalBackgroundQueue], ^{
         NSData *albumArtData = [NSData dataWithContentsOfURL:track.albumArtUrl];
@@ -395,6 +411,11 @@ typedef void(^singleTrackDownloaded)(void);
             self.imgArtwork.image = [UIImage imageWithData:albumArtData];
         });
     });
+}
+
+- (void)updateTime:(NSTimer *)timer {
+    self.scrubber.value = self.scAudioStream.playPosition;
+    self.lblCurrentTime.text = [Utility formatDuration:self.scrubber.value];
 }
 
 #pragma mark - System methods
