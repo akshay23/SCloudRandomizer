@@ -396,7 +396,7 @@ void SCAudioRouteChangedCallback(void *clientData,
             if (endOfData) {
                 self.playState = SCAudioBufferPlayState_Stopping;
                 [self _doStop];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"StreamCompleted" object:self];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.StreamCompleted" object:self];
             } else {
                 [self _doPause:YES];
             }
@@ -409,7 +409,6 @@ void SCAudioRouteChangedCallback(void *clientData,
     if (enoughBuffersToPlay
         && self.playState == SCAudioBufferPlayState_PausedPlayWhenReady) {
         [self _doPlay];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadyToPlay" object:self];
     }
     
     if (doBufferMore) {
@@ -494,6 +493,8 @@ void SCAudioRouteChangedCallback(void *clientData,
         }
         return;
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.ReadyToPlay" object:self];
     
     // prime max 20 frames but not more than we actually have enqued
     UInt32 inFramesPrepared = fminf(buffersInQueue, 20);

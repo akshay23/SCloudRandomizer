@@ -70,12 +70,12 @@ typedef void(^singleTrackDownloaded)(void);
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveNotification:)
-                                                 name:@"StreamCompleted"
+                                                 name:@"com.actionman.Scloudy.StreamCompleted"
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveNotification:)
-                                                 name:@"ReadyToPlay"
+                                                 name:@"com.actionman.Scloudy.ReadyToPlay"
                                                object:nil];
 
     [self hideAllDataAndControls];
@@ -199,7 +199,7 @@ typedef void(^singleTrackDownloaded)(void);
 #pragma mark - Public/Private methods
 
 - (void)hideAllDataAndControls {
-    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setImage:[UIImage imageNamed:@"play_bttn.png"] forState:UIControlStateNormal];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
     [self.scrubber setHidden:YES];
@@ -256,7 +256,7 @@ typedef void(^singleTrackDownloaded)(void);
         [self enableButtons:NO];
     }
     [self.scAudioStream play];
-    [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setImage:[UIImage imageNamed:@"pause_bttn.png"] forState:UIControlStateNormal];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                   target:self
@@ -278,7 +278,7 @@ typedef void(^singleTrackDownloaded)(void);
         NSLog(@"Playing song");
     }
     else {
-        [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+        [self.btnPlay setImage:[UIImage imageNamed:@"play_bttn.png"] forState:UIControlStateNormal];
         [self.scAudioStream pause];
         self.isTrackPlaying = NO;
         [self.timer invalidate];
@@ -442,10 +442,10 @@ typedef void(^singleTrackDownloaded)(void);
 
 // Do something based on specific notifications
 - (void)receiveNotification:(NSNotification *) notification {
-    if ([[notification name] isEqualToString:@"StreamCompleted"]) {
+    if ([[notification name] isEqualToString:@"com.actionman.Scloudy.StreamCompleted"]) {
         NSLog (@"Recieved StreamCompleted notification!");
         [self playNextTrack];
-    } else if ([[notification name] isEqualToString:@"ReadyToPlay"]) {
+    } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.ReadyToPlay"]) {
         NSLog(@"Recieved ReadyToPlay notification!");
         if (self.prepToPlayHud != nil) {
             [self.prepToPlayHud hide:YES];
