@@ -25,19 +25,6 @@
                                     <constraint firstAttribute="width" constant="551" id="mon-s8-tvd"/>
                                 </constraints>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-5w-1ww" userLabel="SearchButton">
-                                <rect key="frame" x="20" y="49" width="130" height="25"/>
-                                <color key="backgroundColor" red="0.7137255072593689" green="0.92941182851791382" blue="0.7725490927696228" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="rDU-0c-fzD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="changeParams:" destination="AGx-bt-YRN" eventType="touchUpInside" id="kRq-pN-pNI"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-Bc-bQ3">
                                 <rect key="frame" x="335" y="283" width="22" height="22"/>
                                 <constraints>
@@ -61,33 +48,25 @@
                                     <action selector="showTrackInfo:" destination="AGx-bt-YRN" eventType="touchUpInside" id="bmy-Xq-Vpt"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oX9-Qc-5vB">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX9-Qc-5vB">
                                 <rect key="frame" x="106" y="554" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bp7-Ls-luC"/>
                                     <constraint firstAttribute="width" constant="80" id="zX8-iz-BxI"/>
                                 </constraints>
-                                <state key="normal" image="play_bttn.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="PlayButton">
-                                            <attributes>
-                                                <font key="NSFont" metaFont="smallSystem"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                                <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Regular" family=".Helvetica Neue DeskInterface" pointSize="11"/>
+                                <state key="normal" image="play_bttn.png"/>
                                 <connections>
                                     <action selector="playSong:" destination="AGx-bt-YRN" eventType="touchUpInside" id="mh6-7v-y9X"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lq-FV-sWT">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Lq-FV-sWT">
                                 <rect key="frame" x="189" y="560" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="33k-hb-8Lb"/>
                                     <constraint firstAttribute="width" constant="70" id="H2j-TU-Eu9"/>
                                 </constraints>
-                                <state key="normal" title="SkipButton" image="next_bttn.png">
+                                <state key="normal" image="next_bttn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -95,7 +74,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyo-RJ-qAm" userLabel="DisconnectButton">
-                                <rect key="frame" x="229" y="48" width="130" height="25"/>
+                                <rect key="frame" x="232" y="48" width="130" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="xeq-Is-S31"/>
                                 </constraints>
@@ -125,9 +104,9 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-0.5" maxValue="1.5" translatesAutoresizingMaskIntoConstraints="NO" id="7eA-Xp-o0g" userLabel="Scrubber">
-                                <rect key="frame" x="61" y="503" width="247" height="31"/>
-                                <color key="minimumTrackTintColor" red="0.75870122354497349" green="0.43647717281099185" blue="0.18633388300982934" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" red="0.78740906084656082" green="0.70473982756010312" blue="0.55638352654619971" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="61" y="502" width="247" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.75870122354497349" green="0.55351995606873194" blue="0.44955784094674334" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="0.83686755952380953" green="0.57918804970768878" blue="0.23777947155624191" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60:21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3R-h9-evs" userLabel="TrackDuration">
                                 <rect key="frame" x="316" y="510" width="38" height="18"/>
@@ -160,15 +139,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" alpha="0.79999999999999982" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBr-5w-1ww" userLabel="SearchButton">
+                                <rect key="frame" x="18" y="48" width="165" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="rDU-0c-fzD"/>
+                                </constraints>
+                                <state key="normal" image="search_bttn.png"/>
+                                <connections>
+                                    <action selector="changeParams:" destination="AGx-bt-YRN" eventType="touchUpInside" id="kRq-pN-pNI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0Lq-FV-sWT" firstAttribute="bottom" secondItem="oX9-Qc-5vB" secondAttribute="bottom" constant="-4" id="0a9-n7-odg"/>
-                            <constraint firstItem="YBr-5w-1ww" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="4" id="14w-9s-aAq"/>
+                            <constraint firstItem="YBr-5w-1ww" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leadingMargin" constant="2" id="14w-9s-aAq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d3R-h9-evs" secondAttribute="trailing" constant="5" id="3iu-11-Jzr"/>
                             <constraint firstAttribute="bottom" secondItem="1tV-ew-NVm" secondAttribute="bottom" constant="274" id="5QQ-mm-VTJ"/>
                             <constraint firstItem="d3R-h9-evs" firstAttribute="leading" secondItem="7eA-Xp-o0g" secondAttribute="trailing" constant="10" id="63L-jt-V8O"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YBr-5w-1ww" secondAttribute="trailing" constant="209" id="6jS-gE-AtC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YBr-5w-1ww" secondAttribute="trailing" constant="176" id="6jS-gE-AtC"/>
                             <constraint firstItem="zO2-xg-YJa" firstAttribute="centerX" secondItem="CIP-oX-vd8" secondAttribute="centerX" id="A3p-CR-s9l"/>
                             <constraint firstItem="1tV-ew-NVm" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="112" id="AFK-oQ-2XU"/>
                             <constraint firstAttribute="trailing" secondItem="VQ1-zg-oUh" secondAttribute="trailing" constant="18" id="AXQ-lZ-wvq"/>
@@ -176,7 +165,7 @@
                             <constraint firstItem="2l3-9a-EXk" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" id="Bkg-zA-lgm"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="20" id="F5X-qf-RPz"/>
                             <constraint firstAttribute="bottom" secondItem="CIP-oX-vd8" secondAttribute="bottom" constant="259" id="HQY-Tj-Bjd"/>
-                            <constraint firstAttribute="trailing" secondItem="vyo-RJ-qAm" secondAttribute="trailing" constant="16" id="IKE-e7-a0Z"/>
+                            <constraint firstAttribute="trailing" secondItem="vyo-RJ-qAm" secondAttribute="trailing" constant="13" id="IKE-e7-a0Z"/>
                             <constraint firstItem="c5h-O2-fzL" firstAttribute="top" secondItem="Gp6-OH-iTX" secondAttribute="top" constant="48" id="KmE-7M-qLa"/>
                             <constraint firstItem="CIP-oX-vd8" firstAttribute="leading" secondItem="Gp6-OH-iTX" secondAttribute="leading" constant="113" id="Lah-0h-dKw"/>
                             <constraint firstItem="d3R-h9-evs" firstAttribute="leading" secondItem="7eA-Xp-o0g" secondAttribute="trailing" constant="10" id="NId-On-cGR"/>
@@ -552,6 +541,7 @@
         <image name="play.png" width="256" height="256"/>
         <image name="play_bttn.png" width="128" height="128"/>
         <image name="refresh.png" width="2400" height="2400"/>
+        <image name="search_bttn.png" width="770" height="100"/>
         <image name="tag.png" width="128" height="128"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

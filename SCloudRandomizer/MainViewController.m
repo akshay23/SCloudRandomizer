@@ -22,6 +22,7 @@ typedef void(^singleTrackDownloaded)(void);
 @property BOOL isCurrentSongLiked;
 @property BOOL isPlayingForFirstTime;
 @property BOOL isTrackPlaying;
+@property BOOL isLoadingNextTrack;
 @property NSUInteger currentSongNumber;
 @property MusicSource *musicSource;
 @property NSTimer *timer;
@@ -62,10 +63,7 @@ typedef void(^singleTrackDownloaded)(void);
     [self.lblTitleValue setText:@""];
     self.currentSongNumber = 3;
     
-    // Draw border around parameters button
-    self.btnChangeParams.layer.cornerRadius = 4;
-    self.btnChangeParams.layer.borderWidth = 1;
-    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
+    // Draw border around track art
     self.imgArtwork.layer.borderWidth = 1;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -250,7 +248,7 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)playTrack {
-    if (self.isPlayingForFirstTime) {
+    if (self.isPlayingForFirstTime && self.prepToPlayHud == nil) {
         self.prepToPlayHud = [self getProgressBar:MBProgressHUDModeIndeterminate progressHudLabel:@"Preparing to play" progressHudDetailsLabel:@"Please wait.."];
         [self.prepToPlayHud show:YES];
         [self enableButtons:NO];
@@ -319,7 +317,7 @@ typedef void(^singleTrackDownloaded)(void);
                                 [self setupUI:track];
                                 [self getFavState:track];
                                 [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
-                            } else if (error == ZeroData){
+                            } else if (error == ZeroData) {
                                 [progressHud hide:YES];
                                 [self hideAllDataAndControls];
                                 UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -329,20 +327,27 @@ typedef void(^singleTrackDownloaded)(void);
                                                                           otherButtonTitles:nil];
                                 [errorView show];
                                 [self presentViewController:self.searchParamsVC animated:YES completion:nil];
-                            } else if (error == NoData) {
+                            } else if (error == NoConnection) {
                                 [progressHud hide:YES];
                                 [self hideAllDataAndControls];
                                 UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                                                    message:@"We are not able to connect to Soundcloud right now"
+                                                                                    message:@"We are not able to connect to Soundcloud right now!"
                                                                                    delegate:self
                                                                           cancelButtonTitle:@"Ok"
                                                                           otherButtonTitles:nil];
                                 [errorView show];
                                 [self.refreshImage setHidden:NO];
-                                if (self.scAudioStream) {
-                                    [self playPauseSong];
-                                    self.scAudioStream = nil;
-                                }
+                            } else if (error == TrackError) {
+                                [progressHud hide:YES];
+                                [self hideAllDataAndControls];
+                                UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                                                    message:@"We had some trouble loading the next track."
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"Ok"
+                                                                          otherButtonTitles:nil];
+                                [errorView show];
+                                [self.refreshImage setHidden:NO];
+
                             }
     }];
 }
@@ -389,10 +394,6 @@ typedef void(^singleTrackDownloaded)(void);
     [self enableButtons:YES];
     [self.refreshImage setHidden:YES];
 
-    self.btnChangeParams.layer.cornerRadius = 4;
-    self.btnChangeParams.layer.borderWidth = 1;
-    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
-
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
     [self.lblTitleValue setHidden:NO];
@@ -418,6 +419,11 @@ typedef void(^singleTrackDownloaded)(void);
 - (void)updateTime:(NSTimer *)timer {
     self.scrubber.value = self.scAudioStream.playPosition;
     self.lblCurrentTime.text = [Utility formatDuration:self.scrubber.value];
+    
+    if (self.prepToPlayHud != nil  && !self.isPlayingForFirstTime) {
+        [self.prepToPlayHud hide:YES];
+        self.prepToPlayHud = nil;
+    }
 }
 
 #pragma mark - System methods
@@ -444,10 +450,14 @@ typedef void(^singleTrackDownloaded)(void);
 - (void)receiveNotification:(NSNotification *) notification {
     if ([[notification name] isEqualToString:@"com.actionman.Scloudy.StreamCompleted"]) {
         NSLog (@"Recieved StreamCompleted notification!");
-        [self playNextTrack];
+        if (!self.isLoadingNextTrack && !self.isPlayingForFirstTime) {
+            self.isLoadingNextTrack = YES;
+            [self playNextTrack];
+        }
     } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.ReadyToPlay"]) {
         NSLog(@"Recieved ReadyToPlay notification!");
         if (self.prepToPlayHud != nil) {
+            self.isLoadingNextTrack = NO;
             [self.prepToPlayHud hide:YES];
             [self enableButtons:YES];
             self.prepToPlayHud = nil;

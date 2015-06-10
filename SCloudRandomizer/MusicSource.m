@@ -45,15 +45,21 @@ static MusicSource *instance;
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
         NSLog(@"There is no internet connection");
-        completionHandler(nil, NoData);
+        completionHandler(nil, NoConnection);
     } else {
         [self getTracks:searchParams completionHandler:^(NSArray* tracks, enum MusicSourceError error) {
             if (error != None) {
                 completionHandler(nil, error);
             } else {
                 int randomSongIndex = arc4random_uniform((uint32_t) tracks.count);
-                Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
-                completionHandler(track, None);
+                @try {
+                    Track* track = [[Track alloc] initWithData:[tracks objectAtIndex:randomSongIndex] account:[MusicSource account]];
+                    completionHandler(track, None);
+                }
+                @catch (NSException * e) {
+                    NSLog(@"Exception: %@", e);
+                    completionHandler(nil, TrackError);
+                }
             }
         }];
     }
@@ -83,7 +89,7 @@ static MusicSource *instance;
             }
         } else {
             NSLog(@"Error fetching tracks");
-            completionHandler(tracks, NoData);
+            completionHandler(tracks, NoConnection);
         }
     };
     

@@ -18,6 +18,7 @@
 		197D26F71B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F01B17B2A80061AA56 /* SCAudioStreamPacketDescriptions.m */; };
 		197D26F91B17B2A80061AA56 /* SCAudioFileStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */; };
 		1980A3571B221CF200608E61 /* scloud_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1980A3561B221CF200608E61 /* scloud_logo.png */; };
+		198222141B28C6FF00896454 /* search_bttn.png in Resources */ = {isa = PBXBuildFile; fileRef = 198222131B28C6FF00896454 /* search_bttn.png */; };
 		1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72D1A607F4400109F76 /* Heart-red-transparent.png */; };
 		1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72E1A607F4400109F76 /* Heart-white-transparent.png */; };
 		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
@@ -90,6 +91,7 @@
 		197D26F31B17B2A80061AA56 /* SCAudioBufferQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioBufferQueue.h; sourceTree = "<group>"; };
 		197D26F51B17B2A80061AA56 /* SCAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioStream.h; sourceTree = "<group>"; };
 		1980A3561B221CF200608E61 /* scloud_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scloud_logo.png; sourceTree = "<group>"; };
+		198222131B28C6FF00896454 /* search_bttn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_bttn.png; sourceTree = "<group>"; };
 		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
 		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
 		1997F7311A64211700109F76 /* SearchParamsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParamsVC.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				198222131B28C6FF00896454 /* search_bttn.png */,
 				1974B9E71B264F5A00DA4E15 /* next_bttn.png */,
 				1974B9E81B264F5A00DA4E15 /* play_bttn.png */,
 				1974B9E91B264F5A00DA4E15 /* pause_bttn.png */,
@@ -427,6 +430,7 @@
 				1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */,
 				1974B9EA1B264F5A00DA4E15 /* next_bttn.png in Resources */,
 				4E9DA5801B05621F00B324B1 /* usr in Resources */,
+				198222141B28C6FF00896454 /* search_bttn.png in Resources */,
 				4E3A92791AE0604800640EFB /* tag.png in Resources */,
 				1980A3571B221CF200608E61 /* scloud_logo.png in Resources */,
 				19C984831B1FFCE2008E9333 /* iRate.bundle in Resources */,
