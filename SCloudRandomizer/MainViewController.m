@@ -239,6 +239,7 @@ typedef void(^singleTrackDownloaded)(void);
     [self.lblTitleValue setEnabled:enable];
     [self.lblCurrentTime setEnabled:enable];
     [self.lblLengthValue setEnabled:enable];
+    [self.scrubber setEnabled:enable];
     
     if (enable) {
         self.imgArtwork.alpha = 1;
@@ -303,8 +304,6 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)getNextTrack:(singleTrackDownloaded)completionHandler {
-    [self.btnPlay setHidden:NO];
-    [self.btnNext setHidden:NO];
     [self enableButtons:NO];
     self.isPlayingForFirstTime = YES;
     

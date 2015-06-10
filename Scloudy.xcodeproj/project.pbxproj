@@ -19,6 +19,7 @@
 		197D26F91B17B2A80061AA56 /* SCAudioFileStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D26F21B17B2A80061AA56 /* SCAudioFileStreamParser.m */; };
 		1980A3571B221CF200608E61 /* scloud_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1980A3561B221CF200608E61 /* scloud_logo.png */; };
 		198222141B28C6FF00896454 /* search_bttn.png in Resources */ = {isa = PBXBuildFile; fileRef = 198222131B28C6FF00896454 /* search_bttn.png */; };
+		198222161B28DD3000896454 /* IMG_2620.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 198222151B28DD3000896454 /* IMG_2620.JPG */; };
 		1997F72F1A607F4400109F76 /* Heart-red-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72D1A607F4400109F76 /* Heart-red-transparent.png */; };
 		1997F7301A607F4400109F76 /* Heart-white-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 1997F72E1A607F4400109F76 /* Heart-white-transparent.png */; };
 		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
@@ -92,6 +93,7 @@
 		197D26F51B17B2A80061AA56 /* SCAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioStream.h; sourceTree = "<group>"; };
 		1980A3561B221CF200608E61 /* scloud_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scloud_logo.png; sourceTree = "<group>"; };
 		198222131B28C6FF00896454 /* search_bttn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_bttn.png; sourceTree = "<group>"; };
+		198222151B28DD3000896454 /* IMG_2620.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_2620.JPG; sourceTree = "<group>"; };
 		1997F72D1A607F4400109F76 /* Heart-red-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-red-transparent.png"; sourceTree = "<group>"; };
 		1997F72E1A607F4400109F76 /* Heart-white-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart-white-transparent.png"; sourceTree = "<group>"; };
 		1997F7311A64211700109F76 /* SearchParamsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParamsVC.h; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		19C18F041A2FC87400281221 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				198222151B28DD3000896454 /* IMG_2620.JPG */,
 				198222131B28C6FF00896454 /* search_bttn.png */,
 				1974B9E71B264F5A00DA4E15 /* next_bttn.png */,
 				1974B9E81B264F5A00DA4E15 /* play_bttn.png */,
@@ -437,6 +440,7 @@
 				19C984851B200060008E9333 /* Localizable.strings in Resources */,
 				19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */,
 				1974B9EC1B264F5A00DA4E15 /* pause_bttn.png in Resources */,
+				198222161B28DD3000896454 /* IMG_2620.JPG in Resources */,
 				19C984871B200B22008E9333 /* powered_by_scloud.png in Resources */,
 				4E254FB51B17A65900A70F26 /* refresh.png in Resources */,
 				4ED3F5A31AB272A200259C84 /* background.png in Resources */,

@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="2l3-9a-EXk">
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_2620.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="2l3-9a-EXk">
                                 <rect key="frame" x="0.0" y="0.0" width="551" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="551" id="mon-s8-tvd"/>
@@ -534,7 +534,7 @@
     <resources>
         <image name="Heart-red-transparent.png" width="600" height="557"/>
         <image name="Heart-white-transparent.png" width="2000" height="2000"/>
-        <image name="background.png" width="900" height="1200"/>
+        <image name="IMG_2620.JPG" width="3264" height="2448"/>
         <image name="btn-connect-m.png" width="105" height="25"/>
         <image name="btn-disconnect-m.png" width="119" height="25"/>
         <image name="next_bttn.png" width="128" height="128"/>
