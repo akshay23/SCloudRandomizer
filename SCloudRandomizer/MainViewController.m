@@ -56,12 +56,6 @@ typedef void(^singleTrackDownloaded)(void);
     if (self.searchParams == nil) {
         self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
     }
-
-    // Clear the labels
-    [self.lblArtistValue setText:@""];
-    [self.lblLengthValue setText:@""];
-    [self.lblTitleValue setText:@""];
-    self.currentSongNumber = 3;
     
     // Draw border around track art
     self.imgArtwork.layer.borderWidth = 1;
@@ -249,7 +243,7 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)playTrack {
-    if (self.isPlayingForFirstTime && self.prepToPlayHud == nil) {
+    if (self.isPlayingForFirstTime) {
         self.prepToPlayHud = [self getProgressBar:MBProgressHUDModeIndeterminate progressHudLabel:@"Preparing to play" progressHudDetailsLabel:@"Please wait.."];
         [self.prepToPlayHud show:YES];
         [self enableButtons:NO];
