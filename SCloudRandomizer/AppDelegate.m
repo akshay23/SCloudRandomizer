@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "iRate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -36,6 +38,9 @@
     [iRate sharedInstance].remindPeriod = 10;
     [iRate sharedInstance].promptForNewVersionIfUserRated = YES;
     [iRate sharedInstance].appStoreGenreID = 1;
+    
+    // Instantiate crashlytics
+    [Fabric with:@[CrashlyticsKit]];
 
     return YES;
 }
