@@ -17,7 +17,8 @@
 enum MusicSourceError {
     None,
     ZeroData,
-    NoData,
+    NoConnection,
+    TrackError,
     DeserializationError
 };
 

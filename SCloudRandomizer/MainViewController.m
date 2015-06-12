@@ -22,8 +22,11 @@ typedef void(^singleTrackDownloaded)(void);
 @property BOOL isCurrentSongLiked;
 @property BOOL isPlayingForFirstTime;
 @property BOOL isTrackPlaying;
+@property BOOL isLoadingNextTrack;
 @property NSUInteger currentSongNumber;
 @property MusicSource *musicSource;
+@property NSTimer *timer;
+@property NSInteger currentTrackTime;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
 @property (strong, nonatomic) SCAudioStream *scAudioStream;
@@ -53,26 +56,18 @@ typedef void(^singleTrackDownloaded)(void);
     if (self.searchParams == nil) {
         self.searchParams = [[SearchParams alloc] initWithBool:YES keywords:@"Biggie,2pac,remix"];
     }
-
-    // Clear the labels
-    [self.lblArtistValue setText:@""];
-    [self.lblLengthValue setText:@""];
-    [self.lblTitleValue setText:@""];
-    self.currentSongNumber = 3;
     
-    // Draw border around parameters button
-    self.btnChangeParams.layer.cornerRadius = 4;
-    self.btnChangeParams.layer.borderWidth = 1;
-    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
+    // Draw border around track art
+    self.imgArtwork.layer.borderWidth = 1;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveNotification:)
-                                                 name:@"StreamCompleted"
+                                                 name:@"com.actionman.Scloudy.StreamCompleted"
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveNotification:)
-                                                 name:@"ReadyToPlay"
+                                                 name:@"com.actionman.Scloudy.ReadyToPlay"
                                                object:nil];
 
     [self hideAllDataAndControls];
@@ -196,16 +191,15 @@ typedef void(^singleTrackDownloaded)(void);
 #pragma mark - Public/Private methods
 
 - (void)hideAllDataAndControls {
-    [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setImage:[UIImage imageNamed:@"play_bttn.png"] forState:UIControlStateNormal];
     [self.btnPlay setHidden:YES];
     [self.btnNext setHidden:YES];
+    [self.scrubber setHidden:YES];
     
     [self.btnInfo setHidden:YES];
     [self.btnLike setHidden:YES];
     [self.imgArtwork setHidden:YES];
-    [self.lblArtist setHidden:YES];
-    [self.lblLength setHidden:YES];
-    [self.lblTitle setHidden:YES];
+    [self.lblCurrentTime setHidden:YES];
     [self.lblTitleValue setHidden:YES];
     [self.lblArtistValue setHidden:YES];
     [self.lblLengthValue setHidden:YES];
@@ -234,12 +228,17 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnInfo setEnabled:enable];
     [self.btnLike setEnabled:enable];
     [self.btnChangeParams setEnabled:enable];
+    [self.btnSCDisconnect setEnabled:enable];
+    [self.lblArtistValue setEnabled:enable];
+    [self.lblTitleValue setEnabled:enable];
+    [self.lblCurrentTime setEnabled:enable];
+    [self.lblLengthValue setEnabled:enable];
+    [self.scrubber setEnabled:enable];
     
     if (enable) {
         self.imgArtwork.alpha = 1;
     } else {
-        self.imgArtwork.alpha = 0.5;
-        self.imgArtwork.layer.borderWidth = 1;
+        self.imgArtwork.alpha = 0.3;
     }
 }
 
@@ -250,7 +249,13 @@ typedef void(^singleTrackDownloaded)(void);
         [self enableButtons:NO];
     }
     [self.scAudioStream play];
-    [self.btnPlay setImage:[UIImage imageNamed:@"pause_btn.png"] forState:UIControlStateNormal];
+    [self.btnPlay setImage:[UIImage imageNamed:@"pause_bttn.png"] forState:UIControlStateNormal];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(updateTime:)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 - (void)playPauseSong {
@@ -259,15 +264,18 @@ typedef void(^singleTrackDownloaded)(void);
             [self getNextTrack:^{
                 [self playTrack];
             }];
+        } else {
+            [self playTrack];
         }
-        [self playTrack];
         self.isTrackPlaying = YES;
         NSLog(@"Playing song");
     }
     else {
-        [self.btnPlay setImage:[UIImage imageNamed:@"play_btn.png"] forState:UIControlStateNormal];
+        [self.btnPlay setImage:[UIImage imageNamed:@"play_bttn.png"] forState:UIControlStateNormal];
         [self.scAudioStream pause];
         self.isTrackPlaying = NO;
+        [self.timer invalidate];
+        self.timer = nil;
         NSLog(@"Pausing song");
     }
 }
@@ -290,8 +298,6 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)getNextTrack:(singleTrackDownloaded)completionHandler {
-    [self.btnPlay setHidden:NO];
-    [self.btnNext setHidden:NO];
     [self enableButtons:NO];
     self.isPlayingForFirstTime = YES;
     
@@ -304,7 +310,7 @@ typedef void(^singleTrackDownloaded)(void);
                                 [self setupUI:track];
                                 [self getFavState:track];
                                 [self downloadTrack:track progressHud:progressHud completionHandler: completionHandler];
-                            } else if (error == ZeroData){
+                            } else if (error == ZeroData) {
                                 [progressHud hide:YES];
                                 [self hideAllDataAndControls];
                                 UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
@@ -314,20 +320,27 @@ typedef void(^singleTrackDownloaded)(void);
                                                                           otherButtonTitles:nil];
                                 [errorView show];
                                 [self presentViewController:self.searchParamsVC animated:YES completion:nil];
-                            } else if (error == NoData) {
+                            } else if (error == NoConnection) {
                                 [progressHud hide:YES];
                                 [self hideAllDataAndControls];
                                 UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                                                    message:@"We are not able to connect to Soundcloud right now"
+                                                                                    message:@"We are not able to connect to Soundcloud right now!"
                                                                                    delegate:self
                                                                           cancelButtonTitle:@"Ok"
                                                                           otherButtonTitles:nil];
                                 [errorView show];
                                 [self.refreshImage setHidden:NO];
-                                if (self.scAudioStream) {
-                                    [self playPauseSong];
-                                    self.scAudioStream = nil;
-                                }
+                            } else if (error == TrackError) {
+                                [progressHud hide:YES];
+                                [self hideAllDataAndControls];
+                                UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                                                    message:@"We had some trouble loading the next track."
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"Ok"
+                                                                          otherButtonTitles:nil];
+                                [errorView show];
+                                [self.refreshImage setHidden:NO];
+
                             }
     }];
 }
@@ -368,25 +381,24 @@ typedef void(^singleTrackDownloaded)(void);
     [self.btnNext setHidden: NO];
     [self.btnInfo setHidden:NO];
     [self.btnLike setHidden:NO];
+    [self.scrubber setHidden:NO];
     [self.imgArtwork setHidden:NO];
     [self.btnChangeParams setHidden:NO];
     [self enableButtons:YES];
     [self.refreshImage setHidden:YES];
 
-    self.btnChangeParams.layer.cornerRadius = 4;
-    self.btnChangeParams.layer.borderWidth = 1;
-    self.btnChangeParams.layer.borderColor = [UIColor blueColor].CGColor;
-
     [self.lblArtistValue setHidden:NO];
     [self.lblLengthValue setHidden:NO];
     [self.lblTitleValue setHidden:NO];
-    [self.lblTitle setHidden:NO];
-    [self.lblArtist setHidden:NO];
-    [self.lblLength setHidden:NO];
+    [self.lblCurrentTime setHidden:NO];
     
     [self.lblLengthValue setText:[Utility formatDuration:track.duration]];
     [self.lblArtistValue setText:track.artist];
     [self.lblTitleValue setText:track.title];
+    [self.scrubber setValue:0];
+    [self.scrubber setMaximumValue:track.duration];
+    self.currentTrackTime = 0;
+    self.lblCurrentTime.text = @"0:00";
     
     dispatch_async([Utility getGlobalBackgroundQueue], ^{
         NSData *albumArtData = [NSData dataWithContentsOfURL:track.albumArtUrl];
@@ -395,6 +407,16 @@ typedef void(^singleTrackDownloaded)(void);
             self.imgArtwork.image = [UIImage imageWithData:albumArtData];
         });
     });
+}
+
+- (void)updateTime:(NSTimer *)timer {
+    self.scrubber.value = self.scAudioStream.playPosition;
+    self.lblCurrentTime.text = [Utility formatDuration:self.scrubber.value];
+    
+    if (self.prepToPlayHud != nil  && !self.isPlayingForFirstTime) {
+        [self.prepToPlayHud hide:YES];
+        self.prepToPlayHud = nil;
+    }
 }
 
 #pragma mark - System methods
@@ -419,12 +441,16 @@ typedef void(^singleTrackDownloaded)(void);
 
 // Do something based on specific notifications
 - (void)receiveNotification:(NSNotification *) notification {
-    if ([[notification name] isEqualToString:@"StreamCompleted"]) {
+    if ([[notification name] isEqualToString:@"com.actionman.Scloudy.StreamCompleted"]) {
         NSLog (@"Recieved StreamCompleted notification!");
-        [self playNextTrack];
-    } else if ([[notification name] isEqualToString:@"ReadyToPlay"]) {
+        if (!self.isLoadingNextTrack && !self.isPlayingForFirstTime) {
+            self.isLoadingNextTrack = YES;
+            [self playNextTrack];
+        }
+    } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.ReadyToPlay"]) {
         NSLog(@"Recieved ReadyToPlay notification!");
         if (self.prepToPlayHud != nil) {
+            self.isLoadingNextTrack = NO;
             [self.prepToPlayHud hide:YES];
             [self enableButtons:YES];
             self.prepToPlayHud = nil;

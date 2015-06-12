@@ -37,19 +37,17 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UILabel *lblTitleValue;
 @property (strong, nonatomic) IBOutlet UILabel *lblArtistValue;
 @property (strong, nonatomic) IBOutlet UILabel *lblLengthValue;
+@property (strong, nonatomic) IBOutlet UILabel *lblCurrentTime;
 @property (strong, nonatomic) IBOutlet UIImageView *imgArtwork;
 @property (strong, nonatomic) IBOutlet UIButton *btnChangeParams;
 @property (strong, nonatomic) IBOutlet UIButton *btnInfo;
 @property (strong, nonatomic) IBOutlet UIButton *btnLike;
 
-@property (strong, nonatomic) IBOutlet UILabel *lblTitle;
-@property (strong, nonatomic) IBOutlet UILabel *lblArtist;
-@property (strong, nonatomic) IBOutlet UILabel *lblLength;
-
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @property (nonatomic) IBOutlet UIImageView *refreshImage;
 
+@property (strong, nonatomic) IBOutlet UISlider *scrubber;
 
 - (IBAction)logout:(id)sender;
 - (IBAction)login:(id)sender;
