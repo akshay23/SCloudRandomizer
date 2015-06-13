@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainVCDelegate.h"
 
-@interface SearchParamsVC : UIViewController
+@interface SearchParamsVC : UIViewController<UITextViewDelegate>
 
 // Delegate properties should always be weak references
 // See http://stackoverflow.com/a/4796131/263871 for the rationale
@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *txtDurationFrom;
 @property (strong, nonatomic) IBOutlet UITextView *txtDurationTo;
 @property (strong, nonatomic) IBOutlet UIButton *btnClear;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

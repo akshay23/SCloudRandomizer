@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZh-3O-qGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810.5" y="325.5"/>
+            <point key="canvasLocation" x="832.5" y="319.5"/>
         </scene>
         <!--Search ParamsVC-->
         <scene sceneID="MHR-sP-Q3u">
@@ -234,120 +234,119 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2B-IZ-6Qs">
-                                <rect key="frame" x="24" y="23" width="85" height="36"/>
-                                <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancel:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="9mJ-Bi-AXR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-RG-yQL">
-                                <rect key="frame" x="278" y="23" width="71" height="36"/>
-                                <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="done:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="ZBK-ef-SMx"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma. ***" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
-                                <rect key="frame" x="24" y="75" width="323" height="81"/>
-                                <color key="backgroundColor" red="0.90196084976196289" green="0.96862751245498657" blue="0.89019614458084106" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Biggie, rap" translatesAutoresizingMaskIntoConstraints="NO" id="rvt-yK-Nw3">
-                                <rect key="frame" x="24" y="159" width="323" height="151"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter your desired BPM range." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
-                                <rect key="frame" x="24" y="437" width="323" height="40"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo">
-                                <rect key="frame" x="98" y="480" width="68" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8">
-                                <rect key="frame" x="243" y="480" width="68" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-80-vbR">
-                                <rect key="frame" x="54" y="484" width="44" height="29"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-HR-kKY">
-                                <rect key="frame" x="216" y="483" width="27" height="31"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter track duration range (in minutes)." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
-                                <rect key="frame" x="24" y="334" width="323" height="40"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-yh-4We">
-                                <rect key="frame" x="243" y="377" width="68" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Fc-0fY">
-                                <rect key="frame" x="98" y="377" width="68" height="36"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="*** Required field" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-T4-U2t">
-                                <rect key="frame" x="24" y="607" width="151" height="36"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="textColor" red="1" green="0.14689324595983622" blue="0.19726245480736038" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHl-TM-aJg">
-                                <rect key="frame" x="133" y="543" width="110" height="36"/>
-                                <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Clear Fields">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearFields:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="MT5-cx-6EW"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nL-q7-hmL">
-                                <rect key="frame" x="54" y="380" width="44" height="29"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euG-y3-gOU">
-                                <rect key="frame" x="216" y="379" width="27" height="31"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.96862751250000001" blue="0.89019614459999996" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hai-2L-WJx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-RG-yQL">
+                                        <rect key="frame" x="273" y="35" width="71" height="36"/>
+                                        <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="done:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="ZBK-ef-SMx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2B-IZ-6Qs">
+                                        <rect key="frame" x="26" y="35" width="85" height="36"/>
+                                        <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="9mJ-Bi-AXR"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma. ***" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
+                                        <rect key="frame" x="26" y="91" width="323" height="61"/>
+                                        <color key="textColor" red="0.14685358047460317" green="0.14685358047460317" blue="0.14685358047460317" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-HR-kKY">
+                                        <rect key="frame" x="193" y="464" width="27" height="22"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Biggie, rap" translatesAutoresizingMaskIntoConstraints="NO" id="rvt-yK-Nw3" userLabel="txtKeywords">
+                                        <rect key="frame" x="26" y="156" width="323" height="151"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter your desired BPM range." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
+                                        <rect key="frame" x="26" y="430" width="323" height="29"/>
+                                        <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo" userLabel="txtBpmFrom">
+                                        <rect key="frame" x="92" y="457" width="68" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8" userLabel="txtBpmTo">
+                                        <rect key="frame" x="220" y="457" width="68" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Enter track duration range (in minutes)." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
+                                        <rect key="frame" x="26" y="335" width="323" height="29"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Fc-0fY" userLabel="txtDurationFrom">
+                                        <rect key="frame" x="92" y="363" width="68" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-yh-4We" userLabel="txtDurationTo">
+                                        <rect key="frame" x="220" y="363" width="68" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-80-vbR">
+                                        <rect key="frame" x="53" y="463" width="44" height="22"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="To:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euG-y3-gOU">
+                                        <rect key="frame" x="193" y="369" width="27" height="23"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="*** Required field" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-T4-U2t">
+                                        <rect key="frame" x="20" y="617" width="134" height="27"/>
+                                        <color key="textColor" red="1" green="0.14689324595983622" blue="0.19726245480736038" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="From:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nL-q7-hmL">
+                                        <rect key="frame" x="48" y="369" width="44" height="22"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHl-TM-aJg">
+                                        <rect key="frame" x="132" y="545" width="110" height="36"/>
+                                        <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Clear Fields">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearFields:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="MT5-cx-6EW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.70196080207824707" green="0.92941182851791382" blue="0.84705889225006104" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.94685166317319114" green="0.94685166317319114" blue="0.94685166317319114" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -355,6 +354,7 @@
                         <outlet property="btnCancel" destination="S2B-IZ-6Qs" id="7JJ-lf-aat"/>
                         <outlet property="btnClear" destination="PHl-TM-aJg" id="bYZ-Cp-DkS"/>
                         <outlet property="btnSave" destination="7jH-RG-yQL" id="dQ3-8k-2bV"/>
+                        <outlet property="scrollView" destination="hai-2L-WJx" id="lpX-TZ-D70"/>
                         <outlet property="txtBpmFrom" destination="g7d-jH-9Lo" id="2vO-6k-fiW"/>
                         <outlet property="txtBpmTo" destination="HpR-4j-NU8" id="V2S-lW-ymp"/>
                         <outlet property="txtDurationFrom" destination="6i9-Fc-0fY" id="7Tx-Ln-Onb"/>
@@ -478,7 +478,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94685166320000003" green="0.94685166320000003" blue="0.94685166320000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hxV-KF-UxY" firstAttribute="top" secondItem="jqr-NK-dzY" secondAttribute="bottom" constant="10" id="12J-44-Jpp"/>
                             <constraint firstItem="hxV-KF-UxY" firstAttribute="leading" secondItem="Lwx-ud-Xlf" secondAttribute="leading" id="4Vd-78-qoz"/>
