@@ -10,10 +10,12 @@
 #import "Utility.h"
 #import <QuartzCore/QuartzCore.h>
 
-static const double OffsetForKeyboard = 70.0;
+static const double OffsetForKeyboard = 90.0;
 
 @interface SearchParamsVC ()
 
+@property BOOL areDurationValuesValid;
+@property BOOL areBPMValuesValid;
 @property (strong, nonatomic) SearchParams *searchParams;
 @property (strong, nonatomic) UITextView *activeField;
 
@@ -31,9 +33,6 @@ static const double OffsetForKeyboard = 70.0;
     self.btnSave.layer.cornerRadius = 2;
     self.btnSave.layer.borderWidth = 1;
     self.btnSave.layer.borderColor = [UIColor blueColor].CGColor;
-    self.btnClear.layer.cornerRadius = 2;
-    self.btnClear.layer.borderWidth = 1;
-    self.btnClear.layer.borderColor = [UIColor blueColor].CGColor;
     
     // Add inner shadows to each UITextView
     [self addInnerShadowToTextView:self.txtKeywords];
@@ -57,13 +56,26 @@ static const double OffsetForKeyboard = 70.0;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    // Set defaults
+    self.areDurationValuesValid = YES;
+    self.areBPMValuesValid = YES;
+    [self.txtDurationFrom setBackgroundColor:[UIColor whiteColor]];
+    [self.txtDurationTo setBackgroundColor:[UIColor whiteColor]];
+    [self.txtBpmFrom setBackgroundColor:[UIColor whiteColor]];
+    [self.txtBpmTo setBackgroundColor:[UIColor whiteColor]];
+    
     // Create strong local ref to delegate
     id<MainVCDelegate> strongDelegate = self.delegate;
     self.searchParams = [strongDelegate getCurrentSearchParams];
     
+    // Fill in the values
     self.txtKeywords.text = self.searchParams.keywords;
-    self.txtDurationFrom.text = (self.searchParams.durationFrom == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.durationFrom];
-    self.txtDurationTo.text = (self.searchParams.durationTo == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.durationTo];
+    self.txtDurationFrom.text = (self.searchParams.durationFrom == 0) ? @"" : [NSString stringWithFormat: @"%ld",
+                                                                               (long)self.searchParams.durationFrom];
+    self.minDurationStepper.value = self.searchParams.durationFrom;
+    self.txtDurationTo.text = (self.searchParams.durationTo == 0) ? @"" : [NSString stringWithFormat: @"%ld",
+                                                                           (long)self.searchParams.durationTo];
+    self.maxDurationStepper.value = (self.searchParams.durationTo == 0) ? self.searchParams.durationFrom : self.searchParams.durationTo;
     self.txtBpmFrom.text = (self.searchParams.lowBpm == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.lowBpm];
     self.txtBpmTo.text = (self.searchParams.highBpm == 0) ? @"" : [NSString stringWithFormat: @"%ld", (long)self.searchParams.highBpm];
 }
@@ -76,20 +88,17 @@ static const double OffsetForKeyboard = 70.0;
 - (IBAction)done:(id)sender {
     [self dismissKeyboard];
     
-    if(!([self.txtBpmTo.text isEqualToString:@""]) &&
-       ([self.txtBpmTo.text intValue] < [self.txtBpmFrom.text intValue]))
+    if(!self.areBPMValuesValid)
     {
-        [self showAlertAndFocusOnTextView:self.txtBpmTo title:@"Bad BPM Range" message:@"Please make sure the BPM range is valid!"];
+        [self showAlertWithTitle:@"Bad BPM Range" message:@"Please make sure the BPM range is valid!"];
     }
-    else if(!([self.txtDurationTo.text isEqualToString:@""]) &&
-            ([self.txtDurationTo.text intValue] < [self.txtDurationFrom.text intValue]))
+    else if(!self.areDurationValuesValid)
     {
-        [self showAlertAndFocusOnTextView:self.txtDurationTo title:@"Bad Duration Range"
-                                  message:@"Please make sure the duration range is valid!"];
+        [self showAlertWithTitle:@"Bad Duration Range" message:@"Please make sure the duration range is valid!"];
     }
     else if ([Utility stringIsNilOrEmpty:self.txtKeywords.text])
     {
-        [self showAlertAndFocusOnTextView:self.txtKeywords title:@"Need Keyword(s)" message:@"Please enter some keywords!"];
+        [self showAlertWithTitle:@"Need Keyword(s)" message:@"Please enter some keywords!"];
     }
     else if (![Utility stringIsNilOrEmpty:self.txtKeywords.text])
     {
@@ -109,12 +118,16 @@ static const double OffsetForKeyboard = 70.0;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)clearFields:(id)sender {
-    self.txtBpmTo.text = @"";
-    self.txtBpmFrom.text = @"";
-    self.txtDurationTo.text = @"";
-    self.txtDurationFrom.text = @"";
-    self.txtKeywords.text = @"";
+- (IBAction)changeMinDuration:(id)sender {
+    [self dismissKeyboard];
+    self.txtDurationFrom.text = [NSString stringWithFormat:@"%.f", self.minDurationStepper.value];
+    [self checkValues];
+}
+
+- (IBAction)changeMaxDuration:(id)sender {
+    [self dismissKeyboard];
+    self.txtDurationTo.text = [NSString stringWithFormat:@"%.f", self.maxDurationStepper.value];
+    [self checkValues];
 }
 
 - (void)dismissKeyboard {
@@ -125,15 +138,23 @@ static const double OffsetForKeyboard = 70.0;
     [self.txtDurationTo resignFirstResponder];
 }
 
-- (void)showAlertAndFocusOnTextView:(UITextView *)textView title:(NSString *)alertTitle message:(NSString *)alertMessage {
+- (void)showAlertWithTitle:(NSString *)alertTitle message:(NSString *)alertMessage {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
                                                     message:alertMessage
                                                    delegate:self
                                           cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
-    textView.text = @"";
-    [textView becomeFirstResponder];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([Utility stringIsNilOrEmpty:self.txtKeywords.text]) {
+        [self.txtKeywords becomeFirstResponder];
+    } else if (!self.areBPMValuesValid) {
+        [self.txtBpmTo becomeFirstResponder];
+    } else if (!self.areDurationValuesValid) {
+        [self.txtDurationTo becomeFirstResponder];
+    }
 }
 
 - (void)addInnerShadowToTextView:(UITextView *)textView {
@@ -149,7 +170,7 @@ static const double OffsetForKeyboard = 70.0;
     textView.layer.shadowRadius = 1.0f;
 }
 
-//method to move the view up/down whenever the keyboard is shown/dismissed
+// Move the view up/down whenever the keyboard is shown/dismissed
 - (void)setViewMovedUp:(BOOL)movedUp {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3]; // if you want to slide up the view
@@ -171,6 +192,33 @@ static const double OffsetForKeyboard = 70.0;
     self.view.frame = rect;
     
     [UIView commitAnimations];
+}
+
+// Check duration and BPM values
+- (void)checkValues {
+    if(!([self.txtDurationTo.text isEqualToString:@""]) &&
+       ([self.txtDurationTo.text intValue] < [self.txtDurationFrom.text intValue]))
+    {
+        self.areDurationValuesValid = NO;
+        [self.txtDurationFrom setBackgroundColor:[UIColor colorWithRed:240/255.0 green:81/255.0 blue:81/255.0 alpha:1]];
+        [self.txtDurationTo setBackgroundColor:[UIColor colorWithRed:240/255.0 green:81/255.0 blue:81/255.0 alpha:1]];
+    } else {
+        self.areDurationValuesValid = YES;
+        [self.txtDurationFrom setBackgroundColor:[UIColor whiteColor]];
+        [self.txtDurationTo setBackgroundColor:[UIColor whiteColor]];
+    }
+    
+    if(!([self.txtBpmTo.text isEqualToString:@""]) &&
+       ([self.txtBpmTo.text intValue] < [self.txtBpmFrom.text intValue]))
+    {
+        self.areBPMValuesValid = NO;
+        [self.txtBpmFrom setBackgroundColor:[UIColor colorWithRed:240/255.0 green:81/255.0 blue:81/255.0 alpha:1]];
+        [self.txtBpmTo setBackgroundColor:[UIColor colorWithRed:240/255.0 green:81/255.0 blue:81/255.0 alpha:1]];
+    } else {
+        self.areBPMValuesValid = YES;
+        [self.txtBpmFrom setBackgroundColor:[UIColor whiteColor]];
+        [self.txtBpmTo setBackgroundColor:[UIColor whiteColor]];
+    }
 }
 
 #pragma MARK - UITextViewDelegate method
@@ -200,6 +248,22 @@ static const double OffsetForKeyboard = 70.0;
 
 - (void)textViewDidEndEditing:(UITextView *)textField {
     if (textField != self.txtKeywords) {
+        if (textField == self.txtDurationFrom) {
+            self.minDurationStepper.value = [textField.text doubleValue];
+        }
+        
+        if (textField == self.txtDurationTo) {
+            self.maxDurationStepper.value = [textField.text doubleValue];
+        }
+        
+        if (textField == self.txtBpmFrom) {
+            // TODO
+        }
+        
+        if (textField == self.txtBpmTo) {
+            // TODO
+        }
+        
         if (self.view.frame.origin.y >= 0)
         {
             [self setViewMovedUp:YES];
@@ -209,6 +273,8 @@ static const double OffsetForKeyboard = 70.0;
             [self setViewMovedUp:NO];
         }
     }
+    
+    [self checkValues];
 }
 
 @end

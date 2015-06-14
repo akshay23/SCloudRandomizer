@@ -21,12 +21,14 @@
 @property (strong, nonatomic) IBOutlet UITextView *txtBpmTo;
 @property (strong, nonatomic) IBOutlet UITextView *txtDurationFrom;
 @property (strong, nonatomic) IBOutlet UITextView *txtDurationTo;
-@property (strong, nonatomic) IBOutlet UIButton *btnClear;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIStepper *minDurationStepper;
+@property (strong, nonatomic) IBOutlet UIStepper *maxDurationStepper;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
-- (IBAction)clearFields:(id)sender;
+- (IBAction)changeMinDuration:(id)sender;
+- (IBAction)changeMaxDuration:(id)sender;
 
 
 @end
