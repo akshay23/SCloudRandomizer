@@ -27,6 +27,7 @@ typedef void(^singleTrackDownloaded)(void);
 @property MusicSource *musicSource;
 @property NSTimer *timer;
 @property NSInteger currentTrackTime;
+@property enum MusicSourceError currentErrorState;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
 @property (strong, nonatomic) SCAudioStream *scAudioStream;
@@ -304,6 +305,7 @@ typedef void(^singleTrackDownloaded)(void);
     MBProgressHUD* progressHud = [self getProgressBar:MBProgressHUDModeIndeterminate progressHudLabel:@"Loading next track" progressHudDetailsLabel:@"Please wait.."];
 
     [self.musicSource getRandomTrack:self.searchParams completionHandler:^(Track *track, enum MusicSourceError error) {
+                            self.currentErrorState = error;
                             if (error == None) {
                                 self.currentTrack = track;
                                 [self setupLockScreenInfo:track];
@@ -486,6 +488,14 @@ typedef void(^singleTrackDownloaded)(void);
 // Return current search params
 - (SearchParams *)getCurrentSearchParams {
     return self.searchParams;
+}
+
+// Return FALSE if no tracks available
+- (BOOL)areTracksAvailable {
+    if (self.currentErrorState == ZeroData) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

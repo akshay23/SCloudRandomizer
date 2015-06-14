@@ -26,7 +26,6 @@ enum {
 };
 typedef NSUInteger PlayerState;
 
-@property (strong, nonatomic) NSArray *tracks;
 @property (strong, nonatomic) SearchParamsVC *searchParamsVC;
 @property (strong, nonatomic) TrackInfoVC *trackInfoVC;
 
@@ -42,11 +41,8 @@ typedef NSUInteger PlayerState;
 @property (strong, nonatomic) IBOutlet UIButton *btnChangeParams;
 @property (strong, nonatomic) IBOutlet UIButton *btnInfo;
 @property (strong, nonatomic) IBOutlet UIButton *btnLike;
-
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
-
-@property (nonatomic) IBOutlet UIImageView *refreshImage;
-
+@property (strong, nonatomic) IBOutlet UIImageView *refreshImage;
 @property (strong, nonatomic) IBOutlet UISlider *scrubber;
 
 - (IBAction)logout:(id)sender;

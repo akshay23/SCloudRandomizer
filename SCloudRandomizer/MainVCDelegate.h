@@ -17,6 +17,7 @@
 
 - (Track *)getCurrentTrack;
 - (SearchParams *)getCurrentSearchParams;
+- (BOOL)areTracksAvailable;
 
 @end
 

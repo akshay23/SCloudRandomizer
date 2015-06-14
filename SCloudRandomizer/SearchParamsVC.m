@@ -71,6 +71,11 @@ static const double OffsetForKeyboard = 60.0;
     id<MainVCDelegate> strongDelegate = self.delegate;
     self.searchParams = [strongDelegate getCurrentSearchParams];
     
+    // Disable cancel button if no tracks available
+    if (![strongDelegate areTracksAvailable]) {
+        self.btnCancel.enabled = NO;
+    }
+    
     // Fill in the values
     self.txtKeywords.text = self.searchParams.keywords;
     self.txtDurationFrom.text = (self.searchParams.durationFrom == 0) ? @"" : [NSString stringWithFormat: @"%ld",
@@ -108,6 +113,7 @@ static const double OffsetForKeyboard = 60.0;
         self.searchParams.highBpm = ([self.txtBpmTo.text isEqualToString:@""]) ? 0 : [self.txtBpmTo.text intValue];
         self.searchParams.durationFrom = ([self.txtDurationFrom.text isEqualToString:@""]) ? 0 : [self.txtDurationFrom.text intValue];
         self.searchParams.durationTo = ([self.txtDurationTo.text isEqualToString:@""]) ? 0 : [self.txtDurationTo.text intValue];
+        self.btnCancel.enabled = YES;
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
