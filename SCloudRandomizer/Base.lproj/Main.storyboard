@@ -238,8 +238,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-RG-yQL">
-                                        <rect key="frame" x="273" y="35" width="71" height="36"/>
-                                        <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                        <rect key="frame" x="200" y="546" width="130" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.69310047821149201" blue="0.2940123735350888" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Done">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -249,8 +249,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2B-IZ-6Qs">
-                                        <rect key="frame" x="26" y="35" width="85" height="36"/>
-                                        <color key="backgroundColor" red="0.93725496530532837" green="0.89411771297454834" blue="0.72156864404678345" alpha="1" colorSpace="deviceRGB"/>
+                                        <rect key="frame" x="44" y="546" width="130" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.69310047821149201" blue="0.2940123735350888" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -259,74 +259,92 @@
                                             <action selector="cancel:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="9mJ-Bi-AXR"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma and/or space." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
-                                        <rect key="frame" x="26" y="94" width="323" height="76.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma and/or space**" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
+                                        <rect key="frame" x="26" y="41" width="323" height="76.5"/>
                                         <color key="textColor" red="0.14685358047460317" green="0.14685358047460317" blue="0.14685358047460317" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Biggie, rap" translatesAutoresizingMaskIntoConstraints="NO" id="rvt-yK-Nw3" userLabel="txtKeywords">
-                                        <rect key="frame" x="26" y="160" width="323" height="135"/>
+                                        <rect key="frame" x="26" y="107" width="323" height="135"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Min BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
-                                        <rect key="frame" x="43" y="467" width="96" height="34.5"/>
+                                        <rect key="frame" x="51" y="394" width="96" height="25.5"/>
                                         <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo" userLabel="txtBpmFrom">
-                                        <rect key="frame" x="36" y="495" width="110" height="36"/>
+                                        <rect key="frame" x="44" y="420" width="110" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8" userLabel="txtBpmTo">
-                                        <rect key="frame" x="228" y="495" width="110" height="36"/>
+                                        <rect key="frame" x="220" y="420" width="110" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Min Duration (mins)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
-                                        <rect key="frame" x="26" y="324" width="169" height="53"/>
+                                        <rect key="frame" x="26" y="267" width="169" height="26"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Fc-0fY" userLabel="txtDurationFrom">
-                                        <rect key="frame" x="36" y="352" width="110" height="36"/>
+                                        <rect key="frame" x="36" y="294" width="110" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-yh-4We" userLabel="txtDurationTo">
-                                        <rect key="frame" x="228" y="352" width="110" height="36"/>
+                                        <rect key="frame" x="228" y="294" width="110" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Max Duration" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-LU-o52">
-                                        <rect key="frame" x="224" y="324" width="121" height="34.5"/>
+                                        <rect key="frame" x="224" y="267" width="121" height="26"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tyT-Gd-VfC">
-                                        <rect key="frame" x="44" y="392" width="94" height="29"/>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="tyT-Gd-VfC">
+                                        <rect key="frame" x="44" y="334" width="94" height="29"/>
                                         <connections>
                                             <action selector="changeMinDuration:" destination="e9Y-XI-SDn" eventType="valueChanged" id="pAs-u1-6fA"/>
                                         </connections>
                                     </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-qt-HVD">
-                                        <rect key="frame" x="236" y="392" width="94" height="29"/>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-qt-HVD">
+                                        <rect key="frame" x="236" y="334" width="94" height="29"/>
                                         <connections>
                                             <action selector="changeMaxDuration:" destination="e9Y-XI-SDn" eventType="valueChanged" id="XV8-CN-UiB"/>
                                         </connections>
                                     </stepper>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Max BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9L-sF-sLn">
-                                        <rect key="frame" x="235" y="467" width="96" height="34.5"/>
+                                        <rect key="frame" x="227" y="394" width="96" height="25.5"/>
                                         <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="OCh-0p-tpX">
+                                        <rect key="frame" x="52" y="460" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMinBpm:" destination="e9Y-XI-SDn" eventType="valueChanged" id="p9l-zW-4xP"/>
+                                        </connections>
+                                    </stepper>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="g9E-ED-CgO">
+                                        <rect key="frame" x="228" y="460" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMaxBpm:" destination="e9Y-XI-SDn" eventType="valueChanged" id="4eh-oO-O8V"/>
+                                        </connections>
+                                    </stepper>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="**Required field" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HU-R8-WFu">
+                                        <rect key="frame" x="26" y="610" width="121" height="25"/>
+                                        <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -339,7 +357,9 @@
                     <connections>
                         <outlet property="btnCancel" destination="S2B-IZ-6Qs" id="7JJ-lf-aat"/>
                         <outlet property="btnSave" destination="7jH-RG-yQL" id="dQ3-8k-2bV"/>
+                        <outlet property="maxBpmStepper" destination="g9E-ED-CgO" id="TfA-sX-MCG"/>
                         <outlet property="maxDurationStepper" destination="Tx1-qt-HVD" id="cgB-XL-xMk"/>
+                        <outlet property="minBpmStepper" destination="OCh-0p-tpX" id="M2F-Wp-u4q"/>
                         <outlet property="minDurationStepper" destination="tyT-Gd-VfC" id="0cq-cl-qwf"/>
                         <outlet property="scrollView" destination="hai-2L-WJx" id="lpX-TZ-D70"/>
                         <outlet property="txtBpmFrom" destination="g7d-jH-9Lo" id="2vO-6k-fiW"/>
@@ -351,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgv-Vs-x0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240.5" y="325.5"/>
+            <point key="canvasLocation" x="1243.5" y="319.5"/>
         </scene>
         <!--Track Info VC-->
         <scene sceneID="Zu8-T8-rs4">

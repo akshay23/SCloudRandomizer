@@ -24,11 +24,15 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIStepper *minDurationStepper;
 @property (strong, nonatomic) IBOutlet UIStepper *maxDurationStepper;
+@property (strong, nonatomic) IBOutlet UIStepper *minBpmStepper;
+@property (strong, nonatomic) IBOutlet UIStepper *maxBpmStepper;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
 - (IBAction)changeMinDuration:(id)sender;
 - (IBAction)changeMaxDuration:(id)sender;
+- (IBAction)changeMinBpm:(id)sender;
+- (IBAction)changeMaxBpm:(id)sender;
 
 
 @end
