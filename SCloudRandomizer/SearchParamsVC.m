@@ -10,7 +10,7 @@
 #import "Utility.h"
 #import <QuartzCore/QuartzCore.h>
 
-static const double OffsetForKeyboard = 60.0;
+static const double OffsetForKeyboard = 90.0;
 
 @interface SearchParamsVC ()
 
@@ -52,6 +52,18 @@ static const double OffsetForKeyboard = 60.0;
     // Used to hide keyboard when user taps view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    
+    // Add done button to numberpad
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
+                           nil];
+    [numberToolbar sizeToFit];
+    self.txtDurationFrom.inputAccessoryView = numberToolbar;
+    self.txtDurationTo.inputAccessoryView = numberToolbar;
+    self.txtBpmFrom.inputAccessoryView = numberToolbar;
+    self.txtBpmTo.inputAccessoryView = numberToolbar;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -164,6 +176,10 @@ static const double OffsetForKeyboard = 60.0;
     [self.txtBpmFrom resignFirstResponder];
     [self.txtDurationFrom resignFirstResponder];
     [self.txtDurationTo resignFirstResponder];
+}
+
+- (void)doneWithNumberPad{
+    [self dismissKeyboard];
 }
 
 - (void)showAlertWithTitle:(NSString *)alertTitle message:(NSString *)alertMessage {
