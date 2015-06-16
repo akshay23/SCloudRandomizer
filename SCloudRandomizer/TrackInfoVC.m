@@ -17,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Draw border around both buttons
+    self.btnClose.layer.cornerRadius = 2;
+    self.btnClose.layer.borderWidth = 1;
+    self.btnClose.layer.borderColor = [UIColor blueColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {
