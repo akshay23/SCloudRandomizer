@@ -10,21 +10,42 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Scloudy_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="95.5" height="79.5" alignment="center" hidden="YES" text="Please launch the iPhone app first" textAlignment="center" numberOfLines="7" id="jOv-TB-BdQ"/>
+                        <label width="112.5" height="117.5" alignment="center" hidden="YES" text="Please launch the Scloudy iPhone app and make sure you are logged into SoundCloud" textAlignment="center" numberOfLines="8" id="jOv-TB-BdQ"/>
+                        <imageView width="89" height="81" alignment="center" initiallyAnimated="NO" animationDuration="6" id="byo-o2-Z4o"/>
+                        <label width="133.5" alignment="left" hidden="YES" text="Label" textAlignment="center" id="ulX-SD-4IN"/>
+                        <group width="1" alignment="left" id="0EG-Ki-23e">
+                            <items>
+                                <button width="60" alignment="left" title="Play" id="TM6-8b-k6L">
+                                    <connections>
+                                        <action selector="doPlayPause" destination="AgC-eL-Hgc" id="88E-kN-HqT"/>
+                                    </connections>
+                                </button>
+                                <button width="60" alignment="right" title="Next" id="OBg-vg-qUZ">
+                                    <connections>
+                                        <action selector="doPlayNext" destination="AgC-eL-Hgc" id="peB-mA-5Fz"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <connections>
+                        <outlet property="btnNext" destination="OBg-vg-qUZ" id="dQZ-CS-z5S"/>
+                        <outlet property="btnPlay" destination="TM6-8b-k6L" id="Oog-t6-9cL"/>
+                        <outlet property="grpButtons" destination="0EG-Ki-23e" id="vIK-Wl-mny"/>
+                        <outlet property="imgTrackArt" destination="byo-o2-Z4o" id="yTQ-CG-6t9"/>
                         <outlet property="lblMessage" destination="jOv-TB-BdQ" id="j7m-eO-Ia8"/>
+                        <outlet property="lblTrackTitle" destination="ulX-SD-4IN" id="mOs-B8-oXQ"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="343" y="385"/>
+            <point key="canvasLocation" x="343" y="384"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Next Song Playing" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
@@ -38,7 +59,11 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Scloudy_WatchKit_App" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Scloudy_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Next Song Playing" id="7Z2-Sj-zxj"/>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

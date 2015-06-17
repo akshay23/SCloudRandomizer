@@ -7,6 +7,7 @@
 //
 
 @class SearchParams;
+@class MMWormhole;
 
 @interface Utility : NSObject
 

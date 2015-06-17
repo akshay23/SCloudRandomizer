@@ -10,6 +10,7 @@
 #import "iRate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "GlobalData.h"
 
 @interface AppDelegate ()
 
@@ -41,6 +42,15 @@
     
     // Instantiate crashlytics
     [Fabric with:@[CrashlyticsKit]];
+    
+    // Instantiate wormhole
+    if (![GlobalData getInstance].wormhole) {
+        [GlobalData getInstance].wormhole = [[MMWormhole alloc] initWithApplicationGroupIdentifier:@"group.com.actionman.scloudy" optionalDirectory:@"wormhole"];
+        NSLog(@"wormhole instantiated");
+    }
+    
+    // Notify watch that app has been launched
+    [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"AppRunning"];
 
     return YES;
 }
@@ -69,6 +79,9 @@
     [self saveContext];
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    // Notify watch that app has been terminated
+    [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"AppRunning"];
 }
 
 #pragma mark - Core Data stack

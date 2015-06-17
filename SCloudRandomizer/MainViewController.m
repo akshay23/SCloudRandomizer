@@ -10,7 +10,6 @@
 #import "Utility.h"
 #import "Track.h"
 #import "SCAudioStream.h"
-#import "MMWormhole.h"
 
 static const double LoggedOutBackgroundImageOpacity = 0.7;
 static const double LoggedInBackgroundImageOpacity = 0.2;
@@ -28,7 +27,6 @@ typedef void(^singleTrackDownloaded)(void);
 @property MusicSource *musicSource;
 @property NSTimer *timer;
 @property NSInteger currentTrackTime;
-@property MMWormhole *wormhole;
 @property enum MusicSourceError currentErrorState;
 @property (strong, nonatomic) Track *currentTrack;
 @property (strong, nonatomic) SearchParams *searchParams;
@@ -43,10 +41,8 @@ typedef void(^singleTrackDownloaded)(void);
     [super viewDidLoad];
     
     self.musicSource = [MusicSource getInstance];
-    self.wormhole = [[MMWormhole alloc] initWithApplicationGroupIdentifier:@"group.com.actionman.scloudy" optionalDirectory:@"wormhole"];
     
-    if (![GlobalData getInstance].mainStoryboard)
-    {
+    if (![GlobalData getInstance].mainStoryboard) {
         // Instantiate new main storyboard instance
         [GlobalData getInstance].mainStoryboard = self.storyboard;
         NSLog(@"mainStoryboard instantiated");
@@ -75,13 +71,14 @@ typedef void(^singleTrackDownloaded)(void);
                                                object:nil];
 
     [self hideAllDataAndControls];
+    [self startWormholeListeners];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if ([self.musicSource isUserLoggedIn]) {
-        [self.wormhole passMessageObject:@"YES" identifier:@"IsUserLoggedIn"];
+        [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsUserLoggedIn"];
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
         self.backgroundImage.alpha = LoggedInBackgroundImageOpacity;
@@ -100,7 +97,7 @@ typedef void(^singleTrackDownloaded)(void);
     }
     else
     {
-        [self.wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
+        [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
         self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     }
 }
@@ -145,7 +142,7 @@ typedef void(^singleTrackDownloaded)(void);
         self.scAudioStream = nil;
     }
     
-    [self.wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
+    [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
     
     NSLog(@"Logged out.");
 }
@@ -432,8 +429,21 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)updateWormhole {
-    [self.wormhole passMessageObject:self.currentTrack.albumArtUrl identifier:@"TrackImageURL"];
-    [self.wormhole passMessageObject:(self.isTrackPlaying ? @"YES" : @"NO") identifier:@"IsTrackPlaying"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.albumArtUrl identifier:@"TrackImageURL"];
+    [[GlobalData getInstance].wormhole passMessageObject:(self.isTrackPlaying ? @"YES" : @"NO") identifier:@"IsTrackPlaying"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.title identifier:@"TrackTitle"];
+}
+
+- (void)startWormholeListeners {
+    [[GlobalData getInstance].wormhole listenForMessageWithIdentifier:@"ChangePlayStatus"
+                                         listener:^(id messageObject) {
+                                             [self playPauseSong];
+                                         }];
+    
+    [[GlobalData getInstance].wormhole listenForMessageWithIdentifier:@"PlayNext"
+                                         listener:^(id messageObject) {
+                                             [self playNextTrack];
+                                         }];
 }
 
 #pragma mark - System methods

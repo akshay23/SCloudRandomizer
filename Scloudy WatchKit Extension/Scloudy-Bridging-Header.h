@@ -9,5 +9,6 @@
 #ifndef Scloudy_Scloudy_Bridging_Header_h
 #define Scloudy_Scloudy_Bridging_Header_h
 
+#import "MMWormhole.h"
 
 #endif
