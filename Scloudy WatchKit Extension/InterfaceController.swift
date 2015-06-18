@@ -29,6 +29,16 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.actionman.scloudy", optionalDirectory: "wormhole")
         self.lblMessage.setHidden(false)
+        
+//        let info = ["Active":"YES"]
+//        WKInterfaceController.openParentApplication(info) {
+//            (replyDictionary, error) -> Void in
+//            
+//            // Use response from parent app
+//            if replyDictionary["Active"] as! String == "YES" {
+//                self.lblMessage.setHidden(true)
+//            }
+//        }
     }
 
     override func willActivate() {
@@ -43,9 +53,9 @@ class InterfaceController: WKInterfaceController {
                     self.lblMessage.setHidden(true)
                 } else {
                     self.lblMessage.setHidden(false)
-                    self.imgTrackArt.setHidden(true)
-                    self.lblTrackTitle.setHidden(true)
                     self.grpButtons.setHidden(true)
+                    self.lblTrackTitle.setHidden(true)
+                    self.imgTrackArt.setHidden(true)
                 }
             }
         }
@@ -58,6 +68,8 @@ class InterfaceController: WKInterfaceController {
                     self.lblMessage.setHidden(true)
                 } else {
                     self.lblMessage.setHidden(false)
+                    self.grpButtons.setHidden(true)
+                    self.lblTrackTitle.setHidden(true)
                     self.imgTrackArt.setHidden(true)
                 }
             }
@@ -68,7 +80,9 @@ class InterfaceController: WKInterfaceController {
             (messageObject) -> Void in
             if let url: NSURL = messageObject as? NSURL {
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
-                    var data: NSData = NSData(contentsOfURL: url)!
+                    var replace: String = url.absoluteString!.stringByReplacingOccurrencesOfString("-t300x300", withString: "-large", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                    var actualURL: NSURL = NSURL(string: replace)!
+                    var data: NSData = NSData(contentsOfURL: actualURL)!
                     self.image = UIImage(data: data)!
                     dispatch_async(dispatch_get_main_queue()) {
                         self.imgTrackArt.setImage(self.image)
@@ -84,6 +98,7 @@ class InterfaceController: WKInterfaceController {
             if let title: String = messageObject as? String {
                 self.lblTrackTitle.setText(title)
                 self.lblTrackTitle.setHidden(false)
+                self.grpButtons.setHidden(false)
             }
         }
         
@@ -96,7 +111,6 @@ class InterfaceController: WKInterfaceController {
                 } else {
                     self.btnPlay.setTitle("Play")
                 }
-                self.grpButtons.setHidden(false)
             }
         }
     }
@@ -104,7 +118,7 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-
+        
         self.wormhole.stopListeningForMessageWithIdentifier("AppRunning")
         self.wormhole.stopListeningForMessageWithIdentifier("IsUserLoggedIn")
         self.wormhole.stopListeningForMessageWithIdentifier("TrackImageURL")
@@ -113,10 +127,10 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func doPlayNext() {
-        self.wormhole.passMessageObject("YES", identifier: "PlayNext")
+        //self.wormhole.passMessageObject("YES", identifier: "PlayNext")
     }
     
     @IBAction func doPlayPause() {
-        self.wormhole.passMessageObject("YES", identifier: "ChangePlayStatus")
+        //self.wormhole.passMessageObject("YES", identifier: "ChangePlayStatus")
     }
 }

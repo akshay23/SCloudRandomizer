@@ -28,6 +28,11 @@
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="2Oa-JF-4H8">
+                        <items>
+                            <menuItem title="Like" icon="add" id="XC1-mJ-9JN"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="btnNext" destination="OBg-vg-qUZ" id="dQZ-CS-z5S"/>
                         <outlet property="btnPlay" destination="TM6-8b-k6L" id="Oog-t6-9cL"/>

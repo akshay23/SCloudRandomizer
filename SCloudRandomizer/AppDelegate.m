@@ -84,6 +84,14 @@
     [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"AppRunning"];
 }
 
+- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply {
+    if ([userInfo valueForKey:@"Active"] != nil) {
+        reply(@{@"Active": @"YES"});
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppActive" object:self];
+        NSLog(@"Told WatchKit that app is active");
+    }
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;

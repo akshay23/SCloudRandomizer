@@ -69,6 +69,12 @@ typedef void(^singleTrackDownloaded)(void);
                                              selector:@selector(receiveNotification:)
                                                  name:@"com.actionman.Scloudy.ReadyToPlay"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"com.actionman.Scloudy.WatchAppActive"
+                                               object:nil];
+
 
     [self hideAllDataAndControls];
     [self startWormholeListeners];
@@ -429,6 +435,7 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)updateWormhole {
+    [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsUserLoggedIn"];
     [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.albumArtUrl identifier:@"TrackImageURL"];
     [[GlobalData getInstance].wormhole passMessageObject:(self.isTrackPlaying ? @"YES" : @"NO") identifier:@"IsTrackPlaying"];
     [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.title identifier:@"TrackTitle"];
@@ -483,6 +490,8 @@ typedef void(^singleTrackDownloaded)(void);
             self.prepToPlayHud = nil;
             self.isPlayingForFirstTime = NO;
         }
+    } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppActive"]) {
+        [self updateWormhole];
     }
 }
 
