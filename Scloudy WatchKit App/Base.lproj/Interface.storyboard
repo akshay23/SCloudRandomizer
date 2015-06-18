@@ -13,7 +13,7 @@
                         <label width="112.5" height="117.5" alignment="center" hidden="YES" text="Please launch the Scloudy iPhone app and make sure you are logged into SoundCloud" textAlignment="center" numberOfLines="8" id="jOv-TB-BdQ"/>
                         <imageView width="89" height="81" alignment="center" initiallyAnimated="NO" animationDuration="6" id="byo-o2-Z4o"/>
                         <label width="133.5" alignment="left" hidden="YES" text="Label" textAlignment="center" id="ulX-SD-4IN"/>
-                        <group width="1" alignment="left" id="0EG-Ki-23e">
+                        <group width="1" alignment="left" hidden="YES" id="0EG-Ki-23e">
                             <items>
                                 <button width="60" alignment="left" title="Play" id="TM6-8b-k6L">
                                     <connections>

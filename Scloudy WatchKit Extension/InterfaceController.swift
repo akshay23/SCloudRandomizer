@@ -28,7 +28,6 @@ class InterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.actionman.scloudy", optionalDirectory: "wormhole")
-        self.lblMessage.setHidden(false)
     }
 
     override func willActivate() {
@@ -152,12 +151,26 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func doPlayNext() {
-        //self.wormhole.passMessageObject("YES", identifier: "PlayNext")
-        self.btnPlay.setEnabled(false)
-        self.btnNext.setEnabled(false)
+        let info = ["NextTrack":"YES"]
+        WKInterfaceController.openParentApplication(info) {
+            (replyDictionary, error) -> Void in
+            if replyDictionary != nil && replyDictionary["NextTrack"] as! String == "YES" {
+                self.btnPlay.setEnabled(false)
+                self.btnNext.setEnabled(false)
+            } else {
+                println("Could not get next track!")
+            }
+        }
     }
     
     @IBAction func doPlayPause() {
-        //self.wormhole.passMessageObject("YES", identifier: "ChangePlayStatus")
+        let info = ["PlayPauseTrack":"YES"]
+        WKInterfaceController.openParentApplication(info) {
+            (replyDictionary, error) -> Void in
+            if replyDictionary != nil && replyDictionary["PlayPauseTrack"] as! String == "YES" {
+            } else {
+                println("Could not get play/pause track!")
+            }
+        }
     }
 }

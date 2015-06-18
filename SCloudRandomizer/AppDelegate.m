@@ -84,14 +84,23 @@
     [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"AppRunning"];
 }
 
+// Handle Scloudy watchkit requests
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply {
     if ([userInfo valueForKey:@"Active"] != nil) {
         reply(@{@"Active": @"YES"});
         NSLog(@"Told WatchKit that app is active");
     } else if ([userInfo valueForKey:@"RefreshData"] != nil) {
         reply(@{@"Refresh": @"YES"});
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppActive" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppRefreshData" object:self];
         NSLog(@"Told WatchKit that data will be refreshed");
+    } else if ([userInfo valueForKey:@"NextTrack"] != nil) {
+        reply(@{@"NextTrack": @"YES"});
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppNextTrack" object:self];
+        NSLog(@"Told WatchKit that next track will play");
+    } else if ([userInfo valueForKey:@"PlayPauseTrack"] != nil) {
+        reply(@{@"PlayPauseTrack": @"YES"});
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppPlayPauseTrack" object:self];
+        NSLog(@"Told WatchKit that current track will play/pause");
     }
 }
 
