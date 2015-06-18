@@ -28,6 +28,7 @@ class InterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.actionman.scloudy", optionalDirectory: "wormhole")
+        self.startAnimatingSpinner()
     }
 
     override func willActivate() {
@@ -102,10 +103,11 @@ class InterfaceController: WKInterfaceController {
                       var data: NSData = NSData(contentsOfURL: checkURL)!
                       self.image = UIImage(data: data)!
                       dispatch_async(dispatch_get_main_queue()) {
-                          self.imgTrackArt.setImage(self.image)
-                          self.imgTrackArt.setHidden(false)
-                          self.lblTrackTitle.setHidden(false)
-                          self.grpButtons.setHidden(false)
+                        self.imgTrackArt.stopAnimating()
+                        self.imgTrackArt.setImage(self.image)
+                        self.imgTrackArt.setHidden(false)
+                        self.lblTrackTitle.setHidden(false)
+                        self.grpButtons.setHidden(false)
                       }
                     }
                 }
@@ -157,6 +159,7 @@ class InterfaceController: WKInterfaceController {
             if replyDictionary != nil && replyDictionary["NextTrack"] as! String == "YES" {
                 self.btnPlay.setEnabled(false)
                 self.btnNext.setEnabled(false)
+                self.startAnimatingSpinner()
             } else {
                 println("Could not get next track!")
             }
@@ -172,5 +175,12 @@ class InterfaceController: WKInterfaceController {
                 println("Could not get play/pause track!")
             }
         }
+    }
+    
+    func startAnimatingSpinner() {
+        self.imgTrackArt.setHidden(false)
+        self.imgTrackArt.setImageNamed("scloudy")
+        self.imgTrackArt.startAnimatingWithImagesInRange(
+            NSRange(location: 0, length: 4), duration: 1, repeatCount: Int.max)
     }
 }
