@@ -87,8 +87,11 @@
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply {
     if ([userInfo valueForKey:@"Active"] != nil) {
         reply(@{@"Active": @"YES"});
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppActive" object:self];
         NSLog(@"Told WatchKit that app is active");
+    } else if ([userInfo valueForKey:@"RefreshData"] != nil) {
+        reply(@{@"Refresh": @"YES"});
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.actionman.Scloudy.WatchAppActive" object:self];
+        NSLog(@"Told WatchKit that data will be refreshed");
     }
 }
 

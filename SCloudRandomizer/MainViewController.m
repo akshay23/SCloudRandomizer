@@ -361,6 +361,7 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)playNextTrack {
+    [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsTrackReadyToPlay"];
     [self getNextTrack: ^{
         [self playTrack];
         self.isTrackPlaying = YES;
@@ -489,6 +490,7 @@ typedef void(^singleTrackDownloaded)(void);
             [self enableButtons:YES];
             self.prepToPlayHud = nil;
             self.isPlayingForFirstTime = NO;
+            [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsTrackReadyToPlay"];
         }
     } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppActive"]) {
         [self updateWormhole];

@@ -29,21 +29,30 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.actionman.scloudy", optionalDirectory: "wormhole")
         self.lblMessage.setHidden(false)
-        
-//        let info = ["Active":"YES"]
-//        WKInterfaceController.openParentApplication(info) {
-//            (replyDictionary, error) -> Void in
-//            
-//            // Use response from parent app
-//            if replyDictionary["Active"] as! String == "YES" {
-//                self.lblMessage.setHidden(true)
-//            }
-//        }
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        let info = ["Active":"YES"]
+        WKInterfaceController.openParentApplication(info) {
+            (replyDictionary, error) -> Void in
+            if replyDictionary != nil && replyDictionary["Active"] as! String == "YES" {
+                let refreshData = ["RefreshData": "YES"]
+                WKInterfaceController.openParentApplication(refreshData) {
+                    (replyDictionary, error) -> Void in
+                    if ((error) != nil) {
+                        println("Could not refresh track data")
+                    }
+                }
+            } else {
+                self.lblMessage.setHidden(false)
+                self.grpButtons.setHidden(true)
+                self.lblTrackTitle.setHidden(true)
+                self.imgTrackArt.setHidden(true)
+            }
+        }
         
         // Show label if app not running
         self.wormhole.listenForMessageWithIdentifier("AppRunning") {
@@ -75,30 +84,32 @@ class InterfaceController: WKInterfaceController {
             }
         }
         
+        // Check for track title change
+        self.wormhole.listenForMessageWithIdentifier("TrackTitle") {
+            (messageObject) -> Void in
+            if let title: String = messageObject as? String {
+                self.lblTrackTitle.setText(title)
+            }
+        }
+        
         // Check for new track art changes
         self.wormhole.listenForMessageWithIdentifier("TrackImageURL") {
             (messageObject) -> Void in
             if let url: NSURL = messageObject as? NSURL {
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
                     var replace: String = url.absoluteString!.stringByReplacingOccurrencesOfString("-t300x300", withString: "-large", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                    var actualURL: NSURL = NSURL(string: replace)!
-                    var data: NSData = NSData(contentsOfURL: actualURL)!
-                    self.image = UIImage(data: data)!
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.imgTrackArt.setImage(self.image)
-                        self.imgTrackArt.setHidden(false)
+                    var actualURL: NSURL! = NSURL(string: replace)!
+                    if let checkURL = actualURL {
+                      var data: NSData = NSData(contentsOfURL: checkURL)!
+                      self.image = UIImage(data: data)!
+                      dispatch_async(dispatch_get_main_queue()) {
+                          self.imgTrackArt.setImage(self.image)
+                          self.imgTrackArt.setHidden(false)
+                          self.lblTrackTitle.setHidden(false)
+                          self.grpButtons.setHidden(false)
+                      }
                     }
                 }
-            }
-        }
-        
-        // Check for track title change
-        self.wormhole.listenForMessageWithIdentifier("TrackTitle") {
-            (messageObject) -> Void in
-            if let title: String = messageObject as? String {
-                self.lblTrackTitle.setText(title)
-                self.lblTrackTitle.setHidden(false)
-                self.grpButtons.setHidden(false)
             }
         }
         
@@ -110,6 +121,20 @@ class InterfaceController: WKInterfaceController {
                     self.btnPlay.setTitle("Pause")
                 } else {
                     self.btnPlay.setTitle("Play")
+                }
+            }
+        }
+        
+        // Check track play/pause status
+        self.wormhole.listenForMessageWithIdentifier("IsTrackReadyToPlay") {
+            (messageObject) -> Void in
+            if let isReady: String = messageObject as? String {
+                if isReady == "YES" {
+                    self.btnPlay.setEnabled(true)
+                    self.btnNext.setEnabled(true)
+                } else {
+                    self.btnPlay.setEnabled(false)
+                    self.btnNext.setEnabled(false)
                 }
             }
         }
@@ -128,6 +153,8 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func doPlayNext() {
         //self.wormhole.passMessageObject("YES", identifier: "PlayNext")
+        self.btnPlay.setEnabled(false)
+        self.btnNext.setEnabled(false)
     }
     
     @IBAction func doPlayPause() {
