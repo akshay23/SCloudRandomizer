@@ -28,7 +28,6 @@ class InterfaceController: WKInterfaceController {
         
         // Configure interface objects here.
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.actionman.scloudy", optionalDirectory: "wormhole")
-        self.startAnimatingSpinner()
     }
 
     override func willActivate() {
@@ -65,6 +64,7 @@ class InterfaceController: WKInterfaceController {
                     self.grpButtons.setHidden(true)
                     self.lblTrackTitle.setHidden(true)
                     self.imgTrackArt.setHidden(true)
+                    self.imgTrackArt.stopAnimating()
                 }
             }
         }
@@ -80,6 +80,7 @@ class InterfaceController: WKInterfaceController {
                     self.grpButtons.setHidden(true)
                     self.lblTrackTitle.setHidden(true)
                     self.imgTrackArt.setHidden(true)
+                    self.imgTrackArt.stopAnimating()
                 }
             }
         }
@@ -95,7 +96,7 @@ class InterfaceController: WKInterfaceController {
         // Check for new track art changes
         self.wormhole.listenForMessageWithIdentifier("TrackImageURL") {
             (messageObject) -> Void in
-            if let url: NSURL = messageObject as? NSURL {
+            if messageObject != nil && let url: NSURL = messageObject as? NSURL {
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
                     var replace: String = url.absoluteString!.stringByReplacingOccurrencesOfString("-t300x300", withString: "-large", options: NSStringCompareOptions.LiteralSearch, range: nil)
                     var actualURL: NSURL! = NSURL(string: replace)!
@@ -111,6 +112,11 @@ class InterfaceController: WKInterfaceController {
                       }
                     }
                 }
+            } else {
+                self.grpButtons.setHidden(false)
+                self.lblTrackTitle.setHidden(false)
+                self.imgTrackArt.setHidden(false)
+                self.startAnimatingSpinner()
             }
         }
         

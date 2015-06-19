@@ -449,6 +449,11 @@ typedef void(^singleTrackDownloaded)(void);
     [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.albumArtUrl identifier:@"TrackImageURL"];
     [[GlobalData getInstance].wormhole passMessageObject:(self.isTrackPlaying ? @"YES" : @"NO") identifier:@"IsTrackPlaying"];
     [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.title identifier:@"TrackTitle"];
+    
+    // In case watch app closed before the IsTrackReadyToPlay message was sent
+    if (!self.isPlayingForFirstTime) {
+        [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsTrackReadyToPlay"];
+    }
 }
 
 - (void)startWormholeListeners {
@@ -502,7 +507,11 @@ typedef void(^singleTrackDownloaded)(void);
             [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsTrackReadyToPlay"];
         }
     } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppRefreshData"]) {
-        [self updateWormhole];
+        if ([self.musicSource isUserLoggedIn]) {
+            [self updateWormhole];
+        } else {
+            [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
+        }
     } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppNextTrack"]) {
         [self playNextTrack];
     } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppPlayPauseTrack"]) {
