@@ -449,6 +449,8 @@ typedef void(^singleTrackDownloaded)(void);
     [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.albumArtUrl identifier:@"TrackImageURL"];
     [[GlobalData getInstance].wormhole passMessageObject:(self.isTrackPlaying ? @"YES" : @"NO") identifier:@"IsTrackPlaying"];
     [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.title identifier:@"TrackTitle"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.artist identifier:@"TrackArtist"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.description identifier:@"TrackDescription"];
     
     // In case watch app closed before the IsTrackReadyToPlay message was sent
     if (!self.isPlayingForFirstTime) {

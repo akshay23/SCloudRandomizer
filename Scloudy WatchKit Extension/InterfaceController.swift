@@ -96,7 +96,7 @@ class InterfaceController: WKInterfaceController {
         // Check for new track art changes
         self.wormhole.listenForMessageWithIdentifier("TrackImageURL") {
             (messageObject) -> Void in
-            if messageObject != nil && let url: NSURL = messageObject as? NSURL {
+            if let url: NSURL = messageObject as? NSURL {
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
                     var replace: String = url.absoluteString!.stringByReplacingOccurrencesOfString("-t300x300", withString: "-large", options: NSStringCompareOptions.LiteralSearch, range: nil)
                     var actualURL: NSURL! = NSURL(string: replace)!

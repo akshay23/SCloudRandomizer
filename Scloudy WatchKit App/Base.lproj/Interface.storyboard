@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Now Playing-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Scloudy_WatchKit_App" customModuleProvider="target">
+                <controller title="Now Playing" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Scloudy_WatchKit_Extension">
                     <items>
                         <label width="112.5" height="117.5" alignment="center" hidden="YES" text="Please launch the Scloudy iPhone app and make sure you are logged into SoundCloud" textAlignment="center" numberOfLines="8" id="jOv-TB-BdQ"/>
                         <imageView width="89" height="81" alignment="center" initiallyAnimated="NO" animationDuration="6" id="byo-o2-Z4o"/>
@@ -35,10 +35,40 @@
                         <outlet property="imgTrackArt" destination="byo-o2-Z4o" id="yTQ-CG-6t9"/>
                         <outlet property="lblMessage" destination="jOv-TB-BdQ" id="j7m-eO-Ia8"/>
                         <outlet property="lblTrackTitle" destination="ulX-SD-4IN" id="mOs-B8-oXQ"/>
+                        <segue destination="AtE-tR-GA7" kind="relationship" relationship="nextPage" id="FDD-Oe-qbA"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="343" y="384"/>
+            <point key="canvasLocation" x="268" y="384"/>
+        </scene>
+        <!--Info Controller-->
+        <scene sceneID="sfT-ws-74t">
+            <objects>
+                <controller identifier="InfoController" title="Track Info" id="AtE-tR-GA7" userLabel="Info Controller" customClass="InfoController" customModule="Scloudy_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Track Name:" id="mre-5R-fDa">
+                            <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label alignment="left" text="(N/A)" numberOfLines="12" id="fQx-14-AFK" userLabel="lblTrackTitle"/>
+                        <separator alignment="left" id="z10-lv-ZAl"/>
+                        <label alignment="left" text="Track Artist:" id="fHJ-S8-skE">
+                            <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label height="19.5" alignment="left" text="(N/A)" numberOfLines="12" id="wPP-fc-T3A" userLabel="lblTrackArtist"/>
+                        <separator alignment="left" id="wmQ-HY-bDf"/>
+                        <label alignment="left" text="Description:" id="dXV-Vb-YVa">
+                            <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label alignment="left" text="(N/A)" numberOfLines="38" id="vmX-G4-HkR" userLabel="lblDescription"/>
+                    </items>
+                    <connections>
+                        <outlet property="lblDescription" destination="vmX-G4-HkR" id="w01-hc-DhU"/>
+                        <outlet property="lblTrackArtist" destination="wPP-fc-T3A" id="UFB-0z-Yrr"/>
+                        <outlet property="lblTrackTitle" destination="fQx-14-AFK" id="1gx-GA-P65"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="557" y="384"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -54,7 +84,7 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="268" y="683"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
@@ -65,7 +95,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="557" y="683"/>
         </scene>
     </scenes>
 </document>
