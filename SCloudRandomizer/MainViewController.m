@@ -42,8 +42,7 @@ typedef void(^singleTrackDownloaded)(void);
     
     self.musicSource = [MusicSource getInstance];
     
-    if (![GlobalData getInstance].mainStoryboard)
-    {
+    if (![GlobalData getInstance].mainStoryboard) {
         // Instantiate new main storyboard instance
         [GlobalData getInstance].mainStoryboard = self.storyboard;
         NSLog(@"mainStoryboard instantiated");
@@ -70,14 +69,31 @@ typedef void(^singleTrackDownloaded)(void);
                                              selector:@selector(receiveNotification:)
                                                  name:@"com.actionman.Scloudy.ReadyToPlay"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"com.actionman.Scloudy.WatchAppRefreshData"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"com.actionman.Scloudy.WatchAppNextTrack"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"com.actionman.Scloudy.WatchAppPlayPauseTrack"
+                                               object:nil];
 
     [self hideAllDataAndControls];
+    [self startWormholeListeners];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if ([self.musicSource isUserLoggedIn]) {
+        [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsUserLoggedIn"];
         [self.btnSCConnect setHidden:YES];
         [self.btnSCDisconnect setHidden:NO];
         self.backgroundImage.alpha = LoggedInBackgroundImageOpacity;
@@ -96,6 +112,7 @@ typedef void(^singleTrackDownloaded)(void);
     }
     else
     {
+        [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
         self.backgroundImage.alpha = LoggedOutBackgroundImageOpacity;
     }
 }
@@ -139,6 +156,8 @@ typedef void(^singleTrackDownloaded)(void);
         [self.scAudioStream pause];
         self.scAudioStream = nil;
     }
+    
+    [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
     
     NSLog(@"Logged out.");
 }
@@ -279,6 +298,8 @@ typedef void(^singleTrackDownloaded)(void);
         self.timer = nil;
         NSLog(@"Pausing song");
     }
+    
+    [self updateWormhole];
 }
 
 - (MBProgressHUD*) getProgressBar:(MBProgressHUDMode)progressHudMode progressHudLabel:(NSString*) progressHudTitle progressHudDetailsLabel:(NSString*) progressHudDetails {
@@ -295,6 +316,7 @@ typedef void(^singleTrackDownloaded)(void);
         self.scAudioStream = [track getStream];
         if (completionHandler) completionHandler();
         [progressHud hide:YES];
+        [self updateWormhole];
     });
 }
 
@@ -348,6 +370,7 @@ typedef void(^singleTrackDownloaded)(void);
 }
 
 - (void)playNextTrack {
+    [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsTrackReadyToPlay"];
     [self getNextTrack: ^{
         [self playTrack];
         self.isTrackPlaying = YES;
@@ -421,6 +444,32 @@ typedef void(^singleTrackDownloaded)(void);
     }
 }
 
+- (void)updateWormhole {
+    [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsUserLoggedIn"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.albumArtUrl identifier:@"TrackImageURL"];
+    [[GlobalData getInstance].wormhole passMessageObject:(self.isTrackPlaying ? @"YES" : @"NO") identifier:@"IsTrackPlaying"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.title identifier:@"TrackTitle"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.artist identifier:@"TrackArtist"];
+    [[GlobalData getInstance].wormhole passMessageObject:self.currentTrack.songDescription identifier:@"TrackDescription"];
+    
+    // In case watch app closed before the IsTrackReadyToPlay message was sent
+    if (!self.isPlayingForFirstTime) {
+        [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsTrackReadyToPlay"];
+    }
+}
+
+- (void)startWormholeListeners {
+    [[GlobalData getInstance].wormhole listenForMessageWithIdentifier:@"ChangePlayStatus"
+                                         listener:^(id messageObject) {
+                                             [self playPauseSong];
+                                         }];
+    
+    [[GlobalData getInstance].wormhole listenForMessageWithIdentifier:@"PlayNext"
+                                         listener:^(id messageObject) {
+                                             [self playNextTrack];
+                                         }];
+}
+
 #pragma mark - System methods
 
 // Lock screen control actions
@@ -457,7 +506,18 @@ typedef void(^singleTrackDownloaded)(void);
             [self enableButtons:YES];
             self.prepToPlayHud = nil;
             self.isPlayingForFirstTime = NO;
+            [[GlobalData getInstance].wormhole passMessageObject:@"YES" identifier:@"IsTrackReadyToPlay"];
         }
+    } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppRefreshData"]) {
+        if ([self.musicSource isUserLoggedIn]) {
+            [self updateWormhole];
+        } else {
+            [[GlobalData getInstance].wormhole passMessageObject:@"NO" identifier:@"IsUserLoggedIn"];
+        }
+    } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppNextTrack"]) {
+        [self playNextTrack];
+    } else if ([[notification name] isEqualToString:@"com.actionman.Scloudy.WatchAppPlayPauseTrack"]) {
+        [self playPauseSong];
     }
 }
 

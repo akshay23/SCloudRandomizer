@@ -11,14 +11,13 @@
 @implementation GlobalData
 
 @synthesize mainStoryboard;
+@synthesize wormhole;
 
 static GlobalData *instance;
 
 + (GlobalData *)getInstance {
-    @synchronized(self)
-    {
-        if(instance==nil)
-        {
+    @synchronized(self) {
+        if (instance==nil) {
             instance= [GlobalData new];
         }
     }

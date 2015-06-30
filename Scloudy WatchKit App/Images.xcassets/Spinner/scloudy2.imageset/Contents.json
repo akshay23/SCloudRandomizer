@@ -1,0 +1,25 @@
+{
+  "images" : [
+    {
+      "idiom" : "watch",
+      "scale" : "2x",
+      "filename" : "scloudy2.jpg"
+    },
+    {
+      "idiom" : "watch",
+      "screenWidth" : "{130,145}",
+      "filename" : "scloudy2-1.jpg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "watch",
+      "screenWidth" : "{146,165}",
+      "filename" : "scloudy2-2.jpg",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

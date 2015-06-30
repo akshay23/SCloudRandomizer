@@ -4,21 +4,36 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Scloudy Watch App.xcscheme</key>
+		<key>Glance - Scloudy WatchKit App.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>27</integer>
+		</dict>
+		<key>Notification - Scloudy WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
+		<key>Scloudy WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>Scloudy.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>194747741B31F7D0003CF0B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>19B207FD1A3504A40011C207</key>
 		<dict>
 			<key>primary</key>

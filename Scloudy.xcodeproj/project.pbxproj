@@ -10,6 +10,13 @@
 		190EA42A1AF2D0C30003DCD6 /* Music-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 190EA4291AF2D0C30003DCD6 /* Music-icon.png */; };
 		190EEAAF1B24C55C00A56A66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAAD1B24C55C00A56A66 /* Main.storyboard */; };
 		190EEAB21B24C5D000A56A66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAB01B24C5D000A56A66 /* LaunchScreen.xib */; };
+		1947476E1B31F7D0003CF0B7 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */; };
+		194747701B31F7D0003CF0B7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947476F1B31F7D0003CF0B7 /* NotificationController.swift */; };
+		194747721B31F7D0003CF0B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194747711B31F7D0003CF0B7 /* Images.xcassets */; };
+		194747761B31F7D0003CF0B7 /* Scloudy WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */; };
+		1947477E1B31F7D0003CF0B7 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947477C1B31F7D0003CF0B7 /* Interface.storyboard */; };
+		194747801B31F7D0003CF0B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1947477F1B31F7D0003CF0B7 /* Images.xcassets */; };
+		194747831B31F7D0003CF0B7 /* Scloudy WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 194747681B31F7D0003CF0B7 /* Scloudy WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		196E89181B22448B008DC002 /* SCAudioStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 196E89171B22448B008DC002 /* SCAudioStream.m */; };
 		196E891A1B224496008DC002 /* SCAudioBufferQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 196E89191B224496008DC002 /* SCAudioBufferQueue.m */; };
 		1974B9EA1B264F5A00DA4E15 /* next_bttn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1974B9E71B264F5A00DA4E15 /* next_bttn.png */; };
@@ -27,10 +34,14 @@
 		1997F7331A64211700109F76 /* SearchParamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7321A64211700109F76 /* SearchParamsVC.m */; };
 		1997F7361A6421C700109F76 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7351A6421C700109F76 /* GlobalData.m */; };
 		1997F7391A6454DC00109F76 /* SearchParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 1997F7381A6454DC00109F76 /* SearchParams.m */; };
+		19AF8D931B349BCC00D4F4A8 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF8D921B349BCC00D4F4A8 /* InfoController.swift */; };
 		19C18F081A2FC98B00281221 /* btn-connect-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F071A2FC98B00281221 /* btn-connect-m.png */; };
 		19C18F0A1A30CDB300281221 /* btn-disconnect-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C18F091A30CDB300281221 /* btn-disconnect-m.png */; };
 		19C18F0D1A30CF2E00281221 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C18F0C1A30CF2E00281221 /* MainViewController.m */; };
 		19C18F0F1A30E31200281221 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C18F0E1A30E31200281221 /* AVFoundation.framework */; };
+		19C89D6E1B320B1C0084AD01 /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C89D691B320B1C0084AD01 /* MMWormhole.m */; };
+		19C89D6F1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C89D6B1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.m */; };
+		19C89D701B320B1C0084AD01 /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C89D6D1B320B1C0084AD01 /* MMWormholeFileTransiting.m */; };
 		19C984811B1FFB89008E9333 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C984801B1FFB89008E9333 /* iRate.m */; };
 		19C984831B1FFCE2008E9333 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19C984821B1FFCE2008E9333 /* iRate.bundle */; };
 		19C984851B200060008E9333 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19C984841B200060008E9333 /* Localizable.strings */; };
@@ -54,6 +65,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		194747771B31F7D0003CF0B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19CDED1B1A2FB92100DD97CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 194747741B31F7D0003CF0B7;
+			remoteInfo = "Scloudy WatchKit App";
+		};
+		194747811B31F7D0003CF0B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19CDED1B1A2FB92100DD97CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 194747671B31F7D0003CF0B7;
+			remoteInfo = "Scloudy WatchKit Extension";
+		};
 		19CDED401A2FB92100DD97CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 19CDED1B1A2FB92100DD97CC /* Project object */;
@@ -70,6 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				194747831B31F7D0003CF0B7 /* Scloudy WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +108,17 @@
 		190EEAB11B24C5D000A56A66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1913B8661AE0027F007D2C0E /* MainVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVCDelegate.h; sourceTree = "<group>"; };
 		19174E3E1B225533001BFBBE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/include/lib/libOCMock.a; sourceTree = "<group>"; };
+		194747631B31DFE4003CF0B7 /* Scloudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Scloudy.entitlements; sourceTree = "<group>"; };
+		194747681B31F7D0003CF0B7 /* Scloudy WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Scloudy WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1947476B1B31F7D0003CF0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1947476C1B31F7D0003CF0B7 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		1947476F1B31F7D0003CF0B7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		194747711B31F7D0003CF0B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scloudy WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1947477B1B31F7D0003CF0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1947477D1B31F7D0003CF0B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		1947477F1B31F7D0003CF0B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		196E89171B22448B008DC002 /* SCAudioStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioStream.m; sourceTree = "<group>"; };
 		196E89191B224496008DC002 /* SCAudioBufferQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAudioBufferQueue.m; sourceTree = "<group>"; };
 		1974B9E71B264F5A00DA4E15 /* next_bttn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next_bttn.png; sourceTree = "<group>"; };
@@ -106,12 +143,21 @@
 		1997F7351A6421C700109F76 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
 		1997F7371A6454DC00109F76 /* SearchParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParams.h; sourceTree = "<group>"; };
 		1997F7381A6454DC00109F76 /* SearchParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchParams.m; sourceTree = "<group>"; };
+		19AF8D921B349BCC00D4F4A8 /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		19B207FF1A3504A40011C207 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		19C18F071A2FC98B00281221 /* btn-connect-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-connect-m.png"; sourceTree = "<group>"; };
 		19C18F091A30CDB300281221 /* btn-disconnect-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-disconnect-m.png"; sourceTree = "<group>"; };
 		19C18F0B1A30CF2E00281221 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		19C18F0C1A30CF2E00281221 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		19C18F0E1A30E31200281221 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		19C89D1F1B3205680084AD01 /* Scloudy-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Scloudy-Bridging-Header.h"; sourceTree = "<group>"; };
+		19C89D681B320B1C0084AD01 /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMWormhole.h; path = Pods/MMWormhole/Source/MMWormhole.h; sourceTree = SOURCE_ROOT; };
+		19C89D691B320B1C0084AD01 /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMWormhole.m; path = Pods/MMWormhole/Source/MMWormhole.m; sourceTree = SOURCE_ROOT; };
+		19C89D6A1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMWormholeCoordinatedFileTransiting.h; path = Pods/MMWormhole/Source/MMWormholeCoordinatedFileTransiting.h; sourceTree = SOURCE_ROOT; };
+		19C89D6B1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMWormholeCoordinatedFileTransiting.m; path = Pods/MMWormhole/Source/MMWormholeCoordinatedFileTransiting.m; sourceTree = SOURCE_ROOT; };
+		19C89D6C1B320B1C0084AD01 /* MMWormholeFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMWormholeFileTransiting.h; path = Pods/MMWormhole/Source/MMWormholeFileTransiting.h; sourceTree = SOURCE_ROOT; };
+		19C89D6D1B320B1C0084AD01 /* MMWormholeFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMWormholeFileTransiting.m; path = Pods/MMWormhole/Source/MMWormholeFileTransiting.m; sourceTree = SOURCE_ROOT; };
+		19C89D711B320D150084AD01 /* Scloudy WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Scloudy WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		19C9847F1B1FFB89008E9333 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		19C984801B1FFB89008E9333 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		19C984821B1FFCE2008E9333 /* iRate.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iRate.bundle; sourceTree = "<group>"; };
@@ -149,6 +195,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		194747651B31F7D0003CF0B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		19CDED201A2FB92100DD97CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,6 +225,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		194747691B31F7D0003CF0B7 /* Scloudy WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				19C89D711B320D150084AD01 /* Scloudy WatchKit Extension.entitlements */,
+				19C89D681B320B1C0084AD01 /* MMWormhole.h */,
+				19C89D691B320B1C0084AD01 /* MMWormhole.m */,
+				19C89D6A1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.h */,
+				19C89D6B1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.m */,
+				19C89D6C1B320B1C0084AD01 /* MMWormholeFileTransiting.h */,
+				19C89D6D1B320B1C0084AD01 /* MMWormholeFileTransiting.m */,
+				19C89D1F1B3205680084AD01 /* Scloudy-Bridging-Header.h */,
+				1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */,
+				1947476F1B31F7D0003CF0B7 /* NotificationController.swift */,
+				194747711B31F7D0003CF0B7 /* Images.xcassets */,
+				1947476B1B31F7D0003CF0B7 /* Info.plist */,
+				1947476C1B31F7D0003CF0B7 /* PushNotificationPayload.apns */,
+				19AF8D921B349BCC00D4F4A8 /* InfoController.swift */,
+			);
+			path = "Scloudy WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		194747791B31F7D0003CF0B7 /* Scloudy WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				1947477F1B31F7D0003CF0B7 /* Images.xcassets */,
+				1947477C1B31F7D0003CF0B7 /* Interface.storyboard */,
+				1947477B1B31F7D0003CF0B7 /* Info.plist */,
+			);
+			path = "Scloudy WatchKit App";
+			sourceTree = "<group>";
+		};
 		197D26FF1B17B2CD0061AA56 /* SoundCloudAPI++ */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,9 +342,12 @@
 		19CDED1A1A2FB92100DD97CC = {
 			isa = PBXGroup;
 			children = (
+				194747631B31DFE4003CF0B7 /* Scloudy.entitlements */,
 				4E9DA57F1B05621F00B324B1 /* usr */,
 				19CDED251A2FB92100DD97CC /* SCloudRandomizer */,
 				19CDED421A2FB92100DD97CC /* SCloudRandomizerTests */,
+				194747691B31F7D0003CF0B7 /* Scloudy WatchKit Extension */,
+				194747791B31F7D0003CF0B7 /* Scloudy WatchKit App */,
 				19CDED241A2FB92100DD97CC /* Products */,
 				75D048F3754150AAC3837DD0 /* Frameworks */,
 				A3903DC87E0CFB1E0F0E2850 /* Pods */,
@@ -272,6 +359,8 @@
 			children = (
 				19CDED231A2FB92100DD97CC /* Scloudy.app */,
 				19CDED3F1A2FB92100DD97CC /* ScloudyTests.xctest */,
+				194747681B31F7D0003CF0B7 /* Scloudy WatchKit Extension.appex */,
+				194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,6 +435,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		194747671B31F7D0003CF0B7 /* Scloudy WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 194747871B31F7D0003CF0B7 /* Build configuration list for PBXNativeTarget "Scloudy WatchKit Extension" */;
+			buildPhases = (
+				194747641B31F7D0003CF0B7 /* Sources */,
+				194747651B31F7D0003CF0B7 /* Frameworks */,
+				194747661B31F7D0003CF0B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				194747781B31F7D0003CF0B7 /* PBXTargetDependency */,
+			);
+			name = "Scloudy WatchKit Extension";
+			productName = "Scloudy WatchKit Extension";
+			productReference = 194747681B31F7D0003CF0B7 /* Scloudy WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		194747741B31F7D0003CF0B7 /* Scloudy WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 194747841B31F7D0003CF0B7 /* Build configuration list for PBXNativeTarget "Scloudy WatchKit App" */;
+			buildPhases = (
+				194747731B31F7D0003CF0B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Scloudy WatchKit App";
+			productName = "Scloudy WatchKit App";
+			productReference = 194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		19CDED221A2FB92100DD97CC /* Scloudy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19CDED491A2FB92100DD97CC /* Build configuration list for PBXNativeTarget "Scloudy" */;
@@ -361,6 +483,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				194747821B31F7D0003CF0B7 /* PBXTargetDependency */,
 			);
 			name = Scloudy;
 			productName = SCloudRandomizer;
@@ -393,13 +516,28 @@
 		19CDED1B1A2FB92100DD97CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Akshay Bharath";
 				TargetAttributes = {
+					194747671B31F7D0003CF0B7 = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = VRYW4TD62Q;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					194747741B31F7D0003CF0B7 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					19CDED221A2FB92100DD97CC = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = VRYW4TD62Q;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -426,11 +564,31 @@
 			targets = (
 				19CDED221A2FB92100DD97CC /* Scloudy */,
 				19CDED3E1A2FB92100DD97CC /* ScloudyTests */,
+				194747671B31F7D0003CF0B7 /* Scloudy WatchKit Extension */,
+				194747741B31F7D0003CF0B7 /* Scloudy WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		194747661B31F7D0003CF0B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				194747761B31F7D0003CF0B7 /* Scloudy WatchKit App.app in Resources */,
+				194747721B31F7D0003CF0B7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		194747731B31F7D0003CF0B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1947477E1B31F7D0003CF0B7 /* Interface.storyboard in Resources */,
+				194747801B31F7D0003CF0B7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		19CDED211A2FB92100DD97CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -545,6 +703,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		194747641B31F7D0003CF0B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				194747701B31F7D0003CF0B7 /* NotificationController.swift in Sources */,
+				1947476E1B31F7D0003CF0B7 /* InterfaceController.swift in Sources */,
+				19C89D701B320B1C0084AD01 /* MMWormholeFileTransiting.m in Sources */,
+				19C89D6F1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.m in Sources */,
+				19C89D6E1B320B1C0084AD01 /* MMWormhole.m in Sources */,
+				19AF8D931B349BCC00D4F4A8 /* InfoController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		19CDED1F1A2FB92100DD97CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -579,6 +750,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		194747781B31F7D0003CF0B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 194747741B31F7D0003CF0B7 /* Scloudy WatchKit App */;
+			targetProxy = 194747771B31F7D0003CF0B7 /* PBXContainerItemProxy */;
+		};
+		194747821B31F7D0003CF0B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 194747671B31F7D0003CF0B7 /* Scloudy WatchKit Extension */;
+			targetProxy = 194747811B31F7D0003CF0B7 /* PBXContainerItemProxy */;
+		};
 		19CDED411A2FB92100DD97CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 19CDED221A2FB92100DD97CC /* Scloudy */;
@@ -603,9 +784,98 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
+		1947477C1B31F7D0003CF0B7 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1947477D1B31F7D0003CF0B7 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		194747851B31F7D0003CF0B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Scloudy_WatchKit_Extension;
+				INFOPLIST_FILE = "Scloudy WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		194747861B31F7D0003CF0B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = Scloudy_WatchKit_Extension;
+				INFOPLIST_FILE = "Scloudy WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		194747881B31F7D0003CF0B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Scloudy WatchKit Extension/Scloudy WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Scloudy WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Scloudy WatchKit Extension/Scloudy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		194747891B31F7D0003CF0B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Scloudy WatchKit Extension/Scloudy WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Scloudy WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Scloudy WatchKit Extension/Scloudy-Bridging-Header.h";
+			};
+			name = Release;
+		};
 		19CDED471A2FB92100DD97CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -640,7 +910,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -676,7 +946,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
@@ -690,6 +960,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Scloudy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -729,7 +1000,7 @@
 					"\"Security\"",
 				);
 				PRODUCT_NAME = Scloudy;
-				PROVISIONING_PROFILE = "8307de69-ea8c-4b3c-accf-a32d1a01c1e0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -739,8 +1010,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Scloudy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -778,7 +1051,7 @@
 					"\"Security\"",
 				);
 				PRODUCT_NAME = Scloudy;
-				PROVISIONING_PROFILE = "8307de69-ea8c-4b3c-accf-a32d1a01c1e0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -857,6 +1130,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		194747841B31F7D0003CF0B7 /* Build configuration list for PBXNativeTarget "Scloudy WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				194747851B31F7D0003CF0B7 /* Debug */,
+				194747861B31F7D0003CF0B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		194747871B31F7D0003CF0B7 /* Build configuration list for PBXNativeTarget "Scloudy WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				194747881B31F7D0003CF0B7 /* Debug */,
+				194747891B31F7D0003CF0B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		19CDED1E1A2FB92100DD97CC /* Build configuration list for PBXProject "Scloudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,6 +7,9 @@ PODS:
     - OHAttributedLabel
   - JSONKit (1.4)
   - MBProgressHUD (0.9.1)
+  - MMWormhole (1.2.0):
+    - MMWormhole/Core (= 1.2.0)
+  - MMWormhole/Core (1.2.0)
   - NXOAuth2Client (1.2.1)
   - OHAttributedLabel (3.5.5)
 
@@ -14,12 +17,14 @@ DEPENDENCIES:
   - CocoaSoundCloudAPI (= 1.0.1)
   - CocoaSoundCloudUI (= 1.0.5)
   - MBProgressHUD (~> 0.8)
+  - MMWormhole (~> 1.2.0)
 
 SPEC CHECKSUMS:
   CocoaSoundCloudAPI: e8e1f2e463fa9bb9d68b2dcf361572787c7a6c3f
   CocoaSoundCloudUI: 4deb5ffe558d0b60d0aaeaf2420dda7aa31cb239
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MMWormhole: 696de5a8d2ef93f028ade4cff34958943c3bfa1e
   NXOAuth2Client: 4705ee7d3532c106e2758e2f10f4e9964b5aec68
   OHAttributedLabel: 9b2eb99323dee6b3a81ef3bc8e98b084117bca2d
 

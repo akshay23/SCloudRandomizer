@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-MMWormhole.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-NXOAuth2Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -50,6 +55,11 @@
 			<false/>
 		</dict>
 		<key>Pods-Scloudy-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Scloudy-MMWormhole.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -89,6 +99,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-ScloudyTests-MMWormhole.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ScloudyTests-NXOAuth2Client.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -112,107 +127,122 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0830A91CF4E73C5A10BBF825</key>
+		<key>3203CC5BD18E1FDFD697C1E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1A6E1E1FB5ADAD373B86445A</key>
+		<key>390B4277EC7F71F648DE30C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>276D7E0D591C68B2357FE546</key>
+		<key>597DEAF54890AA1779995F85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3555FE234FDDB4DAB16EDE03</key>
+		<key>598E0572CAA89EA4D96727A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4EBCC3B884B26C5726549B8D</key>
+		<key>703D09F5D2DC10608100FEF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>52EC50829ACFC91145D0F293</key>
+		<key>79F2D835584446B8B07EEAD9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5924493BE914D4FD70D15F7E</key>
+		<key>7A070CB7F961B2726A4835DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E0332D3F7E61AC0122AB5C6</key>
+		<key>8675741FC8E0C82F77DBE2F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B1731157B834349E0C99F52</key>
+		<key>8A0A8BB16375E25881B396EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EBA8880FB0F9ABC65F1381B</key>
+		<key>90CCADC147049AFE106FB127</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9876B8EE67497957544CCF52</key>
+		<key>916A901B2CB9C1F83BBBCFE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B3A9307DADC6DE3C86C81CA</key>
+		<key>9199751C9C2FB1DB57CE97E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BA976B4EBF7A9FAE1218E146</key>
+		<key>97385B74FC39F1F17CD41229</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C454B4389B4F03E967AA4B89</key>
+		<key>98A32805DB406B7E49BAAAB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C68B0AADAB8E6F01316E3413</key>
+		<key>9FBCED7955D5D5DCF93D7FCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC6DC899A5E6108F07E47E4D</key>
+		<key>AC02AADB21AE8489328A05EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CFEBB04A47A03D7B9B991233</key>
+		<key>B58B27AAC67A6FBD2296D98B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D27194E7AA86512A4FFFD153</key>
+		<key>B851FCD867FDAC2CC1C40F31</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBB89567ADEB2F7860C404E6</key>
+		<key>BBF8B686C5CD6EF36EE95153</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EBE14DB47C1A0AAF89AFC64B</key>
+		<key>C4262EB693292360E0A7F35F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F38C2AEBC07E4D21790B5CAF</key>
+		<key>D4F8892D994F11B4178A9CB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E72A6FB33CE682BFFF125C2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F56BD280FE64C60C15E098C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB621C8CD797524067C09F2D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

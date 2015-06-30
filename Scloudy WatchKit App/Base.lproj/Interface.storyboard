@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Now Playing-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller title="Now Playing" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Scloudy_WatchKit_Extension">
+                    <items>
+                        <label width="112.5" height="117.5" alignment="center" hidden="YES" text="Please launch the Scloudy iPhone app and make sure you are logged into SoundCloud" textAlignment="center" numberOfLines="8" id="jOv-TB-BdQ"/>
+                        <imageView width="89" height="81" alignment="center" initiallyAnimated="NO" animationDuration="6" id="byo-o2-Z4o"/>
+                        <label width="133.5" alignment="left" hidden="YES" text="Label" textAlignment="center" id="ulX-SD-4IN"/>
+                        <group width="1" alignment="left" hidden="YES" id="0EG-Ki-23e">
+                            <items>
+                                <button width="60" alignment="left" title="Play" id="TM6-8b-k6L">
+                                    <connections>
+                                        <action selector="doPlayPause" destination="AgC-eL-Hgc" id="88E-kN-HqT"/>
+                                    </connections>
+                                </button>
+                                <button width="60" alignment="right" title="Next" id="OBg-vg-qUZ">
+                                    <connections>
+                                        <action selector="doPlayNext" destination="AgC-eL-Hgc" id="peB-mA-5Fz"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="btnNext" destination="OBg-vg-qUZ" id="dQZ-CS-z5S"/>
+                        <outlet property="btnPlay" destination="TM6-8b-k6L" id="Oog-t6-9cL"/>
+                        <outlet property="grpButtons" destination="0EG-Ki-23e" id="vIK-Wl-mny"/>
+                        <outlet property="imgTrackArt" destination="byo-o2-Z4o" id="yTQ-CG-6t9"/>
+                        <outlet property="lblMessage" destination="jOv-TB-BdQ" id="j7m-eO-Ia8"/>
+                        <outlet property="lblTrackTitle" destination="ulX-SD-4IN" id="mOs-B8-oXQ"/>
+                        <segue destination="AtE-tR-GA7" kind="relationship" relationship="nextPage" id="FDD-Oe-qbA"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="268" y="384"/>
+        </scene>
+        <!--Info Controller-->
+        <scene sceneID="sfT-ws-74t">
+            <objects>
+                <controller identifier="InfoController" title="Track Info" id="AtE-tR-GA7" userLabel="Info Controller" customClass="InfoController" customModule="Scloudy_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Track Name:" id="mre-5R-fDa">
+                            <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label alignment="left" text="(N/A)" numberOfLines="12" id="fQx-14-AFK" userLabel="lblTrackTitle"/>
+                        <separator alignment="left" id="z10-lv-ZAl"/>
+                        <label alignment="left" text="Track Artist:" id="fHJ-S8-skE">
+                            <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label height="19.5" alignment="left" text="(N/A)" numberOfLines="12" id="wPP-fc-T3A" userLabel="lblTrackArtist"/>
+                        <separator alignment="left" id="wmQ-HY-bDf"/>
+                        <label alignment="left" text="Description:" id="dXV-Vb-YVa">
+                            <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label alignment="left" text="(N/A)" numberOfLines="100" id="vmX-G4-HkR" userLabel="lblDescription"/>
+                    </items>
+                    <connections>
+                        <outlet property="lblDescription" destination="vmX-G4-HkR" id="w01-hc-DhU"/>
+                        <outlet property="lblTrackArtist" destination="wPP-fc-T3A" id="UFB-0z-Yrr"/>
+                        <outlet property="lblTrackTitle" destination="fQx-14-AFK" id="1gx-GA-P65"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="557" y="384"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Next Song Playing" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="268" y="683"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Scloudy_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Next Song Playing" id="7Z2-Sj-zxj"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="557" y="683"/>
+        </scene>
+    </scenes>
+</document>

@@ -260,7 +260,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma and/or space**" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
-                                        <rect key="frame" x="26" y="41" width="323" height="76.5"/>
+                                        <rect key="frame" x="26" y="41" width="323" height="77"/>
                                         <color key="textColor" red="0.14685358047460317" green="0.14685358047460317" blue="0.14685358047460317" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -272,7 +272,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Min BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
-                                        <rect key="frame" x="51" y="394" width="96" height="25.5"/>
+                                        <rect key="frame" x="51" y="394" width="96" height="26"/>
                                         <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -324,7 +324,7 @@
                                         </connections>
                                     </stepper>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Max BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9L-sF-sLn">
-                                        <rect key="frame" x="227" y="394" width="96" height="25.5"/>
+                                        <rect key="frame" x="227" y="394" width="96" height="26"/>
                                         <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -419,7 +419,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqr-NK-dzY">
-                                <rect key="frame" x="90" y="142" width="32.5" height="22"/>
+                                <rect key="frame" x="90" y="142" width="33" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="bte-QF-ks7"/>
                                 </constraints>
