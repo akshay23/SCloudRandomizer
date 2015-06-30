@@ -44,7 +44,11 @@ class InfoController: WKInterfaceController {
         self.wormhole.listenForMessageWithIdentifier("TrackDescription") {
             (messageObject) -> Void in
             if let title: String = messageObject as? String {
-                self.lblDescription.setText(title)
+                if title.isEmpty {
+                    self.lblDescription.setText("N/A")
+                } else {
+                    self.lblDescription.setText(title)
+                }
             }
         }
     }

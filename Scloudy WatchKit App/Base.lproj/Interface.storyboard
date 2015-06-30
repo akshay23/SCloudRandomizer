@@ -59,7 +59,7 @@
                         <label alignment="left" text="Description:" id="dXV-Vb-YVa">
                             <color key="textColor" red="0.084192745264190294" green="1" blue="0.39711869656905219" alpha="1" colorSpace="calibratedRGB"/>
                         </label>
-                        <label alignment="left" text="(N/A)" numberOfLines="38" id="vmX-G4-HkR" userLabel="lblDescription"/>
+                        <label alignment="left" text="(N/A)" numberOfLines="100" id="vmX-G4-HkR" userLabel="lblDescription"/>
                     </items>
                     <connections>
                         <outlet property="lblDescription" destination="vmX-G4-HkR" id="w01-hc-DhU"/>
