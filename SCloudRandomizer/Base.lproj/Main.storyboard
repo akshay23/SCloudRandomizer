@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AGx-bt-YRN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AGx-bt-YRN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZh-3O-qGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832.5" y="319.5"/>
+            <point key="canvasLocation" x="1560.9375" y="337.5"/>
         </scene>
         <!--Search ParamsVC-->
         <scene sceneID="MHR-sP-Q3u">
@@ -231,112 +231,72 @@
                         <viewControllerLayoutGuide type="bottom" id="pkA-je-8r3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P9C-HT-tBa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hai-2L-WJx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hai-2L-WJx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-RG-yQL">
-                                        <rect key="frame" x="200" y="538" width="130" height="36"/>
-                                        <color key="backgroundColor" red="1" green="0.69310047821149201" blue="0.2940123735350888" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="done:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="ZBK-ef-SMx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2B-IZ-6Qs">
-                                        <rect key="frame" x="44" y="538" width="130" height="36"/>
-                                        <color key="backgroundColor" red="1" green="0.69310047821149201" blue="0.2940123735350888" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cancel:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="9mJ-Bi-AXR"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma and/or space**" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
-                                        <rect key="frame" x="26" y="41" width="323" height="77"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Enter as many keywords as you want in the following textbox, separating each with a comma and/or space**" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miT-10-KKD">
+                                        <rect key="frame" x="147" y="33" width="307" height="77"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="77" id="4dE-Q0-df1"/>
+                                            <constraint firstAttribute="width" constant="307" id="ceZ-lg-UUg"/>
+                                        </constraints>
                                         <color key="textColor" red="0.14685358047460317" green="0.14685358047460317" blue="0.14685358047460317" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Biggie, rap" translatesAutoresizingMaskIntoConstraints="NO" id="rvt-yK-Nw3" userLabel="txtKeywords">
-                                        <rect key="frame" x="26" y="107" width="323" height="135"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Biggie, rap" translatesAutoresizingMaskIntoConstraints="NO" id="rvt-yK-Nw3" userLabel="txtKeywords">
+                                        <rect key="frame" x="139" y="102" width="323" height="135"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="135" id="4SO-Lp-Qgs"/>
+                                            <constraint firstAttribute="width" constant="323" id="TWG-fi-5f1"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Min BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
-                                        <rect key="frame" x="51" y="394" width="96" height="26"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Min BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZg-xW-wKb">
+                                        <rect key="frame" x="174" y="386" width="83" height="35"/>
                                         <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo" userLabel="txtBpmFrom">
-                                        <rect key="frame" x="44" y="420" width="110" height="36"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-jH-9Lo" userLabel="txtBpmFrom">
+                                        <rect key="frame" x="160" y="412" width="110" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="hUO-oS-whz"/>
+                                            <constraint firstAttribute="height" constant="36" id="jAV-Gn-Bbx"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8" userLabel="txtBpmTo">
-                                        <rect key="frame" x="220" y="420" width="110" height="36"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-4j-NU8" userLabel="txtBpmTo">
+                                        <rect key="frame" x="333" y="413" width="110" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="09a-KI-Yro"/>
+                                            <constraint firstAttribute="height" constant="36" id="dFZ-Ev-mXQ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Min Duration (mins)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
-                                        <rect key="frame" x="26" y="267" width="169" height="26"/>
-                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Fc-0fY" userLabel="txtDurationFrom">
-                                        <rect key="frame" x="36" y="294" width="110" height="36"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-yh-4We" userLabel="txtDurationTo">
-                                        <rect key="frame" x="228" y="294" width="110" height="36"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Max Duration" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-LU-o52">
-                                        <rect key="frame" x="224" y="267" width="121" height="26"/>
-                                        <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="tyT-Gd-VfC">
-                                        <rect key="frame" x="44" y="334" width="94" height="29"/>
-                                        <connections>
-                                            <action selector="changeMinDuration:" destination="e9Y-XI-SDn" eventType="valueChanged" id="pAs-u1-6fA"/>
-                                        </connections>
-                                    </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-qt-HVD">
-                                        <rect key="frame" x="236" y="334" width="94" height="29"/>
-                                        <connections>
-                                            <action selector="changeMaxDuration:" destination="e9Y-XI-SDn" eventType="valueChanged" id="XV8-CN-UiB"/>
-                                        </connections>
-                                    </stepper>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Max BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9L-sF-sLn">
-                                        <rect key="frame" x="227" y="394" width="96" height="26"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Max BPM" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9L-sF-sLn">
+                                        <rect key="frame" x="341" y="387" width="88" height="35"/>
                                         <color key="textColor" red="0.1468535805" green="0.1468535805" blue="0.1468535805" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="OCh-0p-tpX">
-                                        <rect key="frame" x="52" y="460" width="94" height="29"/>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="OCh-0p-tpX">
+                                        <rect key="frame" x="165" y="452" width="94" height="29"/>
                                         <connections>
                                             <action selector="changeMinBpm:" destination="e9Y-XI-SDn" eventType="valueChanged" id="p9l-zW-4xP"/>
                                         </connections>
                                     </stepper>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="g9E-ED-CgO">
-                                        <rect key="frame" x="228" y="460" width="94" height="29"/>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="g9E-ED-CgO">
+                                        <rect key="frame" x="341" y="453" width="94" height="29"/>
                                         <connections>
                                             <action selector="changeMaxBpm:" destination="e9Y-XI-SDn" eventType="valueChanged" id="4eh-oO-O8V"/>
                                         </connections>
@@ -347,13 +307,137 @@
                                         <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="tyT-Gd-VfC">
+                                        <rect key="frame" x="157" y="325" width="94" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="LtX-T4-rvX"/>
+                                            <constraint firstAttribute="width" constant="94" id="uxq-5z-1dh"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="changeMinDuration:" destination="e9Y-XI-SDn" eventType="valueChanged" id="pAs-u1-6fA"/>
+                                        </connections>
+                                    </stepper>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-qt-HVD">
+                                        <rect key="frame" x="353" y="325" width="94" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="94" id="Cmm-q5-Ln7"/>
+                                            <constraint firstAttribute="height" constant="29" id="Zch-fN-zvZ"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="changeMaxDuration:" destination="e9Y-XI-SDn" eventType="valueChanged" id="XV8-CN-UiB"/>
+                                        </connections>
+                                    </stepper>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-RG-yQL">
+                                        <rect key="frame" x="317" y="528" width="130" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.69310047821149201" blue="0.2940123735350888" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="WIe-g0-V2a"/>
+                                            <constraint firstAttribute="height" constant="36" id="lkO-nh-4EI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="done:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="ZBK-ef-SMx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2B-IZ-6Qs">
+                                        <rect key="frame" x="154" y="528" width="130" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.69310047821149201" blue="0.2940123735350888" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="Oju-A6-eCL"/>
+                                            <constraint firstAttribute="height" constant="36" id="gii-jU-Mub"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="e9Y-XI-SDn" eventType="touchUpInside" id="9mJ-Bi-AXR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="OCh-0p-tpX" firstAttribute="centerX" secondItem="g7d-jH-9Lo" secondAttribute="centerX" constant="-3" id="1ON-ll-byd"/>
+                                    <constraint firstItem="xZg-xW-wKb" firstAttribute="top" secondItem="tyT-Gd-VfC" secondAttribute="bottom" constant="32" id="6AR-je-L31"/>
+                                    <constraint firstItem="HpR-4j-NU8" firstAttribute="top" secondItem="Z9L-sF-sLn" secondAttribute="bottom" constant="-8" id="BBE-Eg-lMS"/>
+                                    <constraint firstItem="Z9L-sF-sLn" firstAttribute="top" secondItem="Tx1-qt-HVD" secondAttribute="bottom" constant="33" id="BNr-fQ-SMp"/>
+                                    <constraint firstItem="Z9L-sF-sLn" firstAttribute="centerX" secondItem="HpR-4j-NU8" secondAttribute="centerX" constant="-3" id="HMe-eF-ckH"/>
+                                    <constraint firstAttribute="centerX" secondItem="xZg-xW-wKb" secondAttribute="centerX" constant="85" id="IgO-om-pmE"/>
+                                    <constraint firstItem="7jH-RG-yQL" firstAttribute="top" secondItem="g9E-ED-CgO" secondAttribute="bottom" constant="46" id="KYW-gg-PmZ"/>
+                                    <constraint firstItem="OCh-0p-tpX" firstAttribute="top" secondItem="g7d-jH-9Lo" secondAttribute="bottom" constant="4" id="PUI-xe-ssU"/>
+                                    <constraint firstItem="g9E-ED-CgO" firstAttribute="top" secondItem="HpR-4j-NU8" secondAttribute="bottom" constant="4" id="QVy-b7-uY8"/>
+                                    <constraint firstItem="g7d-jH-9Lo" firstAttribute="centerX" secondItem="S2B-IZ-6Qs" secondAttribute="centerX" constant="-4" id="Qy9-0h-MdU"/>
+                                    <constraint firstItem="HpR-4j-NU8" firstAttribute="centerX" secondItem="7jH-RG-yQL" secondAttribute="centerX" constant="6" id="RmY-2C-9MH"/>
+                                    <constraint firstItem="S2B-IZ-6Qs" firstAttribute="top" secondItem="OCh-0p-tpX" secondAttribute="bottom" constant="47" id="Tzt-oi-lWG"/>
+                                    <constraint firstItem="rvt-yK-Nw3" firstAttribute="top" secondItem="miT-10-KKD" secondAttribute="bottom" constant="-8" id="Wvv-xA-Xt7"/>
+                                    <constraint firstAttribute="centerX" secondItem="miT-10-KKD" secondAttribute="centerX" id="i7f-1n-ypT"/>
+                                    <constraint firstAttribute="centerX" secondItem="Z9L-sF-sLn" secondAttribute="centerX" constant="-85" id="idl-XG-mkO"/>
+                                    <constraint firstItem="xZg-xW-wKb" firstAttribute="centerX" secondItem="g7d-jH-9Lo" secondAttribute="centerX" id="oZf-bd-5Wn"/>
+                                    <constraint firstItem="g7d-jH-9Lo" firstAttribute="top" secondItem="xZg-xW-wKb" secondAttribute="bottom" constant="-8" id="pQT-0k-UIG"/>
+                                    <constraint firstAttribute="centerX" secondItem="rvt-yK-Nw3" secondAttribute="centerX" id="s7H-1N-UTT"/>
+                                    <constraint firstItem="g9E-ED-CgO" firstAttribute="centerX" secondItem="HpR-4j-NU8" secondAttribute="centerX" id="uGF-3P-BwP"/>
+                                    <constraint firstItem="miT-10-KKD" firstAttribute="top" secondItem="hai-2L-WJx" secondAttribute="topMargin" constant="25" id="yAD-Vn-h50"/>
+                                </constraints>
                             </scrollView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Min Duration (mins)" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-Mo-87s">
+                                <rect key="frame" x="139" y="257" width="167" height="35"/>
+                                <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Fc-0fY" userLabel="txtDurationFrom">
+                                <rect key="frame" x="149" y="284" width="110" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="7Pf-7K-gXe"/>
+                                    <constraint firstAttribute="width" constant="110" id="fZX-2V-A75"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-yh-4We" userLabel="txtDurationTo">
+                                <rect key="frame" x="345" y="284" width="110" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="Ip6-G6-83l"/>
+                                    <constraint firstAttribute="height" constant="36" id="OK3-bY-RJT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Max Duration" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-LU-o52">
+                                <rect key="frame" x="342" y="257" width="117" height="35"/>
+                                <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.94685166317319114" green="0.94685166317319114" blue="0.94685166317319114" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="hai-2L-WJx" secondAttribute="centerY" id="2BF-xs-CGu"/>
+                            <constraint firstItem="tyT-Gd-VfC" firstAttribute="top" secondItem="6i9-Fc-0fY" secondAttribute="bottom" constant="5" id="6FB-Vs-d9n"/>
+                            <constraint firstItem="Tx1-qt-HVD" firstAttribute="centerX" secondItem="wiv-yh-4We" secondAttribute="centerX" id="8vF-g1-AF5"/>
+                            <constraint firstItem="tyT-Gd-VfC" firstAttribute="centerX" secondItem="6i9-Fc-0fY" secondAttribute="centerX" id="CPw-IQ-Y17"/>
+                            <constraint firstItem="NyX-LU-o52" firstAttribute="top" secondItem="rvt-yK-Nw3" secondAttribute="bottom" constant="20" id="FwF-52-wnW"/>
+                            <constraint firstAttribute="width" secondItem="hai-2L-WJx" secondAttribute="width" id="TGw-kH-vmb"/>
+                            <constraint firstItem="EAV-Mo-87s" firstAttribute="leading" secondItem="6i9-Fc-0fY" secondAttribute="leading" constant="-10" id="VFu-Ph-yh3"/>
+                            <constraint firstAttribute="centerX" secondItem="EAV-Mo-87s" secondAttribute="centerX" constant="78.5" id="VK0-1t-pDZ"/>
+                            <constraint firstItem="wiv-yh-4We" firstAttribute="centerX" secondItem="NyX-LU-o52" secondAttribute="centerX" constant="-1" id="Voa-CH-Gha"/>
+                            <constraint firstItem="Tx1-qt-HVD" firstAttribute="top" secondItem="wiv-yh-4We" secondAttribute="bottom" constant="5" id="cVF-6K-SYY"/>
+                            <constraint firstItem="wiv-yh-4We" firstAttribute="top" secondItem="NyX-LU-o52" secondAttribute="bottom" constant="-8" id="gop-CH-KLh"/>
+                            <constraint firstAttribute="height" secondItem="hai-2L-WJx" secondAttribute="height" id="mxD-2S-OPj"/>
+                            <constraint firstAttribute="centerX" secondItem="NyX-LU-o52" secondAttribute="centerX" constant="-100" id="nkH-Js-Ya0"/>
+                            <constraint firstItem="EAV-Mo-87s" firstAttribute="centerX" secondItem="6i9-Fc-0fY" secondAttribute="centerX" constant="4" id="qJf-sB-oP9"/>
+                            <constraint firstItem="EAV-Mo-87s" firstAttribute="top" secondItem="rvt-yK-Nw3" secondAttribute="bottom" constant="20" id="r1T-0y-h2n"/>
+                            <constraint firstAttribute="centerX" secondItem="hai-2L-WJx" secondAttribute="centerX" id="uJl-Pa-6nH"/>
+                            <constraint firstItem="6i9-Fc-0fY" firstAttribute="top" secondItem="EAV-Mo-87s" secondAttribute="bottom" constant="-8" id="xFc-Qf-fQb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="qJf-sB-oP9"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="btnCancel" destination="S2B-IZ-6Qs" id="7JJ-lf-aat"/>
                         <outlet property="btnSave" destination="7jH-RG-yQL" id="dQ3-8k-2bV"/>
@@ -371,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgv-Vs-x0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243.5" y="319.5"/>
+            <point key="canvasLocation" x="2389" y="291"/>
         </scene>
         <!--Track Info VC-->
         <scene sceneID="Zu8-T8-rs4">
@@ -382,11 +466,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cfs-UI-fsF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bbT-8q-Tan">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-84-pEg">
-                                <rect key="frame" x="109" y="519" width="101" height="35"/>
+                                <rect key="frame" x="109" y="551" width="381" height="35"/>
                                 <color key="backgroundColor" red="1" green="0.69310047819999998" blue="0.29401237349999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="VDr-Ml-y43"/>
@@ -400,7 +484,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJ6-CR-OAE">
-                                <rect key="frame" x="60" y="40" width="114" height="32"/>
+                                <rect key="frame" x="60" y="40" width="394" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Bsh-8e-RJN"/>
                                 </constraints>
@@ -428,7 +512,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8D-7H-Gyn" userLabel="Separator">
-                                <rect key="frame" x="0.0" y="280" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="280" width="600" height="1"/>
                                 <color key="backgroundColor" red="0.32883522729999998" green="0.32883522729999998" blue="0.32883522729999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lfd-hb-TV4"/>
@@ -449,7 +533,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploaded Time" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxV-KF-UxY">
-                                <rect key="frame" x="60" y="174" width="200" height="25"/>
+                                <rect key="frame" x="60" y="174" width="480" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="ir9-xa-uTq"/>
                                 </constraints>
@@ -458,13 +542,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="tags" translatesAutoresizingMaskIntoConstraints="NO" id="oaO-Io-j0Z" userLabel="Tags">
-                                <rect key="frame" x="98" y="207" width="162" height="63"/>
+                                <rect key="frame" x="98" y="207" width="442" height="63"/>
                                 <color key="textColor" red="0.32883522729999998" green="0.32883522729999998" blue="0.32883522729999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="4eX-rn-1Zx" userLabel="Description">
-                                <rect key="frame" x="60" y="311" width="200" height="207"/>
+                                <rect key="frame" x="60" y="311" width="480" height="239"/>
                                 <color key="textColor" red="0.32883522729999998" green="0.32883522729999998" blue="0.32883522729999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Damascus" family="Damascus" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -478,7 +562,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Song Name" translatesAutoresizingMaskIntoConstraints="NO" id="C6F-5R-2jY" userLabel="SongName">
-                                <rect key="frame" x="52" y="78" width="216" height="50"/>
+                                <rect key="frame" x="52" y="78" width="496" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0ib-sU-yWu"/>
                                 </constraints>
@@ -537,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3VN-fV-uwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="276"/>
+            <point key="canvasLocation" x="3058.125" y="291.54929577464787"/>
         </scene>
     </scenes>
     <resources>
@@ -553,9 +637,4 @@
         <image name="search_bttn.png" width="770" height="100"/>
         <image name="tag.png" width="128" height="128"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
