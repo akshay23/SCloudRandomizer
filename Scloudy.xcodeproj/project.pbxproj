@@ -12,7 +12,6 @@
 		190EEAB21B24C5D000A56A66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAB01B24C5D000A56A66 /* LaunchScreen.xib */; };
 		1947476E1B31F7D0003CF0B7 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */; };
 		194747701B31F7D0003CF0B7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947476F1B31F7D0003CF0B7 /* NotificationController.swift */; };
-		194747721B31F7D0003CF0B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194747711B31F7D0003CF0B7 /* Images.xcassets */; };
 		194747761B31F7D0003CF0B7 /* Scloudy WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */; };
 		1947477E1B31F7D0003CF0B7 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947477C1B31F7D0003CF0B7 /* Interface.storyboard */; };
 		194747801B31F7D0003CF0B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1947477F1B31F7D0003CF0B7 /* Images.xcassets */; };
@@ -114,7 +113,6 @@
 		1947476C1B31F7D0003CF0B7 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		1947476F1B31F7D0003CF0B7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		194747711B31F7D0003CF0B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scloudy WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1947477B1B31F7D0003CF0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1947477D1B31F7D0003CF0B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				19C89D1F1B3205680084AD01 /* Scloudy-Bridging-Header.h */,
 				1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */,
 				1947476F1B31F7D0003CF0B7 /* NotificationController.swift */,
-				194747711B31F7D0003CF0B7 /* Images.xcassets */,
 				1947476B1B31F7D0003CF0B7 /* Info.plist */,
 				1947476C1B31F7D0003CF0B7 /* PushNotificationPayload.apns */,
 				19AF8D921B349BCC00D4F4A8 /* InfoController.swift */,
@@ -577,7 +574,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				194747761B31F7D0003CF0B7 /* Scloudy WatchKit App.app in Resources */,
-				194747721B31F7D0003CF0B7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,7 +795,7 @@
 		194747851B31F7D0003CF0B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "WatchAppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -822,7 +818,7 @@
 		194747861B31F7D0003CF0B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "WatchAppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
