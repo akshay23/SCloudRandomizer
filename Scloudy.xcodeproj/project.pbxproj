@@ -11,7 +11,6 @@
 		190EEAAF1B24C55C00A56A66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAAD1B24C55C00A56A66 /* Main.storyboard */; };
 		190EEAB21B24C5D000A56A66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190EEAB01B24C5D000A56A66 /* LaunchScreen.xib */; };
 		1947476E1B31F7D0003CF0B7 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */; };
-		194747701B31F7D0003CF0B7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947476F1B31F7D0003CF0B7 /* NotificationController.swift */; };
 		194747761B31F7D0003CF0B7 /* Scloudy WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */; };
 		1947477E1B31F7D0003CF0B7 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947477C1B31F7D0003CF0B7 /* Interface.storyboard */; };
 		194747801B31F7D0003CF0B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1947477F1B31F7D0003CF0B7 /* Images.xcassets */; };
@@ -112,7 +111,6 @@
 		1947476B1B31F7D0003CF0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1947476C1B31F7D0003CF0B7 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		1947476F1B31F7D0003CF0B7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		194747751B31F7D0003CF0B7 /* Scloudy WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scloudy WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1947477B1B31F7D0003CF0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1947477D1B31F7D0003CF0B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				19C89D6D1B320B1C0084AD01 /* MMWormholeFileTransiting.m */,
 				19C89D1F1B3205680084AD01 /* Scloudy-Bridging-Header.h */,
 				1947476D1B31F7D0003CF0B7 /* InterfaceController.swift */,
-				1947476F1B31F7D0003CF0B7 /* NotificationController.swift */,
 				1947476B1B31F7D0003CF0B7 /* Info.plist */,
 				1947476C1B31F7D0003CF0B7 /* PushNotificationPayload.apns */,
 				19AF8D921B349BCC00D4F4A8 /* InfoController.swift */,
@@ -431,6 +428,16 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		19A641D91B55BD1300E8402A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		194747671B31F7D0003CF0B7 /* Scloudy WatchKit Extension */ = {
 			isa = PBXNativeTarget;
@@ -439,6 +446,7 @@
 				194747641B31F7D0003CF0B7 /* Sources */,
 				194747651B31F7D0003CF0B7 /* Frameworks */,
 				194747661B31F7D0003CF0B7 /* Resources */,
+				19A641D91B55BD1300E8402A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -704,7 +712,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				194747701B31F7D0003CF0B7 /* NotificationController.swift in Sources */,
 				1947476E1B31F7D0003CF0B7 /* InterfaceController.swift in Sources */,
 				19C89D701B320B1C0084AD01 /* MMWormholeFileTransiting.m in Sources */,
 				19C89D6F1B320B1C0084AD01 /* MMWormholeCoordinatedFileTransiting.m in Sources */,
@@ -842,7 +849,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -867,7 +874,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Scloudy WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -966,6 +973,7 @@
 				CODE_SIGN_ENTITLEMENTS = Scloudy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1018,6 +1026,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
